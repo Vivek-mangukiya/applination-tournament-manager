@@ -1,0 +1,488 @@
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: hsl(0, 0%, 93%);
+  --line: #333333;
+  --ffd420: #ffd420;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+.RegEventContainer {
+  width: 1120px;
+  /* margin: 32px 80px 0 80px; */
+  margin-top: 32px;
+}
+
+.RegEventHeaderFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.RegEventHeaderImage {
+  width: 100px;
+  height: 100px;
+  /* margin: 32px 15px 42px 240px; */
+}
+
+.RegEventHeaderTitle {
+  width: 401px;
+  height: 50px;
+  /* margin: 57px 504px 67px 24px; */
+  font-family: Futura;
+  font-size: 36px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  /* margin-left: 24px; */
+  margin-top: 25px;
+}
+
+.RegEventRectangle {
+  width: 1100px;
+  height: 48px;
+  background-color: var(--bracket-seed);
+  display: flex;
+  flex-direction: row;
+}
+
+.RegEventRectangle:hover {
+  background-image: linear-gradient(
+      to bottom,
+      var(--ffd-420) -115%,
+      var(--ffd-420)
+    ),
+    linear-gradient(to bottom, var(--bracket-seed), var(--eeeeee) 207%),
+    linear-gradient(to bottom, var(--eeeeee) -115%, var(--bracket-seed));
+  background-position: left, top, bottom;
+  background-size: 4px 48px, 1120px 9px, 1120px 9px;
+  background-repeat: no-repeat;
+}
+
+.RegEventteam-logo {
+  width: 24px;
+  height: 24px;
+  border: solid 1px var(--bracket-seed);
+  border-radius: 100%;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.RegEventFirst {
+  width: 117px;
+  height: 48px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.RegEventLast {
+  width: 158px;
+  height: 48px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.RegEventID {
+  width: 104px;
+  height: 48px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.RegEventPoints {
+  width: 154px;
+  height: 48px;
+  margin-right: 32px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventLocation {
+  width: 154px;
+  height: 48px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.RegEventStatus {
+  width: 120px;
+  height: 48px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  margin-right: 27px;
+}
+
+.RegEventMens2v2Flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.RegEventMens2v2 {
+  width: 74px;
+  height: 36px;
+  /* margin: 164px 0 32px 80px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.RegEventMens2v2hr {
+  content: '';
+  width: 1006px;
+  height: 1px;
+  /* margin: 50px 8px 56px 16px; */
+  background-color: var(--line);
+
+  margin-top: 50px;
+  margin-left: 16px;
+}
+
+.RegEventArrowDown {
+  width: 16px;
+  height: 16px;
+  margin-top: 42px;
+  margin-left: 8px;
+}
+
+.RegEventArrowDown:hover {
+  cursor: pointer;
+}
+
+.RegEventTeamFlex,
+.RegEventAddTeam {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.RegEventTeamNumber {
+  width: 74px;
+  height: 23px;
+  /* margin: 32px 0 128px 80px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--line);
+
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.RegEventHamburger,
+.RegEventAddTeamIcon {
+  object-fit: contain;
+  width: 16px;
+  height: 16px;
+  margin-left: 1014px;
+  margin-top: 32px;
+}
+
+.RegEventHamburger:hover,
+.RegEventAddTeamIcon:hover {
+  cursor: pointer;
+}
+
+.RegEventTeam1 {
+  margin-top: 16px;
+}
+
+.RegEventAddTeamhr {
+  width: 1120px;
+  height: 1px;
+  /* margin: 13px 80px 24px 240px; */
+  background-color: var(--colors-dark-grey);
+
+  margin-top: 14px;
+}
+
+.RegEventRegOpenFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.RegEventRegOpenTitle {
+  width: 75px;
+  height: 32px;
+  /* margin: 37px 80px 105px 8px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--item-text);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburgerDropdownRE {
+  width: 142px;
+  height: 89px;
+  padding: 9px 0 17px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 960px;
+  top: 50px;
+}
+
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: hsl(0, 0%, 93%);
+  --line: #333333;
+  --ffd420: #ffd420;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+/* @media (min-width: 768px) {
+    .RegEventt .reg-team-widthh {
+      width: 1120px;
+    }
+} */
+
+.RegEventt {
+  min-height: 100vh;
+}
+
+.reg-event-image {
+  width: 100px;
+  height: 100px;
+  border: 1px soid black;
+  border-radius: 50px;
+}
+
+.reg-event-title {
+  /* width: 401px; */
+  height: 50px;
+  /* margin: 57px 504px 67px 24px; */
+  font-family: Futura;
+  font-size: 36px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  margin-top: 25px;
+}
+
+.reg-event-header {
+  /* width: 74px; */
+  /* height: 36px; */
+  /* margin: 164px 0 32px 80px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.mens2v2event {
+  margin-top: 32px;
+}
+
+.mens4v4event,
+.womens2v2event,
+.womens4v4event {
+  margin-top: 16px;
+}
+
+.reg-event-add-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.RegEventRegOpenIcon {
+  width: 8px;
+  height: 8px;
+  border: solid 2px var(--bracket-seed);
+  background-color: #20ff36;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  border-radius: 50px;
+}
+
+.reg-event-team-num {
+  /* width: 74px; */
+  height: 23px;
+  /* margin: 128px 0 127px 80px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.reg-event-innerhr {
+  /* width: 1006px; */
+
+  /* margin: 50px 8px 56px 16px; */
+  /* background-color: #333333; */
+  border-top: thin solid #333333;
+}
+
+.rectangleTableReg {
+  height: 48px;
+  background-color: var(--bracket-seed);
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  /* border-bottom: 1px solid #d8d8d8; */
+}
+
+.rectangleTableRegBox:hover {
+  /* background-image: linear-gradient(
+      to bottom,
+      var(--ffd-420) -115%,
+      var(--ffd-420)
+    ),
+    linear-gradient(to bottom, var(--bracket-seed), var(--eeeeee) 207%),
+    linear-gradient(to bottom, var(--eeeeee) -115%, var(--bracket-seed));
+  background-position: left, top, bottom;
+  background-size: 4px 96px, 1150px 9px, 1150px 9px;
+  background-repeat: no-repeat; */
+  cursor: pointer;
+  border-left: 4px solid #ffd420;
+}
+
+.regEventCardBody {
+  background-color: #f9fafc;
+}
+
+.regEventCardHeader {
+  background-color: #f9fafc;
+  cursor: pointer;
+}
+
+.RegEventt .edit-icon {
+  cursor: pointer;
+}
+
+.RegEventt .box-shadow {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.RegEventt .rectangleTableRegBoxNoPlayer {
+  height: 0px;
+}
+
+.reg-div-list-element:hover {
+  background-color: #ffd420;
+}

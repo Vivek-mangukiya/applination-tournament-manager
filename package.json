@@ -1,0 +1,78 @@
+{
+  "name": "avp",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://avp-tournament.herokuapp.com/",
+  "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.0",
+    "@stripe/stripe-js": "^1.14.0",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
+    "aes-js": "^3.1.2",
+    "aes256": "^1.0.4",
+    "antd": "^4.12.2",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "browserify-aes": "^1.2.0",
+    "chokidar": "^3.5.3",
+    "craco-less": "^1.17.1",
+    "crypto-js": "^4.0.0",
+    "futura-font": "^1.0.0",
+    "js-md5": "^0.7.3",
+    "js-sha256": "^0.9.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "rc-time-picker": "^3.7.3",
+    "react": "^17.0.1",
+    "react-beautiful-dnd": "^13.0.0",
+    "react-bootstrap": "^1.4.0",
+    "react-calendar": "^3.2.1",
+    "react-color": "^2.19.3",
+    "react-datepicker": "^3.3.0",
+    "react-dom": "^17.0.1",
+    "react-encrypt": "^1.0.1",
+    "react-id-generator": "^3.0.1",
+    "react-number-format": "^4.4.1",
+    "react-phone-number-input": "^3.1.8",
+    "react-responsive-modal": "^6.0.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "react-scroll": "^1.8.1",
+    "react-select": "^3.1.1",
+    "react-time-picker": "^4.0.1",
+    "react-toastify": "^6.2.0",
+    "react-use-localstorage": "^3.5.3",
+    "react-virtualized": "^9.22.3",
+    "reactstrap": "^8.7.1",
+    "rsuite": "^4.8.6",
+    "simple-react-validator": "^1.6.0",
+    "sjcl": "^1.0.8",
+    "store": "^2.0.12",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+.table .table-left {
+  height: 40px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 40px;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.template-points-table-row {
+  height: 30px;
+  /* margin-bottom: 20px; */
+}
+
+.template-points-table {
+  height: 120px;
+}
+
+.points-box {
+  width: 91px;
+  height: 40px;
+}

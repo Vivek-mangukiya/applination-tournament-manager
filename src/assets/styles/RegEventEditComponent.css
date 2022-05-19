@@ -1,0 +1,762 @@
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: hsl(0, 0%, 93%);
+  --line: #333333;
+  --ffd420: #ffd420;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/Futura\ Bold.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+.RegEventEditContainer {
+  /* position: absolute;
+    display: inline-block;
+    align-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); */
+  width: 460px;
+  /* margin: 143px 0 0 0; */
+  margin-top: 143px;
+  /* outline: 1px solid red; */
+  /* background-color: #f9fafc; */
+}
+
+.RegEventEditHeaderFlex,
+.RegEventEditHeaderDateFlex,
+.RegEventEditMens2v2Flex,
+.RegEventEditTeamPlayer {
+  display: flex;
+  flex-direction: row;
+}
+
+.RegEventEditHeaderImage {
+  width: 100px;
+  height: 100px;
+  /* margin: 73px 15px 24px 255px; */
+  border-radius: 50px;
+}
+
+.RegEventEditHeaderInfoFlex,
+.RegEventEditAddressFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.RegEventEditHeaderTitle {
+  width: 246px;
+  height: 32px;
+  /* margin: 107px 64px 0 34px; */
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  margin-top: 34px;
+  margin-left: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditHeaderhr {
+  width: 327px;
+  height: 1px;
+  /* margin: 139px 239px 8px 34px; */
+  background-color: #979797;
+
+  margin-left: 34px;
+}
+
+.RegEventEditHeaderMonth {
+  width: 31px;
+  height: 19px;
+  /* margin: 0 5px 0 0; */
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  margin: 11px;
+  margin-left: 34px;
+  margin-bottom: 0%;
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditHeaderDatehr {
+  width: 1px;
+  height: 15px;
+  /* margin: 2px 0 2px 5px; */
+  background-color: var(--colors-dark-grey);
+
+  margin-top: 13px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditHeaderDay {
+  width: 250px;
+  height: 19px;
+  /* margin: 0 0 0 8px; */
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  margin-top: 11px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditAddress {
+  width: 198px;
+  height: 32px;
+  /* margin: 24px 246px 5px 255px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditAddressFlex {
+  margin-top: 5px;
+}
+
+.RegEventEditAddressLine {
+  width: 428px;
+  height: 24px;
+  /* margin: 5px 15px 0 256px; */
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #747474;
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditMens2v2Flex {
+  margin-top: 24px;
+}
+
+.RegEventEditMens2v2,
+.RegEventEditMens4v4 {
+  width: 73px;
+  height: 32px;
+  /* margin: 24px 16px 32px 255px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditMens2v2hr {
+  width: 347px;
+  height: 1px;
+  /* margin: 40px 8px 47px 16px; */
+  background-color: var(--line);
+
+  margin-left: 16px;
+  margin-top: 16px;
+}
+
+.RegEventEditMens2v2Arrow {
+  width: 16px;
+  height: 16px;
+
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.RegEventEditMens2v2Arrow:hover {
+  cursor: pointer;
+}
+
+.RegEventEditTeam {
+  margin-top: 32px;
+}
+
+.RegEventEditTeamNum {
+  width: 198px;
+  height: 32px;
+  /* margin: 32px 246px 0 255px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditTeamPlayer {
+  width: 430px;
+  height: 32px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+}
+
+.RegEventEditTeamPlayerImage {
+  width: 20px;
+  height: 20px;
+  margin: 2px 14px 2px 0;
+  object-fit: contain;
+}
+
+.RegEventEditTeamPlayerTitle {
+  width: 188px;
+  height: 16px;
+  /* margin: 4px 206px 4px 14px; */
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  margin-top: 8px;
+}
+
+.RegEventEditTeamPlayerName {
+  width: 167px;
+  height: 24px;
+  /* margin: 0 8px 0 183px; */
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #747474;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.RegEventEditTeamPlayerNameEdit {
+  width: 16px;
+  height: 16px;
+  margin: 4px 0 4px 8px;
+  object-fit: contain;
+}
+
+.RegEventEditTeamPlayer2 {
+  margin-top: 8px;
+}
+
+.RegEventEditWomens4v4 {
+  width: 99px;
+  height: 36px;
+  /* margin: 16px 16px 16px 255px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventEditWomens2v2hr {
+  width: 313px;
+  height: 1px;
+  /* margin: 34px 16px 33px 15px; */
+  background-color: var(--line);
+  margin-top: 18px;
+  margin-left: 16px;
+}
+
+.reg-cancel-button-text {
+  width: 58px;
+  height: 16px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--item-text);
+  display: flex;
+  justify-content: center;
+}
+
+.reg-save-button-text {
+  width: 58px;
+  height: 16px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--item-text);
+  display: flex;
+  justify-content: center;
+}
+
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: hsl(0, 0%, 93%);
+  --line: #333333;
+  --ffd420: #ffd420;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+@media (min-width: 768px) {
+  .regEventEdit .reg-team-edit-width {
+    width: 550px;
+  }
+}
+
+/* @media (min-width: 768px) {
+    .reg-team-edit-header {
+      font-size: 10px;
+    }
+  } */
+
+.regEventEdit {
+  margin-top: 120px;
+  min-height: 70vh;
+}
+
+.regEventEdit .search {
+  border: 1px solid #d8d8d8;
+  border-radius: 20px;
+  height: 32px;
+  width: 400px;
+}
+
+.reg-team-edit-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.reg-team-edit-title {
+  width: 246px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.reg-team-edit-subtitle {
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  margin-top: 11px;
+}
+
+.reg-team-edit-title-hr {
+  height: 1px;
+  background-color: #979797;
+}
+
+.reg-team-edit-heading {
+  width: 198px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  margin-top: 28px;
+}
+
+.reg-team-edit-address {
+  width: 428px;
+  height: 24px;
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #747474;
+}
+
+.reg-team-edit-header {
+  width: 73px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+/* .reg-team-edit-innerhr{
+    height: 1px;
+    background-color: #333333;
+  } */
+
+.reg-event-edit-label-image {
+  width: 20px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.reg-event-edit-rectangle {
+  height: 32px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+  margin-bottom: 4px;
+}
+
+.reg-event-edit-rectangle-label {
+  height: 32px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.reg-event-edit-rectangle-value {
+  height: 32px;
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #747474;
+}
+
+.reg-team-edit-heading-address {
+  margin-top: 24px;
+}
+
+.mens2v2 {
+  margin-top: 24px;
+}
+
+.womens2v2,
+.womens4v4,
+.mens4v4 {
+  margin-top: 16px;
+}
+
+.hamburgerDropdownRE {
+  width: 142px;
+  height: 89px;
+  padding: 9px 0 17px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 336px; */
+  /* margin-top: 50px; */
+  left: -40px;
+  top: 35px;
+  position: absolute;
+  z-index: 1000;
+}
+
+.hamburgerDropdown:hover {
+  cursor: pointer;
+}
+
+.hamburgerDropdownEdit {
+  /* width: 21px;
+      height: 15px; */
+  height: 24.3px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hamburgerDropdownInactive {
+  /* width: 51px;
+      height: 18px; */
+  height: 24.3px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--item-text);
+}
+
+.hamburgerDropdownRemove {
+  /* width: 44px;
+      height: 15px; */
+  height: 24.3px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #ff2072;
+}
+
+.hamburgerDropdownRemove:hover,
+.hamburgerDropdownInactive:hover,
+.hamburgerDropdownEdit:hover {
+  background-color: var(--ffd420);
+}
+
+#score-hamburger-reg {
+  cursor: context-menu;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+#score-hamburger-reg > div > img {
+  cursor: pointer;
+}
+
+#score-hamburger-reg > div > span {
+  display: inline-block;
+  background-color: #ffffff;
+  /* visibility: hidden; */
+  position: absolute;
+  top: 19px;
+  right: 0px;
+  min-width: 142px;
+  width: max-content;
+  padding: 9px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 10;
+}
+
+#score-hamburger-reg:focus > div > span,
+#score-hamburger-reg:focus-within > div > span,
+#score-hamburger-reg:focus-visible > div > span {
+  visibility: visible;
+}
+
+#score-hamburger-reg > div > span > ul {
+  margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+}
+
+#score-hamburger-reg > div > span > ul > li {
+  height: 30px;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 30px;
+  color: #4a4a4a;
+
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+#score-hamburger-reg > div > span > ul > li:hover {
+  background-color: #ffd420;
+}
+
+/* modal reg event */
+
+.reg-modal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.reg-modal-button {
+  width: 112px;
+  height: 24px;
+  /* padding: 3px 26.1px 5px 27px; */
+  border-radius: 15px;
+  border: solid 1px #ffd420;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4a4a4a;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.reg-modal-buttons .yes-button {
+  background-color: #ffd420;
+}
+
+.reg-rotate {
+  transform: rotate(0deg);
+  transition: all 500ms;
+}
+
+.reg-no-rotate {
+  transform: rotate(-90deg);
+  transition: all 500ms;
+}
+
+.avoid-clicks {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.apply-discount-modal-text {
+  font-family: 'Futura';
+  font-size: 14px;
+  font-weight: 'bold';
+  font-stretch: 'normal';
+  font-style: 'normal';
+  letter-spacing: 'normal';
+  color: #4a4a4a;
+}
+
+.apply-discount-modal-sub-text {
+  width: 398px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-family: 'Futura';
+  font-weight: 'bold';
+  font-stretch: 'normal';
+  font-style: 'normal';
+  letter-spacing: 'normal';
+  color: #9b9b9b;
+}
+
+.apply-discount-modal-left-button {
+  border: 1px solid yellow;
+  border-radius: 15px;
+  width: 112px;
+  height: 24px;
+  font-size: 10px;
+  background-color: #ffffff;
+  outline: 0px;
+  color: #4a4a4a;
+}
+
+.apply-discount-modal-right-button {
+  border: 1px solid yellow;
+  border-radius: 15px;
+  width: 112px;
+  height: 24px;
+  font-size: 10px;
+  background-color: #ffd420;
+  outline: 0px;
+  color: #4a4a4a;
+}

@@ -1,0 +1,109 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --bracket-seed: #ffffff;
+  --ffd-420: #ffd420;
+}
+
+.App {
+  background-color: #f9fafc;
+  width: 100vw;
+  height: 100%;
+}
+
+#app-content {
+  /* margin-left: 20vw; */
+  margin-left: 160px;
+  background-color: #f9fafc;
+  height: 100% !important;
+  transition: margin-left 0.8s;
+}
+
+@media (max-width: 767px) {
+  #app-content {
+    /* margin-left: 20vw; */
+    margin-left: 160px;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #app-content {
+    /* margin-left: 10vw; */
+    margin-left: 160px;
+    height: 100% !important;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+
+  width: 4px;
+  height: auto;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/Futura\ Bold.ttf) format('truetype');
+} */
+
+@font-face {
+  font-family: 'FuturaMedium';
+  src: local('Futura'),
+    /* url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype'); */
+      /* url(/src/assets/fonts/Futura/Futura\ Medium.otf) format('truetype'); */url(/src/assets/fonts/Futura/FuturaPTMedium2.otf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: local('Futura'),
+    /* url(/src/assets/fonts/Futura/Futura\ Bold.ttf) format('truetype'); */url(/src/assets/fonts/Futura/FuturaPTBold2.otf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'FuturaPTBold';
+  src: local('Futura'),
+    url(/src/assets/fonts/Futura/FuturaPTBold.otf) format('truetype');
+}
+
+@font-face {
+  font-family: 'FuturaPTMedium';
+  src: local('Futura'),
+    url(/src/assets/fonts/Futura/FuturaPTMedium.otf) format('truetype');
+}
+
+@font-face {
+  font-family: 'FuturaPTDemi';
+  src: local('Futura'),
+    url(/src/assets/fonts/Futura/FuturaPTDemi.otf) format('truetype');
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

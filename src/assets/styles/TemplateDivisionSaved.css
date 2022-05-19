@@ -1,0 +1,68 @@
+
+
+.new-event-profile .mens-title {
+    font-family: Futura;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+  }
+
+  /* @media (min-width: 768px) {
+    #division_box {
+      width: 460px;
+    }
+  } */
+
+  #division_value{
+    /* width: 217px; */
+    height: 24px;
+    /* margin: 0 8px 0 183px; */
+    font-family: FuturaMedium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #747474;
+  }
+
+  .early_bird_amount, .registration_amount, .purse_amount,.purse_percent,
+   .late_amount,.max_point_per_set, .playoff_team3, .playoff_team2,
+   .playoff_team1,.playoff_team4{
+    border: 0px;
+    outline: 0px;
+    box-shadow: none;
+
+    padding: 0px;
+
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+    overflow: hidden;
+  }
+
+  .early_bird_date{
+    padding-right: 0px;
+    text-transform: uppercase;
+    padding:0px;
+  }
+
+  .max_point_per_set::-webkit-outer-spin-button, .playoff_team3::-webkit-outer-spin-button, .playoff_team2::-webkit-outer-spin-button,
+   .playoff_team1::-webkit-outer-spin-button,.playoff_team4::-webkit-outer-spin-button,
+.max_point_per_set::-webkit-inner-spin-button, .playoff_team3::-webkit-inner-spin-button, .playoff_team2::-webkit-inner-spin-button,
+.playoff_team1::-webkit-inner-spin-button,.playoff_team4::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  

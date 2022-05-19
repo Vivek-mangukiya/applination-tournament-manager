@@ -1,0 +1,187 @@
+/* *{
+    outline: 1px solid red;
+} */
+
+.table-tempalte-pools {
+  background-color: transparent;
+  border: 0px;
+  outline: 0px;
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.template-pools-col {
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+}
+
+.template-pools-col-3 {
+  background-color: #ffffff;
+  background-color: var(--bracket-seed);
+  border-left: 10px solid black;
+}
+
+.template-pools-col-vs {
+  background-color: #ffffff;
+  background-color: var(--bracket-seed);
+  /* border-bottom: ; */
+  box-shadow: 0 1px 0px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+.template-pools-col-4 {
+  background-color: #ffffff;
+  background-color: var(--bracket-seed);
+  border-right: 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.template-pools-input::placeholder {
+  /* width: 728px; */
+  height: 50px;
+  font-family: Futura;
+  font-size: 36px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #747474;
+  background-color: #f9fafc;
+}
+
+.template-pools-input {
+  /* width: 728px; */
+  height: 50px;
+  font-family: Futura;
+  font-size: 36px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #747474;
+  background-color: #f9fafc;
+}
+
+.template-pools-input:focus {
+  background-color: #f9fafc;
+}
+
+.template-pools-inner-input {
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #747474;
+  background-color: #f9fafc;
+}
+
+.template-pools-inner-input:focus {
+  background-color: #f9fafc;
+}
+
+.template-pools-inner-input::placeholder {
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #747474;
+  background-color: #f9fafc;
+}
+
+.fm {
+  font-family: 'FuturaMedium';
+}
+
+.pools-box {
+  height: 40px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.pools-box-medium {
+  height: 40px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  font-family: 'FuturaMedium';
+}
+
+.main-pools-heading {
+  border-bottom: 1px solid black;
+  height: 60px;
+}
+
+.all-pools-tables-data {
+  margin-bottom: 200px;
+}
+
+/* dropdown implementation */
+/* hamburger */
+#temp-pools-hamburger {
+  cursor: context-menu;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+#temp-pools-hamburger > div > img {
+  cursor: pointer;
+  /* position: relative; */
+}
+
+#temp-pools-hamburger > div > span {
+  display: inline-block;
+  background-color: #ffffff;
+  /* visibility: hidden; */
+  position: absolute;
+  top: 30px;
+  right: -17px;
+  min-width: 142px;
+  padding: 9px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 10;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+/* #temp-pools-hamburger:focus > div > span, */
+/* #temp-pools-hamburger:hover > div > span {
+  visibility: visible;
+} */
+
+#temp-pools-hamburger > div > span > ul {
+  margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+}
+
+#temp-pools-hamburger > div > span > ul > li {
+  height: 30px;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 30px;
+  color: #4a4a4a;
+
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+#temp-pools-hamburger > div > span > ul > li:hover {
+  background-color: #ffd420;
+  font-weight: bold;
+  cursor: pointer;
+}

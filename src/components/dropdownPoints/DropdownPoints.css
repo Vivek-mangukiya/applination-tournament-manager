@@ -1,0 +1,110 @@
+/* hamburger */
+#points-hamburger {
+  cursor: context-menu;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+#points-hamburger > div > img {
+  cursor: pointer;
+  /* position: relative; */
+}
+
+#points-hamburger > div > span {
+  display: inline-block;
+  background-color: #ffffff;
+  /* visibility: hidden; */
+  position: absolute;
+  top: 30px;
+  right: -70px;
+  min-width: 142px;
+  padding: 9px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 10;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+/* #points-hamburger:focus > div > span, */
+/* #points-hamburger:hover > div > span {
+  visibility: visible;
+} */
+
+#points-hamburger > div > span > ul {
+  margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+}
+
+#points-hamburger > div > span > ul > li {
+  height: 30px;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 30px;
+  color: #4a4a4a;
+
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+#points-hamburger > div > span > ul > li:hover {
+  background-color: #ffd420;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#tri_top_hidden::after {
+  position: absolute;
+  right: 0px;
+  top: 16px;
+  width: 1.15em;
+  height: auto;
+  content: url(../../assets/images/icon-tri-top.svg);
+  z-index: 2;
+  visibility: hidden;
+  z-index: 3;
+}
+
+.tri_top_visible::after {
+  position: absolute;
+  right: 0px;
+  top: 16px;
+  width: 1.15em;
+  height: auto;
+  content: url(../../assets/images/icon-tri-top.svg);
+  z-index: 2;
+  visibility: visible;
+  z-index: 3;
+}
+
+#tri_top_event_hidden::after {
+  position: absolute;
+  right: 0px;
+  top: 8px;
+  width: 1.15em;
+  height: auto;
+  content: url(../../assets/images/icon-tri-top.svg);
+  z-index: 2;
+  visibility: hidden;
+  z-index: 3;
+}
+
+.tri_top_event_visible::after {
+  position: absolute;
+  right: 0px;
+  top: 11px;
+  width: 1.15em;
+  height: auto;
+  content: url(../../assets/images/icon-tri-top.svg);
+  z-index: 2;
+  visibility: visible;
+  z-index: 3;
+}

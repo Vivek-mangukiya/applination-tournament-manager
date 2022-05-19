@@ -1,0 +1,81 @@
+:root{
+    --bracket-seed:#ffffff;
+    --item-text:#4a4a4a;
+    --colors-dark-grey:#9b9b9b;
+    --eeeeee:#eeeeee;
+    --line:#333333;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+    /* outline: 1px solid red; */
+}
+
+.MainStep{
+    /* position: absolute;
+    display: inline-block;
+    align-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9fafc; */
+}
+
+.Heading{
+    width: 398px;
+    height: 38px;
+    font-family: Futura;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--item-text);
+    margin-top: 64px;
+    margin-left: 83px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Subheading{
+    width: 398px;
+    height: 38px;
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--colors-dark-grey);
+    margin-left: 83px;
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.AgeDropdown{
+    width: 460px;
+    height: 40px;
+    margin-left: 52px;
+}
+
+.dropdown-text{
+    font-family: FuturaMedium;
+    font-weight: 100;
+}

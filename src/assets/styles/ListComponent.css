@@ -1,0 +1,367 @@
+:root{
+    --bracket-seed:#ffffff;
+    --item-text:#4a4a4a;
+    --colors-dark-grey:#9b9b9b;
+    --ffd-420:#ffd420;
+    --eeeeee:#eeeeee;
+
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+.TableComponent, .EventsListContainer{
+    width: 1120px;
+    margin: 40px 80px 0 80px;
+}
+
+
+.Rectangle{
+    width: 1120px;
+    height: 48px;
+    background-color: var(--bracket-seed);
+    display: flex;
+    flex-direction: row;
+}
+
+.Rectangle:hover{
+    background-image: linear-gradient(to bottom, var(--ffd-420) -115%, var(--ffd-420)),
+        linear-gradient(to bottom, var(--bracket-seed), var(--eeeeee) 207%),
+        linear-gradient(to bottom, var(--eeeeee) -115%, var(--bracket-seed));
+    background-position: left, top, bottom;
+    background-size: 4px 48px, 1120px 9px, 1120px 9px;
+    background-repeat: no-repeat;
+}
+
+.team-logo {
+    width: 24px;
+    height: 24px;
+    border: solid 1px var(--bracket-seed);
+    border-radius: 100%;
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.First {
+    width: 117px;
+    height: 48px;
+    font-family: Futura;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--item-text);
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.Last {
+    width: 158px;
+    height: 48px;
+    font-family: Futura;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--item-text);
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.ID {
+    width: 104px;
+    height: 48px;
+    font-family: Futura;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--item-text);
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.Email {
+    width: 195px;
+    height: 48px;
+    font-family: Futura;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--item-text);
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.Location {
+    width: 154px;
+    height: 48px;
+    font-family: Futura;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--item-text);
+    display: flex ;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.Status {
+    width: 120px;
+    height: 48px;
+    font-family: Futura;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--item-text);
+    display: flex;
+    align-items: center;
+    margin-right: 27px;
+}
+
+.Manager-Table {
+    width: 1120px;
+    height: 705px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--bracket-seed);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.Manager-Table::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  .Manager-Table::-webkit-scrollbar-track {
+    background: #d8d8d8;        /* color of the tracking area */
+    background-clip: content-box;
+  }
+  .Manager-Table::-webkit-scrollbar-thumb {
+    background-color: var(--item-text);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #d8d8d8;  /* creates padding around scroll thumb */
+    height: 20px;
+  }
+
+.headings{
+    display: flex;
+    height: 32px ;
+    align-items: center;
+}
+
+.MIconFilterArrow1{
+    width: 8px;
+    height: 8px;
+    margin-left: 72px;
+}
+
+.MIconFilterArrow2{
+    width: 8px;
+    height: 8px;
+    margin-left: 61px;
+}
+
+.MIconFilterArrow3{
+    width: 8px;
+    height: 8px;
+    margin-left: 98px;
+}
+
+.MIconFilterArrow4{
+    width: 8px;
+    height: 8px;
+    margin-left: 49px;
+}
+
+.MIconFilterArrow5{
+    width: 8px;
+    height: 8px;
+    margin-left: 139px;
+}
+
+.MIconFilterArrow6{
+    width: 8px;
+    height: 8px;
+    margin-left: 97px;
+}
+
+.MFirstHeader{
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+
+    width: 72px;
+    height: 32px;
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--colors-dark-grey);
+}
+
+.MLastHeader{
+    width: 72px;
+    height: 32px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    
+
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--colors-dark-grey);
+}
+
+.MIDHeader{
+    width: 72px;
+    height: 32px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--colors-dark-grey);
+}
+
+.MEmailHeader{
+    width: 72px;
+    height: 32px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--colors-dark-grey);
+}
+
+.MLocationHeader{
+    width: 72px;
+    height: 32px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--colors-dark-grey);
+}
+
+.MStatusHeader{
+    width: 72px;
+    height: 32px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--colors-dark-grey);
+}
+
+
+.NewManagerr{
+    width: 132px;
+    height: 24px;
+    border-radius: 15px;
+    background-color: var(--ffd-420);
+    margin-top: 24px;
+    margin-left: 1070px;
+    margin-bottom: 20px;
+
+}
+
+.ManagerText{
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--item-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding-top: 6px;
+}
+
+.break_word{
+    /* overflow-wrap: break-word;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden; */
+    /* word-break:break-all; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+
+
+
+
+

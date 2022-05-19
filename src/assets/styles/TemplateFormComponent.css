@@ -1,0 +1,142 @@
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: hsl(0, 0%, 93%);
+  --line: #333333;
+  --ffd420: #ffd420;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+/* .WizardFormContainer{
+    position: absolute;
+    display: inline-block;
+    align-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 564px;
+    margin: 388px 357px 0 519px;
+} */
+
+.NEW_TEMPLATE {
+  width: 132px;
+  height: 24px;
+  border-radius: 15px;
+  background-color: var(--ffd-420);
+  /* margin-top: 24px;
+    margin-left: 1000px;
+    margin-bottom: 20px; */
+  /* opacity: 0; */
+}
+
+.NEW_TEMPLATE:hover {
+  cursor: pointer;
+}
+
+.NewTemplateButtonText {
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 10px; */
+  padding-top: 6px;
+}
+
+.TMainStep {
+  position: relative;
+  padding-top: 100px;
+}
+
+.TMainStepWithError{
+  position: relative;
+  padding-top: 50px;
+}
+
+.DMainStep {
+  position: relative;
+  padding-top: 64px;
+}
+
+.THeading {
+  width: 398px;
+  height: 38px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--item-text);
+  /* top: 16px; */
+  margin-left: 83px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  /* margin-top: 80px; THE MARGIN FOR TEAMPLATE HEADER< WHICH IS RELATIVE TO WIZARD FORM CONTAINER.*/
+}
+
+.TSubheading {
+  width: 398px;
+  height: 38px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--colors-dark-grey);
+  margin-left: 83px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectPS1 {
+  margin-top: 36px;
+}
+
+.NEW_TEMPLATE_DASH {
+  width: 166px;
+  height: 180px;
+  /* border-radius: 15px; */
+  /* background-color: var(--ffd-420); */
+  /* margin-left: -150px; */
+  outline: 1px solid red;
+  z-index: 100;
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+}
+
+.NEW_TEMPLATE_DASH:hover {
+  cursor: pointer;
+}

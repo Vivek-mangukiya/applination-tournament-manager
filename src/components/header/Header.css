@@ -1,0 +1,16 @@
+nav {
+  background-color: black;
+  color: white;
+  height: 46px;
+  background-color: #f9fafc;
+}
+
+nav img {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+nav li {
+  cursor: pointer;
+}

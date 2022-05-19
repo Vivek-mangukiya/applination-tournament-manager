@@ -1,0 +1,517 @@
+.component {
+  width: 1440px;
+  /* height: 2006px; */
+  background-color: #f9fafc;
+  margin: 0px;
+  padding: 0px;
+}
+
+.player-image {
+  border-radius: '50%';
+  width: 100;
+  height: 100;
+}
+
+.edit-photo {
+  width: 100px;
+  height: 13px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4a4a4a;
+  margin-top: 16px;
+}
+
+#error-msg {
+  /* margin-left: 570px; */
+
+  width: 212px;
+  height: 18px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ff2072;
+}
+
+.address-heading {
+  width: 198px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-left: 569px;
+  margin-top: 24px;
+  color: #4a4a4a;
+}
+
+.promoter-name {
+  margin-top: 4px;
+  margin-left: 569px;
+  width: 460px;
+  height: 32px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding: 0px;
+}
+
+.promoter-name-input {
+  margin-left: 16px;
+  margin-top: 5px;
+  border: 0px;
+  outline: 0px;
+  width: 428px;
+  height: 24px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #bcbcbc;
+}
+
+.city {
+  margin-top: 4px;
+  margin-left: 569px;
+  width: 184px;
+  height: 32px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding: 0px;
+}
+.city-input {
+  margin-left: 16px;
+  margin-top: 5px;
+  border: 0px;
+  outline: 0px;
+  width: 162px;
+  height: 24px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #bcbcbc;
+}
+
+.CA {
+  margin-top: 4px;
+  margin-left: 16px;
+  width: 60px;
+  height: 32px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding: 0px;
+  text-align: center;
+  line-height: 32px;
+}
+
+.CA-text {
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #bcbcbc;
+  display: inline-block;
+}
+
+.zip-code {
+  margin-top: 4px;
+  margin-left: 16px;
+  width: 184px;
+  height: 32px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding: 0px;
+}
+
+.zip-code-input {
+  margin-left: 16px;
+  margin-top: 5px;
+  border: 0px;
+  outline: 0px;
+  width: 162px;
+  height: 24px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #bcbcbc;
+}
+
+.save-list-text {
+  width: 129px;
+  height: 38px;
+  margin-left: 8px;
+  margin-top: 4px;
+  line-height: 38px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  color: #9b9b9b;
+}
+
+.date-header {
+  width: 198px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 32px;
+  letter-spacing: normal;
+}
+
+.start-date-box {
+  margin-top: 4px;
+  width: 460px;
+  height: 32px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.calender-img {
+  margin-left: 8px;
+}
+.calender-start {
+  width: 169px;
+  height: 16px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 16px;
+  letter-spacing: normal;
+  margin-left: 14px;
+}
+
+.calender-middle {
+  width: 217px;
+  height: 24px;
+  text-align: right;
+  margin: 8px 8px 8px 0px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: normal;
+  color: #747474;
+}
+
+.footerEvent {
+  margin-top: 12px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #d8d8d8;
+}
+
+.lower-back-button-event {
+  width: 112px;
+  height: 24px;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-right: 24px;
+  background-color: yellow;
+  outline: none;
+  cursor: pointer;
+}
+
+.lower-back-button-text-event {
+  width: 58.9px;
+  height: 16px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.tooltip2 {
+  /* Container for our tooltip */
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  width: 0px;
+  height: 0px;
+}
+
+.tooltip2 .tooltiptext2 {
+  /* This is for the tooltip text */
+  visibility: hidden;
+  background-color: #ffffff;
+  color: black;
+  text-align: center;
+  border-radius: 10px; /* Defines tooltip text position */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -400px;
+  margin-bottom: -290px;
+  box-shadow: 0 4px 10px 0 #d0d0d0;
+}
+
+.tooltiptext2-text {
+  width: 84.4px;
+  height: 13px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.tooltip2:hover .tooltiptext2 {
+  /* Makes tooltip text visible when hovered on */
+  visibility: visible;
+}
+
+.tooltiptext2-input {
+  width: 416px;
+  height: 32px;
+  margin-top: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-radius: 20px;
+  border: solid 1px #d8d8d8;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+}
+
+.tooltiptext2-input-icon {
+  margin-top: 8px;
+  margin-left: 7px;
+}
+
+.tooltiptext2-input-text {
+  outline: 0px;
+  border: 0px;
+  opacity: 0.5;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  width: 300px;
+}
+
+.tooltiptext2-list {
+  width: 432px;
+  height: 32px;
+  outline: 0px;
+  border: 0px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  background-color: #ffffff;
+}
+
+.no-addresses-p {
+  height: 18px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-top: 25px;
+}
+
+/* .tooltip2 .tooltiptext2::after {
+    content: ' ';
+    position: absolute;
+    top: 100%; At the bottom of the tooltip */
+/* left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffd420 transparent transparent transparent;
+  } */
+
+.closes-on-tooltip2 {
+  /* Container for our tooltip */
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  width: 0px;
+  height: 0px;
+}
+
+.closes-on-tooltip2 .closes-on-tooltiptext2 {
+  /* This is for the tooltip text */
+
+  width: 140px;
+  height: 65px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+
+  visibility: hidden;
+  background-color: #ffffff;
+  color: black;
+  text-align: center;
+  /* padding: 10px; */
+  position: absolute;
+  z-index: 1;
+  /* width: 100px; */
+  bottom: 100%;
+  left: 50%;
+  margin-left: -50px;
+  margin-bottom: -5px;
+  overflow: hidden;
+}
+
+.closes-on-tooltiptext2-text {
+  width: 84.4px;
+  height: 13px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.closes-on-tooltip2:hover .closes-on-tooltiptext2 {
+  /* Makes tooltip text visible when hovered on */
+  visibility: visible;
+}
+
+.closes-on-tooltiptext2-text {
+  width: 140px;
+  height: 24px;
+  cursor: pointer;
+  line-height: 24px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: right;
+  border: 0px;
+  outline: 0px;
+  background-color: #ffffff;
+}
+
+.closes-on-tooltiptext2-text:focus {
+  background-color: #ffd420;
+}
+
+.tooltip2-date {
+  /* Container for our tooltip */
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  width: 0px;
+  height: 0px;
+}
+
+.tooltip2-date .tooltiptext2-date {
+  /* This is for the tooltip text */
+  visibility: hidden;
+  /* height: 24px; */
+  background-color: #ffffff;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px; /* Defines tooltip text position */
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -50px;
+  margin-bottom: 0px;
+}
+
+.tooltiptext2-text-date {
+  width: 84.4px;
+  height: 13px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.tooltip2-date:hover .tooltiptext2-date {
+  /* Makes tooltip text visible when hovered on */
+  visibility: visible;
+}
+/* .tooltip2-date .tooltiptext2-date::after {
+    content: ' ';
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    margin-left: -60px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffd420 transparent transparent transparent;
+  } */
+
+.pdf-upload > label {
+  cursor: pointer;
+}
+
+.pdf-upload > input {
+  display: none;
+}

@@ -1,0 +1,130 @@
+.RoadmapHeader, .RoadmapHeaderTitle, .RoadmapHeaderDate, .RoadmapHeaderDivision{
+    height: 40px;
+}
+
+.RoadmapHeaderDate{
+    height: 40px;
+    margin: 0 8.1px 0 7px;
+    /* font-family: FuturaPT-Demi; */
+    font-family: FuturaPTDemi;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+}
+
+.RoadmapHeaderTitle{
+    font-family: FuturaPTDemi;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+}
+
+.RoadmapHeaderDivision{
+    font-family: FuturaPTDemi;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #4a4a4a;
+}
+
+.RoadmapHeader{
+    border-bottom: #d8d8d8 1px;
+}
+
+.tableHeading{
+    font-family: FuturaPTDemi;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.44px;
+    text-align: center;
+    color: #4a4a4a
+}
+
+.timeRowHeading{
+    font-family: FuturaPTDemi;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #4a4a4a;
+    background-color: #f9fafc;
+}
+
+.CourtCard{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.CourtCardGenderM{
+    font-family: FuturaPTDemi;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    background-color: #ffd420;
+}
+
+.CourtCardGenderF{
+    font-family: FuturaPTDemi;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    background-color: #4a4a4a;
+}
+
+.CourtCardId{
+    font-family: FuturaPTDemi;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+}
+
+.CourtCardHr{
+    width: 1px;
+    height: 33px;
+    background-color: #9b9b9b;
+}
+
+.CourtCardTime{
+    font-family: FuturaPTDemi;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #4a4a4a;
+}

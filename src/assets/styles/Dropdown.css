@@ -1,0 +1,67 @@
+:root{
+  --bracket-seed:#ffffff;
+  --item-text:#4a4a4a;
+  --colors-dark-grey:#9b9b9b;
+  --eeeeee:#eeeeee;
+  --line:#333333;
+}
+
+/* @font-face{
+  font-family: 'Futura';
+  src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+
+.DropdownOptions{
+  margin-top: 5px;
+  width: 142px;
+  /* height: 248px; */
+  padding: 9px 0 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+  margin-left: 380px;
+  z-index: 1000;
+  padding: 0px;
+}
+
+.OptionList{
+  list-style-type: none;
+  padding: 0px;
+  z-index: 1000;
+}
+
+.OptionList>li{
+  height: 24px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px 8px 4px 89px;
+  z-index: 1000;
+}
+
+.OptionList>li:hover{
+  background-color: var(--ffd-420);
+  z-index: 1000;
+}
+
+.fullscreen_test{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  
+  width: 100vw; 
+  height: 56.25vw; /* 100/56.25 = 1.778 */
+  background: pink;
+  max-height: 100vh;
+  max-width: calc(177.78vh - 160px); /* 16/9 = 1.778 */
+  margin: auto;
+  position: absolute;
+  top:0;bottom:0; /* vertical center */
+  left:160px;right:0; 
+}

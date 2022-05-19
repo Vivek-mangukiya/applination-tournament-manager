@@ -1,0 +1,26 @@
+:root{
+    --bracket-seed:#ffffff;
+    --item-text:#4a4a4a;
+    --colors-dark-grey:#9b9b9b;
+    --eeeeee:hsl(0, 0%, 93%);
+    --line:#333333;
+    --ffd420:#ffd420;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+    /* outline: 1px solid red; */
+}
+
+.InputPurse{
+    position: absolute;
+    left: 60px;
+    bottom: 8px;
+}

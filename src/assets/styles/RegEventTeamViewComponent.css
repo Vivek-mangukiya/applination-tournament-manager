@@ -1,0 +1,622 @@
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: hsl(0, 0%, 93%);
+  --line: #333333;
+  --ffd420: #ffd420;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+.RegEventTeamViewContainer {
+  /* position: absolute;
+    display: inline-block;
+    align-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); */
+  width: 460px;
+  /* margin: 70px 410px 0 410px; */
+  background-color: #f9fafc;
+  margin-top: 70px;
+}
+
+.RegEvenTeamViewtHamburger {
+  width: 16px;
+  height: 16px;
+  margin: 32px 0 8px 444px;
+  object-fit: contain;
+}
+
+.RegEvenTeamViewtHamburger:hover {
+  cursor: pointer;
+}
+
+.RegEventTeamViewP1Flex,
+.RegEventTeamViewP2Flex,
+.RegEventTeamViewPlayerInfoFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.RegEventTeamViewPlayerNameFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.RegEventTeamViewPlayer {
+  position: relative;
+}
+
+.RegEventTeamViewPlayerImage {
+  width: 100px;
+  height: 100px;
+  /* margin: 8px 33px 53px 256px; */
+}
+
+.RegEventTeamViewPlayerFN,
+.RegEventTeamViewPlayerLN {
+  width: 246px;
+  height: 32px;
+  margin-left: 33px;
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventTeamViewPlayerFN {
+  margin-top: 12px;
+}
+
+.RegEventTeamViewPlayerLN {
+  margin-top: 9px;
+}
+
+.RegEventTeamViewPlayerhr {
+  width: 327px;
+  height: 1px;
+  margin-left: 33px;
+  background-color: #979797;
+}
+
+.RegEventTeamViewPlayerCard {
+  width: 460px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.RegEventTeamViewP1 {
+  width: 74px;
+  height: 16px;
+  /* margin: 70px 0 32px 256px; */
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.RegEventTeamViewP2 {
+  width: 72px;
+  height: 16px;
+  margin-top: 32px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.RegEventTeamViewP1hr {
+  width: 353px;
+  height: 1px;
+  /* margin: 78px 16px 39px 0; */
+  background-color: var(--line);
+  margin-top: 8px;
+}
+
+.RegEventTeamViewP2hr {
+  width: 355px;
+  height: 1px;
+  background-color: var(--line);
+  margin-top: 40px;
+}
+
+.RegEventTeamViewP1Arrow,
+.RegEventTeamViewP2Arrow {
+  width: 16px;
+  height: 16px;
+  margin-left: 16px;
+}
+
+.RegEventTeamViewP1Arrow:hover,
+.RegEventTeamViewP2Arrow:hover {
+  cursor: pointer;
+}
+
+.RegEventTeamViewP2Arrow {
+  margin-top: 32px;
+}
+
+.RegEventTeamViewPlayerDetails,
+.RegEventTeamViewPlayerNewestResults {
+  width: 198px;
+  height: 32px;
+
+  margin-top: 24px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventTeamViewPlayerContact {
+  width: 198px;
+  height: 32px;
+
+  margin-top: 53px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventTeamViewPlayerCardImg {
+  width: 20px;
+  height: 20px;
+  margin: 10px 0px 10px 8px;
+  object-fit: contain;
+}
+
+.RegEventTeamViewPlayerCardTitle {
+  width: 259px;
+  height: 24px;
+  margin: 8px 8px 0 14px;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+}
+
+.RegEventTeamViewPlayerLoctionValue,
+.RegEventTeamViewPlayerPhoneValue,
+.RegEventTeamViewPlayerEmailValue,
+.RegEventTeamViewPlayerPointsValue,
+.RegEventTeamViewPlayerLevelValue,
+.RegEventTeamViewPlayerPointsValueNR,
+.RegEventTeamViewPlayerPlacementValue {
+  width: 228px;
+  height: 24px;
+  margin: 8px 8px 8px;
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--item-text);
+
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.hamburgerDropdown {
+  width: 142px;
+  height: 89px;
+  padding: 9px 0 17px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+
+  display: flex;
+  flex-direction: column;
+  margin-left: 336px;
+  /* margin-top: 50px; */
+
+  position: absolute;
+  z-index: 1000;
+}
+
+.hamburgerDropdown:hover {
+  cursor: pointer;
+}
+
+.hamburgerDropdownEdit {
+  /* width: 21px;
+    height: 15px; */
+  height: 24.3px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hamburgerDropdownInactive {
+  /* width: 51px;
+    height: 18px; */
+  height: 24.3px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--item-text);
+}
+
+.hamburgerDropdownRemove {
+  /* width: 44px;
+    height: 15px; */
+  height: 24.3px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #ff2072;
+}
+
+.hamburgerDropdownRemove:hover,
+.hamburgerDropdownInactive:hover,
+.hamburgerDropdownEdit:hover {
+  background-color: var(--ffd420);
+}
+
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: hsl(0, 0%, 93%);
+  --line: #333333;
+  --ffd420: #ffd420;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+.reg-team-image {
+  width: 100px;
+  height: 100px;
+}
+
+@media (min-width: 768px) {
+  .regEventTeam .reg-team-width {
+    width: 460px;
+  }
+}
+
+.regEventTeam {
+  margin-top: 71px;
+  min-height: 84vh;
+  margin-bottom: 100px;
+}
+
+.regEventTeam .reg-padding {
+  padding-bottom: 300px;
+}
+
+.reg-team-first-name,
+.reg-team-last-name {
+  margin-top: 12px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.reg-team-heading {
+  margin-top: 53px;
+  padding: 8px 0px 8px 0px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.reg-team-heading2 {
+  margin-top: 24px;
+  padding: 8px 0px 8px 0px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.reg-team-info-name {
+  font-family: FuturaMedium;
+  /* height: 24px; */
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  padding: 8px 0px 8px 14px;
+  background-color: white;
+  /* outline: 1px solid red; */
+}
+
+.reg-team-info-value,
+.reg-team-info-image {
+  background-color: white;
+}
+
+.chevron-down:hover,
+.hamburger-hover:hover {
+  cursor: pointer;
+}
+
+.reg-team-info-value {
+  width: 228px;
+  height: 40px;
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.accord-regEvent {
+  width: 460px;
+}
+
+.regEventTeam .shadow-box {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  height: 32px;
+}
+
+.regEventTeam .shadow-box .player-text {
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.regEventTeam .shadow-box .player-img {
+  width: 20px;
+  height: 20px;
+}
+
+.regEventTeam .add-btn {
+  cursor: pointer;
+}
+
+/* hamburger */
+#reg-hamburger {
+  cursor: context-menu;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  flex-direction: row;
+  justify-content: flex-end;
+  outline: 0px;
+  border: 0px;
+}
+#reg-hamburger > div > img {
+  cursor: pointer;
+}
+
+#reg-hamburger > div > span {
+  display: inline-block;
+  background-color: #ffffff;
+  visibility: hidden;
+  position: absolute;
+  top: 19px;
+  right: 0px;
+  min-width: 142px;
+  width: 432px;
+  max-height: 280px;
+  padding: 9px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+.regEventTeam .search {
+  border: 1px solid #d8d8d8;
+  border-radius: 20px;
+  height: 32px;
+  width: 400px;
+}
+.regEventTeam .search input {
+  outline: none;
+  outline-width: 0px;
+  box-shadow: none;
+}
+
+/* hamburger tooltip */
+#reg-hamburger > div > div {
+  display: inline-block;
+  position: relative;
+  visibility: visible;
+  background-color: #ffd420;
+  width: 94px;
+  height: 24px;
+  padding: 6px 4.6px 5px 5px;
+  border-radius: 3px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: 500;
+  bottom: 100%;
+  right: -42%;
+  color: #4a4a4a;
+}
+
+#reg-hamburger > div > div input {
+  visibility: visible;
+}
+
+#reg-hamburger > div > div::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffd420 transparent transparent transparent;
+}
+
+#reg-hamburger:hover > div > div {
+  visibility: visible;
+}
+
+#reg-hamburger:focus > div > span
+/* #reg-hamburger:focus-within > div > span,
+#reg-hamburger:focus-visible > div > span  */ {
+  visibility: visible;
+}
+
+#reg-hamburger:focus > div > span > div > input {
+  visibility: visible;
+}
+
+#reg-hamburger > div > span > ul {
+  margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+}
+
+#reg-hamburger > div > span > ul > li {
+  height: 30px;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 30px;
+  color: #4a4a4a;
+
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+#reg-hamburger > div > span > ul > li:hover {
+  background-color: #ffd420;
+}
+
+.regEventTeam .hr-color {
+  border-color: #979797;
+}
+
+.dropdown-searchbar-search {
+  height: 28px;
+  border: 0px;
+  margin-top: 2px;
+  font-family: 'FuturaMedium';
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  opacity: 0.5;
+}
+.dropdown-searchbar-search::placeholder {
+  height: 28px;
+  border: 0px;
+  margin-top: 2px;
+  font-family: 'FuturaMedium';
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  opacity: 0.5;
+}

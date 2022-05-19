@@ -1,0 +1,162 @@
+:root{
+    --bracket-seed:#ffffff;
+    --item-text:#4a4a4a;
+    --colors-dark-grey:#9b9b9b;
+    --eeeeee:hsl(0, 0%, 93%);
+    --line:#333333;
+    --ffd420:#ffd420;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+    /* outline: 1px solid red; */
+}
+
+
+.PlayerProfileCancelContainer{
+    /* position: absolute;
+    display: inline-block;
+    align-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff; */
+
+    width: 398px;
+    height: 242px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    /* padding: 57px 0 124px; */
+    /* border-radius: 12px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--bracket-seed); */
+    /* outline: 1px solid red; */
+}
+
+.CancelHeading{
+    width: 398px;
+    height: 24px;
+    margin: 0px 0 8px 0;
+    font-family: Futura;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--item-text);
+    padding-top: 62px;
+}
+
+.CancelHeadingD{
+    width: 398px;
+    height: 24px;
+    margin: 0px 0 8px 0;
+    font-family: Futura;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--item-text);
+    padding-top: 34px;
+}
+
+.CancelSubheading{
+    width: 398px;
+    height: 24px;
+    margin: 8px 0 0;
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--colors-dark-grey);
+    padding-top: 16px;
+}
+
+.CancelButtonFlex{
+    display: flex;
+    flex-direction: row;
+    margin-top: 76px;
+    margin-bottom: 0px;
+    outline: 0px;
+}
+
+.CancelStay{
+    width: 112px;
+    height: 24px;
+    /* margin: 0 24px 11px 108px;
+    padding: 3px 18.8px 5px 19px; */
+    margin-left: 75px;
+    margin-right: 24px;
+    border-radius: 15px;
+    border: solid 1px var(--ffd-420);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CancelStay:hover{
+    cursor: pointer;
+}
+
+.CancelLeave{
+    width: 112px;
+    height: 24px;
+    /* margin: 0 104px 11px 24px; */
+    /* padding: 3px 17.2px 5px 18px; */
+    border-radius: 15px;
+    background-color: var(--ffd-420);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CancelLeave:hover{
+    cursor: pointer;
+}
+
+.NoSTAY{
+    width: 74.2px;
+    height: 16px;
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--item-text);
+}
+
+.YesLEAVE{
+    width: 76.8px;
+    height: 16px;
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--item-text);
+}

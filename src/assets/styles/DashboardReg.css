@@ -1,0 +1,571 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --eeeeee: #eeeeee;
+  --line: #333333;
+}
+
+/* @font-face{
+      font-family: 'Futura';
+      src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+  } */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+.DashBoard {
+  width: 1120px;
+
+  position: absolute;
+  display: inline-block;
+  align-content: center;
+  /* left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); */
+  background-color: #f9fafc;
+  margin: 76px 80px 38px 80px;
+}
+
+.Quick-Start {
+  display: flex;
+  align-items: center;
+
+  width: 118px;
+  height: 36px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.IconFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.NewManager,
+.NewPlayer,
+.NewTournament {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.NewManager {
+  margin-left: 71px;
+}
+
+.NewPlayer {
+  margin-left: 240px;
+}
+
+.NewTournament {
+  margin-left: 240px;
+}
+
+.Square1,
+.Square2,
+.Square3 {
+  width: 166px;
+  height: 166px;
+  opacity: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+}
+
+/* .Square1 {
+  } */
+
+.Icon-Orange-Manager,
+.Icon-Orange-Player,
+.Icon-Orange-teams {
+  position: absolute;
+  top: 19px;
+  left: 19px;
+
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+}
+
+.-New-Manager,
+.New-Tournament,
+.New-Player {
+  width: 166px;
+  height: 36px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--item-text);
+}
+
+.TitleFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.Ongoing-Events {
+  margin-top: 40px;
+  width: 127px;
+  height: 36px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  margin-bottom: 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+.hr1 {
+  content: '';
+  width: 953px;
+  height: 1px;
+  background-color: var(--line);
+  margin-top: 58px;
+  margin-left: 17px;
+}
+
+.hr2 {
+  content: '';
+  width: 953px;
+  height: 1px;
+  background-color: var(--line);
+  margin-top: 62px;
+  margin-left: 16px;
+}
+
+.UpcomingEvents {
+  width: 128px;
+  height: 36px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  margin-top: 44px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.EventCard {
+  width: 472px;
+  height: 172px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+}
+
+.LeftCard {
+  margin-left: 72px;
+}
+
+.RightCard {
+  margin-left: 34px;
+}
+
+.CardVerticalFlex,
+.EventInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.CardInfo,
+.OEFlex,
+.UEFlex,
+.EventDetails,
+.CardButtonFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.CardButtonFlex {
+  justify-content: flex-end;
+}
+
+.EventIcon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.EventName {
+  width: 324px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  margin-top: 34px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.EventLine {
+  content: '';
+  width: 324px;
+  height: 1px;
+  background-color: #979797;
+  margin-top: 0px;
+  margin-left: 16px;
+  margin-bottom: 8px;
+}
+
+.EventLocation {
+  height: 20px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.EventTime {
+  width: 145px;
+  height: 20px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.CardButton {
+  width: 142px;
+  height: 32px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--item-text);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.CardButtonIcon {
+  width: 16px;
+  height: 16px;
+  margin: 8px;
+}
+
+.LocationIcon,
+.TimeIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.LocationIcon {
+  margin-left: 16px;
+}
+
+.EventLocation,
+.TimeIcon,
+.EventTime {
+  margin-left: 8px;
+}
+
+.EventLocation,
+.EventTime {
+  display: flex;
+  align-items: center;
+}
+
+.VerticalLine {
+  width: 1px;
+  height: 16px;
+  background-color: var(--colors-dark-grey);
+  margin-left: 8px;
+  margin-top: 2px;
+}
+
+.CardLine {
+  width: 472px;
+  height: 1px;
+  opacity: 0.5;
+  background-color: #d8d8d8;
+  margin-bottom: 7px;
+}
+
+/* tanmay styling */
+
+.quick-start {
+  width: 118px;
+  height: 36px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.new-icons-content {
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4a4a4a;
+}
+
+.events-heading {
+  width: 127px;
+  height: 36px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.dashboard .rectangle {
+  width: 472px;
+  padding: 16px 0 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+}
+
+.dashboard .rectangle-heading {
+  height: 32px;
+  margin: 18px 0px 8px 0px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  border-bottom: 1px solid #979797;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard .rectangle-content .span-1 {
+  width: 106px;
+  height: 20px;
+  font-family: FuturaMedium;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+.dashboard .rectangle-content .span-2 {
+  width: 145px;
+  height: 20px;
+  font-family: FuturaMedium;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.dashboard .rectangle-footer {
+  padding: 10px 0px;
+  margin-top: 35px;
+  font-family: Futura;
+  font-size: 11px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  border-top: 1px solid #d8d8d8;
+  padding-right: 8px;
+}
+
+.dashboard hr {
+  height: 1px;
+  background-color: #333333;
+}
+
+.dashboard-reg {
+  min-height: 100vh;
+}
+
+.dashboard-reg .img-quick-start {
+  height: 128px;
+}
+
+.dashboard-reg .upper-box {
+  color: #4a4a4a;
+}
+
+.dashboard-reg .upper-box:focus {
+  background-color: #ffffff;
+  border-left: 4px solid #ffd420;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-reg .upper-box:hover {
+  background-color: #ffffff;
+  border-left: 4px solid #ffd420;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-reg .rectangle {
+  width: 472px;
+  height: 172px;
+  padding: 16px 0 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+  outline: 0px;
+}
+
+.dashboard-reg .rectangle:focus {
+  border-left: 4px solid #ffd420;
+}
+
+.dashboard-reg .rectangle:hover {
+  border-left: 4px solid #ffd420;
+}
+
+.dashboard-reg .rectangle-heading {
+  height: 32px;
+  margin: 18px 0px 8px 0px;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  border-bottom: 1px solid #979797;
+  display: flex;
+  align-items: center;
+}
+
+/* .dashboard-reg .rectangle-content {
+  width: 106px;
+  height: 20px;
+  font-family: Futura;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+} */
+.dashboard-reg .rectangle-content {
+  width: inherit;
+  height: 20px;
+  font-family: Futura;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.span-1 {
+  width: 106px;
+  height: 20px;
+  font-family: FuturaMedium;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.span-2 {
+  width: 145px;
+  height: 20px;
+  font-family: FuturaMedium;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.dashboard-reg .rectangle-footer {
+  padding: 10px 0px;
+  margin-top: 35px;
+  font-family: Futura;
+  font-size: 11px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  border-top: 1px solid #d8d8d8;
+  padding-right: 8px;
+}
+
+.dashboard-reg hr {
+  height: 1px;
+  background-color: #333333;
+  border: 0px;
+}

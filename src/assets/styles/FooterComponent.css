@@ -1,0 +1,62 @@
+:root{
+    --bracket-seed:#ffffff;
+    --item-text:#4a4a4a;
+    --colors-dark-grey:#9b9b9b;
+    --eeeeee:#eeeeee;
+    --line:#333333;
+    --ffd-420:#ffd420;
+}
+
+/* @font-face{
+    font-family: 'Futura';
+    src: local('Futura'), url(/src/assets/fonts/Futura/futura\ medium\ bt.ttf) format('truetype');
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+    /* outline: 1px solid red; */
+}
+
+.Footerr{
+    width: 100%;
+    height: 72px;
+    background-color: #f9fafc;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 0px;
+}
+
+.NewManagerr{
+    width: 132px;
+    height: 24px;
+    border-radius: 15px;
+    background-color: var(--ffd-420);
+    margin-top: 24px;
+    margin-right: 500px;
+    margin-bottom: 0px;
+
+}
+
+.ManagerText{
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--item-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}

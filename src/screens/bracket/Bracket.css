@@ -1,0 +1,673 @@
+.bracket_header_title{
+    height: 56px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #d8d8d8;
+    font-family: FuturaMedium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #333333;
+    width: 100%;
+    /* border-top: 1px solid #ffd420; */
+}
+.bracket_header_date{
+    background-color: #f3f4f6;
+    /* height: 32px; */
+    min-height: 24.6px;
+    font-family: FuturaMedium;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+    border-bottom: 1px solid #d8d8d8;
+}
+.bracket_date_picker:hover {
+    background-color: yellow;
+}
+.bracket_date_picker{
+    width: 100vw;
+}
+.ant-picker-input>input::placeholder{
+    font-family: FuturaMedium !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    color: #4a4a4a !important;
+}
+
+.bracket_body{
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 190px);
+    overflow-x: scroll;
+    overflow-y: scroll;
+    position: relative;
+}
+
+
+
+.bracket_body::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+.bracket_body::-webkit-scrollbar-track {
+    background: #d8d8d8; 
+    background-clip: content-box;
+}
+.bracket_body::-webkit-scrollbar-thumb {
+    background-color: var(--item-text);
+    border-radius: 20px; 
+    border: 3px solid #d8d8d8; 
+    height: 20px;
+}
+.bracket_zoom{
+    position: fixed;
+    right: 30px;
+    /* top: 125px; */
+    top: 200px;
+    cursor: pointer;
+}
+.bracket_body_column{
+    width: 288px;
+}
+.bracket_body_column_4v4{
+    width: 365px;
+}
+.bracket_match_box1{
+    width: 288px;
+}
+.bracket_match_box_4v4{
+    width: 365px;
+}
+
+.bracket_match_box1{
+    width: 288px;
+}
+
+.bracket_match_box2{
+    width: 288px;
+    /* margin-top: 72px !important;
+    margin-bottom: 72px !important; */
+    margin-top: 76px !important;
+    margin-bottom: 76px !important;
+}
+.bracket_match_boxX2{
+    width: 288px;
+    margin-top: 76px !important;
+    margin-bottom: 0px !important;
+}
+
+.bracket_match_box3{
+    width: 288px;
+    /* margin-top: 220px !important;
+    margin-bottom: 220px !important; */
+    margin-top: 228px !important;
+    margin-bottom: 228px !important;
+}
+.bracket_match_boxX3{
+    width: 288px;
+    margin-top: 228px !important;
+    margin-bottom: 76px !important;
+}
+
+.bracket_match_box4{
+    width: 288px;
+    /* margin-top: 516px !important;
+    margin-bottom: 516px !important; */
+    margin-top: 532px !important;
+    margin-bottom: 532px !important;
+}
+.bracket_match_boxX4{
+    width: 288px;
+    margin-top: 532px !important;
+    margin-bottom: 228px !important;
+}
+
+.bracket_match_box5{
+    width: 288px;
+    /* margin-top: 370px !important; */
+    /* margin-top: 1100px !important; */
+    margin-top: 1164px !important;
+    margin-bottom: 1164px !important;
+}
+
+.bracket_match_box6{
+    width: 288px;
+    margin-top: 2364px !important;
+    margin-bottom: 1164px !important;
+}
+
+.bracket_event_icon5{
+    border-radius: 100%;
+    margin-top: 490px !important;
+    width: 300px  !important;
+    height: 300px  !important;
+}
+.bracket_event_icon4{
+    border-radius: 100%;
+    margin-top: 180px !important;
+    width: 300px  !important;
+    height: 300px  !important;
+}
+.bracket_event_icon6{
+    border-radius: 100%;
+    margin-top: 228px !important;
+    width: 300px  !important;
+    height: 300px  !important;
+}
+.bracket_event_icon7{
+    border-radius: 100%;
+    margin-top: 228px !important;
+    width: 300px  !important;
+    height: 300px  !important;
+}
+
+.bracket_match_header{
+    height: 16px;
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #4a4a4a;
+    margin-top: 24px;
+}
+.bracket_match_team_1, .bracket_match_team_2, .bracket_match_team_1_4v4, .bracket_match_team_1_6v6, .bracket_match_team_1_fs{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+}
+.bracket_match_team_1{
+    margin-top: 4px;
+    height: 52px;
+    width: 272px;
+}
+
+.bracket_match_team_1_4v4{
+    margin-top: 4px;
+    height: 80px;
+    width: 352px;
+}
+.bracket_match_team_1_6v6{
+    margin-top: 4px;
+    height: 110px;
+    width: 352px;
+}
+/* .bracket_match_team_2{
+    margin-top: 8px;
+    height: 52px;
+    width: 272px;
+} */
+
+.bracket_match_team_no_1{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-color: #ffd420;
+}
+
+.bracket_match_team_no_0{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-color: #ffffff;
+    border-right: 1px solid #ffd420;
+}
+
+.bracket_match_team_winner_0{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-image: linear-gradient(to bottom, #d9a844, #f7efad 100%);
+}
+.bracket_match_team_winner_1{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-image: linear-gradient(to bottom, #e1e1e1, #ebedf1 100%);
+}
+.bracket_match_player_1 , .bracket_match_player_2{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+}
+.bracket_match_team_score{
+    font-family: FuturaMedium;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #4a4a4a;
+}
+.bracket_match_player_1_img, .bracket_match_player_2_img, .bracket_match_player_1_img_4v4{
+    width: 36px;
+    height: 36px;
+    border: solid 2px #ffffff;
+    border-radius: 50%;
+}
+
+.bracket_match_player_2_img{
+    position: relative;
+}
+.bracket_match_player_1_img{
+    position: absolute;
+    right:3px;
+}
+.bracket_match_player_1_img_4v4{
+    position: absolute;
+    right:40px;
+}
+
+.bracket_event_icon5{
+    border-radius: 100%;
+    margin-top: 500px !important;
+}
+/* .bracket_event_icon4{
+    border-radius: 100%;
+    margin-top: 532px !important;
+} */
+.bracket_event_icon6{
+    border-radius: 100%;
+    margin-top: 1100px !important;
+}
+.bracket_event_icon7{
+    border-radius: 100%;
+    margin-top: 2300px !important;
+}
+/* .bracket_match_box3{
+    width: 288px;
+    margin-top: 228px !important;
+    margin-bottom: 228px !important;
+}
+
+.bracket_match_box4{
+    width: 288px;
+    margin-top: 532px !important;
+    margin-bottom: 532px !important;
+}
+
+.bracket_match_box5{
+    width: 288px;
+    margin-top: 1164px !important;
+} */
+.bracket_score, .bracket_score:active, .bracket_score:focus{
+    outline: none  !important;
+    border:none  !important;
+    font-size: 13.5px;
+    z-index: 1 !important;
+}
+.form-control:focus{
+    outline: none  !important;
+    border:none  !important;
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.bracket_score::placeholder{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-family:FuturaMedium !important;
+    font-size: 14px;
+}
+
+#bracket_timepicker, #bracket_timepicker::placeholder{
+    font-size: 10px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: bottom !important;
+    visibility: visible;
+}
+
+.bracket_save{
+    width: 140px;
+    height: 28px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: var(--ffd-420);
+    border: 2px solid white;
+    outline: 0px;
+    cursor: pointer;
+    font-family: Futura;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: normal;
+    text-align: center;
+    margin: 0px;
+
+    position: fixed;
+    right: 30px;
+    bottom: 35px;
+    cursor: pointer;
+    z-index: 2 !important;
+}
+
+.bracket_complete{
+    font-family: Futura;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ff2072;
+
+    position: fixed;
+    right: 30px;
+    bottom: 75px;
+    cursor: pointer;
+
+    z-index: 1000;
+}
+
+.button_opacity{
+    z-index: 2 !important;
+}
+
+.bracket_match_player_1_img, .bracket_match_player_2_img{
+    /* width: 100%; */
+    border: solid 2px #ffffff;
+    border-radius: 50%;
+    /* height: 100%; */
+}
+
+.date_bracket{
+    width: 100%;
+}
+
+#bracket_match_player_1_img_2v2{
+    border: solid 2px #ffffff;
+    /* width: 36px;
+    height: 36px; */
+    border-radius: 50%;
+    position: absolute;
+    right:3px;
+    height: 70%;
+    width: 60%;
+}
+
+/* .bracket_score :disabled, .bracket_score:read-only{
+    background-color: #ffffff !important
+} */
+
+.form-control:disabled{
+    /* background-color: #ffffff !important */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FULLSCREEN */
+
+.bracket_body_column_fullscreen{
+    width: 100%;
+    
+    /* width: auto; */
+}
+
+.bracket_match_box1_fullscreen, .bracket_match_box2_fullscreen, .bracket_match_box3_fullscreen, .bracket_match_box4_fullscreen,
+.bracket_match_box5_fullscreen,.bracket_match_box6_fullscreen,.bracket_match_box7_fullscreen,.bracket_match_box8_fullscreen,
+.bracket_match_team_1_fs, .bracket_match_team_2_fs{
+    width: 100%;
+
+
+    /* width: auto; */
+}
+
+.bracket_match_team_1_fs{
+    /* width: 100%; */
+
+
+    /* width: auto; */
+
+
+    height: 52px;
+    /* height: 56.25vw; */
+    /* height: calc(0.56); */
+    /* padding-top: 56.25%; */
+}
+
+.bracket_match_player_1_fs , .bracket_match_player_2_fs{
+    font-family: FuturaMedium;
+    /* font-size: 12px; */
+    font-size: 6px;
+    /* font-size: calc(6px + (12 - 6) * ((100vw - 300px) / (1600 - 300))); */
+    /* font-size: calc(6px + (12 - 6) * ((100% - 30%) / (272 - 50))); */
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+}
+/* score dash: */
+.bracket_match_team_score_fs{
+    font-family: FuturaMedium;
+    /* font-size: 16px; */
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #4a4a4a;
+}
+
+.bracket_score_fs, .bracket_score_fs:active, .bracket_score_fs:focus{
+    outline: none  !important;
+    border:none  !important;
+    /* font-size: 14px; */
+    font-size: 8px;
+    /* font-size: calc(8px + (14 - 8) * ((100vw - 300px) / (1600 - 300))); */
+}
+
+.bracket_score_fs::placeholder{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-family:FuturaMedium !important;
+    /* font-size: 14px; */
+    font-size: 8px;
+    /* font-size: calc(8px + (14 - 8) * ((100vw - 300px) / (1600 - 300))); */
+}
+
+.bracket_match_team_winner_0_fs{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-image: linear-gradient(to bottom, #d9a844, #f7efad 100%);
+}
+.bracket_match_team_winner_1_fs{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-image: linear-gradient(to bottom, #e1e1e1, #ebedf1 100%);
+}
+
+.bracket_match_player_1_img_fs, .bracket_match_player_2_img_fs{
+    /* width: 36px;
+    height: 36px; */
+    width: 12px;
+    height: 12px;
+    border: solid 2px #ffffff;
+    border-radius: 50%;
+    /* object-fit: contain; */
+    /* width: 60%;
+    height: 70%; */
+}
+
+.bracket_match_player_2_img_fs{
+    position: relative;
+}
+.bracket_match_player_1_img_fs{
+    position: absolute;
+    right:3px;
+}
+
+/* .bracket_match_team_no_1_fs{ */
+.bracket_match_team_no_1{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    /* font-size: 6px; */
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-color: #ffd420;
+}
+
+/* .bracket_match_team_no_0_fs{ */
+.bracket_match_team_no_0{
+    font-family: FuturaMedium;
+    font-size: 12px;
+    /* font-size: 6px; */
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4a4a;
+    background-color: #ffffff;
+    border-right: 1px solid #ffd420;
+}
+
+.draggable_card{
+    width: 272px;
+}
+
+.draggable_card_fs{
+    /* width:  */
+}
+.bracket_body_fullscreen{
+    display: flex;
+    width: 100vw; 
+
+    /* background: pink; */
+    /* max-height: 100vh; */
+    /* max-width: calc(177.78vh - 160px);  */
+    max-width: calc(100vw - 160px);
+    margin: auto;
+    position: absolute;
+    top:200px;bottom:0;
+    /* top:46px;bottom:0; */
+    /* left:160px;right:0;  */
+}
+
+.bracket_match_team_1_fs, .row_draggable_card_fs{
+    max-width: 288px;
+  }
+  
+  .bracket_match_box1_fullscreen, .bracket_match_box2_fullscreen, .bracket_match_box3_fullscreen, .bracket_match_box4_fullscreen,
+  .bracket_match_box5_fullscreen,.bracket_match_box6_fullscreen,.bracket_match_box7_fullscreen,.bracket_match_box8_fullscreen,
+  .bracket_match_team_1_fs, .bracket_match_team_2_fs{
+      max-width: 288px;
+  }
+
+  .bracket_match_box2_fullscreen{
+    margin-top: 72px !important;
+    margin-bottom: 72px !important; 
+  }
+
+  .bracket_match_box3_fullscreen{
+    margin-top: 288px !important;
+    margin-bottom: 288px !important; 
+  }
+
+  .bracket_match_box4_fullscreen{
+    margin-top: 532px !important;
+    margin-bottom: 532px !important; 
+  }
+
+  .bracket_match_box5_fullscreen{
+    margin-top: 1164px !important;
+    margin-bottom: 1164px !important; 
+  }
+  
+  .bracket_match_box6_fullscreen{
+    margin-top: 2364px !important;
+    margin-bottom: 2364px !important; 
+  }
+
+
+
+
+
+
+
+
+

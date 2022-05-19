@@ -1,0 +1,267 @@
+:root {
+  --bracket-seed: #ffffff;
+  --item-text: #4a4a4a;
+  --colors-dark-grey: #9b9b9b;
+  --ffd-420: #ffd420;
+  --eeeeee: #eeeeee;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+.Playerteam-logo {
+  width: 24px;
+  height: 24px;
+  border: solid 1px var(--bracket-seed);
+  border-radius: 100%;
+}
+
+.Box-Search {
+  width: 324px;
+  height: 33px;
+  border-radius: 20px;
+  border: solid 1px #d8d8d8;
+  background-color: var(--bracket-seed);
+  background-image: url(../images/searchIcon.svg);
+  background-repeat: no-repeat;
+  background-position: 16px, 7px;
+
+  position: relative;
+  margin-bottom: 16px;
+  margin-top: 40px;
+  font-family: FuturaMedium;
+}
+
+.Box-Search:focus {
+  /* background-image: none; */
+  outline: none;
+}
+
+.Box-Search::placeholder {
+  width: 152px;
+  height: 32px;
+  opacity: 0.5;
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+  /* padding-left: 42px; */
+}
+
+:focus::placeholder {
+  opacity: 0;
+}
+
+.rectangleTable {
+  height: 48px;
+  background-color: var(--bracket-seed);
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--item-text);
+}
+
+.headerTable {
+  height: 32px;
+  background-color: var(--bracket-seed);
+  border-bottom: 1px solid #d8d8d8;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--colors-dark-grey);
+  margin-right: 12px;
+}
+
+.rectangleTable:hover {
+  background-image: linear-gradient(
+      to bottom,
+      var(--ffd-420) -115%,
+      var(--ffd-420)
+    ),
+    linear-gradient(to bottom, var(--bracket-seed), var(--eeeeee) 207%),
+    linear-gradient(to bottom, var(--eeeeee) -115%, var(--bracket-seed));
+  background-position: left, top, bottom;
+  background-size: 4px 48px, 1120px 9px, 1120px 9px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.table {
+  max-height: 60vh;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--bracket-seed);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 48px;
+  /* remember youve added padding here! */
+}
+
+.table::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+.table::-webkit-scrollbar-track {
+  background: #d8d8d8; /* color of the tracking area */
+  background-clip: content-box;
+}
+.table::-webkit-scrollbar-thumb {
+  background-color: var(--item-text); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #d8d8d8; /* creates padding around scroll thumb */
+  height: 20px;
+}
+
+.table-arrow-1,
+.table-arrow-2,
+.table-arrow-3,
+.table-arrow-4,
+.table-arrow-5,
+.table-arrow-6 {
+  padding-right: 8px;
+  cursor: pointer;
+}
+.playerTable {
+  min-height: 93vh;
+}
+
+.list-underline {
+  text-decoration: none;
+}
+
+.width_table {
+  /* width: 90%; */
+  /* width: 250px; */
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc (80%);
+  min-width: 0;
+  word-wrap: normal;
+  min-width: 0;
+}
+
+.text-truncate {
+  max-width: 100% !important;
+  min-width: 0;
+}
+
+.temp-list-form {
+  height: 500px;
+}
+
+/* my styling */
+
+/* my styling */
+
+.scrollit {
+  overflow: scroll;
+  /* max-height:400px; */
+  height: 50vh;
+  overflow-x: hidden;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  font-weight: bold;
+}
+
+.player-list-component .box {
+  width: 350px;
+  height: 40px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #d8d8d8;
+  margin-left: 2%;
+  margin-bottom: 3%;
+}
+
+.player-list-component .box > i {
+  font-size: 20px;
+  color: #777;
+}
+
+.player-list-component .box > input {
+  flex: 1;
+  height: 30px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+/* ::placeholder {
+  color: rgba(119, 119, 119, 0.486) !important;
+} */
+
+.player-list-component .header {
+  font-weight: bold;
+  color: #777;
+}
+
+.player-list-component .row.hoverable:hover {
+  background-color: #ffffff;
+  border-left: 5px solid #ffd420;
+  box-shadow: 2px 1px 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+.player-list-component .rectangleTable {
+  height: 48px !important;
+}
+
+.player-list-component .trans {
+  transition: all 1.5s ease !important;
+  cursor: pointer;
+}
+
+.player-list-component .switch {
+  transform: rotate(180deg);
+}
+
+.player-list-component .switchlast {
+  transform: rotate(180deg);
+}
+
+.player-list-component .switchid {
+  transform: rotate(180deg);
+}
+.player-list-component .switchmail {
+  transform: rotate(180deg);
+}
+.switchlocation {
+  transform: rotate(180deg);
+}
+.player-list-component .switchstatus {
+  transform: rotate(180deg);
+}
+
+.player-list-component .customData {
+  max-height: 50vh;
+  min-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+  background-color: #fff;
+}
+
+.player-list-component .loading-player-stying {
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+}

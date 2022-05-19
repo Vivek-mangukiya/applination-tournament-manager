@@ -1,0 +1,64 @@
+/* hamburger */
+#points-hamburger {
+  cursor: context-menu;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+#points-hamburger > div > img {
+  cursor: pointer;
+}
+
+#points-hamburger > div > span {
+  display: inline-block;
+  background-color: #ffffff;
+  /* visibility: hidden; */
+  position: absolute;
+  top: 19px;
+  right: 0px;
+  min-width: 142px;
+  padding: 9px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* #points-hamburger:focus > div > span, */
+/* #points-hamburger:hover > div > span {
+  visibility: visible;
+} */
+
+#points-hamburger > div > span > ul {
+  margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+}
+
+#points-hamburger > div > span > ul :hover{
+  font-family: Futura;
+}
+
+#points-hamburger > div > span > ul > li {
+  height: 30px;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 30px;
+  color: #4a4a4a;
+
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+#points-hamburger > div > span > ul > li:hover {
+  background-color: #ffd420;
+  /* font-family: Futura; */
+}
+
+
