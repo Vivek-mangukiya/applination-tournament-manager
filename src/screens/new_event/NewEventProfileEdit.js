@@ -1,70 +1,69 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
-import './NewEventProfile.css';
+import React, { useEffect, useState, useContext, useRef } from "react";
+import "./NewEventProfile.css";
 // import clearIcon from '../../assets/images/icons-x-input.svg';
-import hamburgerIcon from '../../assets/images/icon-menu-hamburger.svg';
-import downArrow from '../../assets/images/icon-menu-chevron-down.svg';
-import radioButtonIcon from '../../assets/images/button-radio-grey-outline.svg';
-import calenderIcon from '../../assets/images/icon-orange-calender.svg';
-import clock from '../../assets/images/icon-orange-clock.svg';
-import trophy from '../../assets/images/icon-orange-teams.svg';
-import addNewIcon from '../../assets/images/icon-orange-players-plus.svg';
-import clearIcon from '../../assets/images/icons-x-input.svg';
-import profilePic from '../../assets/images/profilepic.jpg';
-import ball from '../../assets/images/icon-orange-ball.svg'
-import './editor.css'
+import hamburgerIcon from "../../assets/images/icon-menu-hamburger.svg";
+import downArrow from "../../assets/images/icon-menu-chevron-down.svg";
+import radioButtonIcon from "../../assets/images/button-radio-grey-outline.svg";
+import calenderIcon from "../../assets/images/icon-orange-calender.svg";
+import clock from "../../assets/images/icon-orange-clock.svg";
+import trophy from "../../assets/images/icon-orange-teams.svg";
+import addNewIcon from "../../assets/images/icon-orange-players-plus.svg";
+import clearIcon from "../../assets/images/icons-x-input.svg";
+import profilePic from "../../assets/images/profilepic.jpg";
+import ball from "../../assets/images/icon-orange-ball.svg";
+import "./editor.css";
 
-
-import playersIcon from '../../assets/images/icon-orange-players.svg';
-import durationIcon from '../../assets/images/icon-orange-duration.svg';
-import poolsIcon from '../../assets/images/icon-orange-pools.svg';
-import seasonsIcon from '../../assets/images/icon-orange-seasons.svg';
-import pointsIcon from '../../assets/images/icon-orange-points.svg';
-import playTypeIcon from '../../assets/images/icon-orange-playtype.svg';
-import surfaceIcon from '../../assets/images/icon-orange-surface.svg';
-import lightBulbIcon from '../../assets/images/icon-orange-lightbulb.svg';
-import binocularsIcon from '../../assets/images/icon-orange-binoculars.svg';
-import megaPhoneIcon from '../../assets/images/icon-orange-megaphone.svg';
-import talkIcon from '../../assets/images/icon-orange-talk.svg';
-import emailIcon from '../../assets/images/icon-orange-email.svg';
-import purseIcon from '../../assets/images/icon-orange-purse.svg';
-import pencilIcon from '../../assets/images/icon-orange-pencil.svg';
-import positionIcon from '../../assets/images/icon-orange-position.svg';
-import documentIcon from '../../assets/images/icon-orange-document.svg';
-import uploadIcon from '../../assets/images/icon-menu-upload.svg';
-import Footer from '../../components/footer/Footer';
-import CalenderComponent from '../../components/calendar/CalenderComponent';
-import TimeComponent from '../../components/time/TimeComponent';
-import SelectOptions from '../../components/selectOptions/SelectOptions';
-import EventContext from '../../context/event/eventContext';
-import loadingIcon from '../../assets/images/icon-loading.jpg';
-import ballIcon from '../../assets/images/group-3.svg';
-import searchIcon from '../../assets/images/icon-sidemenu-search.svg';
-import imageIcon from '../../assets/images/icon-orange-image.svg';
-import Header from '../../components/header/Header';
-import backIcon from '../../assets/images/icon-menu-back.svg';
-import ShadowContainer from './ShadowContainer';
-import MainInputEdit from './MainInputEdit';
-import TextAreaEdit from './TextAreaEdit';
-import 'react-responsive-modal/styles.css';
-import MasterForm from '../../components/WizardFormComponent';
+import playersIcon from "../../assets/images/icon-orange-players.svg";
+import durationIcon from "../../assets/images/icon-orange-duration.svg";
+import poolsIcon from "../../assets/images/icon-orange-pools.svg";
+import seasonsIcon from "../../assets/images/icon-orange-seasons.svg";
+import pointsIcon from "../../assets/images/icon-orange-points.svg";
+import playTypeIcon from "../../assets/images/icon-orange-playtype.svg";
+import surfaceIcon from "../../assets/images/icon-orange-surface.svg";
+import lightBulbIcon from "../../assets/images/icon-orange-lightbulb.svg";
+import binocularsIcon from "../../assets/images/icon-orange-binoculars.svg";
+import megaPhoneIcon from "../../assets/images/icon-orange-megaphone.svg";
+import talkIcon from "../../assets/images/icon-orange-talk.svg";
+import emailIcon from "../../assets/images/icon-orange-email.svg";
+import purseIcon from "../../assets/images/icon-orange-purse.svg";
+import pencilIcon from "../../assets/images/icon-orange-pencil.svg";
+import positionIcon from "../../assets/images/icon-orange-position.svg";
+import documentIcon from "../../assets/images/icon-orange-document.svg";
+import uploadIcon from "../../assets/images/icon-menu-upload.svg";
+import Footer from "../../components/footer/Footer";
+import CalenderComponent from "../../components/calendar/CalenderComponent";
+import TimeComponent from "../../components/time/TimeComponent";
+import SelectOptions from "../../components/selectOptions/SelectOptions";
+import EventContext from "../../context/event/eventContext";
+import loadingIcon from "../../assets/images/icon-loading.jpg";
+import ballIcon from "../../assets/images/group-3.svg";
+import searchIcon from "../../assets/images/icon-sidemenu-search.svg";
+import imageIcon from "../../assets/images/icon-orange-image.svg";
+import Header from "../../components/header/Header";
+import backIcon from "../../assets/images/icon-menu-back.svg";
+import ShadowContainer from "./ShadowContainer";
+import MainInputEdit from "./MainInputEdit";
+import TextAreaEdit from "./TextAreaEdit";
+import "react-responsive-modal/styles.css";
+import MasterForm from "../../components/WizardFormComponent";
 // import DatePicker from 'react-datepicker';
-import NumberFormat from 'react-number-format';
-import moment from 'moment';
-import calenderIconRight from '../../assets/images/icon-menu-calendar.svg';
-import DropdownModals from '../../components/DropdownModals';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import SubTitleEdit from './SubTitleEdit';
+import NumberFormat from "react-number-format";
+import moment from "moment";
+import calenderIconRight from "../../assets/images/icon-menu-calendar.svg";
+import DropdownModals from "../../components/DropdownModals";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import SubTitleEdit from "./SubTitleEdit";
 
-import 'react-datepicker/dist/react-datepicker.css';
-import 'antd/dist/antd.css';
-import { DatePicker, TimePicker } from 'antd';
-import { json } from 'sjcl';
-import { ToastContainer, toast } from 'react-toastify';
-import defaultIcon3 from '../../assets/images/defaultIcon3.png';
-import defaultIcon2 from '../../assets/images/defaultIcon2.png';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import API from '../../Utils/API';
+import "react-datepicker/dist/react-datepicker.css";
+import "antd/dist/antd.css";
+import { DatePicker, TimePicker } from "antd";
+import { json } from "sjcl";
+import { ToastContainer, toast } from "react-toastify";
+import defaultIcon3 from "../../assets/images/defaultIcon3.png";
+import defaultIcon2 from "../../assets/images/defaultIcon2.png";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import { API } from "../../Utils/API";
 
 const closeIcon = (
   <svg
@@ -136,7 +135,6 @@ const NewEventProfileEdit = (props) => {
     teamSizeMap,
     editEventError,
     earlyBirdDateStateFun,
-
   } = eventContext;
 
   //api call
@@ -149,278 +147,252 @@ const NewEventProfileEdit = (props) => {
   //   //eslint-disable-next-line
   // }, []);
 
+  //edit courts
+  const [editCourt, setEditCourt] = useState(
+    getTournamentData && getTournamentData.tournament.court.editFlag !== ""
+      ? getTournamentData.tournament.court.editFlag
+      : ""
+  );
+  const [saveNewCourt, setNewCourt] = useState(0);
 
-  //edit courts 
-  const [editCourt,setEditCourt] = useState(
-    getTournamentData && getTournamentData.tournament.court.editFlag !== ''
-    ? getTournamentData.tournament.court.editFlag
-    : ''
-    );
-  const [saveNewCourt,setNewCourt] = useState(0);
-
-
-  const newCourt = () =>{
+  const newCourt = () => {
     setCourtName("");
     setStreetAddress("");
     setZip("");
     setNoOfCourts("");
-    setCountry('US');
+    setCountry("US");
     setCourt_id(null);
-  }
+  };
 
+  const [statusForDelete, setStatusofDelete] = useState(1);
 
-
-  const [statusForDelete, setStatusofDelete]=useState(1);
-
-  useEffect(()=>{
-    if(statusForDelete===0){
-      console.log("State of delete"+statusForDelete)
-      saveUpdatedCourt()
-      setHamburgerOpen2(false) ;
+  useEffect(() => {
+    if (statusForDelete === 0) {
+      console.log("State of delete" + statusForDelete);
+      saveUpdatedCourt();
+      setHamburgerOpen2(false);
       newCourt();
-      setEditCourt(1)  
-      setNewCourt(true)
+      setEditCourt(1);
+      setNewCourt(true);
     }
-
-  },[statusForDelete])
+  }, [statusForDelete]);
   const courtUpdate = async () => {
     console.log(court_id, courtName, streetAddress, country, zip, noOfCourts);
     if (
-      courtName !== '' &&
-      streetAddress !== '' &&
-      country !== '' &&
+      courtName !== "" &&
+      streetAddress !== "" &&
+      country !== "" &&
       // city !== '' &&
-      zip !== ''
+      zip !== ""
       // &&
       // noOfCourts !== ''
       // stateCode !== ''
     ) {
-      let data ;
-      if(statusForDelete==0){
+      let data;
+      if (statusForDelete == 0) {
         data = JSON.stringify({
-          court_id:court_id,
-          status:statusForDelete,
+          court_id: court_id,
+          status: statusForDelete,
         });
-      }else{
+      } else {
         data = JSON.stringify({
-          court_id:court_id,
+          court_id: court_id,
           court_name: courtName,
           street_address: streetAddress,
           country: country,
           zip: zip,
-          status:statusForDelete,
+          status: statusForDelete,
           permanent_flag: permanentFlag,
-          number_of_court: noOfCourts === '' ? 20 : noOfCourts,
+          number_of_court: noOfCourts === "" ? 20 : noOfCourts,
         });
       }
-     
 
       const actualData = new FormData();
-      actualData.append('data',data);
+      actualData.append("data", data);
 
-      const res = await API.post(
-        `/updateCourt`,
-        actualData
-      ).then((res)=>{
-        if(statusForDelete==1)
-              toast.dark('Court Updated Successfully!!');
-        else{
-          toast.dark('Court Deleted Successfully!!');
+      const res = await API.post(`/updateCourt`, actualData)
+        .then((res) => {
+          if (statusForDelete == 1) toast.dark("Court Updated Successfully!!");
+          else {
+            toast.dark("Court Deleted Successfully!!");
+            setStatusofDelete(1);
+          }
+        })
+        .catch((err) => {
+          console.log("Courts edit error:", err, err.response);
+          // dispatch({
+          //   type: EDIT_DIV_TEMPLATE_ERROR,
+          //   payload:err,
+          // })
+          toast.dark("Court Update Fail!!");
+          console.log("editCourts response:", res && res.data);
           setStatusofDelete(1);
-
-        }
-            
-
-
-      }).catch( err => {
-        console.log("Courts edit error:",err,err.response);
-        // dispatch({
-        //   type: EDIT_DIV_TEMPLATE_ERROR,
-        //   payload:err,
-        // })
-        toast.dark('Court Update Fail!!');
-        console.log('editCourts response:', res && res.data);
-        setStatusofDelete(1)
-
-      })
-    }
-  }
-
-  const saveUpdatedCourt = async() => {
-
-    var can = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
-    var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
-    if (country == 'US') {
-      if (us.test(zip.toString()) || zip === '') {
-        setCourtNoError(null);
-        await courtUpdate();
-      } else {
-        setCourtNoError('Enter Valid Zip');
-      }
-    } else if (country == 'CA') {
-      if (can.test(zip.toString()) || zip === '') {
-          setCourtNoError(null);
-          await courtUpdate();
-      } else {
-        setCourtNoError('Enter Valid Zip');
-      }
+        });
     }
   };
 
-
-
-
-
-
-
-
+  const saveUpdatedCourt = async () => {
+    var can = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
+    var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
+    if (country == "US") {
+      if (us.test(zip.toString()) || zip === "") {
+        setCourtNoError(null);
+        await courtUpdate();
+      } else {
+        setCourtNoError("Enter Valid Zip");
+      }
+    } else if (country == "CA") {
+      if (can.test(zip.toString()) || zip === "") {
+        setCourtNoError(null);
+        await courtUpdate();
+      } else {
+        setCourtNoError("Enter Valid Zip");
+      }
+    }
+  };
 
   //counter to display save to list
   const [courtOption, setCourtOption] = useState(true);
 
   //states
   const [courtName, setCourtName] = useState(
-    getTournamentData && getTournamentData.tournament.court.court_name !== ''
+    getTournamentData && getTournamentData.tournament.court.court_name !== ""
       ? getTournamentData.tournament.court.court_name
-      : ''
+      : ""
   );
   const [streetAddress, setStreetAddress] = useState(
     getTournamentData &&
-      getTournamentData.tournament.court.street_address !== ''
+      getTournamentData.tournament.court.street_address !== ""
       ? getTournamentData.tournament.court.street_address
-      : ''
+      : ""
   );
-  const [country, setCountry] = useState(getTournamentData && 
-    getTournamentData.tournament.court.country === 'CA'
-  ?  getTournamentData.tournament.court.country
-  : 'US'
+  const [country, setCountry] = useState(
+    getTournamentData && getTournamentData.tournament.court.country === "CA"
+      ? getTournamentData.tournament.court.country
+      : "US"
   );
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState("");
   const [zip, setZip] = useState(
-    getTournamentData && getTournamentData.tournament.court.zip !== ''
+    getTournamentData && getTournamentData.tournament.court.zip !== ""
       ? getTournamentData.tournament.court.zip
-      : ''
+      : ""
   );
-  const [stateCode, setStateCode] = useState( getTournamentData &&
-        getTournamentData.tournament.court.country === 'CA'
-        ?  getTournamentData.tournament.court.country
-        : 'USA');
+  const [stateCode, setStateCode] = useState(
+    getTournamentData && getTournamentData.tournament.court.country === "CA"
+      ? getTournamentData.tournament.court.country
+      : "USA"
+  );
   const [noOfCourts, setNoOfCourts] = useState(
     getTournamentData &&
-      getTournamentData.tournament.court.number_of_court !== ''
+      getTournamentData.tournament.court.number_of_court !== ""
       ? getTournamentData.tournament.court.number_of_court
-      : ''
+      : ""
   );
   const [court_id, setCourt_id] = useState(
     getTournamentData !== null
       ? getTournamentData.tournament.court.court_id
-      : ''
+      : ""
   );
   const [contactName, setContactName] = useState(
     getTournamentData !== null
       ? `${getTournamentData.tournament.main_contact.first_name} ${getTournamentData.tournament.main_contact.last_name}`
-      : ''
+      : ""
   );
   const [directorName, setDirectorName] = useState(
     getTournamentData !== null
       ? `${getTournamentData.tournament.director.first_name} ${getTournamentData.tournament.director.last_name}`
-      : ''
+      : ""
   );
   const [listAddress, setListAddress] = useState(null);
   const [eventName, setEventName] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.name : ''
+    getTournamentData !== null ? getTournamentData.tournament.name : ""
   );
   const [startDate, setStartDate] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.start_date : ''
+    getTournamentData !== null ? getTournamentData.tournament.start_date : ""
   );
   const [endDate, setEndDate] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.end_date : ''
+    getTournamentData !== null ? getTournamentData.tournament.end_date : ""
   );
   const [closesOnDate, setClosesOnDate] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.closes_on : ''
+    getTournamentData !== null ? getTournamentData.tournament.closes_on : ""
   );
   const [earlyBirdDate, setEarlyBirdDate] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.early_bird_date : ''
+    getTournamentData !== null
+      ? getTournamentData.tournament.early_bird_date
+      : ""
   );
 
   const [startTime, setStartTime] = useState(
-    getTournamentData !== null
-      ?  getTournamentData.tournament.start_time
-      : ''
+    getTournamentData !== null ? getTournamentData.tournament.start_time : ""
   );
   const [endTime, setEndTime] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.end_time : ''
+    getTournamentData !== null ? getTournamentData.tournament.end_time : ""
   );
   const [endsAtTime, setEndsAtTime] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.ends_at : ''
+    getTournamentData !== null ? getTournamentData.tournament.ends_at : ""
   );
   //id
-  const [pool_id, setPool_id] = useState('');
-  const [point_id, setPoint_id] = useState('');
+  const [pool_id, setPool_id] = useState("");
+  const [point_id, setPoint_id] = useState("");
   const [season_id, setSeason_id] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.season.id : ''
+    getTournamentData !== null ? getTournamentData.tournament.season.id : ""
   );
   const [seeding_method_id, setSeeding_method_id] = useState(
     getTournamentData !== null
       ? getTournamentData.tournament.seeding_method.id
-      : ''
+      : ""
   );
   const [main_contact_id, setMain_contact_id] = useState(
     getTournamentData !== null
       ? getTournamentData.tournament.main_contact.id
-      : ''
+      : ""
   );
   const [director_id, setDirector_id] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.director.id : ''
+    getTournamentData !== null ? getTournamentData.tournament.director.id : ""
   );
   const [scoresheet_id, setScoresheet_id] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.scoresheet.id : ''
+    getTournamentData !== null ? getTournamentData.tournament.scoresheet.id : ""
   );
   // Choice for 'YES' and 'NO'
   const [scoreSheetChoice, setScoreSheetChoice] = useState(
     getTournamentData !== null
       ? getTournamentData.tournament.scoresheet.name
-      : ''
+      : ""
   );
   const [signatureAgreementChoice, setSignatureAgreementChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.signature : ''
+    getTournamentData !== null ? getTournamentData.tournament.signature : ""
   );
   const [purseAmountChoice, setPurseAmountChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.purse_amount : ''
+    getTournamentData !== null ? getTournamentData.tournament.purse_amount : ""
   );
 
-
   const [purseAmountNumber, setPurseAmountNumber] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.purse_amount : ''
+    getTournamentData !== null ? getTournamentData.tournament.purse_amount : ""
   );
 
   const [purseAmountPercentChoice, setPurseAmountPercentChoice] = useState(
-    getTournamentData !== null
-      ? getTournamentData.tournament.purse_percent
-      : ''
+    getTournamentData !== null ? getTournamentData.tournament.purse_percent : ""
   );
   const [purseAmountPercentNumber, setPurseAmountPercentNumber] = useState(
-    getTournamentData !== null
-      ? getTournamentData.tournament.purse_percent
-      : ''
+    getTournamentData !== null ? getTournamentData.tournament.purse_percent : ""
   );
   // donation1Choice
   const [donation1Choice, setDonation1Choice] = useState(
     getTournamentData && getTournamentData.tournament.donation_amounts !== null
-      ? getTournamentData.tournament.donation_amounts.split(',')[0]
-      : ''
+      ? getTournamentData.tournament.donation_amounts.split(",")[0]
+      : ""
   );
   // donation2Choice
   const [donation2Choice, setDonation2Choice] = useState(
-    getTournamentData &&  getTournamentData.tournament.donation_amounts !== null
-      ? getTournamentData.tournament.donation_amounts.split(',')[1]
-      : ''
+    getTournamentData && getTournamentData.tournament.donation_amounts !== null
+      ? getTournamentData.tournament.donation_amounts.split(",")[1]
+      : ""
   );
   // donation3Choice
   const [donation3Choice, setDonation3Choice] = useState(
     getTournamentData && getTournamentData.tournament.donation_amounts !== null
-      ? getTournamentData.tournament.donation_amounts.split(',')[2]
-      : ''
+      ? getTournamentData.tournament.donation_amounts.split(",")[2]
+      : ""
   );
 
   // donation text
@@ -432,69 +404,67 @@ const NewEventProfileEdit = (props) => {
   const [donationtextDuplicate, setDonationTextDuplicate] = useState(null);
 
   const [onlinePayChoice, setOnlinePayChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.online_pay : ''
+    getTournamentData !== null ? getTournamentData.tournament.online_pay : ""
   );
   const [directorChoice, setDirectorChoice] = useState(
     getTournamentData !== null
       ? `${getTournamentData.tournament.director.first_name} ${getTournamentData.tournament.director.last_name}`
-      : ''
+      : ""
   );
   const [showEntriesChoice, setShowEntriesChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.show_entries : ''
+    getTournamentData !== null ? getTournamentData.tournament.show_entries : ""
   );
   const [hostClinicChoice, setHostClinicChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.host_clinic : ''
+    getTournamentData !== null ? getTournamentData.tournament.host_clinic : ""
   );
   const [surfaceTypeChoice, setSurfaceTypeChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.surface_type : ''
+    getTournamentData !== null ? getTournamentData.tournament.surface_type : ""
   );
   const [membershipChoice, setMembershipChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.membership : ''
+    getTournamentData !== null ? getTournamentData.tournament.membership : ""
   );
   const [teamListingChoice, setTeamListingChoice] = useState(
     getTournamentData !== null ? getTournamentData.tournament.team_listing : 1
   );
-  const [surfaceId, setSurfaceId] = useState('');
-  const [saveDisabled,setSaveDisabled]=useState(false);
-
-   
-
-    useEffect(()=>{
-      var can = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
-      var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
-      if(( (us.test(zip.toString()) || zip === '') && stateCode==='USA')
-       || ((can.test(zip.toString()) || zip === '') && stateCode==='CA')){
-        setCourtNoError(null)
-        setCourtNotFound(null)
-       
-       }else{
-        setCourtNoError('Country and zip do not match')  
-        setCourtNotFound(null)
-      }
-    },[stateCode,zip])
-
+  const [surfaceId, setSurfaceId] = useState("");
+  const [saveDisabled, setSaveDisabled] = useState(false);
 
   useEffect(() => {
-    if (surfaceTypeChoice === 'Sand') {
+    var can = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
+    var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
+    if (
+      ((us.test(zip.toString()) || zip === "") && stateCode === "USA") ||
+      ((can.test(zip.toString()) || zip === "") && stateCode === "CA")
+    ) {
+      setCourtNoError(null);
+      setCourtNotFound(null);
+    } else {
+      setCourtNoError("Country and zip do not match");
+      setCourtNotFound(null);
+    }
+  }, [stateCode, zip]);
+
+  useEffect(() => {
+    if (surfaceTypeChoice === "Sand") {
       setSurfaceId(1);
     }
-    if (surfaceTypeChoice === 'Grass') {
+    if (surfaceTypeChoice === "Grass") {
       setSurfaceId(2);
     }
-    if (surfaceTypeChoice === 'Other') {
+    if (surfaceTypeChoice === "Other") {
       setSurfaceId(3);
     }
   }, [surfaceTypeChoice]);
   const [seedingMethodChoice, setSeedingMethodChoice] = useState(
     getTournamentData !== null
       ? getTournamentData.tournament.seeding_method.name
-      : ''
+      : ""
   );
   const [placementPointsChoice, setPlacementPointsChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.point.name : ''
+    getTournamentData !== null ? getTournamentData.tournament.point.name : ""
   );
   const [seasonChoice, setSeasonChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.season.name : ''
+    getTournamentData !== null ? getTournamentData.tournament.season.name : ""
   );
   // const [teamSizeChoice, setTeamSizeChoice] = useState(
   //   getTournamentData !== null ? getTournamentData.tournament.team_size : ''
@@ -502,10 +472,10 @@ const NewEventProfileEdit = (props) => {
   const [registrationCapChoice, setRegistrationCapChoice] = useState(
     getTournamentData !== null
       ? getTournamentData.tournament.registration_cap
-      : ''
+      : ""
   );
   const [poolsChoice, setPoolsChoice] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.pool.name : ''
+    getTournamentData !== null ? getTournamentData.tournament.pool.name : ""
   );
   // const [pdfValue, setPdfValue] = useState(
   //   getTournamentData !== null
@@ -520,28 +490,28 @@ const NewEventProfileEdit = (props) => {
   if (getTournamentData !== null) {
     var n =
       getTournamentData !== null && getTournamentData.tournament.tournament_doc;
-    var u = n !== null && n.split('-');
+    var u = n !== null && n.split("-");
     // setPdfShortForm(u[u.length - 1]);
     var v =
       getTournamentData !== null && getTournamentData.tournament.cover_photo;
-    var x = v !== null && v.split('-');
+    var x = v !== null && v.split("-");
     // setEventPhotoShortForm(x[x.length - 1]);
   }
   const [pdfValue, setPdfValue] = useState(
     getTournamentData !== null
       ? {
           preview: u[u.length - 1],
-          raw: '',
+          raw: "",
         }
-      : { preview: '', raw: '' }
+      : { preview: "", raw: "" }
   );
   const [imageState, setImageState] = useState(
     getTournamentData !== null
       ? {
           preview: x[x.length - 1],
-          raw: '',
+          raw: "",
         }
-      : { preview: '', raw: '' }
+      : { preview: "", raw: "" }
   );
   // }
   // }, [getTournamentData]);
@@ -550,115 +520,117 @@ const NewEventProfileEdit = (props) => {
     getTournamentData !== null
       ? {
           preview: `${process.env.REACT_APP_BASE_URL}${getTournamentData.tournament.tournament_pic}`,
-          raw: '',
+          raw: "",
         }
-      : { preview: '', raw: '' }
+      : { preview: "", raw: "" }
   );
-  const [dateError, setDateError] = useState('');
-  const [timeError, setTimeError] = useState('');
-  const [registrationError, setRegistrationError] = useState('');
-  const [detailsError, setDetailsError] = useState('');
-  const [contactError, setContactError] = useState('');
-  const [financeError, setFinanceError] = useState('');
-  const [documentsError, setDocumentsError] = useState('');
-  const [courtNoError, setCourtNoError] = useState('');
+  const [dateError, setDateError] = useState("");
+  const [timeError, setTimeError] = useState("");
+  const [registrationError, setRegistrationError] = useState("");
+  const [detailsError, setDetailsError] = useState("");
+  const [contactError, setContactError] = useState("");
+  const [financeError, setFinanceError] = useState("");
+  const [documentsError, setDocumentsError] = useState("");
+  const [courtNoError, setCourtNoError] = useState("");
   // description
   const [description, setDescription] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.description : ''
+    getTournamentData !== null ? getTournamentData.tournament.description : ""
   );
 
   const [sub_title, setSubtitle] = useState(
-    getTournamentData !== null ? getTournamentData.tournament.sub_title!==null?
-    getTournamentData.tournament.sub_title:"" : ''
-  )
-  const [descriptionError, setDescriptionError] = useState('');
-  const [SubTitleError, setSubTileError] = useState('');
+    getTournamentData !== null
+      ? getTournamentData.tournament.sub_title !== null
+        ? getTournamentData.tournament.sub_title
+        : ""
+      : ""
+  );
+  const [descriptionError, setDescriptionError] = useState("");
+  const [SubTitleError, setSubTileError] = useState("");
 
-  const [fileError, setFileError] = useState('');
+  const [fileError, setFileError] = useState("");
 
-  const [imageError, setImageError] = useState('');
+  const [imageError, setImageError] = useState("");
 
   const [permanentFlag, setPermanentFlag] = useState(
     getTournamentData &&
-      getTournamentData.tournament.court.permanent_flag !== ''
+      getTournamentData.tournament.court.permanent_flag !== ""
       ? getTournamentData.tournament.court.permanent_flag
-      : ''
+      : ""
   );
   const [isGoing2, setIsGoing2] = useState(
     getTournamentData &&
-      getTournamentData.tournament.court.permanent_flag !== '' &&
+      getTournamentData.tournament.court.permanent_flag !== "" &&
       getTournamentData.tournament.court.permanent_flag === 0
       ? true
       : false
   );
 
   // duplicate states
-  const [eventDuplicate, setEventDuplicate] = useState('');
+  const [eventDuplicate, setEventDuplicate] = useState("");
   // const [courtDuplicate, setCourtDuplicate] = useState('');
   // const [startDateDuplicate, setStartDateDuplicate] = useState('');
   // const [endDateDuplicate, setEndDateDuplicate] = useState('');
   // duplicate states
   // const [eventDuplicate, setEventDuplicate] = useState('');
-  const [courtDuplicate, setCourtDuplicate] = useState('');
-  const [court_idDuplicate, setCourt_idDuplicate] = useState('');
-  const [streetAddressDuplicate, setStreetAddressDuplicate] = useState('');
-  const [countryDuplicate, setCountryDuplicate] = useState('');
-  const [cityDuplicate, setCityDuplicate] = useState('');
-  const [stateCodeDuplicate, setStateCodeDuplicate] = useState('');
-  const [ZipDuplicate, setZipDuplicate] = useState('');
-  const [startDateDuplicate, setStartDateDuplicate] = useState('');
-  const [endDateDuplicate, setEndDateDuplicate] = useState('');
+  const [courtDuplicate, setCourtDuplicate] = useState("");
+  const [court_idDuplicate, setCourt_idDuplicate] = useState("");
+  const [streetAddressDuplicate, setStreetAddressDuplicate] = useState("");
+  const [countryDuplicate, setCountryDuplicate] = useState("");
+  const [cityDuplicate, setCityDuplicate] = useState("");
+  const [stateCodeDuplicate, setStateCodeDuplicate] = useState("");
+  const [ZipDuplicate, setZipDuplicate] = useState("");
+  const [startDateDuplicate, setStartDateDuplicate] = useState("");
+  const [endDateDuplicate, setEndDateDuplicate] = useState("");
   const [registrationCapChoiceDuplicate, setRegistrationCapChoiceDuplicate] =
-    useState('');
+    useState("");
   const [placementPointsChoiceDuplicate, setPlacementPointsChoiceDuplicate] =
-    useState('');
+    useState("");
   const [surfaceTypeChoiceDuplicate, setSurfaceTypeChoiceDuplicate] =
-    useState('');
+    useState("");
   const [membershipChoiceDuplicate, setMembershipChoiceDuplicate] =
-    useState('');
+    useState("");
   const [teamListingChoiceDuplicate, setTeamListingChoiceDuplicate] =
-    useState('');
-  const [startTimeDuplicate, setStartTimeDuplicate] = useState('');
-  const [endTimeDuplicate, setEndTimeDuplicate] = useState('');
+    useState("");
+  const [startTimeDuplicate, setStartTimeDuplicate] = useState("");
+  const [endTimeDuplicate, setEndTimeDuplicate] = useState("");
   // const [teamSizeChoiceDuplicate, setTeamSizeChoiceDuplicate] = useState('');
-  const [closesOnDateDuplicate, setClosesOnDateDuplicate] = useState('');
-  const [endsAtTimeDuplicate, setEndsAtTimeDuplicate] = useState('');
-  const [pool_idDuplicate, setPool_idDuplicate] = useState('');
+  const [closesOnDateDuplicate, setClosesOnDateDuplicate] = useState("");
+  const [endsAtTimeDuplicate, setEndsAtTimeDuplicate] = useState("");
+  const [pool_idDuplicate, setPool_idDuplicate] = useState("");
   const [seeding_method_idDuplicate, setSeeding_method_idDuplicate] =
-    useState('');
+    useState("");
   const [hostClinicChoiceDuplicate, setHostClinicChoiceDuplicate] =
-    useState('');
+    useState("");
   const [showEntriesChoiceDuplicate, setShowEntriesChoiceDuplicate] =
-    useState('');
-  const [onlinePayChoiceDuplicate, setOnlinePayChoiceDuplicate] = useState('');
+    useState("");
+  const [onlinePayChoiceDuplicate, setOnlinePayChoiceDuplicate] = useState("");
   const [purseAmountChoiceDuplicate, setPurseAmountChoiceDuplicate] =
-    useState('');
+    useState("");
   const [
     purseAmountPercentChoiceDuplicate,
     setPurseAmountPercentChoiceDuplicate,
-  ] = useState('');
+  ] = useState("");
   const [
     signatureAgreementChoiceDuplicate,
     setSignatureAgreementChoiceDuplicate,
-  ] = useState('');
-  const [scoresheet_idDuplicate, setScoreSheetChoiceDuplicate] = useState('');
-  const [surfaceIdDuplicate, setSurfaceIdDuplicate] = useState('');
-  const [descriptionDuplicate, setDescriptionDuplicate] = useState('');
-  const [tournament_picDuplicate, setTournamentPicDuplicate] = useState('');
-  const [main_contact_idDuplicate, setMain_contact_idDuplicate] = useState('');
-  const [director_idDuplicate, setDirector_idDuplicate] = useState('');
-  const [poolsChoiceDuplicate, setPoolsChoiceDuplicate] = useState('');
-  const [seasonChoiceDuplicate, setSeasonChoiceDuplicate] = useState('');
+  ] = useState("");
+  const [scoresheet_idDuplicate, setScoreSheetChoiceDuplicate] = useState("");
+  const [surfaceIdDuplicate, setSurfaceIdDuplicate] = useState("");
+  const [descriptionDuplicate, setDescriptionDuplicate] = useState("");
+  const [tournament_picDuplicate, setTournamentPicDuplicate] = useState("");
+  const [main_contact_idDuplicate, setMain_contact_idDuplicate] = useState("");
+  const [director_idDuplicate, setDirector_idDuplicate] = useState("");
+  const [poolsChoiceDuplicate, setPoolsChoiceDuplicate] = useState("");
+  const [seasonChoiceDuplicate, setSeasonChoiceDuplicate] = useState("");
   const [seedingMethodChoiceDuplicate, setSeedingMethodChoiceDuplicate] =
-    useState('');
-  const [purseAmountNumberDuplicate, setPurseAmountNumberDuplicate] =
-    useState( getTournamentData !== null
-      ? getTournamentData.tournament.purse_amount
-      : '');
+    useState("");
+  const [purseAmountNumberDuplicate, setPurseAmountNumberDuplicate] = useState(
+    getTournamentData !== null ? getTournamentData.tournament.purse_amount : ""
+  );
   const [
     purseAmountNumberPercentDuplicate,
     setPurseAmountNumberPercentDuplicate,
-  ] = useState('');
+  ] = useState("");
   const [donation1NumberDuplicate, setDonation1NumberDuplicate] =
     useState(null);
   const [donation2NumberDuplicate, setDonation2NumberDuplicate] =
@@ -673,28 +645,28 @@ const NewEventProfileEdit = (props) => {
   const [black, setBlack] = useState(false);
 
   useEffect(() => {
-    if (getTournamentData.tournament.color === '#ffffff') {
+    if (getTournamentData.tournament.color === "#ffffff") {
       // setColor('#e62e2d');
       setWhite(true);
       setBlue(false);
       setYellow(false);
       setBlack(false);
     }
-    if (getTournamentData.tournament.color === '#0a0080') {
+    if (getTournamentData.tournament.color === "#0a0080") {
       // setColor('#1f01ff');
       setWhite(false);
       setBlue(true);
       setYellow(false);
       setBlack(false);
     }
-    if (getTournamentData.tournament.color === '#fdff00') {
+    if (getTournamentData.tournament.color === "#fdff00") {
       // setColor('#fdff00');
       setWhite(false);
       setBlue(false);
       setYellow(true);
       setBlack(false);
     }
-    if (getTournamentData.tournament.color === '#000000') {
+    if (getTournamentData.tournament.color === "#000000") {
       // setColor('#fdff00');
       setBlack(true);
       setWhite(false);
@@ -706,36 +678,34 @@ const NewEventProfileEdit = (props) => {
     // }
   }, [getTournamentData.tournament.color]);
 
-  const notify = () => toast.dark('Court Added!');
-  const [courtNotFound,setCourtNotFound]=useState(null);
+  const notify = () => toast.dark("Court Added!");
+  const [courtNotFound, setCourtNotFound] = useState(null);
 
-  useEffect(()=>{
-    if(descriptionError!==null || SubTitleError!==null || courtNotFound!==null || courtNoError!==null){
-     
-      if(court_id===null){
-        console.log("hello")
+  useEffect(() => {
+    if (
+      descriptionError !== null ||
+      SubTitleError !== null ||
+      courtNotFound !== null ||
+      courtNoError !== null
+    ) {
+      if (court_id === null) {
+        console.log("hello");
         // setCourtNoError('Please save selected or added court')
       }
-      setSaveDisabled(true)
-    }else{
+      setSaveDisabled(true);
+    } else {
       setSaveDisabled(false);
       setCourtNoError(null);
     }
-  },[descriptionError,
-    SubTitleError,
-    courtNotFound,
-    courtNoError]
-    )
+  }, [descriptionError, SubTitleError, courtNotFound, courtNoError]);
 
-    useEffect(()=>{
-        if(court_id===null){
-          setCourtNotFound('Please fill and save information of court');
-        }else{
-          setCourtNotFound(null)
-        }
-    },[court_id])
-
-
+  useEffect(() => {
+    if (court_id === null) {
+      setCourtNotFound("Please fill and save information of court");
+    } else {
+      setCourtNotFound(null);
+    }
+  }, [court_id]);
 
   const getAllCourts = () => {
     setHamburgerOpen1(!hamburgerOpen1);
@@ -755,22 +725,23 @@ const NewEventProfileEdit = (props) => {
   }, [eventDropdownData]);
 
   useEffect(() => {
-    console.log('Event id by url:', parseInt(props.match.params.id));
+    console.log("Event id by url:", parseInt(props.match.params.id));
     getTournamentById(parseInt(props.match.params.id));
     dropDownFun();
     eventAddressesFun();
   }, []);
 
   useEffect(() => {
-    if (getTournamentData !== null){
-      console.log('getTournamentData', getTournamentData);
-      InDom(getTournamentData !== null
-        ? getTournamentData.tournament.description
-        : '')
-        // document.getElementById("output").innerHTML= textToHTML(getTournamentData !== null
-        //   ? getTournamentData.tournament.description
-        //   : '');
-
+    if (getTournamentData !== null) {
+      console.log("getTournamentData", getTournamentData);
+      InDom(
+        getTournamentData !== null
+          ? getTournamentData.tournament.description
+          : ""
+      );
+      // document.getElementById("output").innerHTML= textToHTML(getTournamentData !== null
+      //   ? getTournamentData.tournament.description
+      //   : '');
     }
   }, [getTournamentData]);
 
@@ -795,11 +766,11 @@ const NewEventProfileEdit = (props) => {
     console.log(courtName, streetAddress, country, zip, noOfCourts);
     console.log(country);
     if (
-      courtName !== '' &&
-      streetAddress !== '' &&
-      country !== '' &&
+      courtName !== "" &&
+      streetAddress !== "" &&
+      country !== "" &&
       // city !== '' &&
-      zip !== ''
+      zip !== ""
       // &&
       // noOfCourts !== ''
       // stateCode !== ''
@@ -810,20 +781,20 @@ const NewEventProfileEdit = (props) => {
         country: country,
         zip: zip,
         permanent_flag: permanentFlag,
-        number_of_court: noOfCourts === '' ? 20 : noOfCourts,
+        number_of_court: noOfCourts === "" ? 20 : noOfCourts,
       });
 
       const actualData = new FormData();
-      actualData.append('data', data);
+      actualData.append("data", data);
       actualData.append(
-        'court_pic',
-        'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg'
+        "court_pic",
+        "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg"
       );
 
       // notify();
       await saveAddress(actualData);
-      console.log("id: "+addressId)
-      setCourt_id(addressId)
+      console.log("id: " + addressId);
+      setCourt_id(addressId);
     }
   };
 
@@ -835,9 +806,9 @@ const NewEventProfileEdit = (props) => {
   // }, [addressId]);
 
   //contact and address useRef
-  const contactInputValue = useRef('');
-  const directorInputValue = useRef('');
-  const addressInputValue = useRef('');
+  const contactInputValue = useRef("");
+  const directorInputValue = useRef("");
+  const addressInputValue = useRef("");
 
   //contact component
   function ContactListComponent({ address }) {
@@ -864,7 +835,7 @@ const NewEventProfileEdit = (props) => {
             onError={(e) => (e.target.src = ball)}
             src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${address.profile_pic}`}
             style={{
-              borderRadius: '50%',
+              borderRadius: "50%",
               width: 25,
               height: 25,
             }}
@@ -909,7 +880,7 @@ const NewEventProfileEdit = (props) => {
           setDirectorDropdown(false);
         }}
       >
-        {' '}
+        {" "}
         <div
           className="col-2 m-auto text-center p-0"
           style={{
@@ -924,7 +895,7 @@ const NewEventProfileEdit = (props) => {
             onError={(e) => (e.target.src = defaultIcon2)}
             src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${address.profile_pic}`}
             style={{
-              borderRadius: '50%',
+              borderRadius: "50%",
               width: 25,
               height: 25,
             }}
@@ -960,14 +931,11 @@ const NewEventProfileEdit = (props) => {
   //address component
   useEffect(() => {
     if (filteredAddresses === null) {
-      addressInputValue.current = '';
+      addressInputValue.current = "";
     }
   });
 
-
-
   let AddressListComponent = ({ address }) => {
-
     const {
       court_id,
       court_name,
@@ -977,7 +945,7 @@ const NewEventProfileEdit = (props) => {
       city,
       number_of_court,
       editFlag,
-       permanent_flag
+      permanent_flag,
     } = address;
     return (
       <div
@@ -987,11 +955,10 @@ const NewEventProfileEdit = (props) => {
             court_id,
             court_name,
             street_address,
-            country,  
+            country,
             zip,
             editFlag,
-            permanentFlag
-         
+            permanentFlag,
           });
           setCourt_id(court_id);
           setCourtName(court_name);
@@ -1002,14 +969,14 @@ const NewEventProfileEdit = (props) => {
           setNoOfCourts(number_of_court);
           setCourtOption(false);
           setHamburgerOpen1(false);
-          setEditCourt(editFlag)
-          setPermanentFlag(permanent_flag)
-          setIsGoing2(permanent_flag?false:true)
+          setEditCourt(editFlag);
+          setPermanentFlag(permanent_flag);
+          setIsGoing2(permanent_flag ? false : true);
           // notify();
           // setCourt_id(court_id);
         }}
       >
-        {' '}
+        {" "}
         <div
           className="col-2 m-auto text-center p-0"
           style={{
@@ -1022,7 +989,7 @@ const NewEventProfileEdit = (props) => {
             onError={(e) => (e.target.src = ball)}
             src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${address.picture}`}
             style={{
-              borderRadius: '50%',
+              borderRadius: "50%",
               width: 25,
               height: 25,
             }}
@@ -1045,7 +1012,7 @@ const NewEventProfileEdit = (props) => {
       );
     }
     if (filteredAddresses !== null && !loading) {
-      return filteredAddresses.map((address,index1) => (
+      return filteredAddresses.map((address, index1) => (
         <AddressListComponent key={index1} address={address} />
       ));
     }
@@ -1054,7 +1021,7 @@ const NewEventProfileEdit = (props) => {
       eventAddresses.length !== 0 &&
       !loading
     ) {
-      return eventAddresses.map((address,index1) => (
+      return eventAddresses.map((address, index1) => (
         <AddressListComponent key={index1} address={address} />
       ));
     } else if (
@@ -1063,7 +1030,7 @@ const NewEventProfileEdit = (props) => {
       !loading
     ) {
       return (
-        <p className="text-center" style={{ color: '#ff2072' }}>
+        <p className="text-center" style={{ color: "#ff2072" }}>
           {eventAddresses}
         </p>
       );
@@ -1082,11 +1049,11 @@ const NewEventProfileEdit = (props) => {
 
   useEffect(() => {
     console.log(fileError, file);
-    if (file === '') {
-      setFileError('Please Fill Image Input');
+    if (file === "") {
+      setFileError("Please Fill Image Input");
       console.log(fileError, file);
-    } else if (file.raw !== '' && file.raw.size > 2048000) {
-      setFileError('Image size should not exceed 2048 KB size');
+    } else if (file.raw !== "" && file.raw.size > 2048000) {
+      setFileError("Image size should not exceed 2048 KB size");
       console.log(fileError, file);
     } else {
       setFileError(null);
@@ -1096,23 +1063,23 @@ const NewEventProfileEdit = (props) => {
 
   useEffect(() => {
     if (noOfCourts > 9999) {
-      setCourtNoError('No. of courts cannot be greater than 9999');
+      setCourtNoError("No. of courts cannot be greater than 9999");
     } else {
       setCourtNoError(null);
     }
   }, [noOfCourts]);
 
   useEffect(() => {
-    if (startDate === '' || endDate === '') {
-      setDateError('Please add a start and end date.');
+    if (startDate === "" || endDate === "") {
+      setDateError("Please add a start and end date.");
     } else {
       setDateError(null);
     }
   }, [startDate, endDate]);
 
   useEffect(() => {
-    if (startTime === '' || endTime === '') {
-      setTimeError('Please Select start and end time');
+    if (startTime === "" || endTime === "") {
+      setTimeError("Please Select start and end time");
     } else {
       setTimeError(null);
     }
@@ -1120,12 +1087,12 @@ const NewEventProfileEdit = (props) => {
 
   useEffect(() => {
     if (
-      registrationCapChoice === '' ||
+      registrationCapChoice === "" ||
       // teamSizeChoice === '' ||
-      closesOnDate === '' ||
-      endsAtTime === ''
+      closesOnDate === "" ||
+      endsAtTime === ""
     ) {
-      setRegistrationError('Please Fill All registration Inputs');
+      setRegistrationError("Please Fill All registration Inputs");
     } else {
       setRegistrationError(null);
     }
@@ -1138,16 +1105,16 @@ const NewEventProfileEdit = (props) => {
 
   useEffect(() => {
     if (
-      poolsChoice === '' ||
-      seasonChoice === '' ||
-      placementPointsChoice === '' ||
-      seedingMethodChoice === '' ||
-      surfaceTypeChoice === '' ||
-      hostClinicChoice === '' ||
-      showEntriesChoice === '' ||
-      teamListingChoice === ''
+      poolsChoice === "" ||
+      seasonChoice === "" ||
+      placementPointsChoice === "" ||
+      seedingMethodChoice === "" ||
+      surfaceTypeChoice === "" ||
+      hostClinicChoice === "" ||
+      showEntriesChoice === "" ||
+      teamListingChoice === ""
     ) {
-      setDetailsError('Please Fill all Details Inputs');
+      setDetailsError("Please Fill all Details Inputs");
     } else {
       setDetailsError(null);
     }
@@ -1163,8 +1130,8 @@ const NewEventProfileEdit = (props) => {
   ]);
 
   useEffect(() => {
-    if (directorChoice === '' || contactName === '') {
-      setContactError('Please Fill All Contact Inputs');
+    if (directorChoice === "" || contactName === "") {
+      setContactError("Please Fill All Contact Inputs");
     } else {
       setContactError(null);
     }
@@ -1172,16 +1139,16 @@ const NewEventProfileEdit = (props) => {
 
   useEffect(() => {
     if (
-      onlinePayChoice === '' ||
-      purseAmountChoice === '' ||
-      membershipChoice === ''
+      onlinePayChoice === "" ||
+      purseAmountChoice === "" ||
+      membershipChoice === ""
       //  ||
       // donation1Choice === '' ||
       // donation2Choice === '' ||
       // donation3Choice === '' ||
       // donationtext === ''
     ) {
-      setFinanceError('Please Fill all Finance Inputs');
+      setFinanceError("Please Fill all Finance Inputs");
     } else {
       setFinanceError(null);
     }
@@ -1197,62 +1164,60 @@ const NewEventProfileEdit = (props) => {
 
   useEffect(() => {
     if (
-      signatureAgreementChoice === '' ||
-      scoreSheetChoice === '' ||
-      pdfValue === ''
+      signatureAgreementChoice === "" ||
+      scoreSheetChoice === "" ||
+      pdfValue === ""
     ) {
-      setDocumentsError('Please Fill all Documents Inputs');
-    } else if (pdfValue.raw !== '' && pdfValue.raw.size > 2048000) {
-      setDocumentsError('PDF instructions size should not exceed 2048 KB size');
+      setDocumentsError("Please Fill all Documents Inputs");
+    } else if (pdfValue.raw !== "" && pdfValue.raw.size > 2048000) {
+      setDocumentsError("PDF instructions size should not exceed 2048 KB size");
     } else {
-
-
       setDocumentsError(null);
     }
   }, [signatureAgreementChoice, scoreSheetChoice, pdfValue]);
 
   useEffect(() => {
-    if (description === '') {
-      setDescriptionError('Please Fill Description Input');
+    if (description === "") {
+      setDescriptionError("Please Fill Description Input");
     } else {
       // InDom(description) // not in use
       setDescriptionError(null);
     }
   }, [description]);
-  
+
   useEffect(() => {
-    if (sub_title === '') {
-      setSubTileError('Please Fill Subtitle Input');
+    if (sub_title === "") {
+      setSubTileError("Please Fill Subtitle Input");
     } else {
       setSubTileError(null);
     }
   }, [sub_title]);
 
   useEffect(() => {
-    if (imageState === '') {
-      setImageError('Please Fill Image Input');
-    } else if (imageState.raw !== '' && imageState.raw.size > 2048000) {
-      setImageError('Image size should not exceed 2048 KB size');
+    if (imageState === "") {
+      setImageError("Please Fill Image Input");
+    } else if (imageState.raw !== "" && imageState.raw.size > 2048000) {
+      setImageError("Image size should not exceed 2048 KB size");
     } else {
       setImageError(null);
     }
   }, [imageState]);
 
-  const [pdfShortForm, setPdfShortForm] = useState('');
-  const [eventPhotoShortForm, setEventPhotoShortForm] = useState('');
+  const [pdfShortForm, setPdfShortForm] = useState("");
+  const [eventPhotoShortForm, setEventPhotoShortForm] = useState("");
 
   const [saveLoading, setSaveLoading] = useState(false);
 
   const onSave = async () => {
     if (
       file !== null &&
-      (file.raw !== '' ? file.raw.size < 2048000 : file.raw === '') &&
-      (pdfValue.raw !== ''
+      (file.raw !== "" ? file.raw.size < 2048000 : file.raw === "") &&
+      (pdfValue.raw !== ""
         ? pdfValue.raw.size < 2048000
-        : pdfValue.raw === '') &&
-      (imageState.raw !== ''
+        : pdfValue.raw === "") &&
+      (imageState.raw !== ""
         ? imageState.raw.size < 2048000
-        : imageState.raw === '')
+        : imageState.raw === "")
     ) {
       console.log({
         listAddress,
@@ -1261,7 +1226,7 @@ const NewEventProfileEdit = (props) => {
         endDate,
         startTime,
         endTime,
-        earlyBirdDate ,
+        earlyBirdDate,
         registrationCapChoice,
         // teamSizeChoice,
         closesOnDate,
@@ -1334,15 +1299,15 @@ const NewEventProfileEdit = (props) => {
         name: eventDuplicate,
         // creator_id: 12,
         // court_id: court_id,
-        start_date: moment(startDate).format('YYYY-MM-DD'),
-        end_date: moment(endDate).format('YYYY-MM-DD'),
+        start_date: moment(startDate).format("YYYY-MM-DD"),
+        end_date: moment(endDate).format("YYYY-MM-DD"),
         // start_time: '01:00:00',
         // end_time: '02:00:00',
         registration_cap: registrationCapChoice,
         // team_size: teamSizeChoice,
         team_size: 10,
-        closes_on: moment(closesOnDate).format('YYYY-MM-DD'),
-        ends_at: '08:00:00',
+        closes_on: moment(closesOnDate).format("YYYY-MM-DD"),
+        ends_at: "08:00:00",
         // pool_id: pool_id,
         season_id: season_id,
         seeding_method_id: seeding_method_id,
@@ -1389,55 +1354,55 @@ const NewEventProfileEdit = (props) => {
         // main_contact: main_contact_id,
         // director_id: director_id,
         // org_id: 758,
-        pool_template_id: '1',
+        pool_template_id: "1",
         // point_template_id: '1',
       });
 
       if (parseInt(props.match.params.id) !== null) {
         const data = {};
-        if (eventDuplicate !== '') {
+        if (eventDuplicate !== "") {
           // data['first_name'] = firstDuplicateState;
           data.name = eventDuplicate;
         }
-        if (registrationCapChoiceDuplicate !== '') {
+        if (registrationCapChoiceDuplicate !== "") {
           data.registration_cap = registrationCapChoiceDuplicate;
         }
         // if (teamSizeChoiceDuplicate !== '') {
         //   data.team_size = teamSizeChoiceDuplicate;
         // }
-        if (descriptionDuplicate !== '') {
+        if (descriptionDuplicate !== "") {
           data.description = descriptionDuplicate;
         }
-       if(sub_title !==''){
-         data.sub_title =sub_title;
-       }
+        if (sub_title !== "") {
+          data.sub_title = sub_title;
+        }
 
         if (court_id !== null) {
           data.court_id = court_id;
-        }else{
+        } else {
           setSaveLoading(false);
-          setCourtNotFound('Please fill and save information of court')
+          setCourtNotFound("Please fill and save information of court");
           return;
         }
-        if (seedingMethodChoiceDuplicate !== '') {
+        if (seedingMethodChoiceDuplicate !== "") {
           data.seeding_method_id = seeding_method_id;
         }
-        if (poolsChoiceDuplicate !== '') {
+        if (poolsChoiceDuplicate !== "") {
           data.pool_template_id = pool_id;
         }
-        if (seasonChoiceDuplicate !== '') {
+        if (seasonChoiceDuplicate !== "") {
           data.season_id = season_id;
         }
-        if (director_idDuplicate !== '') {
+        if (director_idDuplicate !== "") {
           data.director_id = director_idDuplicate;
         }
-        if (main_contact_idDuplicate !== '') {
+        if (main_contact_idDuplicate !== "") {
           data.main_contact = main_contact_idDuplicate;
         }
-        if (purseAmountNumberDuplicate !== '') {
+        if (purseAmountNumberDuplicate !== "") {
           data.purse_amount = purseAmountNumberDuplicate;
         }
-        if (purseAmountNumberPercentDuplicate !== '') {
+        if (purseAmountNumberPercentDuplicate !== "") {
           data.purse_percent = purseAmountNumberPercentDuplicate;
         }
         if (
@@ -1449,111 +1414,108 @@ const NewEventProfileEdit = (props) => {
             donation3NumberDuplicate == null)
         ) {
           data.donation_amounts = `${
-            donation1Choice === '' ? null : donation1Choice
-          },${donation2Choice === '' ? null : donation2Choice},${
-            donation3Choice === '' ? null : donation3Choice
+            donation1Choice === "" ? null : donation1Choice
+          },${donation2Choice === "" ? null : donation2Choice},${
+            donation3Choice === "" ? null : donation3Choice
           }`;
         }
         if (donationtextDuplicate !== null) {
           data.donation_text =
-            donationtextDuplicate === '' ? null : donationtextDuplicate;
+            donationtextDuplicate === "" ? null : donationtextDuplicate;
         }
-        if (hostClinicChoiceDuplicate !== '') {
+        if (hostClinicChoiceDuplicate !== "") {
           data.host_clinic = hostClinicChoiceDuplicate;
         }
-        if (showEntriesChoiceDuplicate !== '') {
+        if (showEntriesChoiceDuplicate !== "") {
           data.show_entries = showEntriesChoiceDuplicate;
         }
-        if (onlinePayChoiceDuplicate !== '') {
+        if (onlinePayChoiceDuplicate !== "") {
           data.online_pay = onlinePayChoiceDuplicate;
         }
-        if (membershipChoiceDuplicate !== '') {
+        if (membershipChoiceDuplicate !== "") {
           data.membership = membershipChoiceDuplicate;
         }
-        if (teamListingChoiceDuplicate !== '') {
+        if (teamListingChoiceDuplicate !== "") {
           data.team_listing = teamListingChoiceDuplicate;
         }
-        if (placementPointsChoiceDuplicate !== '') {
+        if (placementPointsChoiceDuplicate !== "") {
           data.point_template_id = point_id;
         }
-        if (signatureAgreementChoiceDuplicate !== '') {
+        if (signatureAgreementChoiceDuplicate !== "") {
           data.signature = signatureAgreementChoiceDuplicate;
         }
-        if (scoresheet_idDuplicate !== '') {
+        if (scoresheet_idDuplicate !== "") {
           data.scoresheet_id = scoresheet_id;
         }
-        if (surfaceTypeChoiceDuplicate !== '') {
+        if (surfaceTypeChoiceDuplicate !== "") {
           data.surface_type = surfaceId;
         }
-        if (startDateDuplicate !== '') {
-          data.start_date = moment(startDateDuplicate).format('YYYY-MM-DD');
+        if (startDateDuplicate !== "") {
+          data.start_date = moment(startDateDuplicate).format("YYYY-MM-DD");
         }
-        if (endDateDuplicate !== '') {
-          data.end_date = moment(endDateDuplicate).format('YYYY-MM-DD');
+        if (endDateDuplicate !== "") {
+          data.end_date = moment(endDateDuplicate).format("YYYY-MM-DD");
         }
-        if (closesOnDateDuplicate !== '') {
-          data.closes_on = moment(closesOnDateDuplicate).format('YYYY-MM-DD');
+        if (closesOnDateDuplicate !== "") {
+          data.closes_on = moment(closesOnDateDuplicate).format("YYYY-MM-DD");
         }
-        if (endTimeDuplicate !== '') {
-          data.ends_at = moment(endTimeDuplicate).format('HH:mm:ss');
+        if (endTimeDuplicate !== "") {
+          data.ends_at = moment(endTimeDuplicate).format("HH:mm:ss");
         }
-        if(startTime !==''){
+        if (startTime !== "") {
+          data.start_time = moment(
+            moment(startTime, ["h:mm A"]).format("HH:mm"),
+            "HH:mm:ss"
+          ).format("HH:mm:ss");
+        }
 
-          data.start_time =  moment(
-            moment(startTime, ['h:mm A']).format('HH:mm'),
-            'HH:mm:ss'
-          ).format('HH:mm:ss');
-        }
-
-        if( earlyBirdDate !== ''){
-          data.early_bird_date = moment(earlyBirdDate).format('YYYY-MM-DD');
+        if (earlyBirdDate !== "") {
+          data.early_bird_date = moment(earlyBirdDate).format("YYYY-MM-DD");
         }
 
         if (colorChange && blue === true) {
-          data['color'] = '#0a0080';
+          data["color"] = "#0a0080";
         }
         if (colorChange && white === true) {
-          data['color'] = '#ffffff';
+          data["color"] = "#ffffff";
         }
 
         if (colorChange && yellow === true) {
-          data['color'] = '#fdff00';
+          data["color"] = "#fdff00";
         }
         if (colorChange && black === true) {
-          data['color'] = '#000000';
+          data["color"] = "#000000";
         }
         if (colorChange && !white && !blue && !yellow && !black) {
-          data['color'] = null;
+          data["color"] = null;
         }
 
-        if(!saveDisabled){
-
-              console.log('ei of edit', parseInt(props.match.params.id));
-              await editTournament(parseInt(props.match.params.id), {
-                data: JSON.stringify(data),
-                tournament_pic: file.raw,
-                cover_photo: imageState.raw,
-                tournament_doc: pdfValue.raw,
-              });
-              console.log({
-                data,
-                tournament_pic: file.raw,
-                cover_photo: imageState.raw,
-                tournament_doc: pdfValue.raw,
-                // file: file.raw,
-                // imageState: imageState.raw,
-                // pdfValue: pdfValue.raw,
-                // surfaceTypeChoice,
-              });
-              // if (eventId !== null) {
-              await props.history.push(
-                `/eventProfileSaved/${parseInt(props.match.params.id)}`
-              );
-              // }
-        }else{
+        if (!saveDisabled) {
+          console.log("ei of edit", parseInt(props.match.params.id));
+          await editTournament(parseInt(props.match.params.id), {
+            data: JSON.stringify(data),
+            tournament_pic: file.raw,
+            cover_photo: imageState.raw,
+            tournament_doc: pdfValue.raw,
+          });
+          console.log({
+            data,
+            tournament_pic: file.raw,
+            cover_photo: imageState.raw,
+            tournament_doc: pdfValue.raw,
+            // file: file.raw,
+            // imageState: imageState.raw,
+            // pdfValue: pdfValue.raw,
+            // surfaceTypeChoice,
+          });
+          // if (eventId !== null) {
+          await props.history.push(
+            `/eventProfileSaved/${parseInt(props.match.params.id)}`
+          );
+          // }
+        } else {
           setSaveLoading(false);
         }
-       
       }
     }
   };
@@ -1590,41 +1552,38 @@ const NewEventProfileEdit = (props) => {
   //   }
   // };
 
-
   const handlesavecourt = async () => {
-
     var can = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
     var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
-    if (country == 'US') {
-      if (us.test(zip.toString()) || zip === '') {
+    if (country == "US") {
+      if (us.test(zip.toString()) || zip === "") {
         setCourtNoError(null);
         await saveAddressFunction();
       } else {
-        setCourtNoError('Enter Valid Zip');
+        setCourtNoError("Enter Valid Zip");
       }
-    } else if (country == 'CA') {
-      if (can.test(zip.toString()) || zip === '') {
-          setCourtNoError(null);
-          await saveAddressFunction();
+    } else if (country == "CA") {
+      if (can.test(zip.toString()) || zip === "") {
+        setCourtNoError(null);
+        await saveAddressFunction();
       } else {
-        setCourtNoError('Enter Valid Zip');
+        setCourtNoError("Enter Valid Zip");
       }
     }
   };
-
 
   useEffect(() => {
     console.log(eventId);
   }, [eventId]);
 
   useEffect(() => {
-    console.log('start time', startTime);
-    console.log('End Time', endTime);
+    console.log("start time", startTime);
+    console.log("End Time", endTime);
   }, [startTime, endTime]);
 
   useEffect(() => {
     var n = pdfValue.preview;
-    var u = n.split('-');
+    var u = n.split("-");
     console.log(u[u.length - 1]);
   }, [pdfValue]);
 
@@ -1643,10 +1602,10 @@ const NewEventProfileEdit = (props) => {
 
   const handleCheckbox2 = async (event) => {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     console.log(value);
     setIsGoing2(value);
-    setPermanentFlag(value? false: true)
+    setPermanentFlag(value ? false : true);
     // if (!isGoing) {
     //   await saveAddressFunction();
     // }
@@ -1687,7 +1646,7 @@ const NewEventProfileEdit = (props) => {
   //  useEffect(()=>{
   //   console.log("hamburgerOpen2")
   //  },[hamburgerOpen2])
-  const [flag , setFlag] = useState(true);
+  const [flag, setFlag] = useState(true);
   // useEffect(()=>{
   //   console.log("flag called")
   // },[flag])
@@ -1751,32 +1710,32 @@ const NewEventProfileEdit = (props) => {
         handler(event);
       };
 
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
 
       return () => {
-        document.removeEventListener('mousedown', listener);
-        document.removeEventListener('touchstart', listener);
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
       };
     }, [ref, handler]);
   }
 
   function disabledStartDate(current) {
-    return current < moment().startOf('day');
+    return current < moment().startOf("day");
   }
 
   function disabledDate(current) {
-    const start = moment('2021-01-01', 'YYYY-MM-DD');
+    const start = moment("2021-01-01", "YYYY-MM-DD");
     return (
       current < startDate ||
       current === startDate ||
-      current < moment().startOf('day')
+      current < moment().startOf("day")
     );
   }
 
   function disabledDateRegistration(current) {
     // const start = moment('2021-01-01','YYYY-MM-DD');
-    console.log('startDate', getTournamentData.tournament.start_date);
+    console.log("startDate", getTournamentData.tournament.start_date);
     // return  current> getTournamentData.tournament.start_date;
     return (
       current >= moment(startDate) ||
@@ -1786,20 +1745,20 @@ const NewEventProfileEdit = (props) => {
   }
 
   function disabledHours() {
-    console.log(parseInt(moment(startTime).format('hh')));
-    var time = moment(startTime).format('hh:mm: a');
+    console.log(parseInt(moment(startTime).format("hh")));
+    var time = moment(startTime).format("hh:mm: a");
     var period = time.slice(-2);
     console.log(time, period);
 
     var hours = [];
-    if (period === 'am') {
-      for (var i = 0; i <= parseInt(moment(startTime).format('hh')); i++) {
+    if (period === "am") {
+      for (var i = 0; i <= parseInt(moment(startTime).format("hh")); i++) {
         hours.push(i);
       }
     }
-    if (period === 'pm') {
+    if (period === "pm") {
       hours.push(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
-      for (var i = 0; i <= parseInt(moment(startTime).format('hh')); i++) {
+      for (var i = 0; i <= parseInt(moment(startTime).format("hh")); i++) {
         hours.push(i + 12);
       }
     }
@@ -1812,78 +1771,78 @@ const NewEventProfileEdit = (props) => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
-  const [ids, setIDs] = useState(   {
-    "justifyLeft":false,
-    'justifyCenter':false,
-    "bold" :false,
-    "italic":false,
-    "underline":false,
-    "insertOrderedList":false,
-    "createlink" :false,
-    "insertUnorderedList":false,
+  const [ids, setIDs] = useState({
+    justifyLeft: false,
+    justifyCenter: false,
+    bold: false,
+    italic: false,
+    underline: false,
+    insertOrderedList: false,
+    createlink: false,
+    insertUnorderedList: false,
   });
-  useEffect(()=>{
-    console.log(ids)
-  },[ids['justifyLeft'],
-  ids['justifyCenter'],
-  ids['italic'],
-  ids['bold'],
-  ids['underline'],
-  ids['insertOrderedList']],
-  ids['createlink'],
-  ids['insertUnorderedList'])
+  useEffect(
+    () => {
+      console.log(ids);
+    },
+    [
+      ids["justifyLeft"],
+      ids["justifyCenter"],
+      ids["italic"],
+      ids["bold"],
+      ids["underline"],
+      ids["insertOrderedList"],
+    ],
+    ids["createlink"],
+    ids["insertUnorderedList"]
+  );
 
-  const editorFunction=(e)=>{
-    console.log(e)
-    console.log( e.target.dataset['command'])
+  const editorFunction = (e) => {
+    console.log(e);
+    console.log(e.target.dataset["command"]);
 
-   let value = ids;
-   const data_commond = e.target.dataset['command'];
-    ids[data_commond]?
-         ( value[data_commond]=false ):
-          value[data_commond]=true;
+    let value = ids;
+    const data_commond = e.target.dataset["command"];
+    ids[data_commond]
+      ? (value[data_commond] = false)
+      : (value[data_commond] = true);
     setIDs(value);
 
-    let cmd = e.target.dataset['command'];
-		if(cmd === 'createlink') {
-			let url = prompt("Enter the link here: ", "http:\/\/");
-			document.execCommand(cmd, false, url);
-		} 
-    else {
-			document.execCommand(cmd, false, null);
-		}
-  }
+    let cmd = e.target.dataset["command"];
+    if (cmd === "createlink") {
+      let url = prompt("Enter the link here: ", "http://");
+      document.execCommand(cmd, false, url);
+    } else {
+      document.execCommand(cmd, false, null);
+    }
+  };
   var support = (function () {
     if (!window.DOMParser) return false;
     var parser = new DOMParser();
     try {
-      parser.parseFromString('x', 'text/html');
-    } catch(err) {
+      parser.parseFromString("x", "text/html");
+    } catch (err) {
       return false;
     }
     return true;
   })();
- const textToHTML= (str) => {
-
+  const textToHTML = (str) => {
     // check for DOMParser support
     if (support) {
       var parser = new DOMParser();
-      var doc = parser.parseFromString(str, 'text/html');
+      var doc = parser.parseFromString(str, "text/html");
       return doc.body.innerHTML;
-
     }
-  
+
     // Otherwise, create div and append HTML
-    var dom = document.createElement('div');
+    var dom = document.createElement("div");
     dom.innerHTML = str;
     return dom;
-  
   };
 
-  const InDom =(str) =>{
-    document.getElementById("output").innerHTML= textToHTML(str);
-  }
-
+  const InDom = (str) => {
+    document.getElementById("output").innerHTML = textToHTML(str);
+  };
 
   return (
     <>
@@ -1907,7 +1866,7 @@ const NewEventProfileEdit = (props) => {
             {fileError !== null && (
               <div
                 className="text-left error-message-profile"
-                style={{ width: 'inherit' }}
+                style={{ width: "inherit" }}
               >
                 {fileError}
               </div>
@@ -1930,13 +1889,13 @@ const NewEventProfileEdit = (props) => {
                         height: 100,
                         borderRadius: 50,
                         // objectFit: 'contain',
-                        objectFit: 'cover',
+                        objectFit: "cover",
                       }}
                     />
                   </div>
                   <div
                     className="col-8 m-auto p-0"
-                    style={{ borderBottom: '1px solid #979797' }}
+                    style={{ borderBottom: "1px solid #979797" }}
                   >
                     <MainInputEdit
                       textValue={(e) => {
@@ -1958,8 +1917,8 @@ const NewEventProfileEdit = (props) => {
                 </div>
               </div>
 
-               {/*Subtitle*/}
-               <div className="col-12 p-0" style={{ marginTop: 24 }}>
+              {/*Subtitle*/}
+              <div className="col-12 p-0" style={{ marginTop: 24 }}>
                 <div className="text-left address-title">Event Subtitle</div>
                 {SubTitleError !== null && (
                   <div className="text-left error-message-profile">
@@ -1969,15 +1928,14 @@ const NewEventProfileEdit = (props) => {
                 <div className="container">
                   <div className="row shadow-box mt-0" style={{ height: 50 }}>
                     <div className="col-12" style={{ height: 50 }}>
-                    <SubTitleEdit
+                      <SubTitleEdit
                         // textValue={(e) => setDescription(e)}
-                           textValue={(e) => {
-                            setSubtitle(e);
+                        textValue={(e) => {
+                          setSubtitle(e);
                           // setDescriptionDuplicate(e);
                         }}
-                    
                       />
-                        {/* <TextAreaEdit
+                      {/* <TextAreaEdit
                         // textValue={(e) => setDescription(e)}
                            textValue={(e) => {
                           setDescription(e);
@@ -1987,8 +1945,6 @@ const NewEventProfileEdit = (props) => {
                   </div>
                 </div>
               </div>
-
-
 
               <div className="col-12 p-0" style={{ marginTop: 24 }}>
                 <div className="container">
@@ -2000,7 +1956,7 @@ const NewEventProfileEdit = (props) => {
                     </div>
                     )} */}
 
-                      {courtNotFound!==null && (
+                      {courtNotFound !== null && (
                         <div
                           className="text-left error-message-profile"
                           style={{ width: 250 }}
@@ -2032,76 +1988,74 @@ const NewEventProfileEdit = (props) => {
                     <div className="col-2 text-right p-0">
                       {/* Hamburger */}
                       <a
-                      
                         id="score-hamburger"
                         className={
                           hamburgerOpen1
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
+                            ? "tri_top_event_visible"
+                            : "tri_top_event_hidden"
                         }
                       >
-
-                      <div >
-                          <img src={hamburgerIcon} 
-                          onClick={()=>
-                                  hamburgerOpen2? setHamburgerOpen2(false):setHamburgerOpen2(true)} 
-                                   alt="" />
-                          {
-                            hamburgerOpen2 && (
+                        <div>
+                          <img
+                            src={hamburgerIcon}
+                            onClick={() =>
+                              hamburgerOpen2
+                                ? setHamburgerOpen2(false)
+                                : setHamburgerOpen2(true)
+                            }
+                            alt=""
+                          />
+                          {hamburgerOpen2 && (
                             <span
                               className="tooltiptext2 p-0 dropdown_animation"
                               style={{ top: 29 }}
                             >
                               <ul>
                                 <li
-                                  onClick={() =>{
-                                    setHamburgerOpen2(false) ;
+                                  onClick={() => {
+                                    setHamburgerOpen2(false);
                                     newCourt();
-                                    setEditCourt(1)  
+                                    setEditCourt(1);
                                     setNewCourt(true);
-                                    setCourtOption(false)
-                                   }}
+                                    setCourtOption(false);
+                                  }}
                                 >
-                                 New Court
+                                  New Court
                                 </li>
                                 <li
-                                  onClick={() =>{
-                                    setHamburgerOpen2(false) ;
+                                  onClick={() => {
+                                    setHamburgerOpen2(false);
                                     setHamburgerOpen1(true);
                                     getAllCourts();
 
-                                    if(court_id!==null)
-                                      setNewCourt(false);
+                                    if (court_id !== null) setNewCourt(false);
 
-                                    if(editCourt===1){
+                                    if (editCourt === 1) {
                                       setNewCourt(false);
                                     }
-                          
-                                   } }                       
+                                  }}
                                 >
-                                 Courts
+                                  Courts
                                 </li>
                                 <li
-                                  onClick={() =>{
-                                    setStatusofDelete(0)
-                                    
-                                  
+                                  onClick={() => {
+                                    setStatusofDelete(0);
+
                                     // setNewCourt(true);
                                     // if(court_id!==null && editCourt===1){
                                     //   //delete api call;
                                     //   setNewCourt(false);
 
                                     // }
-                                   }}
+                                  }}
                                 >
                                   Delete
                                 </li>
-                             
                               </ul>
                             </span>
                           )}
                         </div>
-                      
+
                         <div ref={ref}>
                           {/* <img
                             src={hamburgerIcon}
@@ -2115,18 +2069,18 @@ const NewEventProfileEdit = (props) => {
                               style={{
                                 width: 432,
                                 height: 280,
-                                overflowY: 'auto',
+                                overflowY: "auto",
                                 top: 25,
                               }}
                             >
                               <div
                                 className=" container row p-0 m-auto"
                                 style={{
-                                  border: '1px solid #d8d8d8',
+                                  border: "1px solid #d8d8d8",
                                   borderRadius: 20,
                                   height: 32,
                                   width: 416,
-                                  backgroundColor: '#ffffff',
+                                  backgroundColor: "#ffffff",
                                 }}
                               >
                                 <div className="col-1 p-0 m-auto">
@@ -2145,7 +2099,7 @@ const NewEventProfileEdit = (props) => {
                                     className=" form-control  p-0 dropdown-searchbar"
                                     onChange={(e) => {
                                       if (
-                                        addressInputValue.current.value !== ''
+                                        addressInputValue.current.value !== ""
                                       ) {
                                         addressFilter(e.target.value);
                                       } else {
@@ -2158,7 +2112,7 @@ const NewEventProfileEdit = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#d8d8d8',
+                                  backgroundColor: "#d8d8d8",
                                   marginTop: 7,
                                 }}
                               />
@@ -2184,9 +2138,6 @@ const NewEventProfileEdit = (props) => {
                         </div>
                       </a>
                     </div>
-                 
-                 
-                 
                   </div>
                 </div>
                 <input
@@ -2196,13 +2147,13 @@ const NewEventProfileEdit = (props) => {
                   //   getTournamentData &&
                   //   getTournamentData.tournament.court.court_name
                   // }
-                  placeholder = "Court name"
+                  placeholder="Court name"
                   value={courtName}
                   onChange={(e) => {
                     setCourtName(e.target.value);
                     setCourtDuplicate(e.target.value);
                   }}
-                  readOnly={editCourt === 1 ? false: true}
+                  readOnly={editCourt === 1 ? false : true}
                 />
                 <input
                   type="text"
@@ -2211,13 +2162,13 @@ const NewEventProfileEdit = (props) => {
                   //   getTournamentData &&
                   //   getTournamentData.tournament.court.street_address
                   // }
-                  placeholder = "Street address"
+                  placeholder="Street address"
                   value={streetAddress}
                   onChange={(e) => {
                     setStreetAddress(e.target.value);
                     setStreetAddressDuplicate(e.target.value);
                   }}
-                  readOnly={editCourt === 1 ? false: true}
+                  readOnly={editCourt === 1 ? false : true}
                 />
                 <div className="container">
                   <div className="row">
@@ -2227,25 +2178,25 @@ const NewEventProfileEdit = (props) => {
                     <div className="col-3 pl-1 pr-1">
                       <div
                         className="form-control address-full d-flex align-items-center justify-content-between"
-                        readOnly={editCourt === 1 ? false: true}
+                        readOnly={editCourt === 1 ? false : true}
                       >
                         {stateCode}
                         <DropdownModals>
                           <li
                             onClick={() => {
-                              setStateCode('USA');
-                              setCountry('US');
+                              setStateCode("USA");
+                              setCountry("US");
                             }}
                           >
                             USA
                           </li>
                           <li
                             onClick={() => {
-                              setStateCode('CA');
-                              setCountry('CA');
+                              setStateCode("CA");
+                              setCountry("CA");
                             }}
                           >
-                          CANADA
+                            CANADA
                           </li>
                         </DropdownModals>
                       </div>
@@ -2253,7 +2204,6 @@ const NewEventProfileEdit = (props) => {
                     <div className="col-4 p-0 pr-1">
                       <input
                         type="text"
-                        
                         placeholder="zip code"
                         className="form-control address-full"
                         value={zip}
@@ -2261,48 +2211,49 @@ const NewEventProfileEdit = (props) => {
                           setZip(e.target.value);
                           setZipDuplicate(e.target.value);
                         }}
-                        readOnly={editCourt === 1 ? false: true}
+                        readOnly={editCourt === 1 ? false : true}
                       />
                     </div>
                     <div className="col-3 p-0">
                       <input
                         type="text"
-                       
                         placeholder="No. of Courts"
                         className="form-control address-full webkit_spinner_none"
                         value={noOfCourts}
                         min="1"
                         max="9999"
-                        
                         maxLength="4"
-                        onChange={(e) => 
-                        setNoOfCourts(e.target.value)}
-                        readOnly={editCourt === 1 ? false: true}
+                        onChange={(e) => setNoOfCourts(e.target.value)}
+                        readOnly={editCourt === 1 ? false : true}
                         // readOnly={courtOption === false ? true : false}
                       />
                     </div>
                   </div>
                 </div>
 
-                
-              
-                
+                {editCourt && !saveNewCourt ? (
+                  <div
+                    className="lower-back-button"
+                    style={{ float: "right", marginTop: "5px" }}
+                    onClick={saveUpdatedCourt}
+                  >
+                    <span className="lower-back-button-text">SAVE COURT</span>
+                  </div>
+                ) : (
+                  ""
+                )}
 
-                {editCourt && !saveNewCourt ?
-
-                  <div className="lower-back-button" style={{float:"right",marginTop:"5px"}} onClick={saveUpdatedCourt}>
-                      <span className="lower-back-button-text">SAVE COURT</span>
-                  </div>       :""        
-                }
-
-
-                { saveNewCourt ? 
-                  <div className="lower-back-button" style={{float:"right",marginTop:"5px"}} onClick={ handlesavecourt}>
-                      <span className="lower-back-button-text">SAVE COURT</span>
-                  </div>:""              
-                          
-                }
-               
+                {saveNewCourt ? (
+                  <div
+                    className="lower-back-button"
+                    style={{ float: "right", marginTop: "5px" }}
+                    onClick={handlesavecourt}
+                  >
+                    <span className="lower-back-button-text">SAVE COURT</span>
+                  </div>
+                ) : (
+                  ""
+                )}
 
                 {editCourt ? (
                   <div className="d-flex flex-column">
@@ -2325,7 +2276,7 @@ const NewEventProfileEdit = (props) => {
                         <span className="DAS1checkmark"></span>
                         <span
                           className="DAS1label "
-                          style={{ color: '#9b9b9b', fontSize: 10 }}
+                          style={{ color: "#9b9b9b", fontSize: 10 }}
                         >
                           Temporary Courts
                         </span>
@@ -2364,19 +2315,12 @@ const NewEventProfileEdit = (props) => {
                         <span className="DAS1label ">Save to List</span>
                       </label>
                     </div> */}
-                  
-                  
-                  
                   </div>
-                ):""}
+                ) : (
+                  ""
+                )}
               </div>
-              
-              
-              
-              
-              
-              
-              
+
               <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -2419,8 +2363,8 @@ const NewEventProfileEdit = (props) => {
                         format="MM/DD/YYYY"
                         style={{
                           width: 110,
-                          color: '#747474',
-                          cursor: 'pointer',
+                          color: "#747474",
+                          cursor: "pointer",
                         }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
@@ -2460,7 +2404,7 @@ const NewEventProfileEdit = (props) => {
                     <div className="col-7 p-0 text-right box-shadow-text m-auto pr-1">
                       <DatePicker
                         format="MM/DD/YYYY"
-                        style={{ width: 110, cursor: 'pointer' }}
+                        style={{ width: 110, cursor: "pointer" }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
                         className="pr-0 text-uppercase p-0 antd_styling"
@@ -2490,8 +2434,8 @@ const NewEventProfileEdit = (props) => {
                         format="MM/DD/YYYY"
                         style={{
                           width: 110,
-                          color: '#747474',
-                          cursor: 'pointer',
+                          color: "#747474",
+                          cursor: "pointer",
                         }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
@@ -2502,8 +2446,8 @@ const NewEventProfileEdit = (props) => {
                         onChange={(e) => {
                           setClosesOnDate(e);
                           setClosesOnDateDuplicate(e);
-                          setEarlyBirdDate(moment(e).subtract(5, 'd'));
-                          earlyBirdDateStateFun(moment(e).subtract(5, 'd'));
+                          setEarlyBirdDate(moment(e).subtract(5, "d"));
+                          earlyBirdDateStateFun(moment(e).subtract(5, "d"));
                         }}
                         placeholder={closesOnDate}
                         disabledDate={disabledDateRegistration}
@@ -2511,14 +2455,14 @@ const NewEventProfileEdit = (props) => {
                     </div>
                   </div>
                 </div>
-              
-                  {/* Early Bird Date */}
-                  <div className="container">
+
+                {/* Early Bird Date */}
+                <div className="container">
                   <div
                     className={
                       dateError
-                        ? 'red_highlight_event row shadow-box'
-                        : 'row shadow-box'
+                        ? "red_highlight_event row shadow-box"
+                        : "row shadow-box"
                     }
                   >
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
@@ -2529,8 +2473,8 @@ const NewEventProfileEdit = (props) => {
                       onClick={() =>
                         console.log(
                           moment(earlyBirdDate)
-                            .subtract(5, 'd')
-                            .format('YYYY-MM-DD')
+                            .subtract(5, "d")
+                            .format("YYYY-MM-DD")
                         )
                       }
                     >
@@ -2541,8 +2485,8 @@ const NewEventProfileEdit = (props) => {
                         format="MM/DD/YYYY"
                         style={{
                           width: 110,
-                          color: '#747474',
-                          cursor: 'pointer',
+                          color: "#747474",
+                          cursor: "pointer",
                         }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
@@ -2562,18 +2506,11 @@ const NewEventProfileEdit = (props) => {
                     </div>
                   </div>
                 </div>
-              
-              
-              
               </div>
 
-
-
-             {/* Time */}
-             <div className="col-12 p-0" style={{ marginTop: 24 }}>
-                <div className="text-left address-title">
-                  Time
-                </div>
+              {/* Time */}
+              <div className="col-12 p-0" style={{ marginTop: 24 }}>
+                <div className="text-left address-title">Time</div>
                 {timeError !== null && (
                   <div className="text-left error-message-profile">
                     {/* {timeError} */}
@@ -2584,8 +2521,8 @@ const NewEventProfileEdit = (props) => {
                   <div
                     className={
                       timeError
-                        ? 'red_highlight_event row shadow-box'
-                        : 'row shadow-box'
+                        ? "red_highlight_event row shadow-box"
+                        : "row shadow-box"
                     }
                   >
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
@@ -2598,44 +2535,41 @@ const NewEventProfileEdit = (props) => {
                       <TimePicker
                         // use12Hours
                         format="h:mm A"
-                        style={{ width: 90, cursor: 'pointer' }}
+                        style={{ width: 90, cursor: "pointer" }}
                         bordered={false}
                         suffixIcon={<img src={downArrow} alt="" />}
                         className="pr-0 text-uppercase p-0"
                         allowClear={false}
                         value={moment(
-                          moment(startTime, ['h:mm A']).format('HH:mm'),
-                          'HH:mm:ss'
+                          moment(startTime, ["h:mm A"]).format("HH:mm"),
+                          "HH:mm:ss"
                         )}
                         onChange={(e) => {
                           setStartTime(e);
-                          console.log(moment(e).format('HH:mm:ss'));
+                          console.log(moment(e).format("HH:mm:ss"));
                         }}
                         placeholder=""
-                        popupStyle={{ textAlign: 'end' }}
+                        popupStyle={{ textAlign: "end" }}
                       />
                     </div>
                   </div>
                 </div>
               </div>
 
-
               {/* Division */}
               <div className="col-12 p-0" style={{ marginTop: 24 }}>
                 <div className="text-left address-title">Division</div>
                 {/* start */}
                 {getTournamentData !== null &&
-                    getTournamentData.tournament.templateDtl !== null &&
-                    getTournamentData.tournament.templateDtl.map((obj) => {
+                  getTournamentData.tournament.templateDtl !== null &&
+                  getTournamentData.tournament.templateDtl.map((obj) => {
+                    return obj.division.map((div) => {
                       return (
-                        
-                      obj.division.map((div) => {
-                        return (
-                          <>
+                        <>
                           <div className="container">
                             <div
                               className="row shadow-box mt-0"
-                              style={{ overflow: 'hidden' }}
+                              style={{ overflow: "hidden" }}
                             >
                               <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
                                 <img
@@ -2645,35 +2579,25 @@ const NewEventProfileEdit = (props) => {
                                 />
                               </div>
                               <div className="col-7 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 text-truncate pr-3">
-                                Division{' '}
-                                {obj.hasOwnProperty('templateName') &&
-                                obj.templateName === 'null' 
-                                  ? ''
-                                  : obj.templateName  }
+                                Division{" "}
+                                {obj.hasOwnProperty("templateName") &&
+                                obj.templateName === "null"
+                                  ? ""
+                                  : obj.templateName}
                               </div>
                               <div
                                 className="col-4 p-0 text-right m-auto box-shadow-text text-truncate"
                                 id="division_overflow"
-                                style={{ display: 'inline' }}
+                                style={{ display: "inline" }}
                               >
-                              {div.div_name}
-                              
+                                {div.div_name}
                               </div>
                             </div>
                           </div>
                         </>
-                                      
-                          );
-                         })
-                        
                       );
-                    })}
-
-
-
-
-
-
+                    });
+                  })}
 
                 <div className="container">
                   <div className="row shadow-box mt-0">
@@ -2681,7 +2605,7 @@ const NewEventProfileEdit = (props) => {
                       <img src={trophy} alt="" className="img-fluid" />
                     </div>
                     <div className="col-3 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 input-text">
-                      Division 
+                      Division
                     </div>
                     <div className="col-7 p-0 text-right m-auto pr-1 box-shadow-text">
                       {selectedTemplateName}
@@ -2711,12 +2635,12 @@ const NewEventProfileEdit = (props) => {
                   <SelectOptions
                     // yesChoice={() => setRegistrationCapChoice('yes')}
                     yesChoice={(e) => {
-                      setRegistrationCapChoice('yes');
-                      setRegistrationCapChoiceDuplicate('yes');
+                      setRegistrationCapChoice("yes");
+                      setRegistrationCapChoiceDuplicate("yes");
                     }}
                     noChoice={(e) => {
-                      setRegistrationCapChoice('no');
-                      setRegistrationCapChoiceDuplicate('no');
+                      setRegistrationCapChoice("no");
+                      setRegistrationCapChoiceDuplicate("no");
                     }}
                   />
                 </ShadowContainer>
@@ -2797,7 +2721,7 @@ const NewEventProfileEdit = (props) => {
                       <TimePicker
                         use12Hours
                         format="h:mm A"
-                        style={{ width: 90, cursor: 'pointer' }}
+                        style={{ width: 90, cursor: "pointer" }}
                         bordered={false}
                         suffixIcon={<img src={downArrow} alt="" />}
                         className="pr-0 text-uppercase p-0"
@@ -2813,12 +2737,12 @@ const NewEventProfileEdit = (props) => {
                         // defaultValue={endsAtTime}
                         // defaultValue={moment('00:00:00','HH:mm:ss')}
                         value={moment(
-                          moment(endsAtTime, ['h:mm A']).format('HH:mm'),
-                          'HH:mm:ss'
+                          moment(endsAtTime, ["h:mm A"]).format("HH:mm"),
+                          "HH:mm:ss"
                         )}
                         // placeholder={endsAtTime}
                       />
-                      {console.log('endsAtTime', endsAtTime)}
+                      {console.log("endsAtTime", endsAtTime)}
                       {/* {endTime} */}
                     </div>
                   </div>
@@ -2846,8 +2770,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setPoolsDropdown(!poolsDropdown)}
                     className={
                       poolsDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -2858,7 +2782,7 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
@@ -2899,8 +2823,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setSeasonDropdown(!seasonDropdown)}
                     className={
                       seasonDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -2911,7 +2835,7 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
@@ -2948,8 +2872,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setPointsDropdown(!pointsDropdown)}
                     className={
                       pointsDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -2960,7 +2884,7 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
@@ -2999,8 +2923,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setSeedingDropdown(!seedingDropdown)}
                     className={
                       seedingDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -3011,7 +2935,7 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
@@ -3048,8 +2972,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setSurfaceDropdown(!surfaceDropdown)}
                     className={
                       surfaceDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -3060,15 +2984,15 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
                           <ul>
                             <li
                               onClick={() => {
-                                setSurfaceTypeChoice('Sand');
-                                setSurfaceTypeChoiceDuplicate('Sand');
+                                setSurfaceTypeChoice("Sand");
+                                setSurfaceTypeChoiceDuplicate("Sand");
                                 setSurfaceId(1);
                               }}
                             >
@@ -3076,8 +3000,8 @@ const NewEventProfileEdit = (props) => {
                             </li>
                             <li
                               onClick={() => {
-                                setSurfaceTypeChoice('Grass');
-                                setSurfaceTypeChoiceDuplicate('Grass');
+                                setSurfaceTypeChoice("Grass");
+                                setSurfaceTypeChoiceDuplicate("Grass");
 
                                 setSurfaceId(2);
                               }}
@@ -3086,8 +3010,8 @@ const NewEventProfileEdit = (props) => {
                             </li>
                             <li
                               onClick={() => {
-                                setSurfaceTypeChoice('Other');
-                                setSurfaceTypeChoiceDuplicate('Other');
+                                setSurfaceTypeChoice("Other");
+                                setSurfaceTypeChoiceDuplicate("Other");
 
                                 setSurfaceId(3);
                               }}
@@ -3109,13 +3033,13 @@ const NewEventProfileEdit = (props) => {
                 >
                   <SelectOptions
                     yesChoice={() => {
-                      setHostClinicChoice('yes');
-                      setHostClinicChoiceDuplicate('yes');
+                      setHostClinicChoice("yes");
+                      setHostClinicChoiceDuplicate("yes");
                     }}
                     // yesChoice={() => setHostClinicChoiceDuplicate('yes')}
                     noChoice={() => {
-                      setHostClinicChoice('no');
-                      setHostClinicChoiceDuplicate('no');
+                      setHostClinicChoice("no");
+                      setHostClinicChoiceDuplicate("no");
                     }}
                     // noChoice={() => setHostClinicChoiceDuplicate('no')}
                   />
@@ -3129,13 +3053,13 @@ const NewEventProfileEdit = (props) => {
                 >
                   <SelectOptions
                     yesChoice={() => {
-                      setShowEntriesChoice('yes');
-                      setShowEntriesChoiceDuplicate('yes');
+                      setShowEntriesChoice("yes");
+                      setShowEntriesChoiceDuplicate("yes");
                     }}
                     // yesChoice={() => setShowEntriesChoiceDuplicate('yes')}
                     noChoice={() => {
-                      setShowEntriesChoice('no');
-                      setShowEntriesChoiceDuplicate('no');
+                      setShowEntriesChoice("no");
+                      setShowEntriesChoiceDuplicate("no");
                     }}
                     // noChoice={() => setShowEntriesChoiceDuplicate('no')}
                   />
@@ -3146,8 +3070,8 @@ const NewEventProfileEdit = (props) => {
                   text="Team Listing"
                   stateData={
                     teamListingChoice === 1
-                      ? 'By Ranking Points'
-                      : 'By Registration Date'
+                      ? "By Ranking Points"
+                      : "By Registration Date"
                   }
                   mainClasses="row shadow-box"
                 >
@@ -3157,8 +3081,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setTeamListingDropdown(!teamListingDropdown)}
                     className={
                       teamListingDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -3169,7 +3093,7 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
@@ -3226,8 +3150,8 @@ const NewEventProfileEdit = (props) => {
                         id="score-hamburger"
                         className={
                           directorDropdown
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
+                            ? "tri_top_event_visible"
+                            : "tri_top_event_hidden"
                         }
                       >
                         <div ref={refDirector}>
@@ -3244,18 +3168,18 @@ const NewEventProfileEdit = (props) => {
                               style={{
                                 width: 432,
                                 height: 280,
-                                overflowY: 'auto',
+                                overflowY: "auto",
                                 top: 25,
                               }}
                             >
                               <div
                                 className=" container row p-0 m-auto"
                                 style={{
-                                  border: '1px solid #d8d8d8',
+                                  border: "1px solid #d8d8d8",
                                   borderRadius: 20,
                                   height: 32,
                                   width: 416,
-                                  backgroundColor: '#ffffff',
+                                  backgroundColor: "#ffffff",
                                 }}
                               >
                                 <div className="col-1 p-0 m-auto">
@@ -3274,7 +3198,7 @@ const NewEventProfileEdit = (props) => {
                                     className=" form-control p-0"
                                     onChange={(e) => {
                                       if (
-                                        directorInputValue.current.value !== ''
+                                        directorInputValue.current.value !== ""
                                       ) {
                                         contactFilter(e.target.value);
                                       } else {
@@ -3287,7 +3211,7 @@ const NewEventProfileEdit = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#d8d8d8',
+                                  backgroundColor: "#d8d8d8",
                                   marginTop: 7,
                                 }}
                               />
@@ -3325,8 +3249,8 @@ const NewEventProfileEdit = (props) => {
                         id="score-hamburger"
                         className={
                           mainContactDropdown
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
+                            ? "tri_top_event_visible"
+                            : "tri_top_event_hidden"
                         }
                       >
                         <div ref={refMainContact}>
@@ -3343,18 +3267,18 @@ const NewEventProfileEdit = (props) => {
                               style={{
                                 width: 432,
                                 height: 280,
-                                overflowY: 'auto',
+                                overflowY: "auto",
                                 top: 25,
                               }}
                             >
                               <div
                                 className=" container row p-0 m-auto"
                                 style={{
-                                  border: '1px solid #d8d8d8',
+                                  border: "1px solid #d8d8d8",
                                   borderRadius: 20,
                                   height: 32,
                                   width: 416,
-                                  backgroundColor: '#ffffff',
+                                  backgroundColor: "#ffffff",
                                 }}
                               >
                                 <div className="col-1 p-0 m-auto">
@@ -3373,7 +3297,7 @@ const NewEventProfileEdit = (props) => {
                                     className=" form-control p-0"
                                     onChange={(e) => {
                                       if (
-                                        contactInputValue.current.value !== ''
+                                        contactInputValue.current.value !== ""
                                       ) {
                                         contactFilter(e.target.value);
                                       } else {
@@ -3386,7 +3310,7 @@ const NewEventProfileEdit = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#d8d8d8',
+                                  backgroundColor: "#d8d8d8",
                                   marginTop: 7,
                                 }}
                               />
@@ -3426,13 +3350,13 @@ const NewEventProfileEdit = (props) => {
                 >
                   <SelectOptions
                     yesChoice={() => {
-                      setOnlinePayChoice('yes');
-                      setOnlinePayChoiceDuplicate('yes');
+                      setOnlinePayChoice("yes");
+                      setOnlinePayChoiceDuplicate("yes");
                     }}
                     // yesChoice={() => setOnlinePayChoiceDuplicate('yes')}
                     noChoice={() => {
-                      setOnlinePayChoice('no');
-                      setOnlinePayChoiceDuplicate('no');
+                      setOnlinePayChoice("no");
+                      setOnlinePayChoiceDuplicate("no");
                     }}
                     // noChoice={() => setOnlinePayChoiceDuplicate('no')}
                   />
@@ -3448,18 +3372,18 @@ const NewEventProfileEdit = (props) => {
                     </div>
                     <div className="col-5 p-0 text-left box-shadow-text mt-auto mb-auto pl-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        prefix={"$"}
                         decimalScale={2}
                         className={`form-control p-0`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           setPurseAmountChoice(Number(num));
                           setPurseAmountChoiceDuplicate(Number(num));
                           setPurseAmountNumber(Number(num));
@@ -3468,8 +3392,8 @@ const NewEventProfileEdit = (props) => {
                         }}
                         value={purseAmountChoice}
                         style={{
-                          height: 'inherit',
-                          direction: 'rtl',
+                          height: "inherit",
+                          direction: "rtl",
                           fontSize: 12,
                         }}
                       />
@@ -3477,7 +3401,7 @@ const NewEventProfileEdit = (props) => {
                     <div className="col-1 p-0 text-right m-auto pr-1">
                       <img
                         src={clearIcon}
-                        onClick={() => setPurseAmountChoice('')}
+                        onClick={() => setPurseAmountChoice("")}
                         alt=""
                         className="img-fluid mb-1 mr-1"
                       />
@@ -3496,45 +3420,47 @@ const NewEventProfileEdit = (props) => {
                     </div>
                     <div className="col-5 p-0 text-left box-shadow-text mt-auto mb-auto pl-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         // thousandSeparator={true}
                         maxLength="4"
                         placeholder="%"
-                        suffix={'%'}
+                        suffix={"%"}
                         decimalScale={2}
                         // isAllowed={({ floatValue }) =>{
                         // console.log(floatValue)
                         //  return (Number(floatValue)<= 100 && Number(floatValue) >= 0
-                        //   || floatValue=='')   
-                        // }                      
+                        //   || floatValue=='')
                         // }
-                        
-                        
+                        // }
+
                         className={`form-control p-0`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('%', '');
-                            if(num.length!='' || Number(num)<=100 && num==='0'){
-                              setPurseAmountPercentChoice(Number(num));
-                              setPurseAmountPercentChoiceDuplicate(Number(num));
-                              setPurseAmountPercentNumber(Number(num));
-                              setPurseAmountNumberPercentDuplicate(Number(num));
-                            }else{
-                              setPurseAmountPercentChoice('');
-                              setPurseAmountPercentChoiceDuplicate('');
-                              setPurseAmountPercentNumber('');
-                              setPurseAmountNumberPercentDuplicate('');
-                            }
-                      
+                            .replace(/\,/g, "")
+                            .replace("%", "");
+                          if (
+                            num.length != "" ||
+                            (Number(num) <= 100 && num === "0")
+                          ) {
+                            setPurseAmountPercentChoice(Number(num));
+                            setPurseAmountPercentChoiceDuplicate(Number(num));
+                            setPurseAmountPercentNumber(Number(num));
+                            setPurseAmountNumberPercentDuplicate(Number(num));
+                          } else {
+                            setPurseAmountPercentChoice("");
+                            setPurseAmountPercentChoiceDuplicate("");
+                            setPurseAmountPercentNumber("");
+                            setPurseAmountNumberPercentDuplicate("");
+                          }
+
                           console.log(Number(num));
                         }}
-                        value={purseAmountPercentChoice+'%'}
+                        value={purseAmountPercentChoice + "%"}
                         style={{
-                          height: 'inherit',
-                          direction: 'rtl',
+                          height: "inherit",
+                          direction: "rtl",
                           fontSize: 12,
                         }}
                       />
@@ -3542,7 +3468,7 @@ const NewEventProfileEdit = (props) => {
                     <div className="col-1 p-0 text-right m-auto pr-1">
                       <img
                         src={clearIcon}
-                        onClick={() => setPurseAmountPercentChoice('')}
+                        onClick={() => setPurseAmountPercentChoice("")}
                         alt=""
                         className="img-fluid mb-1 mr-1"
                       />
@@ -3575,19 +3501,17 @@ const NewEventProfileEdit = (props) => {
                         }}
                         placeholder="Enter Donation Text here."
                         className="w-100 text-right donation-text"
-                        style={{ border: 0, outline: 'none' }}
+                        style={{ border: 0, outline: "none" }}
                       />
-                   
                     </div>
                     <div className="col-1 p-0 text-right m-auto pr-1">
                       <img
                         src={clearIcon}
-                        onClick={() => setDonationText('')}
+                        onClick={() => setDonationText("")}
                         alt=""
                         className="img-fluid mb-1 mr-1"
                       />
                     </div>
-                    
                   </div>
                 </div>
 
@@ -3605,28 +3529,28 @@ const NewEventProfileEdit = (props) => {
                     </div>
                     <div className="col-5 p-0 text-left box-shadow-text mt-auto mb-auto pl-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        prefix={"$"}
                         decimalScale={2}
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           setDonation1Choice(Number(num));
                           setDonation1NumberDuplicate(Number(num));
                           console.log(Number(num));
                         }}
                         value={donation1Choice}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 12,
-                          textAlign: 'right',
+                          textAlign: "right",
                         }}
                       />
                     </div>
@@ -3634,7 +3558,7 @@ const NewEventProfileEdit = (props) => {
                       <img
                         src={clearIcon}
                         onClick={() => {
-                          setDonation1Choice('');
+                          setDonation1Choice("");
                           setDonation1NumberDuplicate(null);
                         }}
                         alt=""
@@ -3658,28 +3582,28 @@ const NewEventProfileEdit = (props) => {
                     </div>
                     <div className="col-5 p-0 text-left box-shadow-text mt-auto mb-auto pl-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        prefix={"$"}
                         decimalScale={2}
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           setDonation2Choice(Number(num));
                           setDonation2NumberDuplicate(Number(num));
                           console.log(Number(num));
                         }}
                         value={donation2Choice}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 12,
-                          textAlign: 'right',
+                          textAlign: "right",
                         }}
                       />
                     </div>
@@ -3687,7 +3611,7 @@ const NewEventProfileEdit = (props) => {
                       <img
                         src={clearIcon}
                         onClick={() => {
-                          setDonation2Choice('');
+                          setDonation2Choice("");
                           setDonation2NumberDuplicate(null);
                         }}
                         alt=""
@@ -3711,28 +3635,28 @@ const NewEventProfileEdit = (props) => {
                     </div>
                     <div className="col-5 p-0 text-left box-shadow-text mt-auto mb-auto pl-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        prefix={"$"}
                         decimalScale={2}
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           setDonation3Choice(Number(num));
                           setDonation3NumberDuplicate(Number(num));
                           console.log(Number(num));
                         }}
                         value={donation3Choice}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 12,
-                          textAlign: 'right',
+                          textAlign: "right",
                         }}
                       />
                     </div>
@@ -3740,7 +3664,7 @@ const NewEventProfileEdit = (props) => {
                       <img
                         src={clearIcon}
                         onClick={() => {
-                          setDonation3Choice('');
+                          setDonation3Choice("");
                           setDonation3NumberDuplicate(null);
                         }}
                         alt=""
@@ -3762,8 +3686,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setMembershipDropdown(!membershipDropdown)}
                     className={
                       membershipDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -3774,15 +3698,15 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
                           <ul>
                             <li
                               onClick={() => {
-                                setMembershipChoice('gold');
-                                setMembershipChoiceDuplicate('gold');
+                                setMembershipChoice("gold");
+                                setMembershipChoiceDuplicate("gold");
                                 // setSurfaceId(1);
                               }}
                             >
@@ -3790,8 +3714,8 @@ const NewEventProfileEdit = (props) => {
                             </li>
                             <li
                               onClick={() => {
-                                setMembershipChoice('silver');
-                                setMembershipChoiceDuplicate('silver');
+                                setMembershipChoice("silver");
+                                setMembershipChoiceDuplicate("silver");
 
                                 // setSurfaceId(2);
                               }}
@@ -3800,8 +3724,8 @@ const NewEventProfileEdit = (props) => {
                             </li>
                             <li
                               onClick={() => {
-                                setMembershipChoice('bronze');
-                                setMembershipChoiceDuplicate('bronze');
+                                setMembershipChoice("bronze");
+                                setMembershipChoiceDuplicate("bronze");
 
                                 // setSurfaceId(3);
                               }}
@@ -3833,13 +3757,13 @@ const NewEventProfileEdit = (props) => {
                 >
                   <SelectOptions
                     yesChoice={() => {
-                      setSignatureAgreementChoice('yes');
-                      setSignatureAgreementChoiceDuplicate('yes');
+                      setSignatureAgreementChoice("yes");
+                      setSignatureAgreementChoiceDuplicate("yes");
                     }}
                     // yesChoice={() => setSignatureAgreementChoiceDuplicate('yes')}
                     noChoice={() => {
-                      setSignatureAgreementChoice('no');
-                      setSignatureAgreementChoiceDuplicate('no');
+                      setSignatureAgreementChoice("no");
+                      setSignatureAgreementChoiceDuplicate("no");
                     }}
                     // noChoice={() => setSignatureAgreementChoiceDuplicate('no')}
                   />
@@ -3857,8 +3781,8 @@ const NewEventProfileEdit = (props) => {
                     onClick={() => setScoreSheetDropdown(!scoreSheetDropdown)}
                     className={
                       scoreSheetDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
+                        ? "tri_top_event_visible"
+                        : "tri_top_event_hidden"
                     }
                   >
                     <div>
@@ -3869,7 +3793,7 @@ const NewEventProfileEdit = (props) => {
                             marginTop: 7,
                             right: -10,
                             maxHeight: 280,
-                            overflowY: 'auto',
+                            overflowY: "auto",
                           }}
                           className="dropdown_animation"
                         >
@@ -3903,7 +3827,7 @@ const NewEventProfileEdit = (props) => {
                       PDF Instructions
                     </div>
                     <div className="col-6 p-0 text-right box-shadow-text m-auto">
-                      {pdfValue.raw !== ''
+                      {pdfValue.raw !== ""
                         ? pdfValue.raw.name
                         : pdfValue.preview}
                     </div>
@@ -3931,120 +3855,156 @@ const NewEventProfileEdit = (props) => {
               {/* Description*/}
 
               <div className="col-12 p-0" style={{ marginTop: 24 }}>
-                <div className="text-left address-title" style={{fontWeight:"300"}}>Description</div>
+                <div
+                  className="text-left address-title"
+                  style={{ fontWeight: "300" }}
+                >
+                  Description
+                </div>
 
-             {/* <div className="text-left"  id="htmls"></div>  */}
-         
-                        
-             <div className="toolbar">
-              <ul className="tool-list">
-                <li className="tool" >
-                  <button 
-                   style={{color: ids['justifyLeft']?"grey":"black"}}
-                    type="button" 
-                    data-command='justifyLeft'
-                    onClick ={e=>editorFunction(e)}
-                    className="tool--btn">
-                    <i  data-command='justifyLeft' className=' fas fa-align-left'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    type="button"
-                    style={{color: ids['justifyCenter']?"grey":"black"}}
-                    onClick ={e=>editorFunction(e)}
-                    data-command='justifyCenter' 
-                    className="tool--btn">
-                    <i data-command='justifyCenter'  className=' fas fa-align-center'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    style={{color: ids['bold']?"grey":"black"}}
-                    type="button"
-                    onClick ={e=>editorFunction(e)} 
-                    data-command="bold" 
-                    className="tool--btn">
-                    <i   data-command="bold"  className=' fas fa-bold'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    type="button" 
-                    style={{color: ids['italic']?"grey":"black"}}
-                    onClick ={e=>editorFunction(e)}
-                    data-command="italic"
-                    className="tool--btn">
-                    <i  data-command="italic" className=' fas fa-italic'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['underline']?"grey":"black"}}
-                    data-command="underline"
-                    className="tool--btn">
-                    <i   data-command="underline" className=' fas fa-underline'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['insertOrderedList']?"grey":"black"}}
-                    data-command="insertOrderedList"
-                    className="tool--btn">
-                    <i data-command="insertOrderedList" className=' fas fa-list-ol'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                
-                   onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['insertUnorderedList']?"grey":"black"}}
-                    data-command="insertUnorderedList"
-                    className="tool--btn">
-                    <i  data-command="insertUnorderedList"  className=' fas fa-list-ul'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                 
-                    onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['createlink']?"grey":"black"}}
-                    data-command="createlink" 
-                    className="tool--btn">
-                    <i  data-command="createlink"  className=' fas fa-link'></i>
-                  </button>
-                </li>
-              </ul>
-        
+                {/* <div className="text-left"  id="htmls"></div>  */}
 
+                <div className="toolbar">
+                  <ul className="tool-list">
+                    <li className="tool">
+                      <button
+                        style={{ color: ids["justifyLeft"] ? "grey" : "black" }}
+                        type="button"
+                        data-command="justifyLeft"
+                        onClick={(e) => editorFunction(e)}
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="justifyLeft"
+                          className=" fas fa-align-left"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        type="button"
+                        style={{
+                          color: ids["justifyCenter"] ? "grey" : "black",
+                        }}
+                        onClick={(e) => editorFunction(e)}
+                        data-command="justifyCenter"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="justifyCenter"
+                          className=" fas fa-align-center"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        style={{ color: ids["bold"] ? "grey" : "black" }}
+                        type="button"
+                        onClick={(e) => editorFunction(e)}
+                        data-command="bold"
+                        className="tool--btn"
+                      >
+                        <i data-command="bold" className=" fas fa-bold"></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        type="button"
+                        style={{ color: ids["italic"] ? "grey" : "black" }}
+                        onClick={(e) => editorFunction(e)}
+                        data-command="italic"
+                        className="tool--btn"
+                      >
+                        <i data-command="italic" className=" fas fa-italic"></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{ color: ids["underline"] ? "grey" : "black" }}
+                        data-command="underline"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="underline"
+                          className=" fas fa-underline"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{
+                          color: ids["insertOrderedList"] ? "grey" : "black",
+                        }}
+                        data-command="insertOrderedList"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="insertOrderedList"
+                          className=" fas fa-list-ol"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{
+                          color: ids["insertUnorderedList"] ? "grey" : "black",
+                        }}
+                        data-command="insertUnorderedList"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="insertUnorderedList"
+                          className=" fas fa-list-ul"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{ color: ids["createlink"] ? "grey" : "black" }}
+                        data-command="createlink"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="createlink"
+                          className=" fas fa-link"
+                        ></i>
+                      </button>
+                    </li>
+                  </ul>
 
-                {descriptionError !== null && (
-                  <div className="text-left error-message-profile">
-                    {descriptionError}
-                  </div>
-                )}
-                <div className="container " style={{padding:"0px"}}>
-                  <div className="row shadow-box mt-0" style={{ height: 300 }}>
-                    <div className="col-12" id="output"  style={{ maxHeight: 300 , overflow:"scroll"}}
-                              onInput={(e)=> {
-                                    let s= document.getElementById("output").innerHTML;
-                                            console.log(s)
-                                            console.log(e.target.innerHTML)
+                  {descriptionError !== null && (
+                    <div className="text-left error-message-profile">
+                      {descriptionError}
+                    </div>
+                  )}
+                  <div className="container " style={{ padding: "0px" }}>
+                    <div
+                      className="row shadow-box mt-0"
+                      style={{ height: 300 }}
+                    >
+                      <div
+                        className="col-12"
+                        id="output"
+                        style={{ maxHeight: 300, overflow: "scroll" }}
+                        onInput={(e) => {
+                          let s = document.getElementById("output").innerHTML;
+                          console.log(s);
+                          console.log(e.target.innerHTML);
 
-                                            setDescription(s)
-                                            setDescriptionDuplicate(s)
-                                          
-                                          }} 
-                      contenteditable="true">
-                  </div>
+                          setDescription(s);
+                          setDescriptionDuplicate(s);
+                        }}
+                        contenteditable="true"
+                      ></div>
 
-                   
                       {/* <div className="col-12" >
                       <TextEditor 
                         values={description}
@@ -4055,7 +4015,6 @@ const NewEventProfileEdit = (props) => {
                       />
                       </div> */}
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -4166,7 +4125,7 @@ const NewEventProfileEdit = (props) => {
                       Event Photo Corner
                     </div>
                     <div className="col-6 p-0 text-right box-shadow-text m-auto">
-                      {imageState.raw !== ''
+                      {imageState.raw !== ""
                         ? imageState.raw.name
                         : imageState.preview}
                     </div>
@@ -4203,7 +4162,7 @@ const NewEventProfileEdit = (props) => {
           <div
             className="m-0 col-auto mt-3"
             onClick={onSave}
-            style={{ position: 'relative' }}
+            style={{ position: "relative" }}
           >
             {/* <div className="on_save_message d-flex justify-content-center align-items-center"><LoadingSpinner/><div className="pl-2">Creating Manager...</div></div> */}
             {saveLoading ? (
@@ -4234,7 +4193,7 @@ const NewEventProfileEdit = (props) => {
           styles={{
             modal: {
               borderRadius: 12,
-              boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+              boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
               margin: 0,
               padding: 0,
             },
@@ -4244,13 +4203,13 @@ const NewEventProfileEdit = (props) => {
             className="text-center"
             style={{
               marginTop: 62,
-              fontFamily: 'Futura',
+              fontFamily: "Futura",
               fontSize: 14,
-              fontWeight: 'bold',
-              fontStretch: 'normal',
-              fontStyle: 'normal',
-              letterSpacing: 'normal',
-              color: '#4a4a4a',
+              fontWeight: "bold",
+              fontStretch: "normal",
+              fontStyle: "normal",
+              letterSpacing: "normal",
+              color: "#4a4a4a",
             }}
           >
             Are your sure you want to cancel?
@@ -4261,37 +4220,35 @@ const NewEventProfileEdit = (props) => {
               width: 398,
               marginTop: 8,
               fontSize: 10,
-              fontFamily: 'Futura',
-              fontWeight: 'bold',
-              fontStretch: 'normal',
-              fontStyle: 'normal',
-              letterSpacing: 'normal',
-              color: '#9b9b9b',
+              fontFamily: "Futura",
+              fontWeight: "bold",
+              fontStretch: "normal",
+              fontStyle: "normal",
+              letterSpacing: "normal",
+              color: "#9b9b9b",
             }}
           >
             All changes will not be saved and progress will be lost.
           </p>
           <div
-           onKeyDown ={ e =>{
+            onKeyDown={(e) => {
+              console.log(e.keyCode);
 
-                      console.log(e.keyCode)
-
-                      if(e.keyCode ===13 && !flag){
-                        console.log("dash")
-                        props.history.goBack()
-                        return;
-                      }
-                      if(e.keyCode===13 && flag){
-                        console.log("Close model")
-
-                        return  onCloseModal();
-                      }
-                      if(e.keyCode===9){
-                        flag? setFlag(false): setFlag(true)
-                        return;
-                      }
-                }
+              if (e.keyCode === 13 && !flag) {
+                console.log("dash");
+                props.history.goBack();
+                return;
               }
+              if (e.keyCode === 13 && flag) {
+                console.log("Close model");
+
+                return onCloseModal();
+              }
+              if (e.keyCode === 9) {
+                flag ? setFlag(false) : setFlag(true);
+                return;
+              }
+            }}
             className="row container"
             style={{ marginTop: 79, marginBottom: 24 }}
           >
@@ -4302,14 +4259,14 @@ const NewEventProfileEdit = (props) => {
                 id="white-button-hover"
                 onClick={onCloseModal}
                 style={{
-                  border: '1px solid yellow',
+                  border: "1px solid yellow",
                   borderRadius: 15,
                   width: 112,
                   height: 24,
                   fontSize: 10,
-                  backgroundColor: flag?'#ffd420':'#ffffff',
+                  backgroundColor: flag ? "#ffd420" : "#ffffff",
                   outline: 0,
-                  color: '#4a4a4a',
+                  color: "#4a4a4a",
                 }}
               >
                 NO, CONTINUE
@@ -4319,14 +4276,14 @@ const NewEventProfileEdit = (props) => {
                 id="yellow-button-hover"
                 onClick={() => props.history.goBack()}
                 style={{
-                  border: '1px solid yellow',
+                  border: "1px solid yellow",
                   borderRadius: 15,
                   width: 112,
                   height: 24,
                   fontSize: 10,
-                  backgroundColor: !flag?'#ffd420':'#ffffff',
+                  backgroundColor: !flag ? "#ffd420" : "#ffffff",
                   outline: 0,
-                  color: '#4a4a4a',
+                  color: "#4a4a4a",
                 }}
               >
                 YES, CANCEL

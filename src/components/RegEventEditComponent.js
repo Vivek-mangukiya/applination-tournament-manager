@@ -1,25 +1,25 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import '../assets/styles/RegEventEditComponent.css';
-import menuchevrondownicon from '../assets/images/icon-menu-chevron-down.svg';
-import iconmenux from '../assets/images/icon-menu-x.svg';
-import iconorangeplayer from '../assets/images/icon-orange-player.png';
-import Header from './header/Header';
-import backIcon from '../assets/images/icon-menu-back.svg';
-import Footer from './footer/Footer';
-import searchIcon from '../assets/images/icon-sidemenu-search.svg';
-import RegContext from '../context/registration/RegContext';
-import profilePic from '../assets/images/defaultIcon3.png';
-import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
-import { Modal } from 'react-responsive-modal';
-import { Collapse } from 'antd';
-import RegEventSearchDropDown from './RegEventSearchDropDown';
-import axios from 'axios';
-import API from '../Utils/API';
-import RegEventDropDown from './RegEventDropDown';
-import { loadStripe } from '@stripe/stripe-js';
-import NumberFormat from 'react-number-format';
-import Purse from '../assets/images/purse.svg';
-import RegEventComponentModal from './RegEventComponentModal';
+import React, { useState, useEffect, useContext, useRef } from "react";
+import "../assets/styles/RegEventEditComponent.css";
+import menuchevrondownicon from "../assets/images/icon-menu-chevron-down.svg";
+import iconmenux from "../assets/images/icon-menu-x.svg";
+import iconorangeplayer from "../assets/images/icon-orange-player.png";
+import Header from "./header/Header";
+import backIcon from "../assets/images/icon-menu-back.svg";
+import Footer from "./footer/Footer";
+import searchIcon from "../assets/images/icon-sidemenu-search.svg";
+import RegContext from "../context/registration/RegContext";
+import profilePic from "../assets/images/defaultIcon3.png";
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
+import { Modal } from "react-responsive-modal";
+import { Collapse } from "antd";
+import RegEventSearchDropDown from "./RegEventSearchDropDown";
+import axios from "axios";
+import { API } from "../Utils/API";
+import RegEventDropDown from "./RegEventDropDown";
+import { loadStripe } from "@stripe/stripe-js";
+import NumberFormat from "react-number-format";
+import Purse from "../assets/images/purse.svg";
+import RegEventComponentModal from "./RegEventComponentModal";
 
 const { Panel } = Collapse;
 
@@ -102,9 +102,9 @@ const RegEventEditComponent = (props) => {
     else setCustomRefundAmount(teamPaymentDataAmount);
   }, [teamPaymentDataAmount]);
 
-  const [playerState, setPlayerState] = useState('');
-  const [teamState, setTeamState] = useState('');
-  const [pointsState, setPointsState] = useState('');
+  const [playerState, setPlayerState] = useState("");
+  const [teamState, setTeamState] = useState("");
+  const [pointsState, setPointsState] = useState("");
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -261,14 +261,14 @@ const RegEventEditComponent = (props) => {
         team_id: teamState,
         points: pointsState,
         amount: customRefundAmount,
-        refund: '1',
+        refund: "1",
       };
     } else {
       data = {
         avp_id: playerState,
         team_id: teamState,
         points: pointsState,
-        refund: '0',
+        refund: "0",
       };
     }
     await removePlayerFromTeam(data);
@@ -296,7 +296,7 @@ const RegEventEditComponent = (props) => {
 
       //Check if there are any previous pending requests
       if (typeof cancelToken != typeof undefined) {
-        cancelToken.cancel('Operation canceled due to new request.');
+        cancelToken.cancel("Operation canceled due to new request.");
       }
 
       //Save the cancel token for the current request
@@ -307,9 +307,9 @@ const RegEventEditComponent = (props) => {
           `/getPlayersListForTeam/${id}?team_id=${team_id}&f_name=${searchTerm}`,
           { cancelToken: cancelToken.token } //Pass the cancel token to the current request
         );
-        console.log('Results for ' + searchTerm + ': ', results.data.player);
+        console.log("Results for " + searchTerm + ": ", results.data.player);
         setloading(false);
-        if (results.data.player !== 'Player not found') {
+        if (results.data.player !== "Player not found") {
           setSearchData(results.data.player);
         } else {
           setSearchData(results.data.player);
@@ -322,7 +322,7 @@ const RegEventEditComponent = (props) => {
   };
 
   useEffect(() => {
-    handleSearchChange(' ');
+    handleSearchChange(" ");
   }, []);
 
   // useEffect(() => {
@@ -343,15 +343,15 @@ const RegEventEditComponent = (props) => {
         for (let j = 0; j < regDataById.division[i].team.length; j++) {
           if (
             regDataById.division[i].team[j].player.includes(null) &&
-            regDataById.division[i].team[j].status === 'Paid'
+            regDataById.division[i].team[j].status === "Paid"
           ) {
-            console.log('has null');
+            console.log("has null");
           } else if (
             !regDataById.division[i].team[j].player.includes(null) &&
-            regDataById.division[i].team[j].status === 'UnPaid' &&
+            regDataById.division[i].team[j].status === "UnPaid" &&
             regDataById.division[i].team[j].waiting < 1
           ) {
-            console.log('has no null');
+            console.log("has no null");
             //handleCheckout(regDataById.division[i].registration_amount);
             // handleCheckout(
             //   regDataById.division[i].registration_amount * 100,
@@ -459,7 +459,7 @@ const RegEventEditComponent = (props) => {
       format,
       discount_voucher,
     });
-    handleSearchChange(' ');
+    handleSearchChange(" ");
     console.log(
       discount_amount,
       discount_voucher,
@@ -468,7 +468,7 @@ const RegEventEditComponent = (props) => {
     if (
       (discount_amount === null || discount_voucher === null) &&
       (regDataById.donation_amounts !== null ||
-        regDataById.donation_amounts !== 'null,null,null')
+        regDataById.donation_amounts !== "null,null,null")
     ) {
       console.log(
         discount_amount,
@@ -478,15 +478,15 @@ const RegEventEditComponent = (props) => {
 
       if (
         regDataById.donation_amounts === null ||
-        regDataById.donation_amounts === 'null,null,null'
+        regDataById.donation_amounts === "null,null,null"
       ) {
-        console.log('3rd modal');
+        console.log("3rd modal");
         setModalScreen1(false);
         setModalScreen2(false);
         setModalScreen3(true);
         setOpenPayModal(true);
       } else {
-        console.log('2nd modal');
+        console.log("2nd modal");
         setModalScreen1(false);
         setModalScreen2(true);
         setModalScreen3(false);
@@ -495,15 +495,15 @@ const RegEventEditComponent = (props) => {
     } else if (
       (discount_amount === null || discount_voucher === null) &&
       (regDataById.donation_amounts === null ||
-        regDataById.donation_amounts === 'null,null,null')
+        regDataById.donation_amounts === "null,null,null")
     ) {
-      console.log('3rd modal');
+      console.log("3rd modal");
       setModalScreen1(false);
       setModalScreen2(false);
       setModalScreen3(true);
       setOpenPayModal(true);
     } else {
-      console.log('1st modal');
+      console.log("1st modal");
       setModalScreen1(true);
       setModalScreen2(false);
       setModalScreen3(false);
@@ -528,8 +528,8 @@ const RegEventEditComponent = (props) => {
   };
 
   const twoDigitVal = (e, setterFn) => {
-    var val = e.target.value.replace('-', '');
-    var valNum = val === '' ? 0 : parseInt(e.target.value.replace('-', ''));
+    var val = e.target.value.replace("-", "");
+    var valNum = val === "" ? 0 : parseInt(e.target.value.replace("-", ""));
     setterFn(valNum);
   };
 
@@ -539,9 +539,9 @@ const RegEventEditComponent = (props) => {
   };
 
   useEffect(() => {
-    console.log('editAddPlayerLoading', editAddPlayerLoading);
-    console.log('playersDataLoading', playersDataLoading);
-    console.log('playersData', playersData);
+    console.log("editAddPlayerLoading", editAddPlayerLoading);
+    console.log("playersDataLoading", playersDataLoading);
+    console.log("playersData", playersData);
   }, [editAddPlayerLoading, playersDataLoading, playersData]);
 
   // player mapping here
@@ -570,7 +570,7 @@ const RegEventEditComponent = (props) => {
     discount_flag,
     discount_voucher
   ) => {
-    console.log('waiting data4');
+    console.log("waiting data4");
     console.log(
       amount,
       donation_amount,
@@ -587,7 +587,7 @@ const RegEventEditComponent = (props) => {
       discount_voucher
     );
     try {
-      let totalDiscount = discount_flag === 'yes' ? discount_amount : 0;
+      let totalDiscount = discount_flag === "yes" ? discount_amount : 0;
 
       // sessionStorage.setItem(
       //   'addPlayerToTeamData',
@@ -682,7 +682,7 @@ const RegEventEditComponent = (props) => {
     } catch (error) {
       console.log(error);
       setStripeError(error.response.data.errorMessage);
-      event_name_error.current.scrollIntoView({ behavior: 'smooth' });
+      event_name_error.current.scrollIntoView({ behavior: "smooth" });
       setTimeout(() => {
         setStripeError(null);
       }, 5000);
@@ -705,7 +705,7 @@ const RegEventEditComponent = (props) => {
     player_two_discount,
     discount_voucher
   ) => {
-    console.log('waiting data1');
+    console.log("waiting data1");
     console.log(
       amount,
       donation_amount,
@@ -725,9 +725,9 @@ const RegEventEditComponent = (props) => {
 
     try {
       let totalDiscount;
-      if (player_one_discount === 'yes' && player_two_discount === 'yes')
+      if (player_one_discount === "yes" && player_two_discount === "yes")
         totalDiscount = 2 * discount_amount;
-      else if (player_one_discount === 'no' && player_two_discount === 'no')
+      else if (player_one_discount === "no" && player_two_discount === "no")
         totalDiscount = 0;
       else totalDiscount = discount_amount;
 
@@ -841,7 +841,7 @@ const RegEventEditComponent = (props) => {
     } catch (error) {
       console.log(error);
       setStripeError(error.response.data.errorMessage);
-      event_name_error.current.scrollIntoView({ behavior: 'smooth' });
+      event_name_error.current.scrollIntoView({ behavior: "smooth" });
       setTimeout(() => {
         setStripeError(null);
       }, 5000);
@@ -861,7 +861,7 @@ const RegEventEditComponent = (props) => {
   }, [openModal2, modalData]);
 
   useEffect(() => {
-    if (changeDivisionResponse === 'Team Added Sucessfully') {
+    if (changeDivisionResponse === "Team Added Sucessfully") {
       setTeamDataLoading();
       getRegById(props.match.params.id);
       setTimeout(() => {
@@ -873,7 +873,7 @@ const RegEventEditComponent = (props) => {
   }, [changeDivisionResponse]);
 
   useEffect(() => {
-    console.log('Invoice is Now : ' + inVoice);
+    console.log("Invoice is Now : " + inVoice);
   }, [inVoice]);
 
   //modal refund
@@ -881,11 +881,11 @@ const RegEventEditComponent = (props) => {
   const [refundModal1, setRefundModal1] = useState(false);
   const [customRefund, setCustomRefund] = useState(false);
   const [teamIdDelete, setTeamDelete] = useState(null);
-  const [customRefundAmount, setCustomRefundAmount] = useState('10');
+  const [customRefundAmount, setCustomRefundAmount] = useState("10");
   const [loadDelete, setLoadingDelete] = useState(false);
   const [paidStatus, setPaidStatus] = useState(false);
   useEffect(() => {
-    console.log('loading....');
+    console.log("loading....");
   }, [loadDelete]);
 
   const onCloseRefundModal = () => {
@@ -895,14 +895,14 @@ const RegEventEditComponent = (props) => {
     setTeamDelete(null);
   };
   useEffect(() => {
-    console.log('modal' + openRefundModal);
+    console.log("modal" + openRefundModal);
   }, [openRefundModal]);
 
   return (
     <div
       className="min-vh-100"
       style={{
-        cursor: remindPaymentForTeamLoading && 'not-allowed',
+        cursor: remindPaymentForTeamLoading && "not-allowed",
 
         opacity: remindPaymentForTeamLoading && 0.5,
       }}
@@ -922,7 +922,7 @@ const RegEventEditComponent = (props) => {
         </ul>
       </Header>
 
-      <div style={{ pointerEvents: 'none' }}>
+      <div style={{ pointerEvents: "none" }}>
         {openRefundModal && (
           <Modal
             open={openRefundModal}
@@ -931,16 +931,16 @@ const RegEventEditComponent = (props) => {
             styles={{
               modal: {
                 borderRadius: 12,
-                boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+                boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
                 margin: 0,
                 padding: 0,
                 zIndex: 1000000,
                 marginTop: 20,
-                overflow: 'hidden',
-                width: '500px',
+                overflow: "hidden",
+                width: "500px",
               },
               overlay: {
-                background: '#000000',
+                background: "#000000",
                 opacity: 0.5,
               },
             }}
@@ -949,15 +949,15 @@ const RegEventEditComponent = (props) => {
               <>
                 <div
                   className="text-center mt-2 apply-discount-modal-text"
-                  onClick={() => console.log('1')}
+                  onClick={() => console.log("1")}
                 >
                   <div>
                     {paidStatus ? (
-                      <h5 style={{ padding: '10px' }}>
+                      <h5 style={{ padding: "10px" }}>
                         Team is paid. Do you want to refund?
                       </h5>
                     ) : (
-                      <h4 style={{ padding: '10px' }}>
+                      <h4 style={{ padding: "10px" }}>
                         Do you want to delete team?
                       </h4>
                     )}
@@ -970,7 +970,7 @@ const RegEventEditComponent = (props) => {
                       <div className="container row ">
                         <div className="col-3"></div>
                         <div className="col-3 p-12">
-                          {' '}
+                          {" "}
                           <label
                             className="AS1checkbox MensLabel"
                             htmlFor="JAgeRangeInput"
@@ -991,7 +991,7 @@ const RegEventEditComponent = (props) => {
                           </label>
                         </div>
                         <div className="col-6 p-0">
-                          {' '}
+                          {" "}
                           <label
                             className="AS1checkbox MensLabel"
                             htmlFor="JAgeRangeInput"
@@ -1023,11 +1023,11 @@ const RegEventEditComponent = (props) => {
                               className="col-7 p-0 "
                               style={{
                                 height: 32,
-                                padding: '4px 8px',
-                                margin: '8px',
+                                padding: "4px 8px",
+                                margin: "8px",
                                 borderRadius: 3,
-                                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.2)',
-                                backgroundColor: '#ffffff',
+                                boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
+                                backgroundColor: "#ffffff",
                               }}
                             >
                               <div
@@ -1045,7 +1045,7 @@ const RegEventEditComponent = (props) => {
                                     displayType="input"
                                     thousandSeparator={true}
                                     placeholder="Enter custom value here.."
-                                    prefix={'$'}
+                                    prefix={"$"}
                                     decimalScale={2}
                                     className="placeholderNumber"
                                     id="LEPrice"
@@ -1053,18 +1053,18 @@ const RegEventEditComponent = (props) => {
                                     value={customRefundAmount}
                                     isAllowed={({ floatValue }) =>
                                       floatValue <= teamPaymentDataAmount ||
-                                      floatValue === ''
+                                      floatValue === ""
                                     }
                                     onChange={(e) =>
                                       setCustomRefundAmount(
-                                        e.target.value.replace('$', '')
+                                        e.target.value.replace("$", "")
                                       )
                                     }
                                     autoComplete="off"
                                     style={{
-                                      outline: 'none',
-                                      border: 'none',
-                                      textAlign: 'right',
+                                      outline: "none",
+                                      border: "none",
+                                      textAlign: "right",
                                     }}
                                   />
                                 </div>
@@ -1092,7 +1092,7 @@ const RegEventEditComponent = (props) => {
                       onClick={() => {
                         setRefundModal1(false);
                         setOpenRefundModal(false);
-                        setCustomRefundAmount('10');
+                        setCustomRefundAmount("10");
                         setCustomRefund(false);
                       }}
                     >
@@ -1143,10 +1143,10 @@ const RegEventEditComponent = (props) => {
         regDataById === null ||
         regDataById.length === 0 ? (
         <div className="mt-5 text-center mx-auto w-100">
-          <div style={{ color: '#ff2072' }}>{regByIdErr}</div>
+          <div style={{ color: "#ff2072" }}>{regByIdErr}</div>
         </div>
       ) : (
-        <div style={{ pointerEvents: remindPaymentForTeamLoading && 'none' }}>
+        <div style={{ pointerEvents: remindPaymentForTeamLoading && "none" }}>
           {openPayModal && (
             <Modal
               open={openPayModal}
@@ -1155,15 +1155,15 @@ const RegEventEditComponent = (props) => {
               styles={{
                 modal: {
                   borderRadius: 12,
-                  boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+                  boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
                   margin: 0,
                   padding: 0,
                   zIndex: 1000000,
                   marginTop: 20,
-                  overflow: 'hidden',
+                  overflow: "hidden",
                 },
                 overlay: {
-                  background: '#000000',
+                  background: "#000000",
                   opacity: 0.5,
                 },
               }}
@@ -1174,22 +1174,22 @@ const RegEventEditComponent = (props) => {
                     className="text-center mt-2 apply-discount-modal-text"
                     onClick={() => console.log(playersDataForPay)}
                   >
-                    APPLY{' '}
+                    APPLY{" "}
                     {playersDataForPay.discount_voucher === 1
-                      ? 'DISCOUNT'
-                      : 'VOUCHER'}
+                      ? "DISCOUNT"
+                      : "VOUCHER"}
                   </div>
                   <div className="text-center apply-discount-modal-sub-text">
                     <div className="row p-0 m-0 pt-4">
                       <div
                         className="col"
-                        style={{ overflow: 'hidden', wordWrap: 'break-word' }}
+                        style={{ overflow: "hidden", wordWrap: "break-word" }}
                       >
                         {playersDataForPay !== null &&
                           playersDataForPay.discount_text}
                       </div>
                       {playersDataForPay.discount_applied ===
-                        'discount per team' && (
+                        "discount per team" && (
                         <div className="col">
                           <label
                             className="AS1checkbox MensLabel mt-0"
@@ -1213,7 +1213,7 @@ const RegEventEditComponent = (props) => {
                   </div>
                   <div className="pl-5 pt-2 ml-5">
                     {playersDataForPay.discount_applied !==
-                      'discount per team' &&
+                      "discount per team" &&
                       Array.isArray(playersDataForPay.players) &&
                       playersDataForPay.players.map((player, playerIndex) => (
                         <div key={playerIndex}>
@@ -1234,14 +1234,14 @@ const RegEventEditComponent = (props) => {
                             />
                             <span className="AS1checkmark MensCheck"></span>
                             <span className="AS1label">
-                              {' '}
+                              {" "}
                               {`${player.first_name} ${player.last_name}`}
                             </span>
                           </label>
                         </div>
                       ))}
                     {playersDataForPay.discount_applied !==
-                      'discount per team' && (
+                      "discount per team" && (
                       <div>
                         <label
                           className="AS1checkbox MensLabel"
@@ -1307,21 +1307,21 @@ const RegEventEditComponent = (props) => {
                     onClick={() => console.log(playersDataForPay)}
                   >
                     {invoiceMessage !== null && (
-                      <div style={{ color: '#ff2072' }}>{invoiceMessage}</div>
+                      <div style={{ color: "#ff2072" }}>{invoiceMessage}</div>
                     )}
                     <div>
-                      {' '}
+                      {" "}
                       {regDataById.donation_amounts === null ||
-                      regDataById.donation_amounts === 'null,null,null'
-                        ? 'Team will be created.'
-                        : 'Donation'}
+                      regDataById.donation_amounts === "null,null,null"
+                        ? "Team will be created."
+                        : "Donation"}
                     </div>
                   </div>
                   <div className="text-center apply-discount-modal-sub-text w-100">
                     <div className="row p-0 m-0 pt-4">
                       <div
                         className="col"
-                        style={{ overflow: 'hidden', wordWrap: 'break-word' }}
+                        style={{ overflow: "hidden", wordWrap: "break-word" }}
                       >
                         {/* {regDataById.donation_amounts === null ||
                         regDataById.donation_amounts === 'null,null,null'
@@ -1337,21 +1337,21 @@ const RegEventEditComponent = (props) => {
                           ? regDataById.donation_text
                           : null} */}
                         {regDataById.donation_amounts === null ||
-                        regDataById.donation_amounts === 'null,null,null'
+                        regDataById.donation_amounts === "null,null,null"
                           ? null
                           : regDataById.donation_text}
                       </div>
                     </div>
                   </div>
                   {regDataById.donation_amounts !== null &&
-                    regDataById.donation_amounts !== 'null,null,null' && (
+                    regDataById.donation_amounts !== "null,null,null" && (
                       <>
                         <div
                           className="pt-2 row"
-                          style={{ textAlign: 'center' }}
+                          style={{ textAlign: "center" }}
                         >
-                          {regDataById.donation_amounts.split(',')[0] !==
-                            'null' && (
+                          {regDataById.donation_amounts.split(",")[0] !==
+                            "null" && (
                             <div className="col p-0">
                               <label
                                 className="AS1checkbox MensLabel"
@@ -1374,16 +1374,16 @@ const RegEventEditComponent = (props) => {
                                 <span className="AS1checkmark MensCheck"></span>
                                 <span
                                   className="AS1label"
-                                  style={{ textAlign: 'left' }}
+                                  style={{ textAlign: "left" }}
                                 >
-                                  {regDataById.donation_amounts.split(',')[0]}
+                                  {regDataById.donation_amounts.split(",")[0]}
                                 </span>
                               </label>
                             </div>
                           )}
 
-                          {regDataById.donation_amounts.split(',')[1] !==
-                            'null' && (
+                          {regDataById.donation_amounts.split(",")[1] !==
+                            "null" && (
                             <div className="col p-0">
                               <label
                                 className="AS1checkbox MensLabel"
@@ -1406,16 +1406,16 @@ const RegEventEditComponent = (props) => {
                                 <span className="AS1checkmark MensCheck"></span>
                                 <span
                                   className="AS1label"
-                                  style={{ textAlign: 'left' }}
+                                  style={{ textAlign: "left" }}
                                 >
-                                  {regDataById.donation_amounts.split(',')[1]}
+                                  {regDataById.donation_amounts.split(",")[1]}
                                 </span>
                               </label>
                             </div>
                           )}
 
-                          {regDataById.donation_amounts.split(',')[2] !==
-                            'null' && (
+                          {regDataById.donation_amounts.split(",")[2] !==
+                            "null" && (
                             <div className="col p-0">
                               <label
                                 className="AS1checkbox MensLabel"
@@ -1439,17 +1439,17 @@ const RegEventEditComponent = (props) => {
                                 <span className="AS1checkmark MensCheck"></span>
                                 <span
                                   className="AS1label"
-                                  style={{ textAlign: 'left' }}
+                                  style={{ textAlign: "left" }}
                                 >
-                                  {regDataById.donation_amounts.split(',')[2]}
+                                  {regDataById.donation_amounts.split(",")[2]}
                                 </span>
                               </label>
                             </div>
                           )}
                         </div>
-                        <div className="row" style={{ textAlign: 'left' }}>
+                        <div className="row" style={{ textAlign: "left" }}>
                           <div className="col p-0">
-                            {' '}
+                            {" "}
                             <label
                               className="AS1checkbox MensLabel"
                               htmlFor="JAgeRangeInput"
@@ -1481,10 +1481,10 @@ const RegEventEditComponent = (props) => {
                               className="col-12 "
                               style={{
                                 height: 32,
-                                padding: '4px 8px',
+                                padding: "4px 8px",
                                 borderRadius: 3,
-                                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.2)',
-                                backgroundColor: '#ffffff',
+                                boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
+                                backgroundColor: "#ffffff",
                               }}
                             >
                               <div
@@ -1498,11 +1498,11 @@ const RegEventEditComponent = (props) => {
                                 </div>
                                 <div className="col-10 text-right">
                                   <NumberFormat
-                                    pattern={'[0-9]*'}
+                                    pattern={"[0-9]*"}
                                     displayType="input"
                                     thousandSeparator={true}
                                     placeholder="Enter custom value here.."
-                                    prefix={'$'}
+                                    prefix={"$"}
                                     decimalScale={2}
                                     className="placeholderNumber"
                                     id="LEPrice"
@@ -1511,14 +1511,14 @@ const RegEventEditComponent = (props) => {
                                     value={customDonationAmount}
                                     onChange={(e) =>
                                       setCustomDinationAmount(
-                                        e.target.value.replace('$', '')
+                                        e.target.value.replace("$", "")
                                       )
                                     }
                                     autoComplete="off"
                                     style={{
-                                      outline: 'none',
-                                      border: 'none',
-                                      textAlign: 'right',
+                                      outline: "none",
+                                      border: "none",
+                                      textAlign: "right",
                                     }}
                                   />
                                 </div>
@@ -1549,8 +1549,8 @@ const RegEventEditComponent = (props) => {
                       >
                         {playersDataForPay.discount_amount !== null &&
                         playersDataForPay.discount_voucher !== null
-                          ? 'BACK'
-                          : 'CANCEL'}
+                          ? "BACK"
+                          : "CANCEL"}
                       </button>
                       <button
                         className="btn-sm pb-1 ml-3 apply-discount-modal-right-button "
@@ -1681,21 +1681,21 @@ const RegEventEditComponent = (props) => {
                       <>
                         <h6>Team will be Created. Do you want to continue?</h6>
                         {playerModalLoading && (
-                          <div style={{ color: '#ff2072' }}>Team created</div>
+                          <div style={{ color: "#ff2072" }}>Team created</div>
                         )}
                       </>
                     ) : (
                       <>
                         Do you wish to generate the invoice for the team?
                         {invoiceMessage !== null && inVoice && (
-                          <div style={{ color: '#ff2072' }}>
+                          <div style={{ color: "#ff2072" }}>
                             Team created and Invoice sent
                           </div>
                         )}
                         {invoiceMessage === null &&
                           !inVoice &&
                           playerModalLoading && (
-                            <div style={{ color: '#ff2072' }}>Team created</div>
+                            <div style={{ color: "#ff2072" }}>Team created</div>
                           )}
                       </>
                     )}
@@ -1707,7 +1707,7 @@ const RegEventEditComponent = (props) => {
                         <div className="col-2"></div>
                         <div
                           className="col"
-                          style={{ overflow: 'hidden', wordWrap: 'break-word' }}
+                          style={{ overflow: "hidden", wordWrap: "break-word" }}
                         >
                           <label
                             className="AS1checkbox MensLabel mt-0"
@@ -1725,7 +1725,7 @@ const RegEventEditComponent = (props) => {
                             <span className="AS1checkmark MensCheck"></span>
                             <span
                               className="AS1label"
-                              style={{ textAlign: 'left' }}
+                              style={{ textAlign: "left" }}
                             >
                               Yes
                             </span>
@@ -1733,7 +1733,7 @@ const RegEventEditComponent = (props) => {
                         </div>
                         <div
                           className="col"
-                          style={{ overflow: 'hidden', wordWrap: 'break-word' }}
+                          style={{ overflow: "hidden", wordWrap: "break-word" }}
                         >
                           <label
                             className="AS1checkbox MensLabel mt-0"
@@ -1751,7 +1751,7 @@ const RegEventEditComponent = (props) => {
                             <span className="AS1checkmark MensCheck"></span>
                             <span
                               className="AS1label"
-                              style={{ textAlign: 'left' }}
+                              style={{ textAlign: "left" }}
                             >
                               No
                             </span>
@@ -1806,8 +1806,8 @@ const RegEventEditComponent = (props) => {
                         {regDataById.donation_amounts === null &&
                         (playersDataForPay.discount_amount === null ||
                           playersDataForPay.discount_voucher === null)
-                          ? 'CANCEL'
-                          : 'BACK'}
+                          ? "CANCEL"
+                          : "BACK"}
                       </button>
                       <button
                         className="btn-sm pb-1 ml-3 apply-discount-modal-right-button "
@@ -1819,28 +1819,28 @@ const RegEventEditComponent = (props) => {
                             players: playersDataForPay.players,
                           });
                           playersDataForPay.discount_applied ===
-                          'discount per team'
+                          "discount per team"
                             ? handleCheckout(
                                 Number(
                                   donation1
                                     ? playersDataForPay.registration_amount +
                                         Number(
                                           regDataById.donation_amounts.split(
-                                            ','
+                                            ","
                                           )[0]
                                         )
                                     : donation2
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[1]
                                       )
                                     : donation3
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[2]
                                       )
                                     : customDonation
@@ -1852,19 +1852,19 @@ const RegEventEditComponent = (props) => {
                                   donation1
                                     ? Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[0]
                                       )
                                     : donation2
                                     ? Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[1]
                                       )
                                     : donation3
                                     ? Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[2]
                                       )
                                     : customDonation
@@ -1872,7 +1872,7 @@ const RegEventEditComponent = (props) => {
                                     : null
                                 ) * 100,
                                 props.match.params.id,
-                                localStorage.getItem('id'),
+                                localStorage.getItem("id"),
                                 playersDataForPay.team_id,
                                 parseInt(
                                   playersDataForPay.discount_amount !== null
@@ -1884,7 +1884,7 @@ const RegEventEditComponent = (props) => {
                                 playersDataForPay.name,
                                 playersDataForPay.division_id,
                                 playersDataForPay.waiting_no,
-                                apply ? 'yes' : 'no',
+                                apply ? "yes" : "no",
                                 playersDataForPay.discount_voucher
                               )
                             : handleCheckoutPlayers(
@@ -1893,21 +1893,21 @@ const RegEventEditComponent = (props) => {
                                     ? playersDataForPay.registration_amount +
                                         Number(
                                           regDataById.donation_amounts.split(
-                                            ','
+                                            ","
                                           )[0]
                                         )
                                     : donation2
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[1]
                                       )
                                     : donation3
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[2]
                                       )
                                     : customDonation
@@ -1919,19 +1919,19 @@ const RegEventEditComponent = (props) => {
                                   donation1
                                     ? Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[0]
                                       )
                                     : donation2
                                     ? Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[1]
                                       )
                                     : donation3
                                     ? Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[2]
                                       )
                                     : customDonation
@@ -1939,7 +1939,7 @@ const RegEventEditComponent = (props) => {
                                     : null
                                 ) * 100,
                                 props.match.params.id,
-                                localStorage.getItem('id'),
+                                localStorage.getItem("id"),
                                 playersDataForPay.team_id,
                                 parseInt(
                                   playersDataForPay.discount_amount !== null
@@ -1951,8 +1951,8 @@ const RegEventEditComponent = (props) => {
                                 playersDataForPay.name,
                                 playersDataForPay.division_id,
                                 playersDataForPay.waiting_no,
-                                one ? 'yes' : 'no',
-                                two ? 'yes' : 'no',
+                                one ? "yes" : "no",
+                                two ? "yes" : "no",
                                 playersDataForPay.discount_voucher
                               );
                           setModalScreen3(true);
@@ -1981,7 +1981,7 @@ const RegEventEditComponent = (props) => {
                     onClick={() => console.log(playersDataForPay)}
                   >
                     {invoiceMessage !== null && inVoice && (
-                      <div style={{ color: '#ff2072' }}>{invoiceMessage}</div>
+                      <div style={{ color: "#ff2072" }}>{invoiceMessage}</div>
                     )}
                     <div>Team will be created.</div>
                   </div>
@@ -1989,7 +1989,7 @@ const RegEventEditComponent = (props) => {
                     <div className="row p-0 m-0 pt-4">
                       <div
                         className="col"
-                        style={{ overflow: 'hidden', wordWrap: 'break-word' }}
+                        style={{ overflow: "hidden", wordWrap: "break-word" }}
                       >
                         Do you wish to continue?
                       </div>
@@ -2019,8 +2019,8 @@ const RegEventEditComponent = (props) => {
                         {regDataById.donation_amounts === null &&
                         (playersDataForPay.discount_amount === null ||
                           playersDataForPay.discount_voucher === null)
-                          ? 'CANCEL'
-                          : 'BACK'}
+                          ? "CANCEL"
+                          : "BACK"}
                       </button>
                       <button
                         className="btn-sm pb-1 ml-3 apply-discount-modal-right-button "
@@ -2032,28 +2032,28 @@ const RegEventEditComponent = (props) => {
                             players: playersDataForPay.players,
                           });
                           playersDataForPay.discount_applied ===
-                          'discount per team'
+                          "discount per team"
                             ? handleCheckout(
                                 Number(
                                   donation1
                                     ? playersDataForPay.registration_amount +
                                         Number(
                                           regDataById.donation_amounts.split(
-                                            ','
+                                            ","
                                           )[0]
                                         )
                                     : donation2
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[1]
                                       )
                                     : donation3
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[2]
                                       )
                                     : customDonation
@@ -2062,7 +2062,7 @@ const RegEventEditComponent = (props) => {
                                     : playersDataForPay.registration_amount
                                 ) * 100,
                                 props.match.params.id,
-                                localStorage.getItem('id'),
+                                localStorage.getItem("id"),
                                 playersDataForPay.team_id,
                                 parseInt(
                                   playersDataForPay.discount_amount !== null
@@ -2074,7 +2074,7 @@ const RegEventEditComponent = (props) => {
                                 playersDataForPay.name,
                                 playersDataForPay.division_id,
                                 playersDataForPay.waiting_no,
-                                apply ? 'yes' : 'no',
+                                apply ? "yes" : "no",
                                 playersDataForPay.discount_voucher
                               )
                             : handleCheckoutPlayers(
@@ -2083,21 +2083,21 @@ const RegEventEditComponent = (props) => {
                                     ? playersDataForPay.registration_amount +
                                         Number(
                                           regDataById.donation_amounts.split(
-                                            ','
+                                            ","
                                           )[0]
                                         )
                                     : donation2
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[1]
                                       )
                                     : donation3
                                     ? playersDataForPay.registration_amount +
                                       Number(
                                         regDataById.donation_amounts.split(
-                                          ','
+                                          ","
                                         )[2]
                                       )
                                     : customDonation
@@ -2106,7 +2106,7 @@ const RegEventEditComponent = (props) => {
                                     : playersDataForPay.registration_amount
                                 ) * 100,
                                 props.match.params.id,
-                                localStorage.getItem('id'),
+                                localStorage.getItem("id"),
                                 playersDataForPay.team_id,
                                 parseInt(
                                   playersDataForPay.discount_amount !== null
@@ -2118,8 +2118,8 @@ const RegEventEditComponent = (props) => {
                                 playersDataForPay.name,
                                 playersDataForPay.division_id,
                                 playersDataForPay.waiting_no,
-                                one ? 'yes' : 'no',
-                                two ? 'yes' : 'no',
+                                one ? "yes" : "no",
+                                two ? "yes" : "no",
                                 playersDataForPay.discount_voucher
                               );
                           setModalScreen4(true);
@@ -2148,7 +2148,7 @@ const RegEventEditComponent = (props) => {
           )}
           <div
             className={`container regEventEdit text-center px-5 ${
-              editAddPlayerLoading && 'avoid-clicks'
+              editAddPlayerLoading && "avoid-clicks"
             }`}
           >
             <div className="row mx-0 px-5">
@@ -2187,12 +2187,12 @@ const RegEventEditComponent = (props) => {
                     {regDataById.street_address}
                   </div>
                   <div className="col-12 text-left mx-0 pl-3 reg-team-edit-address mb-2">
-                    {regDataById.city},{regDataById.state_code}{' '}
+                    {regDataById.city},{regDataById.state_code}{" "}
                     {regDataById.zip}
                   </div>
                   <div
                     className="col-12 text-center mt-4 mb-5"
-                    style={{ color: '#ff2072' }}
+                    style={{ color: "#ff2072" }}
                     ref={event_name_error}
                   >
                     {stripeError !== null && stripeError}
@@ -2207,7 +2207,7 @@ const RegEventEditComponent = (props) => {
                     expandIcon={({ isActive }) => (
                       <span
                         className={
-                          isActive ? 'reg-rotate mt-2' : 'reg-no-rotate mt-2'
+                          isActive ? "reg-rotate mt-2" : "reg-no-rotate mt-2"
                         }
                       >
                         <img src={menuchevrondownicon} alt="" />
@@ -2225,28 +2225,28 @@ const RegEventEditComponent = (props) => {
                             <div className="col-sm-10 ">
                               <div
                                 className="row"
-                                style={{ padding: '0px', margin: '0px' }}
+                                style={{ padding: "0px", margin: "0px" }}
                               >
                                 <hr
                                   className="col-sm-4"
                                   style={{
                                     height: 1,
-                                    backgroundColor: '#333333',
+                                    backgroundColor: "#333333",
                                     border: 0,
                                   }}
                                 />
                                 <span
                                   className="col-sm-4 text-center"
-                                  style={{ marginTop: '6px', padding: '0px' }}
+                                  style={{ marginTop: "6px", padding: "0px" }}
                                 >
                                   {data.spots}
                                 </span>
                                 <hr
                                   className="col-sm-4"
-                                  style={{ paddingRight: '10px' }}
+                                  style={{ paddingRight: "10px" }}
                                   style={{
                                     height: 1,
-                                    backgroundColor: '#333333',
+                                    backgroundColor: "#333333",
                                     border: 0,
                                   }}
                                 />
@@ -2259,7 +2259,7 @@ const RegEventEditComponent = (props) => {
                         <div className="row">
                           <div
                             className="col-12 text-right"
-                            style={{ marginBottom: '5px' }}
+                            style={{ marginBottom: "5px" }}
                           >
                             <RegEventDropDown>
                               <li
@@ -2280,10 +2280,10 @@ const RegEventEditComponent = (props) => {
                               <div className="row mx-0 px-0 d-flex justify-content-between">
                                 <div className="col-2 mx-0 px-0 reg-event-team-num d-flex align-items-center">
                                   {team.team_name}
-                                  {team.waiting >= 1 && ' - Waiting'}
+                                  {team.waiting >= 1 && " - Waiting"}
                                 </div>
                                 <div className="col-5 mx-0 px-0 reg-event-team-num d-flex align-items-center">
-                                  {team.status !== 'Paid' &&
+                                  {team.status !== "Paid" &&
                                     team.status !== undefined &&
                                     team.status !== null &&
                                     team.waiting === 0 && (
@@ -2291,16 +2291,16 @@ const RegEventEditComponent = (props) => {
                                         <div
                                           className="lower-back-button w-50 ml-auto"
                                           style={
-                                            team.status === 'Reminder sent'
+                                            team.status === "Reminder sent"
                                               ? {
                                                   opacity: 0.5,
-                                                  cursor: 'not-allowed',
+                                                  cursor: "not-allowed",
                                                 }
                                               : { opacity: 1 }
                                           }
                                           onClick={async () => {
                                             console.log(team.status);
-                                            if (team.status === 'UnPaid') {
+                                            if (team.status === "UnPaid") {
                                               await remindPaymentForTeam(
                                                 team.team_id
                                               );
@@ -2311,15 +2311,15 @@ const RegEventEditComponent = (props) => {
                                           }}
                                         >
                                           <span className="lower-back-button-text">
-                                            {team.status === 'UnPaid'
-                                              ? 'Remind'
-                                              : team.status === 'Paid'
-                                              ? 'Paid'
-                                              : 'Reminder Sent'}
+                                            {team.status === "UnPaid"
+                                              ? "Remind"
+                                              : team.status === "Paid"
+                                              ? "Paid"
+                                              : "Reminder Sent"}
                                           </span>
                                         </div>
                                         <button
-                                          style={{ display: 'none' }}
+                                          style={{ display: "none" }}
                                           type="button"
                                           id="checkout-button"
                                           role="link"
@@ -2403,7 +2403,7 @@ const RegEventEditComponent = (props) => {
                                                 setSearchData(null);
                                                 await setloading(true);
                                                 await handleSearchChange(
-                                                  ' ',
+                                                  " ",
                                                   regDataById.division[index2]
                                                     .division_id,
                                                   team.team_id
@@ -2439,7 +2439,7 @@ const RegEventEditComponent = (props) => {
                                               <hr
                                                 style={{
                                                   height: 1,
-                                                  backgroundColor: '#d8d8d8',
+                                                  backgroundColor: "#d8d8d8",
                                                   marginTop: 7,
                                                 }}
                                               />
@@ -2454,7 +2454,7 @@ const RegEventEditComponent = (props) => {
                                                       className="container row m-0 hover-list p-0"
                                                       onClick={async () => {
                                                         console.log(
-                                                          '1 player left'
+                                                          "1 player left"
                                                         );
                                                         setWaitingTeam(
                                                           team.waiting
@@ -2465,7 +2465,7 @@ const RegEventEditComponent = (props) => {
                                                           player.avp_id,
                                                           player.points.replace(
                                                             /,/g,
-                                                            ''
+                                                            ""
                                                           ),
                                                           player.name,
                                                           data.division_id,
@@ -2478,11 +2478,11 @@ const RegEventEditComponent = (props) => {
                                                             .concat({
                                                               first_name:
                                                                 player.name.split(
-                                                                  ' '
+                                                                  " "
                                                                 )[0],
                                                               last_name:
                                                                 player.name.split(
-                                                                  ' '
+                                                                  " "
                                                                 )[1],
                                                             }),
                                                           regDataById.division[
@@ -2503,7 +2503,7 @@ const RegEventEditComponent = (props) => {
                                                           ].discount_voucher
                                                         );
                                                         await setloading(false);
-                                                        handleSearchChange(' ');
+                                                        handleSearchChange(" ");
                                                       }}
                                                     >
                                                       <div
@@ -2521,11 +2521,11 @@ const RegEventEditComponent = (props) => {
                                                           }
                                                           src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${player.pic}`}
                                                           style={{
-                                                            borderRadius: '50%',
+                                                            borderRadius: "50%",
                                                             width: 25,
                                                             height: 25,
                                                             backgroundColor:
-                                                              'black',
+                                                              "black",
                                                           }}
                                                         />
                                                       </div>
@@ -2565,12 +2565,12 @@ const RegEventEditComponent = (props) => {
                                           <div
                                             className="col-1 mx-0 px-0 d-flex align-items-center justify-content-center"
                                             onClick={async () => {
-                                              console.log('corss clicked');
+                                              console.log("corss clicked");
                                               //changeArray(ind, index3, index2)
                                               //setOpenModal(true)
                                               // console.log(ind, index3, index2);
                                               var poi =
-                                                player.points.split(' ');
+                                                player.points.split(" ");
                                               // console.log({
                                               //   team_id: team.team_id,
                                               //   avp_id: player.avp_id,
@@ -2587,9 +2587,9 @@ const RegEventEditComponent = (props) => {
                                               if (countPlayer === 1) {
                                                 if (
                                                   team.status == null ||
-                                                  team.status === 'UnPaid' ||
+                                                  team.status === "UnPaid" ||
                                                   team.status ===
-                                                    'Reminder sent'
+                                                    "Reminder sent"
                                                 ) {
                                                   setPaidStatus(false);
                                                 } else {
@@ -2602,7 +2602,7 @@ const RegEventEditComponent = (props) => {
                                                     teamPaymentDataAmount ===
                                                     null
                                                   ) {
-                                                    setCustomRefundAmount('0');
+                                                    setCustomRefundAmount("0");
                                                   } else {
                                                     setCustomRefundAmount(
                                                       teamPaymentDataAmount
@@ -2633,14 +2633,14 @@ const RegEventEditComponent = (props) => {
                                               modal: {
                                                 borderRadius: 12,
                                                 boxShadow:
-                                                  '0 1 2 0 rgba(0,0,0,0.2',
+                                                  "0 1 2 0 rgba(0,0,0,0.2",
                                                 margin: 0,
                                                 padding: 0,
                                                 zIndex: 1000000,
                                                 marginTop: 20,
                                               },
                                               overlay: {
-                                                background: '#000000',
+                                                background: "#000000",
                                                 opacity: 0.5,
                                               },
                                             }}
@@ -2649,8 +2649,8 @@ const RegEventEditComponent = (props) => {
                                               style={{
                                                 width: 398,
                                                 height: 242,
-                                                position: 'relative',
-                                                overflow: 'hidden',
+                                                position: "relative",
+                                                overflow: "hidden",
                                                 borderRadius: 12,
                                               }}
                                               className="row p-0 m-0"
@@ -2664,7 +2664,7 @@ const RegEventEditComponent = (props) => {
                                                   <div
                                                     className="reg-modal-button"
                                                     style={{
-                                                      cursor: 'pointer',
+                                                      cursor: "pointer",
                                                     }}
                                                     onClick={() => {
                                                       setOpenModal(false);
@@ -2675,7 +2675,7 @@ const RegEventEditComponent = (props) => {
                                                   <div
                                                     className="reg-modal-button yes-button"
                                                     style={{
-                                                      cursor: 'pointer',
+                                                      cursor: "pointer",
                                                     }}
                                                     onClick={() =>
                                                       removePlayerFromTeamFunction(
@@ -2806,7 +2806,7 @@ const RegEventEditComponent = (props) => {
         styles={{
           modal: {
             borderRadius: 12,
-            boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+            boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
             margin: 0,
             padding: 0,
           },
@@ -2816,13 +2816,13 @@ const RegEventEditComponent = (props) => {
           className="text-center"
           style={{
             marginTop: 62,
-            fontFamily: 'Futura',
+            fontFamily: "Futura",
             fontSize: 14,
-            fontWeight: 'bold',
-            fontStretch: 'normal',
-            fontStyle: 'normal',
-            letterSpacing: 'normal',
-            color: '#4a4a4a',
+            fontWeight: "bold",
+            fontStretch: "normal",
+            fontStyle: "normal",
+            letterSpacing: "normal",
+            color: "#4a4a4a",
           }}
         >
           Are your sure you want to cancel?
@@ -2833,12 +2833,12 @@ const RegEventEditComponent = (props) => {
             width: 398,
             marginTop: 8,
             fontSize: 10,
-            fontFamily: 'Futura',
-            fontWeight: 'bold',
-            fontStretch: 'normal',
-            fontStyle: 'normal',
-            letterSpacing: 'normal',
-            color: '#9b9b9b',
+            fontFamily: "Futura",
+            fontWeight: "bold",
+            fontStretch: "normal",
+            fontStyle: "normal",
+            letterSpacing: "normal",
+            color: "#9b9b9b",
           }}
         >
           All changes will not be saved and progress will be lost.
@@ -2854,14 +2854,14 @@ const RegEventEditComponent = (props) => {
               id="white-button-hover"
               onClick={onCloseModal}
               style={{
-                border: '1px solid yellow',
+                border: "1px solid yellow",
                 borderRadius: 15,
                 width: 112,
                 height: 24,
                 fontSize: 10,
-                backgroundColor: '#ffffff',
+                backgroundColor: "#ffffff",
                 outline: 0,
-                color: '#4a4a4a',
+                color: "#4a4a4a",
               }}
             >
               NO, CONTINUE
@@ -2871,14 +2871,14 @@ const RegEventEditComponent = (props) => {
               id="yellow-button-hover"
               onClick={() => props.history.goBack()}
               style={{
-                border: '1px solid yellow',
+                border: "1px solid yellow",
                 borderRadius: 15,
                 width: 112,
                 height: 24,
                 fontSize: 10,
-                backgroundColor: '#ffd420',
+                backgroundColor: "#ffd420",
                 outline: 0,
-                color: '#4a4a4a',
+                color: "#4a4a4a",
               }}
             >
               YES, CANCEL

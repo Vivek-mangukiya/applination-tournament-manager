@@ -8,11 +8,11 @@ import {
   DASHBOARD_TYPE_7,
   DASHBOARD_TYPE_ERROR,
   DASHBOARD_TYPE_LOADING,
-} from '../Types';
-import DashboardContext from './dashboardContext';
-import dashboardReducer from './dashboardReducer';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
+} from "../Types";
+import DashboardContext from "./dashboardContext";
+import dashboardReducer from "./dashboardReducer";
+import React, { useReducer } from "react";
+import { API } from "../../Utils/API";
 
 const DashboardState = (props) => {
   const initialState = {
@@ -42,7 +42,7 @@ const DashboardState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.response.data.errorMessage);
+        console.log("Error", error.response.data.errorMessage);
         dispatch({
           type: DASHBOARD_TYPE_ERROR,
           payload: error.response.data.errorMessage,
@@ -61,7 +61,7 @@ const DashboardState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
         dispatch({
           type: DASHBOARD_TYPE_ERROR,
           payload: error.response.data.errorMessage,
@@ -80,7 +80,7 @@ const DashboardState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
         dispatch({
           type: DASHBOARD_TYPE_ERROR,
           payload: error.response.data.errorMessage,
@@ -99,7 +99,7 @@ const DashboardState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
         dispatch({
           type: DASHBOARD_TYPE_ERROR,
           payload: error.response.data.errorMessage,
@@ -118,7 +118,7 @@ const DashboardState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
         dispatch({
           type: DASHBOARD_TYPE_ERROR,
           payload: error.response.data.errorMessage,
@@ -137,7 +137,7 @@ const DashboardState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
         dispatch({
           type: DASHBOARD_TYPE_ERROR,
           payload: error.response.data.errorMessage,
@@ -156,7 +156,7 @@ const DashboardState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
         dispatch({
           type: DASHBOARD_TYPE_ERROR,
           payload: error.response.data.errorMessage,

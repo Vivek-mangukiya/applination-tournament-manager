@@ -10,12 +10,12 @@ import {
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_LOADING,
   FORGOT_PASS_MSG_NULL,
-} from '../Types';
-import AuthContext from './authContext';
-import authReducer from './authReducer';
-import axios from 'axios';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
+} from "../Types";
+import AuthContext from "./authContext";
+import authReducer from "./authReducer";
+import axios from "axios";
+import React, { useReducer } from "react";
+import { API, API2 } from "../../Utils/API";
 // import jwt from 'jsonwebtoken';
 
 const AuthState = (props) => {
@@ -26,7 +26,7 @@ const AuthState = (props) => {
     user: null,
     error: false,
     profileStatus: null,
-    newManager: '',
+    newManager: "",
     sidebarDisabled: false,
     disabledMessage: null,
     loginFailMessage: null,
@@ -42,18 +42,18 @@ const AuthState = (props) => {
   //actions (state)
   //Login User
   const login = async (formData) => {
-    let accessToken = '';
+    let accessToken = "";
     console.log(formData);
     const actualData = new FormData();
-    actualData.append('data', JSON.stringify(formData));
+    actualData.append("data", JSON.stringify(formData));
     API.post(`/loginPromoter`, actualData)
       .then((response) => {
         if (response) {
           console.log(response);
           accessToken = response.data.data.token;
-          localStorage.setItem('token', accessToken);
+          localStorage.setItem("token", accessToken);
           // console.log(jwt.decode(accessToken));
-          console.log('source_status', response.data.completeProfileStatus);
+          console.log("source_status", response.data.completeProfileStatus);
           dispatch({
             type: PROFILE_STATUS,
             payload: response.data,
@@ -66,7 +66,7 @@ const AuthState = (props) => {
       })
       .catch((error) => {
         // if(response.data.success==='fail') {
-        console.log('error:', error.response);
+        console.log("error:", error.response);
         console.log(error.response.status);
         console.log(
           error.response.data.errorMessage[
@@ -94,7 +94,7 @@ const AuthState = (props) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     dispatch({
       type: LOGOUT,
     });
@@ -132,7 +132,7 @@ const AuthState = (props) => {
     forgotPassLoad();
     console.log(formData);
     const actualData = new FormData();
-    actualData.append('email_id', formData);
+    actualData.append("email_id", formData);
     API.post(`/forgotPassword`, actualData)
       .then((response) => {
         if (response) {
@@ -147,7 +147,7 @@ const AuthState = (props) => {
               type: FORGOT_PASS_MSG_NULL,
             });
           }, [5000]);
-          props.history.push('/');
+          props.history.push("/");
         }
       })
       .catch((error) => {

@@ -69,13 +69,13 @@ import {
   DIVISION_DATA_TO_NULL,
   CHANGE_EARLY_BIRD_DATE,
   TEMPLATE_NAME_TAKEN_FALSE,
-} from '../Types';
-import EventContext from './eventContext';
-import eventReducer from './eventReducer';
-import axios from 'axios';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
-import { ToastContainer, toast } from 'react-toastify';
+} from "../Types";
+import EventContext from "./eventContext";
+import eventReducer from "./eventReducer";
+import axios from "axios";
+import React, { useReducer } from "react";
+import { API } from "../../Utils/API";
+import { ToastContainer, toast } from "react-toastify";
 
 const EventState = (props) => {
   const initialState = {
@@ -93,56 +93,56 @@ const EventState = (props) => {
       {
         id: 1,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Tallah123',
-        date: 'Dominik',
-        division: 'AVP87385',
-        finish: 'tallahdominik@gmail.com',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Tallah123",
+        date: "Dominik",
+        division: "AVP87385",
+        finish: "tallahdominik@gmail.com",
       },
       {
         id: 2,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Jane',
-        date: 'Smith',
-        division: 'AVP94832',
-        finish: 'janesmith@gmail.com',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Jane",
+        date: "Smith",
+        division: "AVP94832",
+        finish: "janesmith@gmail.com",
       },
       {
         id: 3,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Abagail',
-        date: 'Akachi',
-        division: 'AVP04940',
-        finish: 'abagailakachi@gmail.com',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Abagail",
+        date: "Akachi",
+        division: "AVP04940",
+        finish: "abagailakachi@gmail.com",
       },
       {
         id: 4,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Mo',
-        date: 'Campos',
-        division: 'AVP39593',
-        finish: 'mocampos@gmail.com',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Mo",
+        date: "Campos",
+        division: "AVP39593",
+        finish: "mocampos@gmail.com",
       },
       {
         id: 5,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Mark',
-        date: 'Togol',
-        division: 'AVP87385',
-        finish: 'marktogol@gmail.com',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Mark",
+        date: "Togol",
+        division: "AVP87385",
+        finish: "marktogol@gmail.com",
       },
       {
         id: 6,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Tim',
-        date: 'Datoulmen',
-        division: 'AVP94832',
-        finish: 'timdatoulmen@gmail.com',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Tim",
+        date: "Datoulmen",
+        division: "AVP94832",
+        finish: "timdatoulmen@gmail.com",
       },
     ],
     filteredHistoryData: null,
@@ -164,27 +164,27 @@ const EventState = (props) => {
     // get all  tournaments data
     getAllTournamentsData: [],
 
-    template_id: '',
-    age_bracket: '',
-    div_name: '',
-    early_bird: 'Yes',
-    early_bird_date: '',
-    early_bird_amount: '',
-    late_amount: '',
-    registration_amount: '',
+    template_id: "",
+    age_bracket: "",
+    div_name: "",
+    early_bird: "Yes",
+    early_bird_date: "",
+    early_bird_amount: "",
+    late_amount: "",
+    registration_amount: "",
     age_range: [],
     gender: [],
     skill_level: [],
-    discount_amount: '',
-    discount_text: '',
+    discount_amount: "",
+    discount_text: "",
     discount_applied: 1,
     discount_voucher: 1,
-    format: '',
-    team_size: '',
-    save_as_template: '',
+    format: "",
+    team_size: "",
+    save_as_template: "",
     eventListLoading: false,
-    divisionData: '',
-    selectedTemplateName: '',
+    divisionData: "",
+    selectedTemplateName: "",
     changedDivisionData: {},
     templateNameCounter: false,
 
@@ -220,7 +220,7 @@ const EventState = (props) => {
   //actions
 
   const token =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFud2lucy5pblwvYXBpXC9sb2dpblByb21vdGVyIiwiaWF0IjoxNjA4MTI3MzgxLCJleHAiOjE2MDg3MzIxODEsIm5iZiI6MTYwODEyNzM4MSwianRpIjoiS3ZlVkVQUkVIN080MjhicCIsInN1YiI6MTAwMDA5MTgxLCJwcnYiOiIwZDNjYTZiNGM4ODM5NTc4ZWI3NjU4NGE5MDljNWIzMzEzMWU3MjE1IiwiaWQiOjEwMDAwOTE4MSwiZW1haWwiOiJqYW1lc2JvbmQxMDFAZ21haWwuY29tIn0.0ZikdrseCohegUk0vzcg-ln7h_R3qRNbxd1AXIEwIWg';
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFud2lucy5pblwvYXBpXC9sb2dpblByb21vdGVyIiwiaWF0IjoxNjA4MTI3MzgxLCJleHAiOjE2MDg3MzIxODEsIm5iZiI6MTYwODEyNzM4MSwianRpIjoiS3ZlVkVQUkVIN080MjhicCIsInN1YiI6MTAwMDA5MTgxLCJwcnYiOiIwZDNjYTZiNGM4ODM5NTc4ZWI3NjU4NGE5MDljNWIzMzEzMWU3MjE1IiwiaWQiOjEwMDAwOTE4MSwiZW1haWwiOiJqYW1lc2JvbmQxMDFAZ21haWwuY29tIn0.0ZikdrseCohegUk0vzcg-ln7h_R3qRNbxd1AXIEwIWg";
 
   const eventAddressesFun = async () => {
     // const config = {
@@ -232,14 +232,14 @@ const EventState = (props) => {
     // const res = await axios.get('http://fanwins.in/api/getCourts', config);
     API.get(`/getCourts?zip=`)
       .then((res) => {
-        console.log('res.data Courts', res.data);
+        console.log("res.data Courts", res.data);
         dispatch({
           type: GET_EVENT_ADDRESSES,
           payload: res.data,
         });
       })
       .catch((error) => {
-        console.log('Error'.error);
+        console.log("Error".error);
       })
       .catch((error) => {
         console.log(error);
@@ -253,17 +253,17 @@ const EventState = (props) => {
     //   payload: text,
     // });
     // console.log(state.filteredAddresses);
- 
-   await API.get(`/getCourts?zip=${text}`)
+
+    await API.get(`/getCourts?zip=${text}`)
       .then((res) => {
-        console.log('res.data Courts', res.data);
+        console.log("res.data Courts", res.data);
         dispatch({
           type: FILTER_ADDRESSES,
           payload: res.data,
         });
       })
       .catch((error) => {
-        console.log('Error',error);
+        console.log("Error", error);
       })
       .catch((error) => {
         console.log(error);
@@ -380,7 +380,7 @@ const EventState = (props) => {
   };
 
   const UpdateEventId = (id) => {
-    console.log('EVENTID IN STATE:', id);
+    console.log("EVENTID IN STATE:", id);
     dispatch({
       type: UPDATE_EVENT_ID,
       payload: id,
@@ -389,14 +389,14 @@ const EventState = (props) => {
   };
 
   const clearTournamentData = () => {
-    console.log('Clearing tournamentData:', initialState.getTournamentData);
+    console.log("Clearing tournamentData:", initialState.getTournamentData);
     dispatch({
       type: CLEAR_TOURNAMENT_DATA,
     });
   };
 
   const clearTemplateName = () => {
-    console.log('Clearing templateName:', initialState.selectedTemplateName);
+    console.log("Clearing templateName:", initialState.selectedTemplateName);
     dispatch({
       type: CLEAR_TEMPLATE_NAME,
     });
@@ -415,26 +415,26 @@ const EventState = (props) => {
     // console.log(res.data);
     API.get(`/eventDropDowns`)
       .then((res) => {
-        console.log('res.data eventDropDowns', res.data);
+        console.log("res.data eventDropDowns", res.data);
         dispatch({
           type: CALL_EVENT_DROPDOWN_DATA,
           payload: res.data,
         });
       })
       .catch((error) => {
-        console.log('Error'.error);
+        console.log("Error".error);
       });
   };
 
   //create tournament
   const createTournament = async (formData, history) => {
     const actualData = new FormData();
-    actualData.append('data', formData.data);
-    actualData.append('tournament_pic', formData.tournament_pic);
-    actualData.append('cover_photo', formData.cover_photo);
-    actualData.append('tournament_doc', formData.tournament_doc);
+    actualData.append("data", formData.data);
+    actualData.append("tournament_pic", formData.tournament_pic);
+    actualData.append("cover_photo", formData.cover_photo);
+    actualData.append("tournament_doc", formData.tournament_doc);
 
-    await API.post('/createTournament', actualData)
+    await API.post("/createTournament", actualData)
       .then((response) => {
         // if (!response.ok)
         // {
@@ -445,7 +445,7 @@ const EventState = (props) => {
         //   })
         //   throw response
         // }
-        console.log('Create tournament api response', response.data);
+        console.log("Create tournament api response", response.data);
         dispatch({
           type: CREATE_TOURNAMENT,
           payload: response.data,
@@ -453,7 +453,7 @@ const EventState = (props) => {
         history.push(`/eventProfileSaved/${response.data.TournamentId}`);
       })
       .catch((error) => {
-        console.log('Error', error.response);
+        console.log("Error", error.response);
         dispatch({
           type: CREATE_TOURNAMENT_ERROR,
           payload: error.response && error.response.data.errorMessage,
@@ -472,22 +472,22 @@ const EventState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
       });
   };
 
   // put request edit tournamant by id
   const editTournament = async (id, formData) => {
     const actualData = new FormData();
-    actualData.append('data', formData.data);
-    if (formData.tournament_pic !== '') {
-      actualData.append('tournament_pic', formData.tournament_pic);
+    actualData.append("data", formData.data);
+    if (formData.tournament_pic !== "") {
+      actualData.append("tournament_pic", formData.tournament_pic);
     }
-    if (formData.cover_photo !== '') {
-      actualData.append('cover_photo', formData.cover_photo);
+    if (formData.cover_photo !== "") {
+      actualData.append("cover_photo", formData.cover_photo);
     }
-    if (formData.tournament_doc !== '') {
-      actualData.append('tournament_doc', formData.tournament_doc);
+    if (formData.tournament_doc !== "") {
+      actualData.append("tournament_doc", formData.tournament_doc);
     }
 
     await API.post(`/updateTournament/${id}`, actualData)
@@ -495,7 +495,7 @@ const EventState = (props) => {
         console.log(res.data);
       })
       .catch((error) => {
-        console.log('Error in Update tournament', error.response);
+        console.log("Error in Update tournament", error.response);
         dispatch({
           type: EDIT_EVENT_ERROR,
           payload: error.response && error.response.data.errorMessage,
@@ -507,14 +507,14 @@ const EventState = (props) => {
   const saveAddress = async (formData) => {
     // const actualData = new FormData();
     // actualData.append('data',formData.data);
-    await API.post('/createCourt', formData)
+    await API.post("/createCourt", formData)
       .then((res) => {
         console.log(res.data);
         dispatch({
           type: SET_ADDRESS_ID,
           payload: res.data,
         });
-        toast.dark('Court Added Successfully!!');
+        toast.dark("Court Added Successfully!!");
       })
       .catch((error) => {
         console.log(error.response.data.errorMessage);
@@ -531,7 +531,7 @@ const EventState = (props) => {
             type: SET_ADDRESS_ID_ERROR,
             payload: {
               errMsg: error.response.data.errorMessage,
-              addressId: '',
+              addressId: "",
             },
           });
         }, 2000);
@@ -541,20 +541,20 @@ const EventState = (props) => {
   //add division data
   const addDivision = async (data) => {
     const actualData = new FormData();
-    actualData.append('data', data);
-    await API.post('/addDivisions', actualData)
+    actualData.append("data", data);
+    await API.post("/addDivisions", actualData)
       .then((res) => {
-        console.log('addDivisions response', res.data);
+        console.log("addDivisions response", res.data);
       })
       .catch((error) => {
-        console.log('Error in addDivision', error);
+        console.log("Error in addDivision", error);
       });
   };
 
   //get all tournaments list
   const getAllTournaments = async () => {
     setEventLoading();
-    await API.get('/getAllTournaments')
+    await API.get("/getAllTournaments")
       .then((response) => {
         //console.log(response.data.tournaments);
         dispatch({
@@ -563,7 +563,7 @@ const EventState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
         dispatch({
           type: GET_TOURNAMENT_ALL_ERROR,
           payload: error,
@@ -583,7 +583,7 @@ const EventState = (props) => {
   };
 
   const sendDivisionDataToEvent = (data) => {
-    console.log('data before calling reducer', data);
+    console.log("data before calling reducer", data);
     dispatch({
       type: SEND_DIVISION_DATA_TO_EVENT,
       payload: data,
@@ -591,33 +591,33 @@ const EventState = (props) => {
   };
 
   const getDivisions = async (id) => {
-    console.log('tournament id is division edit screen:', id);
+    console.log("tournament id is division edit screen:", id);
     await API.get(`/getTournamentDivisions?tournament_id=${id}`)
       // await API.get(`/getTournamentDivisions?tournament_id=3978`)
       .then((response) => {
-        console.log('GetDivision:', response.data);
+        console.log("GetDivision:", response.data);
         dispatch({
           type: GET_TOURNAMENT_DIVISIONS,
           payload: response.data,
         });
       })
       .catch((error) => {
-        console.log('Error:', error.message);
+        console.log("Error:", error.message);
       });
   };
 
   const editDivisions = async (formData, history, id) => {
     const actualData = new FormData();
-    console.log('Formdata in reducer', formData);
-    actualData.append('data', formData);
+    console.log("Formdata in reducer", formData);
+    actualData.append("data", formData);
     await API.post(`/updateDivisions`, actualData)
       .then((res) => {
-        console.log('editDivisions response:', res);
+        console.log("editDivisions response:", res);
         // history.goBack();
         history.push(`/TemplateDivisionSavedMain/${id}`);
       })
       .catch((error) => {
-        console.log('Error in Update Division', error.response);
+        console.log("Error in Update Division", error.response);
         dispatch({
           type: EDIT_DIVISION_ERROR,
           payload: error.response && error.response.data.errorMessage,
@@ -627,15 +627,15 @@ const EventState = (props) => {
 
   const editDivisionsBracket = async (formData, history, id) => {
     const actualData = new FormData();
-    console.log('Formdata in reducer', formData);
-    actualData.append('data', formData);
+    console.log("Formdata in reducer", formData);
+    actualData.append("data", formData);
     await API.post(`/updateDivisions`, actualData)
       .then((res) => {
-        console.log('editDivisions response:', res);
+        console.log("editDivisions response:", res);
         // history.push(`/scores/${id}`);
       })
       .catch((error) => {
-        console.log('Error in Update Division', error.response);
+        console.log("Error in Update Division", error.response);
         dispatch({
           type: EDIT_DIVISION_ERROR,
           payload: error.response && error.response.data.errorMessage,
@@ -644,7 +644,7 @@ const EventState = (props) => {
   };
 
   const onEditDivisionSave = (data) => {
-    console.log('Data in onEditDivisionsSave:', data);
+    console.log("Data in onEditDivisionsSave:", data);
     dispatch({
       type: ON_EDIT_DIVISION_SAVE,
       payload: data,
@@ -654,27 +654,27 @@ const EventState = (props) => {
   const tournamentStatus = async (formData) => {
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     };
     const actualData = new FormData();
-    actualData.append('data', formData.data);
+    actualData.append("data", formData.data);
     const res = await API.post(
       `/setTournamentStatus`,
       actualData
       // config
     );
-    console.log('setTournamentStatus response:', res.data.message);
+    console.log("setTournamentStatus response:", res.data.message);
   };
 
   const checkTemplateName = async (formData) => {
     const actualData = new FormData();
-    actualData.append('data', formData.data);
+    actualData.append("data", formData.data);
     const res = await API.post(`/checkDivTemplate`, actualData);
-    console.log('Response from checkTemplateName:', res);
-    console.log('setTournamentStatus response:', res.data.message);
-    if (res.data.message === 'Sorry,the name is already taken') {
+    console.log("Response from checkTemplateName:", res);
+    console.log("setTournamentStatus response:", res.data.message);
+    if (res.data.message === "Sorry,the name is already taken") {
       dispatch({
         type: TEMPLATE_NAME_TAKEN,
       });
@@ -684,7 +684,7 @@ const EventState = (props) => {
         });
       }, [4000]);
     }
-    if (res.data.message === 'template name can be used') {
+    if (res.data.message === "template name can be used") {
       dispatch({
         type: TEMPLATE_NAME_AVAILABLE,
       });
@@ -732,14 +732,14 @@ const EventState = (props) => {
       // })
       .then((res) => {
         if (!res.ok) {
-          console.log('GenerateSchedule api thrown response:', res.data);
+          console.log("GenerateSchedule api thrown response:", res.data);
           dispatch({
             type: GENERATE_SCHEDULE_RESPONSE,
             payload: res.data,
           });
           throw res;
         }
-        console.log('GenerateSchedule api response:', res.data);
+        console.log("GenerateSchedule api response:", res.data);
         // return response.json()  //we only get here if there is no error
         dispatch({
           type: GENERATE_SCHEDULE_RESPONSE,
@@ -754,7 +754,7 @@ const EventState = (props) => {
         // })
       })
       .catch((err) => {
-        console.log('Generate schedule error:', err, err.response);
+        console.log("Generate schedule error:", err, err.response);
         dispatch({
           type: GENERATE_SCHEDULE_ERROR,
           payload: err,
@@ -777,7 +777,7 @@ const EventState = (props) => {
       .then((res) => {
         if (!res.ok) {
           console.log(
-            'GenerateScheduleForDivision api thrown response:',
+            "GenerateScheduleForDivision api thrown response:",
             res.data
           );
           dispatch({
@@ -786,14 +786,14 @@ const EventState = (props) => {
           });
           throw res;
         }
-        console.log('GenerateScheduleForDivision api response:', res.data);
+        console.log("GenerateScheduleForDivision api response:", res.data);
         dispatch({
           type: GENERATE_SCHEDULE_DIV_RESPONSE,
           payload: res.data,
         });
       })
       .catch((err) => {
-        console.log('Generate schedule division error:', err, err.response);
+        console.log("Generate schedule division error:", err, err.response);
         dispatch({
           type: GENERATE_SCHEDULE_DIV_ERROR,
           payload: err,
@@ -810,13 +810,13 @@ const EventState = (props) => {
   //uploadExcel tournament
   const uploadExcel = async (formData) => {
     const actualData = new FormData();
-    actualData.append('excel', formData);
+    actualData.append("excel", formData);
 
     dispatch({
       type: EXCEL_LOADING,
     });
 
-    await API.post('/admin/uploadDivisionTeam', actualData)
+    await API.post("/admin/uploadDivisionTeam", actualData)
       .then((response) => {
         // if (!response.ok)
         // {
@@ -827,10 +827,10 @@ const EventState = (props) => {
         //   })
         //   throw response
         // }
-        console.log('Create tournament api response', response.data);
+        console.log("Create tournament api response", response.data);
         dispatch({
           type: UPLOAD_EXCEL,
-          payload: 'File Uploaded Successfully',
+          payload: "File Uploaded Successfully",
         });
         setTimeout(() => {
           dispatch({

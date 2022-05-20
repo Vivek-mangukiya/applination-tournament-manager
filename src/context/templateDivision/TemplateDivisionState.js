@@ -1,23 +1,25 @@
-import { SAVED_DIVISION_DATA, 
-  SAVED_POOLS_DATA, 
-  GET_TEMPLATE_BY_ID, 
-  UPDATE_TEMPLATE_ID, 
+import {
+  SAVED_DIVISION_DATA,
+  SAVED_POOLS_DATA,
+  GET_TEMPLATE_BY_ID,
+  UPDATE_TEMPLATE_ID,
   CREATE_DIVISION_TEMPLATE,
   DUPLICATE_DIV_TEMPLATE_ERROR,
-  EDIT_DIV_TEMPLATE_ERROR } from '../Types';
-import TemplateDivisionContext from './templateDivisionContext';
-import templateDivisionReducer from './templateDivisionReducer';
-import API from '../../Utils/API';
-import React, { useReducer } from 'react';
+  EDIT_DIV_TEMPLATE_ERROR,
+} from "../Types";
+import TemplateDivisionContext from "./templateDivisionContext";
+import templateDivisionReducer from "./templateDivisionReducer";
+import { API } from "../../Utils/API";
+import React, { useReducer } from "react";
 
 const TemplateDivisionState = (props) => {
   const initialState = {
     divisionInfo: null,
     templatePoolsInfo: null,
-    templateData:null,
-    templateId:null,
-    duplicateDivTemplateError:null,
-    editDivTemplateError:null,
+    templateData: null,
+    templateId: null,
+    duplicateDivTemplateError: null,
+    editDivTemplateError: null,
   };
 
   const [state, dispatch] = useReducer(templateDivisionReducer, initialState);
@@ -38,19 +40,19 @@ const TemplateDivisionState = (props) => {
     });
   };
 
-  const getTemplate = async (id,type) => {
+  const getTemplate = async (id, type) => {
     // await API.get(`getTemplate?templateId=${id}&type=${type}`).then((res) => {
     await API.get(`getTemplate?templateId=${id}&type=divisions`).then((res) => {
       console.log(res.data);
       dispatch({
         type: GET_TEMPLATE_BY_ID,
-        payload:res.data,
-      })
+        payload: res.data,
+      });
     });
-  }
+  };
 
   const updateTemplateId = (id) => {
-    console.log('NEWID IN STATE:', id);
+    console.log("NEWID IN STATE:", id);
     dispatch({
       type: UPDATE_TEMPLATE_ID,
       payload: id,
@@ -58,54 +60,56 @@ const TemplateDivisionState = (props) => {
   };
 
   const editTemplate = async (id, formData) => {
-    console.log("formData in editTemplate:",formData);
+    console.log("formData in editTemplate:", formData);
     const actualData = new FormData();
-    actualData.append('data',formData.data);
+    actualData.append("data", formData.data);
     const res = await API.post(
       `/updateDivisionTemplate?tempId=${id}`,
       actualData
-    ).catch( err => {
-      console.log("Div template edit error:",err,err.response);
+    ).catch((err) => {
+      console.log("Div template edit error:", err, err.response);
       dispatch({
         type: EDIT_DIV_TEMPLATE_ERROR,
-        payload:err,
-      })
-    })
-    console.log('editTemplate() response:', res && res.data);
-  }
+        payload: err,
+      });
+    });
+    console.log("editTemplate() response:", res && res.data);
+  };
 
   const createDivisionTemplate = async (formData, history) => {
-    console.log("formData in createTemplate:",formData);
+    console.log("formData in createTemplate:", formData);
     const actualData = new FormData();
-    actualData.append('data',formData.data);
-    const res = await API.post(`/createTemplate`,actualData)
-    .then((res)=>{
-      console.log("CreateDivisionTemplate() response:",res.data.templateId)
-      dispatch({
-        type: CREATE_DIVISION_TEMPLATE,
-        payload: res.data.templateId,
-      });
-      history.push(`/templateSaved/${res.data.templateId}`)
-    })
-    .catch( err => {
-      console.log("Create division error:",err,err.response);
-      dispatch({
-        type: DUPLICATE_DIV_TEMPLATE_ERROR,
-        payload:err,
+    actualData.append("data", formData.data);
+    const res = await API.post(`/createTemplate`, actualData)
+      .then((res) => {
+        console.log("CreateDivisionTemplate() response:", res.data.templateId);
+        dispatch({
+          type: CREATE_DIVISION_TEMPLATE,
+          payload: res.data.templateId,
+        });
+        history.push(`/templateSaved/${res.data.templateId}`);
       })
-    })
+      .catch((err) => {
+        console.log("Create division error:", err, err.response);
+        dispatch({
+          type: DUPLICATE_DIV_TEMPLATE_ERROR,
+          payload: err,
+        });
+      });
     // console.log('createDivisionTemplate() response:', res.data);
-  }
+  };
 
   const setTemplateStatus = async (formData) => {
-    console.log("formdata in setTemplateStatus:",formData)
-    await API.get(`/setTemplateStatus?templateId=${formData.data}&type=divisions`)
+    console.log("formdata in setTemplateStatus:", formData);
+    await API.get(
+      `/setTemplateStatus?templateId=${formData.data}&type=divisions`
+    );
     // .then(
-      // () => {
-      //   propsData.push(`/TemplateTable`);
-      // }
+    // () => {
+    //   propsData.push(`/TemplateTable`);
+    // }
     // );
-  }
+  };
 
   return (
     <TemplateDivisionContext.Provider
