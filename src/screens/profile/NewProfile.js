@@ -194,7 +194,7 @@ const NewProfile = (props) => {
                 <div className="first-div">Mobile</div>
                 <div className="last-div ml-auto mr-3">
                   <NumberFormat
-                    // format="#### ### ###"
+                    format="#### ### ###"
                     displayType="input"
                     // customInput={contact}
                     placeholder="5555 555 555"
