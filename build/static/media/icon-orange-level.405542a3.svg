@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <linearGradient id="jptabmuwea" x1="0%" x2="100%" y1="66.257%" y2="33.743%">
+            <stop offset="0%" stop-color="#FFD51D"/>
+            <stop offset="100%" stop-color="#F7981F"/>
+        </linearGradient>
+        <linearGradient id="nkny9jj1zb" x1="100%" x2="0%" y1="45.938%" y2="54.062%">
+            <stop offset="0%" stop-color="#FFD521"/>
+            <stop offset="100%" stop-color="#FFEC42"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="url(#jptabmuwea)" d="M7.92 5.025c.556 0 1.007.45 1.007 1.007v1.993h7.842c1.104 0 2 .895 2 2 0 1.104-.896 2-2 2H8.926v1.993c0 .556-.45 1.007-1.006 1.007-.652 0-1.284-.221-1.794-.627l-3.927-3.124c-.691-.55-.806-1.556-.256-2.248.076-.095.162-.181.257-.257l3.925-3.118c.51-.405 1.143-.626 1.795-.626z" transform="translate(-578 -600) translate(570 590) translate(8 8) translate(0 2) rotate(90 10 10.025)"/>
+                        <path fill="url(#nkny9jj1zb)" d="M16.272 7.522c0 1.115-.905 2.02-2.02 2.02l-7.73-.001v1.919c0 .543-.409.991-.936 1.052l-.084.005-.176-.004c-.65-.04-1.275-.276-1.789-.682C1.17 9.965-.21 8.87-.607 8.544-1.272 8-1.272 8-1.272 7.522c1.282.02 2.84.028 4.674.021l.001-.021h12.869z" transform="translate(-578 -600) translate(570 590) translate(8 8) translate(0 2) rotate(90 7.5 10.022)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
