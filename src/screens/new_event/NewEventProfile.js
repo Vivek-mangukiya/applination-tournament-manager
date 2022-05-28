@@ -1,72 +1,72 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
-import './NewEventProfile.css';
+import React, { useEffect, useState, useContext, useRef } from "react";
+import "./NewEventProfile.css";
 // import clearIcon from '../../assets/images/icons-x-input.svg';
-import ball from '../../assets/images/icon-orange-ball.svg'
-import hamburgerIcon from '../../assets/images/icon-menu-hamburger.svg';
-import downArrow from '../../assets/images/icon-menu-chevron-down.svg';
-import radioButtonIcon from '../../assets/images/button-radio-grey-outline.svg';
-import SubTiltleInput from './SubTitleInput';
-import calenderIcon from '../../assets/images/icon-orange-calender.svg';
-import clock from '../../assets/images/icon-orange-clock.svg';
-import trophy from '../../assets/images/icon-orange-teams.svg';
-import addNewIcon from '../../assets/images/icon-orange-players-plus.svg';
-import clearIcon from '../../assets/images/icons-x-input.svg';
-import playersIcon from '../../assets/images/icon-orange-players.svg';
-import durationIcon from '../../assets/images/icon-orange-duration.svg';
-import poolsIcon from '../../assets/images/icon-orange-pools.svg';
-import seasonsIcon from '../../assets/images/icon-orange-seasons.svg';
-import pointsIcon from '../../assets/images/icon-orange-points.svg';
-import playTypeIcon from '../../assets/images/icon-orange-playtype.svg';
-import surfaceIcon from '../../assets/images/icon-orange-surface.svg';
-import lightBulbIcon from '../../assets/images/icon-orange-lightbulb.svg';
-import binocularsIcon from '../../assets/images/icon-orange-binoculars.svg';
-import megaPhoneIcon from '../../assets/images/icon-orange-megaphone.svg';
-import talkIcon from '../../assets/images/icon-orange-talk.svg';
-import emailIcon from '../../assets/images/icon-orange-email.svg';
-import purseIcon from '../../assets/images/icon-orange-purse.svg';
-import pencilIcon from '../../assets/images/icon-orange-pencil.svg';
-import positionIcon from '../../assets/images/icon-orange-position.svg';
-import documentIcon from '../../assets/images/icon-orange-document.svg';
-import uploadIcon from '../../assets/images/icon-menu-upload.svg';
-import Footer from '../../components/footer/Footer';
-import CalenderComponent from '../../components/calendar/CalenderComponent';
-import TimeComponent from '../../components/time/TimeComponent';
-import SelectOptions from '../../components/selectOptions/SelectOptions';
-import EventContext from '../../context/event/eventContext';
-import loadingIcon from '../../assets/images/icon-loading.jpg';
-import ballIcon from '../../assets/images/group-3.svg';
-import searchIcon from '../../assets/images/icon-sidemenu-search.svg';
-import imageIcon from '../../assets/images/icon-orange-image.svg';
-import Header from '../../components/header/Header';
-import backIcon from '../../assets/images/icon-menu-back.svg';
-import ShadowContainer from './ShadowContainer';
-import MainInput from './MainInput';
-import TextAreaInput from './TextAreaInput';
-import 'react-responsive-modal/styles.css';
-import MasterForm from '../../components/WizardFormComponent';
-import NumberFormat from 'react-number-format';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ball from "../../assets/images/icon-orange-ball.svg";
+import hamburgerIcon from "../../assets/images/icon-menu-hamburger.svg";
+import downArrow from "../../assets/images/icon-menu-chevron-down.svg";
+import radioButtonIcon from "../../assets/images/button-radio-grey-outline.svg";
+import SubTiltleInput from "./SubTitleInput";
+import calenderIcon from "../../assets/images/icon-orange-calender.svg";
+import clock from "../../assets/images/icon-orange-clock.svg";
+import trophy from "../../assets/images/icon-orange-teams.svg";
+import addNewIcon from "../../assets/images/icon-orange-players-plus.svg";
+import clearIcon from "../../assets/images/icons-x-input.svg";
+import playersIcon from "../../assets/images/icon-orange-players.svg";
+import durationIcon from "../../assets/images/icon-orange-duration.svg";
+import poolsIcon from "../../assets/images/icon-orange-pools.svg";
+import seasonsIcon from "../../assets/images/icon-orange-seasons.svg";
+import pointsIcon from "../../assets/images/icon-orange-points.svg";
+import playTypeIcon from "../../assets/images/icon-orange-playtype.svg";
+import surfaceIcon from "../../assets/images/icon-orange-surface.svg";
+import lightBulbIcon from "../../assets/images/icon-orange-lightbulb.svg";
+import binocularsIcon from "../../assets/images/icon-orange-binoculars.svg";
+import megaPhoneIcon from "../../assets/images/icon-orange-megaphone.svg";
+import talkIcon from "../../assets/images/icon-orange-talk.svg";
+import emailIcon from "../../assets/images/icon-orange-email.svg";
+import purseIcon from "../../assets/images/icon-orange-purse.svg";
+import pencilIcon from "../../assets/images/icon-orange-pencil.svg";
+import positionIcon from "../../assets/images/icon-orange-position.svg";
+import documentIcon from "../../assets/images/icon-orange-document.svg";
+import uploadIcon from "../../assets/images/icon-menu-upload.svg";
+import Footer from "../../components/footer/Footer";
+import CalenderComponent from "../../components/calendar/CalenderComponent";
+import TimeComponent from "../../components/time/TimeComponent";
+import SelectOptions from "../../components/selectOptions/SelectOptions";
+import EventContext from "../../context/event/eventContext";
+import loadingIcon from "../../assets/images/icon-loading.jpg";
+import ballIcon from "../../assets/images/group-3.svg";
+import searchIcon from "../../assets/images/icon-sidemenu-search.svg";
+import imageIcon from "../../assets/images/icon-orange-image.svg";
+import Header from "../../components/header/Header";
+import backIcon from "../../assets/images/icon-menu-back.svg";
+import ShadowContainer from "./ShadowContainer";
+import MainInput from "./MainInput";
+import TextAreaInput from "./TextAreaInput";
+import "react-responsive-modal/styles.css";
+import MasterForm from "../../components/WizardFormComponent";
+import NumberFormat from "react-number-format";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import 'react-datepicker/dist/react-datepicker.css';
-import 'antd/dist/antd.less';
-import { DatePicker, TimePicker } from 'antd';
-import calenderIconRight from '../../assets/images/icon-menu-calendar.svg';
-import moment from 'moment';
-import photoAddIcon from '../../assets/images/group.svg';
-import profilePic from '../../assets/images/profilepic.jpg';
-import iconHamburger from '../../assets/images/icon-sidemenu-list.svg';
-import iconAvatarLeague from '../../assets/images/icon-avatar-league.png';
-import DropdownModals from '../../components/DropdownModals';
-import Dropdown from '../../components/Dropdown';
-import defaultIcon3 from '../../assets/images/defaultIcon3.png';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import { NonceProvider } from 'react-select';
-import defaultIcon2 from '../../assets/images/defaultIcon2.png';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import ShadowContainerDropdown from './ShadowContainerDropdown';
-import { triggerFocus } from 'antd/lib/input/Input';
+import "react-datepicker/dist/react-datepicker.css";
+import "antd/dist/antd.less";
+import { DatePicker, TimePicker } from "antd";
+import calenderIconRight from "../../assets/images/icon-menu-calendar.svg";
+import moment from "moment";
+import photoAddIcon from "../../assets/images/group.svg";
+import profilePic from "../../assets/images/profilepic.jpg";
+import iconHamburger from "../../assets/images/icon-sidemenu-list.svg";
+import iconAvatarLeague from "../../assets/images/icon-avatar-league.png";
+import DropdownModals from "../../components/DropdownModals";
+import Dropdown from "../../components/Dropdown";
+import defaultIcon3 from "../../assets/images/defaultIcon3.png";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { NonceProvider } from "react-select";
+import defaultIcon2 from "../../assets/images/defaultIcon2.png";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import ShadowContainerDropdown from "./ShadowContainerDropdown";
+import { triggerFocus } from "antd/lib/input/Input";
 
 const closeIcon = (
   <svg
@@ -167,59 +167,59 @@ const NewEventProfile = (props) => {
   } = eventContext;
 
   //states
-  const [courtName, setCourtName] = useState('');
-  const [streetAddress, setStreetAddress] = useState('');
-  const [country, setCountry] = useState('US');
-  const [city, setCity] = useState('');
-  const [zip, setZip] = useState('');
-  const [noOfCourts, setNoOfCourts] = useState('');
+  const [courtName, setCourtName] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [country, setCountry] = useState("US");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [noOfCourts, setNoOfCourts] = useState("");
   // save to list
   const [isGoing, setIsGoing] = useState(false);
-  const [stateCode, setStateCode] = useState('USA');
-  const [court_id, setCourt_id] = useState(addressId !== null ? addressId : '');
-  const [contactName, setContactName] = useState('');
-  const [directorName, setDirectorName] = useState('');
+  const [stateCode, setStateCode] = useState("USA");
+  const [court_id, setCourt_id] = useState(addressId !== null ? addressId : "");
+  const [contactName, setContactName] = useState("");
+  const [directorName, setDirectorName] = useState("");
   const [listAddress, setListAddress] = useState(null);
-  const [eventName, setEventName] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [earlyBirdDate, setEarlyBirdDate] = useState('');
-  const [closesOnDate, setClosesOnDate] = useState('');
-  const [startTime, setStartTime] = useState('');
+  const [eventName, setEventName] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [earlyBirdDate, setEarlyBirdDate] = useState("");
+  const [closesOnDate, setClosesOnDate] = useState("");
+  const [startTime, setStartTime] = useState("");
   // const [endTime, setEndTime] = useState('');
-  const [endsAtTime, setEndsAtTime] = useState('');
+  const [endsAtTime, setEndsAtTime] = useState("");
 
   const [isGoing2, setIsGoing2] = useState(false);
   //id
-  const [pool_id, setPool_id] = useState('');
-  const [points_id, setPoints_id] = useState('');
-  const [season_id, setSeason_id] = useState('');
-  const [seeding_method_id, setSeeding_method_id] = useState('');
-  const [main_contact_id, setMain_contact_id] = useState('');
-  const [director_id, setDirector_id] = useState('');
-  const [scoresheet_id, setScoresheet_id] = useState('');
+  const [pool_id, setPool_id] = useState("");
+  const [points_id, setPoints_id] = useState("");
+  const [season_id, setSeason_id] = useState("");
+  const [seeding_method_id, setSeeding_method_id] = useState("");
+  const [main_contact_id, setMain_contact_id] = useState("");
+  const [director_id, setDirector_id] = useState("");
+  const [scoresheet_id, setScoresheet_id] = useState("");
   // Choice for 'YES' and 'NO'
-  const [scoreSheetChoice, setScoreSheetChoice] = useState('');
-  const [signatureAgreementChoice, setSignatureAgreementChoice] = useState('');
-  const [purseAmountChoice, setPurseAmountChoice] = useState('');
-  const [purseAmountNumber, setPurseAmountNumber] = useState('');
-  const [purseAmountPercentChoice, setPurseAmountPercentChoice] = useState('');
-  const [purseAmountPercentNumber, setPurseAmountPercentNumber] = useState('');
+  const [scoreSheetChoice, setScoreSheetChoice] = useState("");
+  const [signatureAgreementChoice, setSignatureAgreementChoice] = useState("");
+  const [purseAmountChoice, setPurseAmountChoice] = useState("");
+  const [purseAmountNumber, setPurseAmountNumber] = useState("");
+  const [purseAmountPercentChoice, setPurseAmountPercentChoice] = useState("");
+  const [purseAmountPercentNumber, setPurseAmountPercentNumber] = useState("");
   const [donation1, setDonation1] = useState(null);
   const [donation2, setDonation2] = useState(null);
   const [donation3, setDonation3] = useState(null);
-  const [donationText, setDonationText] = useState('');
-  const [onlinePayChoice, setOnlinePayChoice] = useState('');
-  const [directorChoice, setDirectorChoice] = useState('');
-  const [showEntriesChoice, setShowEntriesChoice] = useState('');
-  const [hostClinicChoice, setHostClinicChoice] = useState('');
-  const [surfaceTypeChoice, setSurfaceTypeChoice] = useState('');
-  const [membershipChoice, setMembershipChoice] = useState('silver');
+  const [donationText, setDonationText] = useState("");
+  const [onlinePayChoice, setOnlinePayChoice] = useState("");
+  const [directorChoice, setDirectorChoice] = useState("");
+  const [showEntriesChoice, setShowEntriesChoice] = useState("");
+  const [hostClinicChoice, setHostClinicChoice] = useState("");
+  const [surfaceTypeChoice, setSurfaceTypeChoice] = useState("");
+  const [membershipChoice, setMembershipChoice] = useState("silver");
   const [teamListingChoice, setTeamListingChoice] = useState(1);
-  const [surfaceId, setSurfaceId] = useState('');
-  const [seedingMethodChoice, setSeedingMethodChoice] = useState('');
-  const [placementPointsChoice, setPlacementPointsChoice] = useState('');
-  const [seasonChoice, setSeasonChoice] = useState('');
+  const [surfaceId, setSurfaceId] = useState("");
+  const [seedingMethodChoice, setSeedingMethodChoice] = useState("");
+  const [placementPointsChoice, setPlacementPointsChoice] = useState("");
+  const [seasonChoice, setSeasonChoice] = useState("");
   // const [teamSizeChoice, setTeamSizeChoice] = useState('');
   const [numberOfSets, setNumberOfSets] = useState(3);
   const [matchTime, setMatchTime] = useState(60);
@@ -229,10 +229,10 @@ const NewEventProfile = (props) => {
   const [teamsInPlayoff2, setTeamsInPlayoff2] = useState(null);
   const [teamsInPlayoff3, setTeamsInPlayoff3] = useState(null);
   const [teamsInPlayoff4, setTeamsInPlayoff4] = useState(null);
-  const [registrationCapChoice, setRegistrationCapChoice] = useState('');
-  const [poolsChoice, setPoolsChoice] = useState('');
-  const [pdfValue, setPdfValue] = useState({ preview: '', raw: '' });
-  const [file, setFile] = useState({ preview: '', raw: '' });
+  const [registrationCapChoice, setRegistrationCapChoice] = useState("");
+  const [poolsChoice, setPoolsChoice] = useState("");
+  const [pdfValue, setPdfValue] = useState({ preview: "", raw: "" });
+  const [file, setFile] = useState({ preview: "", raw: "" });
   const [nameError, setNameError] = useState(null);
   const [addressError, setAddressError] = useState(null);
   const [courtNoError, setCourtNoError] = useState(null);
@@ -246,14 +246,14 @@ const NewEventProfile = (props) => {
   const [financeError, setFinanceError] = useState(null);
   const [documentsError, setDocumentsError] = useState(null);
   // description
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const [descriptionError, setDescriptionError] = useState(null);
   //subtitle
   const [SubTitleError, setSubTileError] = useState(null);
-  const [sub_title, setSubtitle] = useState('')
+  const [sub_title, setSubtitle] = useState("");
   // image
-  const [imageState, setImageState] = useState({ preview: '', raw: '' });
-  const [imageError, setImageError] = useState('');
+  const [imageState, setImageState] = useState({ preview: "", raw: "" });
+  const [imageError, setImageError] = useState("");
   const [permanentFlag, setPermanentFlag] = useState(1);
 
   //searchable dropdown toggle states
@@ -262,9 +262,9 @@ const NewEventProfile = (props) => {
   //save to list counter
   const [showSaveToList, setShowSaveToList] = useState(true);
 
-  const notify = () => toast.dark('Court getting added!');
+  const notify = () => toast.dark("Court getting added!");
 
-  const notifyTemplateAdded = () => toast.dark('Template Added!');
+  const notifyTemplateAdded = () => toast.dark("Template Added!");
 
   const [saveDisabled, setSaveDisabled] = useState(null);
   const [saveLoading, setSaveLoading] = useState(false);
@@ -306,35 +306,32 @@ const NewEventProfile = (props) => {
 
   useEffect(() => {
     if (eventDropdownData !== null) {
-      console.log('eventDropdownData', eventDropdownData);
+      console.log("eventDropdownData", eventDropdownData);
     }
   }, [eventDropdownData]);
 
   useEffect(() => {
     // notifyTemplateAdded()
-    console.log('Template id in event screen:', template_id);
+    console.log("Template id in event screen:", template_id);
   }, [template_id]);
 
   useEffect(() => {
-    console.log('Template id in event screen:', template_id);
+    console.log("Template id in event screen:", template_id);
   }, []);
 
-
-
-  useEffect(()=>{
-    console.log(stateCode,country,zip)
+  useEffect(() => {
+    console.log(stateCode, country, zip);
     var can = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
     var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
-    if(( (us.test(zip.toString()) || zip === '') && stateCode==='USA')
-     || ((can.test(zip.toString()) || zip === '') && stateCode==='CA')){
-      setCourtNoError(null)
-     
-     }else{
-      setCourtNoError('Country and zip do not match')       }
-  },[stateCode,zip])
-
-
-
+    if (
+      ((us.test(zip.toString()) || zip === "") && stateCode === "USA") ||
+      ((can.test(zip.toString()) || zip === "") && stateCode === "CA")
+    ) {
+      setCourtNoError(null);
+    } else {
+      setCourtNoError("Country and zip do not match");
+    }
+  }, [stateCode, zip]);
 
   // useEffect(() => {
   //   sendDivisionDataToEvent({
@@ -357,13 +354,13 @@ const NewEventProfile = (props) => {
 
   //save address function
   const saveAddressFunction = async () => {
-    console.log('Cournt');
+    console.log("Cournt");
     if (
-      courtName !== '' &&
-      streetAddress !== '' &&
-      country !== '' &&
+      courtName !== "" &&
+      streetAddress !== "" &&
+      country !== "" &&
       // // city !== '' &&
-      zip !== ''
+      zip !== ""
       // &&
       // noOfCourts !== '' &&
       // noOfCourts < 100 &&
@@ -378,31 +375,31 @@ const NewEventProfile = (props) => {
         zip: zip,
         // state_code: stateCode,
         permanent_flag: permanentFlag,
-        number_of_court: noOfCourts === '' ? 20 : noOfCourts,
+        number_of_court: noOfCourts === "" ? 20 : noOfCourts,
       });
-      console.log('Court added manually', data);
+      console.log("Court added manually", data);
       const actualData = new FormData();
-      actualData.append('data', data);
-      actualData.append('court_pic', file.raw);
+      actualData.append("data", data);
+      actualData.append("court_pic", file.raw);
       // notify();
       await saveAddress(actualData);
     }
     // setCourt_id(addressId);
-    console.log('AddressId,court_id in save as court', addressId, court_id);
+    console.log("AddressId,court_id in save as court", addressId, court_id);
     setListAddress({
       court_id,
     });
   };
 
   useEffect(() => {
-    console.log('AddressId,court_id', addressId, court_id);
+    console.log("AddressId,court_id", addressId, court_id);
     setCourt_id(addressId);
   }, [addressId]);
 
   //contact and address useRef
-  const contactInputValue = useRef('');
-  const directorInputValue = useRef('');
-  const addressInputValue = useRef('');
+  const contactInputValue = useRef("");
+  const directorInputValue = useRef("");
+  const addressInputValue = useRef("");
 
   //contact component
   function ContactListComponent({ address }) {
@@ -427,7 +424,7 @@ const NewEventProfile = (props) => {
             onError={(e) => (e.target.src = defaultIcon2)}
             src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${address.profile_pic}`}
             style={{
-              borderRadius: '50%',
+              borderRadius: "50%",
               width: 25,
               height: 25,
             }}
@@ -473,7 +470,7 @@ const NewEventProfile = (props) => {
           // contactFilterClear();
         }}
       >
-        {' '}
+        {" "}
         <div
           className="col-2 m-auto text-center p-0"
           style={{
@@ -486,7 +483,7 @@ const NewEventProfile = (props) => {
             onError={(e) => (e.target.src = defaultIcon2)}
             src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${address.profile_pic}`}
             style={{
-              borderRadius: '50%',
+              borderRadius: "50%",
               width: 25,
               height: 25,
             }}
@@ -522,7 +519,7 @@ const NewEventProfile = (props) => {
   //address component
   useEffect(() => {
     if (filteredAddresses === null) {
-      addressInputValue.current = '';
+      addressInputValue.current = "";
     }
   });
 
@@ -559,7 +556,7 @@ const NewEventProfile = (props) => {
           setCourt_id(court_id);
         }}
       >
-        {' '}
+        {" "}
         <div
           className="col-2 m-auto text-center p-0"
           style={{
@@ -572,10 +569,10 @@ const NewEventProfile = (props) => {
             onError={(e) => (e.target.src = ball)}
             src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${address.picture}`}
             style={{
-              borderRadius: '50%',
+              borderRadius: "50%",
               width: 25,
               height: 25,
-              backgroundColor: 'black',
+              backgroundColor: "black",
             }}
           />
         </div>
@@ -601,40 +598,39 @@ const NewEventProfile = (props) => {
         </div>
       );
     }
-    
+
     // console.log("******* filteredAdd, eventAdd",filteredAddresses,eventAddresses)
     if (filteredAddresses !== null && !loading) {
-      return filteredAddresses.map((address,index1) => (
+      return filteredAddresses.map((address, index1) => (
         <AddressListComponent key={index1} address={address} />
       ));
     }
     if (
-      Array.isArray(eventAddresses) && 
+      Array.isArray(eventAddresses) &&
       eventAddresses.length !== 0 &&
-      !loading && 
+      !loading &&
       filteredAddresses === null
     ) {
-      return eventAddresses.map((address,index1) => (
+      return eventAddresses.map((address, index1) => (
         <AddressListComponent key={index1} address={address} />
       ));
     } else if (
       !Array.isArray(eventAddresses) &&
-      eventAddresses.length !== 0 && 
-      !loading && 
+      eventAddresses.length !== 0 &&
+      !loading &&
       filteredAddresses === null
     ) {
       return (
-        <p className="text-center" style={{ color: '#ff2072' }}>
+        <p className="text-center" style={{ color: "#ff2072" }}>
           {eventAddresses}
         </p>
       );
     }
   };
 
-
   useEffect(async () => {
     console.log(
-      '******* filteredAdd, eventAdd',
+      "******* filteredAdd, eventAdd",
       filteredAddresses,
       eventAddresses
     );
@@ -667,10 +663,10 @@ const NewEventProfile = (props) => {
     //   setAddressError(null);
     // }
     if (
-      courtName !== '' &&
-      streetAddress !== '' &&
-      country !== '' &&
-      zip !== ''
+      courtName !== "" &&
+      streetAddress !== "" &&
+      country !== "" &&
+      zip !== ""
       // &&
       // noOfCourts !== ''
     ) {
@@ -680,16 +676,16 @@ const NewEventProfile = (props) => {
 
   useEffect(() => {
     if (noOfCourts > 9999) {
-      setCourtNoError('No. of courts cannot be greater than 9999');
+      setCourtNoError("No. of courts cannot be greater than 9999");
     } else {
       setCourtNoError(null);
     }
   }, [noOfCourts]);
 
   useEffect(() => {
-    console.log('No of courts:', noOfCourts);
-    if (noOfCourts < 1 && noOfCourts !== '') {
-      setCourtNoError2('No. of courts cannot be less than 1');
+    console.log("No of courts:", noOfCourts);
+    if (noOfCourts < 1 && noOfCourts !== "") {
+      setCourtNoError2("No. of courts cannot be less than 1");
     } else {
       setCourtNoError2(null);
     }
@@ -706,7 +702,7 @@ const NewEventProfile = (props) => {
   // }, [zip]);
 
   useEffect(() => {
-    if (startDate !== '' && endDate !== '' && earlyBirdDate !== '') {
+    if (startDate !== "" && endDate !== "" && earlyBirdDate !== "") {
       setDateError(null);
     }
   }, [startDate, endDate, earlyBirdDate]);
@@ -717,21 +713,21 @@ const NewEventProfile = (props) => {
     // } else {
     //   setTimeError(null);
     // }
-    if (startTime !== '') {
+    if (startTime !== "") {
       setTimeError(null);
     }
   }, [startTime]);
 
   useEffect(() => {
     if (
-      registrationCapChoice !== '' &&
+      registrationCapChoice !== "" &&
       // teamSizeChoice !== '' &&
-      closesOnDate !== '' &&
-      endsAtTime !== '' &&
-      numberOfSets !== '' &&
-      matchTime !== '' &&
-      maxPointsPerSet !== '' &&
-      noOfPlayoffs !== ''
+      closesOnDate !== "" &&
+      endsAtTime !== "" &&
+      numberOfSets !== "" &&
+      matchTime !== "" &&
+      maxPointsPerSet !== "" &&
+      noOfPlayoffs !== ""
     ) {
       setRegistrationError(null);
     }
@@ -748,38 +744,38 @@ const NewEventProfile = (props) => {
 
   useEffect(() => {
     if (noOfPlayoffs === 1) {
-      setTeamsInPlayoff1('');
-      setTeamsInPlayoff2('');
-      setTeamsInPlayoff3('');
-      setTeamsInPlayoff4('');
+      setTeamsInPlayoff1("");
+      setTeamsInPlayoff2("");
+      setTeamsInPlayoff3("");
+      setTeamsInPlayoff4("");
     }
     if (noOfPlayoffs === 2) {
-      setTeamsInPlayoff3('');
-      setTeamsInPlayoff4('');
+      setTeamsInPlayoff3("");
+      setTeamsInPlayoff4("");
     }
     if (noOfPlayoffs === 3) {
-      setTeamsInPlayoff4('');
+      setTeamsInPlayoff4("");
     }
   }, [noOfPlayoffs]);
 
   useEffect(() => {
     if (noOfPlayoffs === 1) {
-      setTeamsInPlayoff1('');
-      setTeamsInPlayoff2('');
-      setTeamsInPlayoff3('');
-      setTeamsInPlayoff4('');
+      setTeamsInPlayoff1("");
+      setTeamsInPlayoff2("");
+      setTeamsInPlayoff3("");
+      setTeamsInPlayoff4("");
     }
   }, [noOfPlayoffs]);
 
   useEffect(() => {
     let tp1 =
-      teamsInPlayoff1 === null || teamsInPlayoff1 === '' ? 0 : teamsInPlayoff1;
+      teamsInPlayoff1 === null || teamsInPlayoff1 === "" ? 0 : teamsInPlayoff1;
     let tp2 =
-      teamsInPlayoff2 === null || teamsInPlayoff2 === '' ? 0 : teamsInPlayoff2;
+      teamsInPlayoff2 === null || teamsInPlayoff2 === "" ? 0 : teamsInPlayoff2;
     let tp3 =
-      teamsInPlayoff3 === null || teamsInPlayoff3 === '' ? 0 : teamsInPlayoff3;
+      teamsInPlayoff3 === null || teamsInPlayoff3 === "" ? 0 : teamsInPlayoff3;
     let tp4 =
-      teamsInPlayoff4 === null || teamsInPlayoff4 === '' ? 0 : teamsInPlayoff4;
+      teamsInPlayoff4 === null || teamsInPlayoff4 === "" ? 0 : teamsInPlayoff4;
     // console.log(
     //   teamSizeChoice,
     //   parseInt(tp1) + parseInt(tp2) + parseInt(tp3) + parseInt(tp4)
@@ -801,13 +797,13 @@ const NewEventProfile = (props) => {
 
   useEffect(() => {
     if (
-      poolsChoice !== '' &&
-      seasonChoice !== '' &&
-      placementPointsChoice !== '' &&
-      seedingMethodChoice !== '' &&
-      surfaceTypeChoice !== '' &&
-      hostClinicChoice !== '' &&
-      showEntriesChoice !== '' &&
+      poolsChoice !== "" &&
+      seasonChoice !== "" &&
+      placementPointsChoice !== "" &&
+      seedingMethodChoice !== "" &&
+      surfaceTypeChoice !== "" &&
+      hostClinicChoice !== "" &&
+      showEntriesChoice !== "" &&
       teamListingChoice !== null
     ) {
       setDetailsError(null);
@@ -824,15 +820,15 @@ const NewEventProfile = (props) => {
   ]);
 
   useEffect(() => {
-    if (directorName !== '' && contactName !== '') {
+    if (directorName !== "" && contactName !== "") {
       setContactError(null);
     }
   }, [directorName, contactName]);
 
   useEffect(() => {
     if (
-      onlinePayChoice !== '' &&
-      purseAmountChoice !== '' &&
+      onlinePayChoice !== "" &&
+      purseAmountChoice !== "" &&
       membershipChoice !== null
     ) {
       setFinanceError(null);
@@ -841,79 +837,80 @@ const NewEventProfile = (props) => {
 
   useEffect(() => {
     if (
-      signatureAgreementChoice !== '' &&
-      scoreSheetChoice !== '' &&
-      pdfValue !== ''
+      signatureAgreementChoice !== "" &&
+      scoreSheetChoice !== "" &&
+      pdfValue !== ""
     ) {
       setDocumentsError(null);
     }
   }, [signatureAgreementChoice, scoreSheetChoice, pdfValue]);
 
   useEffect(() => {
-    if (description !== '') {
+    if (description !== "") {
       setDescriptionError(null);
     }
   }, [description]);
 
   useEffect(() => {
-    if (sub_title !== '') {
+    if (sub_title !== "") {
       setSubTileError(null);
-    } 
+    }
   }, [sub_title]);
 
   useEffect(() => {
-    if (imageState === '') {
-      setImageError('Please fill image input');
+    if (imageState === "") {
+      setImageError("Please fill image input");
     } else {
       setImageError(null);
     }
   }, [imageState]);
 
   useEffect(() => {
-    if (eventName !== '') {
+    if (eventName !== "") {
       setNameError(null);
     }
   }, [eventName]);
 
   useEffect(() => {
     if (
-      eventName !== '' &&
-      courtName !== '' &&
-      streetAddress !== '' &&
-      country !== '' &&
-      zip !== '' &&
+      eventName !== "" &&
+      courtName !== "" &&
+      streetAddress !== "" &&
+      country !== "" &&
+      zip !== "" &&
       // &&
       // noOfCourts !== ''
       // &&
       // noOfCourts < 100
-      startDate !== '' &&
-      endDate !== '' &&
-      earlyBirdDate !== '' &&
-      startTime !== '' &&
+      startDate !== "" &&
+      endDate !== "" &&
+      earlyBirdDate !== "" &&
+      startTime !== "" &&
       // endTime !== '' &&
-      registrationCapChoice !== '' &&
+      registrationCapChoice !== "" &&
       // teamSizeChoice !== '' &&
-      closesOnDate !== '' &&
-      endsAtTime !== '' &&
-      poolsChoice !== '' &&
-      seasonChoice !== '' &&
-      placementPointsChoice !== '' &&
-      seedingMethodChoice !== '' &&
-      surfaceTypeChoice !== '' &&
-      hostClinicChoice !== '' &&
-      showEntriesChoice !== '' &&
-      directorName !== '' &&
-      contactName !== '' &&
-      onlinePayChoice !== '' &&
+      closesOnDate !== "" &&
+      endsAtTime !== "" &&
+      poolsChoice !== "" &&
+      seasonChoice !== "" &&
+      placementPointsChoice !== "" &&
+      seedingMethodChoice !== "" &&
+      surfaceTypeChoice !== "" &&
+      hostClinicChoice !== "" &&
+      showEntriesChoice !== "" &&
+      directorName !== "" &&
+      contactName !== "" &&
+      onlinePayChoice !== "" &&
       membershipChoice !== null &&
       teamListingChoice !== null &&
-      purseAmountChoice !== '' &&
-      signatureAgreementChoice !== '' &&
-      scoreSheetChoice !== '' &&
-      pdfValue !== '' &&
-      description !== '' && sub_title!=='' &&
+      purseAmountChoice !== "" &&
+      signatureAgreementChoice !== "" &&
+      scoreSheetChoice !== "" &&
+      pdfValue !== "" &&
+      description !== "" &&
+      sub_title !== "" &&
       court_id !== null &&
-      court_id !== ''
+      court_id !== ""
       // &&
       // donation1 !== null &&
       // donation2 !== null &&
@@ -923,7 +920,7 @@ const NewEventProfile = (props) => {
     ) {
       setSaveDisabled(false);
       console.log(
-        '^^^^^^^^^^^^^^^^^^',
+        "^^^^^^^^^^^^^^^^^^",
         courtName,
         streetAddress,
         country,
@@ -991,59 +988,96 @@ const NewEventProfile = (props) => {
   // }, [])
 
   const onSave = async () => {
-    console.log('save clicked more than once?', saveClicked);
+    console.log("save clicked more than once?", saveClicked);
     // let tp1=teamsInPlayoff1;
     // let tp2=teamsInPlayoff2===null?0:teamsInPlayoff2;
     // let tp3=teamsInPlayoff3===null?0:teamsInPlayoff3;
     // let tp4=teamsInPlayoff4===null?0:teamsInPlayoff4;
     let tp1 =
-      teamsInPlayoff1 === null || teamsInPlayoff1 === '' ? 0 : teamsInPlayoff1;
+      teamsInPlayoff1 === null || teamsInPlayoff1 === "" ? 0 : teamsInPlayoff1;
     let tp2 =
-      teamsInPlayoff2 === null || teamsInPlayoff2 === '' ? 0 : teamsInPlayoff2;
+      teamsInPlayoff2 === null || teamsInPlayoff2 === "" ? 0 : teamsInPlayoff2;
     let tp3 =
-      teamsInPlayoff3 === null || teamsInPlayoff3 === '' ? 0 : teamsInPlayoff3;
+      teamsInPlayoff3 === null || teamsInPlayoff3 === "" ? 0 : teamsInPlayoff3;
     let tp4 =
-      teamsInPlayoff4 === null || teamsInPlayoff4 === '' ? 0 : teamsInPlayoff4;
+      teamsInPlayoff4 === null || teamsInPlayoff4 === "" ? 0 : teamsInPlayoff4;
 
-    if (eventName === '') {
-      setNameError('Please enter an event name');
-      event_name_error.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (file.raw !== '' && file.raw.size > 2048000) {
-      setNameError('Add Image less than 2048KB');
-      event_name_error.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (imageState.raw !== '' && imageState.raw.size > 2048000) {
-      setImageError('Add Image less than 2048KB');
+    if (eventName === "") {
+      setNameError("Please enter an event name");
+      event_name_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (!eventName.match(/^[a-z A-Z ]+$/)) {
+      setNameError("Please enter an event name");
+    } else if (file.raw !== "" && file.raw.size > 2048000) {
+      setNameError("Add Image less than 2048KB");
+      event_name_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (imageState.raw !== "" && imageState.raw.size > 2048000) {
+      setImageError("Add Image less than 2048KB");
       // event_name_error.current.scrollIntoView({ behavior: 'smooth' });
     } else if (
-      courtName === '' ||
-      streetAddress === '' ||
-      country === '' ||
-      zip === '' ||
+      courtName === "" ||
+      streetAddress === "" ||
+      country === "" ||
+      zip === "" ||
       //  ||
       // noOfCourts === ''
       court_id === null ||
-      court_id === ''
+      court_id === ""
     ) {
-      setAddressError('Please fill all address fields correctly');
-      event_address_error.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (startDate === '' || endDate === '' || earlyBirdDate === '') {
-      setDateError('Please add all parameters');
-      event_date_error.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (startTime === '') {
-      setTimeError('Please select start time');
-      event_time_error.current.scrollIntoView({ behavior: 'smooth' });
+      setAddressError("Please fill all address fields correctly");
+      event_address_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (startDate === "" || endDate === "" || earlyBirdDate === "") {
+      setDateError("Please add all parameters");
+      event_date_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (startTime === "") {
+      setTimeError("Please select start time");
+      event_time_error.current.scrollIntoView({ behavior: "smooth" });
     } else if (
-      registrationCapChoice === '' ||
+      registrationCapChoice === "" ||
       // teamSizeChoice === '' ||
-      closesOnDate === '' ||
-      endsAtTime === '' ||
-      numberOfSets === '' ||
-      matchTime === '' ||
-      maxPointsPerSet === '' ||
-      noOfPlayoffs === ''
+      closesOnDate === "" ||
+      endsAtTime === "" ||
+      numberOfSets === "" ||
+      matchTime === "" ||
+      maxPointsPerSet === "" ||
+      noOfPlayoffs === ""
     ) {
-      setRegistrationError('Please fill all registration inputs');
-      event_reg_error.current.scrollIntoView({ behavior: 'smooth' });
+      setRegistrationError("Please fill all registration inputs");
+      event_reg_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (noOfPlayoffs !== "") {
+      if (noOfPlayoffs == 1) {
+        if (teamsInPlayoff1 === "") {
+          setRegistrationError("Please fill all teams in play off");
+        } else {
+          setRegistrationError("");
+        }
+      } else if (noOfPlayoffs == 2) {
+        if (teamsInPlayoff1 === "" || teamsInPlayoff2 === "") {
+          setRegistrationError("Please fill all teams in play off");
+        } else {
+          setRegistrationError("");
+        }
+      } else if (noOfPlayoffs == 3) {
+        if (
+          teamsInPlayoff1 === "" ||
+          teamsInPlayoff2 === "" ||
+          teamsInPlayoff3 === ""
+        ) {
+          setRegistrationError("Please fill all teams in play off");
+        } else {
+          setRegistrationError("");
+        }
+      } else if (noOfPlayoffs == 4) {
+        if (
+          teamsInPlayoff1 === "" ||
+          teamsInPlayoff2 === "" ||
+          teamsInPlayoff3 === "" ||
+          teamsInPlayoff4 === ""
+        ) {
+          setRegistrationError("Please fill all teams in play off");
+        } else {
+          setRegistrationError("");
+        }
+      }
     }
     // else if (
     //   teamSizeChoice !==
@@ -1055,24 +1089,24 @@ const NewEventProfile = (props) => {
     //   event_reg_error.current.scrollIntoView({ behavior: 'smooth' });
     // }
     else if (
-      poolsChoice === '' ||
-      seasonChoice === '' ||
-      placementPointsChoice === '' ||
-      seedingMethodChoice === '' ||
-      surfaceTypeChoice === '' ||
-      hostClinicChoice === '' ||
-      showEntriesChoice === '' ||
+      poolsChoice === "" ||
+      seasonChoice === "" ||
+      placementPointsChoice === "" ||
+      seedingMethodChoice === "" ||
+      surfaceTypeChoice === "" ||
+      hostClinicChoice === "" ||
+      showEntriesChoice === "" ||
       teamListingChoice === null
     ) {
-      setDetailsError('Please fill all details inputs');
-      event_details_error.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (directorName === '' || contactName === '') {
-      setContactError('Please fill all contact inputs');
-      event_contact_error.current.scrollIntoView({ behavior: 'smooth' });
+      setDetailsError("Please fill all details inputs");
+      event_details_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (directorName === "" || contactName === "") {
+      setContactError("Please fill all contact inputs");
+      event_contact_error.current.scrollIntoView({ behavior: "smooth" });
     } else if (
-      onlinePayChoice === '' ||
+      onlinePayChoice === "" ||
       membershipChoice === null ||
-      purseAmountChoice === ''
+      purseAmountChoice === ""
       // ||
       // donation1 === null ||
       // donation2 === null ||
@@ -1080,27 +1114,26 @@ const NewEventProfile = (props) => {
       // ||
       // donationText === ''
     ) {
-      setFinanceError('Please fill all finance inputs');
-      event_finance_error.current.scrollIntoView({ behavior: 'smooth' });
+      setFinanceError("Please fill all finance inputs");
+      event_finance_error.current.scrollIntoView({ behavior: "smooth" });
     } else if (
-      signatureAgreementChoice === '' ||
-      scoreSheetChoice === '' ||
-      pdfValue === ''
+      signatureAgreementChoice === "" ||
+      scoreSheetChoice === "" ||
+      pdfValue === ""
     ) {
-      setDocumentsError('Please fill all documents inputs');
-      event_documents_error.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (pdfValue.raw !== '' && pdfValue.raw.size > 2048000) {
-      setDocumentsError('PDF instructions size should not exceed 2048 KB size');
-      event_documents_error.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (description === '') {
-      setDescriptionError('Please fill description input');
-      event_description_error.current.scrollIntoView({ behavior: 'smooth' });
+      setDocumentsError("Please fill all documents inputs");
+      event_documents_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (pdfValue.raw !== "" && pdfValue.raw.size > 2048000) {
+      setDocumentsError("PDF instructions size should not exceed 2048 KB size");
+      event_documents_error.current.scrollIntoView({ behavior: "smooth" });
+    } else if (description === "") {
+      setDescriptionError("Please fill description input");
+      event_description_error.current.scrollIntoView({ behavior: "smooth" });
     }
-    if(sub_title ===''){
-      setSubTileError('Please fill subtitle input')
-      event_subtitle_error.current.scrollIntoView({behavior: 'smooth'});
+    if (sub_title === "") {
+      setSubTileError("Please fill subtitle input");
+      event_subtitle_error.current.scrollIntoView({ behavior: "smooth" });
     }
-  
 
     // if(saveClicked===true){
     //   return;
@@ -1110,45 +1143,46 @@ const NewEventProfile = (props) => {
     //   saveBtnRef.current.setAttribute("disabled", "disabled");
     // }
 
-    console.log('Court id on save', court_id);
+    console.log("Court id on save", court_id);
     if (
       listAddress !== null &&
-      eventName !== '' &&
-      startDate !== '' &&
-      endDate !== '' &&
-      earlyBirdDate !== '' &&
-      startTime !== '' &&
+      eventName !== "" &&
+      startDate !== "" &&
+      endDate !== "" &&
+      earlyBirdDate !== "" &&
+      startTime !== "" &&
       // endTime !== '' &&
-      registrationCapChoice !== '' &&
+      registrationCapChoice !== "" &&
       // teamSizeChoice !== '' &&
-      closesOnDate !== '' &&
-      endsAtTime !== '' &&
-      poolsChoice !== '' &&
-      seasonChoice !== '' &&
-      placementPointsChoice !== '' &&
-      seedingMethodChoice !== '' &&
-      surfaceTypeChoice !== '' &&
-      hostClinicChoice !== '' &&
-      showEntriesChoice !== '' &&
+      closesOnDate !== "" &&
+      endsAtTime !== "" &&
+      poolsChoice !== "" &&
+      seasonChoice !== "" &&
+      placementPointsChoice !== "" &&
+      seedingMethodChoice !== "" &&
+      surfaceTypeChoice !== "" &&
+      hostClinicChoice !== "" &&
+      showEntriesChoice !== "" &&
       // directorChoice !== '' &&
-      contactName !== '' &&
-      onlinePayChoice !== '' &&
+      contactName !== "" &&
+      onlinePayChoice !== "" &&
       membershipChoice !== null &&
       teamListingChoice !== null &&
-      purseAmountChoice !== '' &&
-      signatureAgreementChoice !== '' &&
-      scoreSheetChoice !== '' &&
-      description !== '' && sub_title!=='' &&
-      imageState !== '' &&
-      (imageState.raw !== ''
+      purseAmountChoice !== "" &&
+      signatureAgreementChoice !== "" &&
+      scoreSheetChoice !== "" &&
+      description !== "" &&
+      sub_title !== "" &&
+      imageState !== "" &&
+      (imageState.raw !== ""
         ? imageState.raw.size < 2048000
-        : imageState.raw === '') &&
-      pdfValue !== '' &&
-      (pdfValue.raw !== ''
+        : imageState.raw === "") &&
+      pdfValue !== "" &&
+      (pdfValue.raw !== ""
         ? pdfValue.raw.size < 2048000
-        : pdfValue.raw === '') &&
+        : pdfValue.raw === "") &&
       file !== null &&
-      (file.raw !== '' ? file.raw.size < 2048000 : file.raw === '') &&
+      (file.raw !== "" ? file.raw.size < 2048000 : file.raw === "") &&
       saveDisabled === false &&
       // teamSizeError === null
       // teamSizeChoice ===
@@ -1158,7 +1192,7 @@ const NewEventProfile = (props) => {
       //  &&
       saveClicked === false &&
       court_id !== null &&
-      court_id !== ''
+      court_id !== ""
       // &&
       // donation1 !== null &&
       // donation2 !== null &&
@@ -1287,7 +1321,7 @@ const NewEventProfile = (props) => {
         age_range,
         gender,
         skill_level,
-        discount_amount: discount_amount === '' ? '0' : discount_amount,
+        discount_amount: discount_amount === "" ? "0" : discount_amount,
         discount_text,
         discount_applied,
         discount_voucher,
@@ -1299,19 +1333,19 @@ const NewEventProfile = (props) => {
         donation2,
         donation3,
       });
-      console.log('Court id on save', court_id);
+      console.log("Court id on save", court_id);
       const data = {
         name: eventName,
         court_id: court_id,
-        start_date: moment(startDate).format('YYYY-MM-DD'),
-        end_date: moment(endDate).format('YYYY-MM-DD'),
-        early_bird_date: moment(earlyBirdDate).format('YYYY-MM-DD'),
-        start_time: moment(startTime).format('HH:mm:ss'),
+        start_date: moment(startDate).format("YYYY-MM-DD"),
+        end_date: moment(endDate).format("YYYY-MM-DD"),
+        early_bird_date: moment(earlyBirdDate).format("YYYY-MM-DD"),
+        start_time: moment(startTime).format("HH:mm:ss"),
         // end_time: moment(endTime).format('HH:mm:ss'),
         registration_cap: registrationCapChoice,
         team_size: team_size,
-        closes_on: moment(closesOnDate).format('YYYY-MM-DD'),
-        ends_at: moment(endsAtTime).format('HH:mm:ss'),
+        closes_on: moment(closesOnDate).format("YYYY-MM-DD"),
+        ends_at: moment(endsAtTime).format("HH:mm:ss"),
         pool_id: pool_id,
         season_id: season_id,
         seeding_method_id: seeding_method_id,
@@ -1328,7 +1362,7 @@ const NewEventProfile = (props) => {
         scoresheet_id: scoresheet_id,
         org_id: 758,
         description: description,
-        sub_title:sub_title,
+        sub_title: sub_title,
         pool_template_id: pool_id,
         point_template_id: points_id,
         surface_type: surfaceId,
@@ -1368,7 +1402,7 @@ const NewEventProfile = (props) => {
         template: templateDataArray,
         division: divisionDataArray,
       };
-      console.log('data sent to backend', data);
+      console.log("data sent to backend", data);
 
       // if (early_bird !== 'no') {
       //   data['early_bird_date'] = moment(early_bird_date).format('YYYY-MM-DD');
@@ -1377,34 +1411,34 @@ const NewEventProfile = (props) => {
       //   data['early_bird_date'] = '';
       // }
 
-      if (donationText !== '') {
-        data['donation_text'] = donationText;
+      if (donationText !== "") {
+        data["donation_text"] = donationText;
       }
 
       if (donation1 !== null || donation2 !== null || donation3 !== null) {
-        data['donation_amounts'] = `${donation1},${donation2},${donation3}`;
+        data["donation_amounts"] = `${donation1},${donation2},${donation3}`;
       }
 
       if (discount_amount !== undefined) {
-        data['discount_amount'] = discount_amount;
+        data["discount_amount"] = discount_amount;
       }
 
       if (discount_text !== undefined) {
-        data['discount_text'] = discount_text;
+        data["discount_text"] = discount_text;
       }
 
       if (blue === true) {
-        data['color'] = '#0a0080';
+        data["color"] = "#0a0080";
       }
       if (white === true) {
-        data['color'] = '#ffffff';
+        data["color"] = "#ffffff";
       }
 
       if (yellow === true) {
-        data['color'] = '#fdff00';
+        data["color"] = "#fdff00";
       }
       if (black === true) {
-        data['color'] = '#000000';
+        data["color"] = "#000000";
       }
 
       // const data={...data,filteredAddresses};
@@ -1438,29 +1472,29 @@ const NewEventProfile = (props) => {
   // save to list
   const handleCheckbox = async (event) => {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     // var can = new RegExp(/(^\D{1}\d{1}\D{1}-\d{1}\D{1}\d{1}$)/);
     var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
     var can2 = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
-    if (country === 'US') {
-      if (us.test(zip.toString()) || zip === '') {
+    if (country === "US") {
+      if (us.test(zip.toString()) || zip === "") {
         setCourtNoError2(null);
         await setIsGoing(value);
         if (!isGoing) {
           await saveAddressFunction();
         }
       } else {
-        setCourtNoError2('Enter Valid Zip');
+        setCourtNoError2("Enter Valid Zip");
       }
-    } else if (country === 'CA') {
-      if (can2.test(zip.toString()) || zip === '') {
+    } else if (country === "CA") {
+      if (can2.test(zip.toString()) || zip === "") {
         setCourtNoError2(null);
         await setIsGoing(value);
         if (!isGoing) {
           await saveAddressFunction();
         }
       } else {
-        setCourtNoError2('Enter Valid Zip');
+        setCourtNoError2("Enter Valid Zip");
       }
     }
   };
@@ -1480,7 +1514,7 @@ const NewEventProfile = (props) => {
 
   const handleCheckbox2 = async (event) => {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     console.log(value);
     setIsGoing2(value);
   };
@@ -1574,30 +1608,30 @@ const NewEventProfile = (props) => {
         handler(event);
       };
 
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
 
       return () => {
-        document.removeEventListener('mousedown', listener);
-        document.removeEventListener('touchstart', listener);
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
       };
     }, [ref, handler]);
   }
 
   useEffect(() => {
-    console.log('eventId', eventId);
+    console.log("eventId", eventId);
   }, [eventId]);
 
   function disabledStartDate(current) {
-    return current < moment().startOf('day');
+    return current < moment().startOf("day");
   }
 
   function disabledDate(current) {
-    const start = moment('2021-01-01', 'YYYY-MM-DD');
+    const start = moment("2021-01-01", "YYYY-MM-DD");
     return (
       current < startDate ||
       current === startDate ||
-      current < moment().startOf('day')
+      current < moment().startOf("day")
     );
   }
 
@@ -1605,24 +1639,24 @@ const NewEventProfile = (props) => {
     // const start = moment('2021-01-01','YYYY-MM-DD');
     // return  current> moment().endOf(startDate) ;
     // console.log("startDate",startDate)
-    return current > startDate || current < moment().startOf('day');
+    return current > startDate || current < moment().startOf("day");
   }
 
   function disabledHours() {
     // console.log(parseInt(moment(startTime).format('hh')))
-    var time = moment(startTime).format('hh:mm: a');
+    var time = moment(startTime).format("hh:mm: a");
     var period = time.slice(-2);
     // console.log(time, period)
 
     var hours = [];
-    if (period === 'am') {
-      for (var i = 0; i <= parseInt(moment(startTime).format('hh')); i++) {
+    if (period === "am") {
+      for (var i = 0; i <= parseInt(moment(startTime).format("hh")); i++) {
         hours.push(i);
       }
     }
-    if (period === 'pm') {
+    if (period === "pm") {
       hours.push(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
-      for (var i = 0; i <= parseInt(moment(startTime).format('hh')); i++) {
+      for (var i = 0; i <= parseInt(moment(startTime).format("hh")); i++) {
         hours.push(i + 12);
       }
     }
@@ -1638,63 +1672,64 @@ const NewEventProfile = (props) => {
 
   // modal states
   const [open, setOpen] = useState(false);
-  const [flag , setFlag] = useState(false);
-  useEffect(()=>{
-    console.log("flag called")
-  },[flag])
+  const [flag, setFlag] = useState(false);
+  useEffect(() => {
+    console.log("flag called");
+  }, [flag]);
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   const twoDigitVal = (e, setterFn) => {
-    var val = e.target.value.replace('-', '');
-    var valNum = val === '' ? 0 : parseInt(e.target.value.replace('-', ''));
+    var val = e.target.value.replace("-", "");
+    var valNum = val === "" ? 0 : parseInt(e.target.value.replace("-", ""));
     setterFn(valNum);
   };
-  const [ids, setIDs] = useState(   {
-    "justifyLeft":false,
-    'justifyCenter':false,
-    "bold" :false,
-    "italic":false,
-    "underline":false,
-    "insertOrderedList":false,
-    "createlink" :false,
-    "insertUnorderedList":false,
+  const [ids, setIDs] = useState({
+    justifyLeft: false,
+    justifyCenter: false,
+    bold: false,
+    italic: false,
+    underline: false,
+    insertOrderedList: false,
+    createlink: false,
+    insertUnorderedList: false,
   });
-  useEffect(()=>{
-    console.log(ids)
-  },[ids['justifyLeft'],
-  ids['justifyCenter'],
-  ids['italic'],
-  ids['bold'],
-  ids['underline'],
-  ids['insertOrderedList']],
-  ids['createlink'],
-  ids['insertUnorderedList'])
+  useEffect(
+    () => {
+      console.log(ids);
+    },
+    [
+      ids["justifyLeft"],
+      ids["justifyCenter"],
+      ids["italic"],
+      ids["bold"],
+      ids["underline"],
+      ids["insertOrderedList"],
+    ],
+    ids["createlink"],
+    ids["insertUnorderedList"]
+  );
 
+  const editorFunction = (e) => {
+    console.log(e);
+    console.log(e.target.dataset["command"]);
 
-  const editorFunction=(e)=>{
-    console.log(e)
-    console.log( e.target.dataset['command'])
-    
-   var value = ids;
+    var value = ids;
 
-   let cmd = e.target.dataset['command'];   
-   console.log(cmd)
- 
-   ids[cmd]?value[cmd]=false:value[cmd]=true;
-  setIDs(value);
+    let cmd = e.target.dataset["command"];
+    console.log(cmd);
 
-		if(cmd === 'createlink') {
-			let url = prompt("Enter the link here: ", "http:\/\/");
-			document.execCommand(cmd, false, url);
-		} 
-    else {
-			document.execCommand(cmd, false, null);
-		}
-  }
-  
+    ids[cmd] ? (value[cmd] = false) : (value[cmd] = true);
+    setIDs(value);
 
+    if (cmd === "createlink") {
+      let url = prompt("Enter the link here: ", "http://");
+      document.execCommand(cmd, false, url);
+    } else {
+      document.execCommand(cmd, false, null);
+    }
+  };
 
   return (
     <>
@@ -1704,7 +1739,7 @@ const NewEventProfile = (props) => {
             <a
               className="nav-link disabled"
               // href="#/"
-                tabIndex="-1"
+              tabIndex="-1"
               aria-disabled="true"
             >
               <img alt="menu" src={backIcon} className="profile-image" />
@@ -1731,25 +1766,25 @@ const NewEventProfile = (props) => {
                         // border: '2px solid black',
                         height: 100,
                         width: 100,
-                        borderRadius: '50%',
-                        backgroundColor: '#d8d8d8',
-                        overflow: 'visible',
-                        display: 'inline-block',
+                        borderRadius: "50%",
+                        backgroundColor: "#d8d8d8",
+                        overflow: "visible",
+                        display: "inline-block",
                         marginLeft: 0,
                       }}
                       // className="d-inline"
                     >
-                      {file.preview !== '' ? (
+                      {file.preview !== "" ? (
                         <img
                           src={file.preview}
                           alt=""
                           className="m-auto d-block p-0"
                           style={{
                             // objectFit: 'contain',
-                            objectFit: 'cover',
+                            objectFit: "cover",
                             width: 100,
                             height: 100,
-                            borderRadius: '50%',
+                            borderRadius: "50%",
                           }}
                         />
                       ) : (
@@ -1758,7 +1793,7 @@ const NewEventProfile = (props) => {
                           alt=""
                           className="m-auto d-block p-0"
                           style={{
-                            objectFit: 'contain',
+                            objectFit: "contain",
                           }}
                         />
                       )}
@@ -1777,7 +1812,7 @@ const NewEventProfile = (props) => {
                   </div>
                   <div
                     className="col-8 m-auto p-0"
-                    style={{ borderBottom: '1px solid #979797' }}
+                    style={{ borderBottom: "1px solid #979797" }}
                   >
                     <MainInput
                       textValue={(e) => setEventName(e)}
@@ -1801,14 +1836,14 @@ const NewEventProfile = (props) => {
                   />
                 </div>
               </div>
-             
+
               {/* Subtitle*/}
               <div className="col-12 p-0" style={{ marginTop: 24 }}>
                 <div
                   className="text-left address-title"
                   ref={event_subtitle_error}
                 >
-                 Event Subtitle
+                  Event Subtitle
                 </div>
                 {SubTitleError !== null && (
                   <div className="text-left error-message-profile">
@@ -1822,13 +1857,12 @@ const NewEventProfile = (props) => {
                       style={{ height: 50 }}
                     >
                       {/* <TextAreaInput textValue={(e) => setDescription(e)} /> */}
-                     <SubTiltleInput textValue = {e =>setSubtitle(e)}/> 
+                      <SubTiltleInput textValue={(e) => setSubtitle(e)} />
                     </div>
                   </div>
                 </div>
               </div>
-             
-             
+
               <div className="col-12 p-0" style={{ marginTop: 24 }}>
                 <div className="container">
                   <div className="row">
@@ -1876,8 +1910,8 @@ const NewEventProfile = (props) => {
                         id="score-hamburger"
                         className={
                           hamburgerOpen1
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
+                            ? "tri_top_event_visible"
+                            : "tri_top_event_hidden"
                         }
                       >
                         <div ref={ref}>
@@ -1892,18 +1926,18 @@ const NewEventProfile = (props) => {
                               style={{
                                 width: 432,
                                 height: 280,
-                                overflowY: 'auto',
+                                overflowY: "auto",
                                 top: 25,
                               }}
                             >
                               <div
                                 className=" container row p-0 m-auto"
                                 style={{
-                                  border: '1px solid #d8d8d8',
+                                  border: "1px solid #d8d8d8",
                                   borderRadius: 20,
                                   height: 32,
                                   width: 416,
-                                  backgroundColor: '#ffffff',
+                                  backgroundColor: "#ffffff",
                                 }}
                               >
                                 <div className="col-1 p-0 m-auto">
@@ -1922,13 +1956,11 @@ const NewEventProfile = (props) => {
                                     className=" form-control  p-0 dropdown-searchbar"
                                     onChange={async (e) => {
                                       if (
-                                        addressInputValue.current.value !== ''
+                                        addressInputValue.current.value !== ""
                                       ) {
                                         setLoading();
-                                      
-                                         await addressFilter(e.target.value);
-                                     
-                                        
+
+                                        await addressFilter(e.target.value);
                                       } else {
                                         addressFilterClear();
                                       }
@@ -1939,7 +1971,7 @@ const NewEventProfile = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#d8d8d8',
+                                  backgroundColor: "#d8d8d8",
                                   marginTop: 7,
                                 }}
                               />
@@ -2017,8 +2049,22 @@ const NewEventProfile = (props) => {
                       >
                         {country}
                         <DropdownModals>
-                          <li onClick={() => { setCountry('US');  setStateCode('USA')} }>USA</li>
-                          <li onClick={() => {setStateCode('CA'); setCountry('CA')}}>CANADA</li>
+                          <li
+                            onClick={() => {
+                              setCountry("US");
+                              setStateCode("USA");
+                            }}
+                          >
+                            USA
+                          </li>
+                          <li
+                            onClick={() => {
+                              setStateCode("CA");
+                              setCountry("CA");
+                            }}
+                          >
+                            CANADA
+                          </li>
                         </DropdownModals>
                       </div>
                     </div>
@@ -2069,7 +2115,7 @@ const NewEventProfile = (props) => {
                           <span className="DAS1checkmark"></span>
                           <span
                             className="DAS1label "
-                            style={{ color: '#9b9b9b', fontSize: 10 }}
+                            style={{ color: "#9b9b9b", fontSize: 10 }}
                           >
                             Temporary Courts
                           </span>
@@ -2093,7 +2139,7 @@ const NewEventProfile = (props) => {
                             disabled={
                               noOfCourts < 9999 ||
                               noOfCourts > 1 ||
-                              noOfCourts === ''
+                              noOfCourts === ""
                                 ? false
                                 : true
                             }
@@ -2133,8 +2179,8 @@ const NewEventProfile = (props) => {
                   <div
                     className={
                       dateError
-                        ? 'red_highlight_event row shadow-box'
-                        : 'row shadow-box'
+                        ? "red_highlight_event row shadow-box"
+                        : "row shadow-box"
                     }
                   >
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
@@ -2148,8 +2194,8 @@ const NewEventProfile = (props) => {
                         format="MM/DD/YYYY"
                         style={{
                           width: 110,
-                          color: '#747474',
-                          cursor: 'pointer',
+                          color: "#747474",
+                          cursor: "pointer",
                         }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
@@ -2174,8 +2220,8 @@ const NewEventProfile = (props) => {
                   <div
                     className={
                       dateError
-                        ? 'red_highlight_event row shadow-box'
-                        : 'row shadow-box'
+                        ? "red_highlight_event row shadow-box"
+                        : "row shadow-box"
                     }
                   >
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
@@ -2187,7 +2233,7 @@ const NewEventProfile = (props) => {
                     <div className="col-7 p-0 text-right box-shadow-text m-auto pr-1">
                       <DatePicker
                         format="MM/DD/YYYY"
-                        style={{ width: 110, cursor: 'pointer' }}
+                        style={{ width: 110, cursor: "pointer" }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
                         className="pr-0 text-uppercase p-0"
@@ -2212,7 +2258,7 @@ const NewEventProfile = (props) => {
                     <div className="col-7 p-0 text-right box-shadow-text m-auto pr-1">
                       <DatePicker
                         format="MM/DD/YYYY"
-                        style={{ width: 110, cursor: 'pointer' }}
+                        style={{ width: 110, cursor: "pointer" }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
                         className="pr-0 text-uppercase p-0"
@@ -2220,8 +2266,8 @@ const NewEventProfile = (props) => {
                         value={closesOnDate}
                         onChange={(e) => {
                           setClosesOnDate(e);
-                          setEarlyBirdDate(moment(e).subtract(5, 'd'));
-                          earlyBirdDateStateFun(moment(e).subtract(5, 'd'));
+                          setEarlyBirdDate(moment(e).subtract(5, "d"));
+                          earlyBirdDateStateFun(moment(e).subtract(5, "d"));
                         }}
                         placeholder=""
                         disabledDate={disabledDateRegistration}
@@ -2235,8 +2281,8 @@ const NewEventProfile = (props) => {
                   <div
                     className={
                       dateError
-                        ? 'red_highlight_event row shadow-box'
-                        : 'row shadow-box'
+                        ? "red_highlight_event row shadow-box"
+                        : "row shadow-box"
                     }
                   >
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
@@ -2247,8 +2293,8 @@ const NewEventProfile = (props) => {
                       onClick={() =>
                         console.log(
                           moment(closesOnDate)
-                            .subtract(5, 'd')
-                            .format('YYYY-MM-DD')
+                            .subtract(5, "d")
+                            .format("YYYY-MM-DD")
                         )
                       }
                     >
@@ -2259,8 +2305,8 @@ const NewEventProfile = (props) => {
                         format="MM/DD/YYYY"
                         style={{
                           width: 110,
-                          color: '#747474',
-                          cursor: 'pointer',
+                          color: "#747474",
+                          cursor: "pointer",
                         }}
                         bordered={false}
                         suffixIcon={<img src={calenderIconRight} alt="" />}
@@ -2280,7 +2326,6 @@ const NewEventProfile = (props) => {
                     </div>
                   </div>
                 </div>
-              
               </div>
 
               {/* Time */}
@@ -2298,8 +2343,8 @@ const NewEventProfile = (props) => {
                   <div
                     className={
                       timeError
-                        ? 'red_highlight_event row shadow-box'
-                        : 'row shadow-box'
+                        ? "red_highlight_event row shadow-box"
+                        : "row shadow-box"
                     }
                   >
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
@@ -2312,7 +2357,7 @@ const NewEventProfile = (props) => {
                       <TimePicker
                         // use12Hours
                         format="h:mm A"
-                        style={{ width: 90, cursor: 'pointer' }}
+                        style={{ width: 90, cursor: "pointer" }}
                         bordered={false}
                         suffixIcon={<img src={downArrow} alt="" />}
                         className="pr-0 text-uppercase p-0"
@@ -2320,10 +2365,10 @@ const NewEventProfile = (props) => {
                         value={startTime}
                         onChange={(e) => {
                           setStartTime(e);
-                          console.log(moment(e).format('HH:mm:ss'));
+                          console.log(moment(e).format("HH:mm:ss"));
                         }}
                         placeholder=""
-                        popupStyle={{ textAlign: 'end' }}
+                        popupStyle={{ textAlign: "end" }}
                       />
                     </div>
                   </div>
@@ -2391,7 +2436,7 @@ const NewEventProfile = (props) => {
                               removeFromTemplateData(temData.template_id)
                             }
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid my-auto mr-1 ml-2 pr-1"
                           />
                         </div>
@@ -2416,7 +2461,7 @@ const NewEventProfile = (props) => {
                             src={clearIcon}
                             alt=""
                             className="img-fluid my-auto mr-1 ml-2 pr-1"
-                            style={{ visibility: 'hidden' }}
+                            style={{ visibility: "hidden" }}
                           />
                         </div>
                       </div>
@@ -2443,21 +2488,19 @@ const NewEventProfile = (props) => {
                   </div>
                 )}
                 {/* Registration Cap */}
-                <div style={{all:"none"}} >
+                <div style={{ all: "none" }}>
                   <ShadowContainerDropdown
-                  srcImg={addNewIcon}
-                  text="Registration Cap"
-                  stateData={registrationCapChoice}
-                  mainClasses="row shadow-box mt-0"
-                >
-                  <SelectOptions
-                    yesChoice={() => setRegistrationCapChoice('yes')}
-                    noChoice={() => setRegistrationCapChoice('no')}
-                  />
-                </ShadowContainerDropdown>
+                    srcImg={addNewIcon}
+                    text="Registration Cap"
+                    stateData={registrationCapChoice}
+                    mainClasses="row shadow-box mt-0"
+                  >
+                    <SelectOptions
+                      yesChoice={() => setRegistrationCapChoice("yes")}
+                      noChoice={() => setRegistrationCapChoice("no")}
+                    />
+                  </ShadowContainerDropdown>
                 </div>
-
-
 
                 {/* Ends At */}
                 <div className="container">
@@ -2472,7 +2515,7 @@ const NewEventProfile = (props) => {
                       <TimePicker
                         use12Hours
                         format="h:mm A"
-                        style={{ width: 90, cursor: 'pointer' }}
+                        style={{ width: 90, cursor: "pointer" }}
                         bordered={false}
                         suffixIcon={<img src={downArrow} alt="" />}
                         className="pr-0 text-uppercase p-0"
@@ -2531,98 +2574,109 @@ const NewEventProfile = (props) => {
                   </a>
                 </ShadowContainerDropdown> */}
                 {/* No of sets */}
-                <div style={{all:"none"}}  onClick={() => setNoSetsDropdown(!noSetsDropdown)}>
-
-                      <ShadowContainerDropdown
-                        srcImg={playTypeIcon}
-                        text="Number of sets"
-                        stateData={numberOfSets}
-                        mainClasses="row shadow-box"
-                      >
-                        <a
-                          id="score-hamburger"
-                          ref={refPools}
-                          onClick={() => setNoSetsDropdown(!noSetsDropdown)}
-                          className={
-                            poolsDropdown
-                              ? 'tri_top_event_visible'
-                              : 'tri_top_event_hidden'
-                          }
-                        >
-                          <div>
-                            <img src={downArrow} alt="" />
-                            {noSetsDropdown && (
-                              <span
-                                style={{
-                                  marginTop: 7,
-                                  right: -10,
-                                  maxHeight: 280,
-                                  overflowY: 'auto',
-                                }}
-                                className="dropdown_animation"
-                              >
-                                <ul>
-                                  <li onClick={() => setNumberOfSets(1)}>1</li>
-                                  <li onClick={() => setNumberOfSets(2)}>2</li>
-                                  <li onClick={() => setNumberOfSets(3)}>3</li>
-                                  <li onClick={() => setNumberOfSets(4)}>4</li>
-                                </ul>
-                              </span>
-                            )}
-                          </div>
-                        </a>
-                      </ShadowContainerDropdown>
-                  </div>
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setNoSetsDropdown(!noSetsDropdown)}
+                >
+                  <ShadowContainerDropdown
+                    srcImg={playTypeIcon}
+                    text="Number of sets"
+                    stateData={numberOfSets}
+                    mainClasses="row shadow-box"
+                  >
+                    <a
+                      id="score-hamburger"
+                      ref={refPools}
+                      onClick={() => setNoSetsDropdown(!noSetsDropdown)}
+                      className={
+                        poolsDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
+                    >
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {noSetsDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              <li onClick={() => setNumberOfSets(1)}>1</li>
+                              <li onClick={() => setNumberOfSets(2)}>2</li>
+                              <li onClick={() => setNumberOfSets(3)}>3</li>
+                              <li onClick={() => setNumberOfSets(4)}>4</li>
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                  </ShadowContainerDropdown>
+                </div>
 
                 {/* Match time */}
-                <div style={{all:"none"}}  onClick={() => setMatchTimeDropdown(!matchTimeDropdown)}>
-                <ShadowContainerDropdown
-                  srcImg={durationIcon}
-                  text="Match Time"
-                  stateData={matchTime}
-                  mainClasses="row shadow-box"
-                 
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setMatchTimeDropdown(!matchTimeDropdown)}
                 >
-              
-                  <a
-                    id="score-hamburger"
-                    ref={refPools}
-                    onClick={() => setMatchTimeDropdown(!matchTimeDropdown)}
-                    className={
-                      poolsDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
-                    }
+                  <ShadowContainerDropdown
+                    srcImg={durationIcon}
+                    text="Match Time"
+                    stateData={matchTime}
+                    mainClasses="row shadow-box"
                   >
-                    <div>
-                      <img src={downArrow} alt="" />
-                      {matchTimeDropdown && (
-                        <span
-                          style={{
-                            marginTop: 7,
-                            right: -10,
-                            maxHeight: 280,
-                            overflowY: 'auto',
-                          }}
-                          className="dropdown_animation"
-                        >
-                          <ul>
-                            <li onClick={() => setMatchTime(50)}>50 minutes</li>
-                            <li onClick={() => setMatchTime(60)}>60 minutes</li>
-                            <li onClick={() => setMatchTime(70)}>70 minutes</li>
-                            <li onClick={() => setMatchTime(80)}>80 minutes</li>
-                          </ul>
-                        </span>
-                      )}
-                    </div>
-                  </a>
-                  {/* <DropdownModals>
+                    <a
+                      id="score-hamburger"
+                      ref={refPools}
+                      onClick={() => setMatchTimeDropdown(!matchTimeDropdown)}
+                      className={
+                        poolsDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
+                    >
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {matchTimeDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              <li onClick={() => setMatchTime(50)}>
+                                50 minutes
+                              </li>
+                              <li onClick={() => setMatchTime(60)}>
+                                60 minutes
+                              </li>
+                              <li onClick={() => setMatchTime(70)}>
+                                70 minutes
+                              </li>
+                              <li onClick={() => setMatchTime(80)}>
+                                80 minutes
+                              </li>
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                    {/* <DropdownModals>
                     <li onClick={() => setMatchTime(50)}>50 minutes</li>
                     <li onClick={() => setMatchTime(60)}>60 minutes</li>
                     <li onClick={() => setMatchTime(70)}>70 minutes</li>
                     <li onClick={() => setMatchTime(80)}>80 minutes</li>
                   </DropdownModals> */}
-                </ShadowContainerDropdown>
+                  </ShadowContainerDropdown>
                 </div>
 
                 {/* Max points per set */}
@@ -2637,9 +2691,9 @@ const NewEventProfile = (props) => {
                     <div
                       className="col-6 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 pr-1"
                       style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "flex-end",
                       }}
                     >
                       <input
@@ -2649,7 +2703,7 @@ const NewEventProfile = (props) => {
                         className="form-control p-0 webkit_spinner_none"
                         value={maxPointsPerSet}
                         min="1"
-                        style={{ direction: 'rtl', height: 30, fontSize: 14 }}
+                        style={{ direction: "rtl", height: 30, fontSize: 14 }}
                         // onChange={(e) => setMaxPointsPerSet(e.target.value)}
                         onChange={(e) => twoDigitVal(e, setMaxPointsPerSet)}
                       />
@@ -2657,58 +2711,59 @@ const NewEventProfile = (props) => {
                         src={clearIcon}
                         onClick={() => setMaxPointsPerSet(0)}
                         alt=""
-                        style={{ cursor: 'pointer' }}
+                        style={{ cursor: "pointer" }}
                         className="img-fluid my-auto mr-1 ml-2"
                       />
                     </div>
                   </div>
                 </div>
-                
-                {/* Number of playoffs */}
-                  <div style={{all:"none"}}  onClick={() => setPlayOffDropdown(!playOffDropdown)}>
 
-                      <ShadowContainerDropdown
-                        srcImg={playersIcon}
-                        text="Number of playoffs"
-                        stateData={noOfPlayoffs}
-                        mainClasses="row shadow-box"
-                      >
-                        <a
-                          id="score-hamburger"
-                          ref={refPools}
-                          onClick={() => setPlayOffDropdown(!playOffDropdown)}
-                          className={
-                            poolsDropdown
-                              ? 'tri_top_event_visible'
-                              : 'tri_top_event_hidden'
-                          }
-                        >
-                          <div>
-                            <img src={downArrow} alt="" />
-                            {playOffDropdown && (
-                              <span
-                                style={{
-                                  marginTop: 7,
-                                  right: -10,
-                                  maxHeight: 280,
-                                  overflowY: 'auto',
-                                }}
-                                className="dropdown_animation"
-                              >
-                                <ul>
-                                  <li onClick={() => setNoOfPlayoffs(1)}>1</li>
-                                  <li onClick={() => setNoOfPlayoffs(2)}>2</li>
-                                  <li onClick={() => setNoOfPlayoffs(3)}>3</li>
-                                  <li onClick={() => setNoOfPlayoffs(4)}>4</li>
-                                </ul>
-                              </span>
-                            )}
-                          </div>
-                        </a>
-                
+                {/* Number of playoffs */}
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setPlayOffDropdown(!playOffDropdown)}
+                >
+                  <ShadowContainerDropdown
+                    srcImg={playersIcon}
+                    text="Number of playoffs"
+                    stateData={noOfPlayoffs}
+                    mainClasses="row shadow-box"
+                  >
+                    <a
+                      id="score-hamburger"
+                      ref={refPools}
+                      onClick={() => setPlayOffDropdown(!playOffDropdown)}
+                      className={
+                        poolsDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
+                    >
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {playOffDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              <li onClick={() => setNoOfPlayoffs(1)}>1</li>
+                              <li onClick={() => setNoOfPlayoffs(2)}>2</li>
+                              <li onClick={() => setNoOfPlayoffs(3)}>3</li>
+                              <li onClick={() => setNoOfPlayoffs(4)}>4</li>
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
                   </ShadowContainerDropdown>
-                  </div>
-                
+                </div>
+
                 {/* Teams in each playoff */}
                 {/* {noOfPlayoffs !== '' && [...Array(noOfPlayoffs)].map((playoff,i)=>
                   <div className="container" key={i}>
@@ -2742,7 +2797,7 @@ const NewEventProfile = (props) => {
                   </div>
                 </div>
                 )} */}
-                {noOfPlayoffs !== '' && noOfPlayoffs === 2 && (
+                {noOfPlayoffs !== "" && noOfPlayoffs === 2 && (
                   <>
                     <div className="container">
                       <div className="row shadow-box">
@@ -2760,7 +2815,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff1}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -2770,9 +2825,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff1('')}
+                            onClick={() => setTeamsInPlayoff1("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -2794,7 +2849,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff2}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -2804,9 +2859,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff2('')}
+                            onClick={() => setTeamsInPlayoff2("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -2814,7 +2869,7 @@ const NewEventProfile = (props) => {
                     </div>
                   </>
                 )}
-                {noOfPlayoffs !== '' && noOfPlayoffs === 3 && (
+                {noOfPlayoffs !== "" && noOfPlayoffs === 3 && (
                   <>
                     <div className="container">
                       <div className="row shadow-box">
@@ -2832,7 +2887,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff1}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -2842,9 +2897,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff1('')}
+                            onClick={() => setTeamsInPlayoff1("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -2866,7 +2921,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff2}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -2876,9 +2931,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff2('')}
+                            onClick={() => setTeamsInPlayoff2("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -2900,7 +2955,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff3}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -2910,9 +2965,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff3('')}
+                            onClick={() => setTeamsInPlayoff3("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -2920,7 +2975,7 @@ const NewEventProfile = (props) => {
                     </div>
                   </>
                 )}
-                {noOfPlayoffs !== '' && noOfPlayoffs === 4 && (
+                {noOfPlayoffs !== "" && noOfPlayoffs === 4 && (
                   <>
                     <div className="container">
                       <div className="row shadow-box">
@@ -2938,7 +2993,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff1}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -2948,9 +3003,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff1('')}
+                            onClick={() => setTeamsInPlayoff1("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -2972,7 +3027,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff2}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -2982,9 +3037,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff2('')}
+                            onClick={() => setTeamsInPlayoff2("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -3006,7 +3061,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff3}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -3016,9 +3071,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff3('')}
+                            onClick={() => setTeamsInPlayoff3("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -3040,7 +3095,7 @@ const NewEventProfile = (props) => {
                             value={teamsInPlayoff4}
                             min="1"
                             style={{
-                              direction: 'rtl',
+                              direction: "rtl",
                               height: 30,
                               fontSize: 14,
                             }}
@@ -3050,9 +3105,9 @@ const NewEventProfile = (props) => {
                         <div className="col-1 p-0 text-right m-auto pr-1">
                           <img
                             src={clearIcon}
-                            onClick={() => setTeamsInPlayoff4('')}
+                            onClick={() => setTeamsInPlayoff4("")}
                             alt=""
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: "pointer" }}
                             className="img-fluid mb-1 mr-1"
                           />
                         </div>
@@ -3108,118 +3163,123 @@ const NewEventProfile = (props) => {
                   </div>
                 )}
                 {/* Pools*/}
-                
-                <div style={{all:"none"}}   onClick={() => setPoolsDropdown(!poolsDropdown)}>
 
-                    <ShadowContainer
-                      srcImg={poolsIcon}
-                      text="Pools"
-                      stateData={poolsChoice}
-                      mainClasses="row shadow-box mt-0"
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setPoolsDropdown(!poolsDropdown)}
+                >
+                  <ShadowContainer
+                    srcImg={poolsIcon}
+                    text="Pools"
+                    stateData={poolsChoice}
+                    mainClasses="row shadow-box mt-0"
+                  >
+                    <a
+                      id="score-hamburger"
+                      ref={refPools}
+                      onClick={() => setPoolsDropdown(!poolsDropdown)}
+                      className={
+                        poolsDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
                     >
-                      <a
-                        id="score-hamburger"
-                        ref={refPools}
-                        onClick={() => setPoolsDropdown(!poolsDropdown)}
-                        className={
-                          poolsDropdown
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
-                        }
-                      >
-                        <div>
-                          <img src={downArrow} alt="" />
-                          {poolsDropdown && (
-                            <span
-                              style={{
-                                marginTop: 7,
-                                right: -10,
-                                maxHeight: 280,
-                                overflowY: 'auto',
-                              }}
-                              className="dropdown_animation"
-                            >
-                              <ul>
-                                {eventDropdownData !== null &&
-                                  eventDropdownData.pools.map((data) => (
-                                    <li
-                                      onClick={() => {
-                                        setPoolsChoice(data.name);
-                                        setPool_id(data.id);
-                                      }}
-                                      key={data.id}
-                                    >
-                                      {data.name}
-                                    </li>
-                                  ))}
-                              </ul>
-                            </span>
-                          )}
-                        </div>
-                      </a>
-                      {/* <SelectOptions
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {poolsDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              {eventDropdownData !== null &&
+                                eventDropdownData.pools.map((data) => (
+                                  <li
+                                    onClick={() => {
+                                      setPoolsChoice(data.name);
+                                      setPool_id(data.id);
+                                    }}
+                                    key={data.id}
+                                  >
+                                    {data.name}
+                                  </li>
+                                ))}
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                    {/* <SelectOptions
                         yesChoice={() => setPoolsChoice('YES')}
                         noChoice={() => setPoolsChoice('NO')}
                       /> */}
-                     
-                    </ShadowContainer>
-                    </div>
-               
-                
-                {/* Season */}
-                <div style={{all:"none"}}     onClick={() => setSeasonDropdown(!seasonDropdown)}>
-                    <ShadowContainer
-                      srcImg={seasonsIcon}
-                      text="Season"
-                      stateData={seasonChoice}
-                      mainClasses="row shadow-box"
-                    >
-                      <a
-                        id="score-hamburger"
-                        ref={refSeason}
-                        onClick={() => setSeasonDropdown(!seasonDropdown)}
-                        className={
-                          seasonDropdown
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
-                        }
-                      >
-                        <div>
-                          <img src={downArrow} alt="" />
-                          {seasonDropdown && (
-                            <span
-                              style={{
-                                marginTop: 7,
-                                right: -10,
-                                maxHeight: 280,
-                                overflowY: 'auto',
-                              }}
-                              className="dropdown_animation"
-                            >
-                              <ul>
-                                {eventDropdownData !== null &&
-                                  eventDropdownData.seasons.map((data) => (
-                                    <li
-                                      onClick={() => {
-                                        setSeasonChoice(data.name);
-                                        setSeason_id(data.id);
-                                      }}
-                                      key={data.id}
-                                    >
-                                      {data.name}
-                                    </li>
-                                  ))}
-                              </ul>
-                            </span>
-                          )}
-                        </div>
-                      </a>
-                    </ShadowContainer>
+                  </ShadowContainer>
                 </div>
-               
-                {/* Placement Points */}
-                <div style={{all:"none"}}  onClick={() => setPointsDropdown(!pointsDropdown)}>
 
+                {/* Season */}
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setSeasonDropdown(!seasonDropdown)}
+                >
+                  <ShadowContainer
+                    srcImg={seasonsIcon}
+                    text="Season"
+                    stateData={seasonChoice}
+                    mainClasses="row shadow-box"
+                  >
+                    <a
+                      id="score-hamburger"
+                      ref={refSeason}
+                      onClick={() => setSeasonDropdown(!seasonDropdown)}
+                      className={
+                        seasonDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
+                    >
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {seasonDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              {eventDropdownData !== null &&
+                                eventDropdownData.seasons.map((data) => (
+                                  <li
+                                    onClick={() => {
+                                      setSeasonChoice(data.name);
+                                      setSeason_id(data.id);
+                                    }}
+                                    key={data.id}
+                                  >
+                                    {data.name}
+                                  </li>
+                                ))}
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                  </ShadowContainer>
+                </div>
+
+                {/* Placement Points */}
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setPointsDropdown(!pointsDropdown)}
+                >
                   <ShadowContainer
                     srcImg={pointsIcon}
                     text="Placement Points"
@@ -3232,8 +3292,8 @@ const NewEventProfile = (props) => {
                       onClick={() => setPointsDropdown(!pointsDropdown)}
                       className={
                         pointsDropdown
-                          ? 'tri_top_event_visible'
-                          : 'tri_top_event_hidden'
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
                       }
                     >
                       <div>
@@ -3244,7 +3304,7 @@ const NewEventProfile = (props) => {
                               marginTop: 7,
                               right: -10,
                               maxHeight: 280,
-                              overflowY: 'auto',
+                              overflowY: "auto",
                             }}
                             className="dropdown_animation"
                           >
@@ -3270,60 +3330,64 @@ const NewEventProfile = (props) => {
                 </div>
 
                 {/* Seeding Method */}
-                <div style={{all:"none"}}  onClick={() => setSeedingDropdown(!seedingDropdown)}>
-
-                    <ShadowContainer
-                      srcImg={playTypeIcon}
-                      text="Seeding Method"
-                      stateData={seedingMethodChoice}
-                      mainClasses="row shadow-box"
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setSeedingDropdown(!seedingDropdown)}
+                >
+                  <ShadowContainer
+                    srcImg={playTypeIcon}
+                    text="Seeding Method"
+                    stateData={seedingMethodChoice}
+                    mainClasses="row shadow-box"
+                  >
+                    <a
+                      id="score-hamburger"
+                      ref={refSeeding}
+                      // onClick={() => setSeedingDropdown(!seedingDropdown)}
+                      className={
+                        seedingDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
                     >
-                      <a
-                        id="score-hamburger"
-                        ref={refSeeding}
-                        // onClick={() => setSeedingDropdown(!seedingDropdown)}
-                        className={
-                          seedingDropdown
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
-                        }
-                      >
-                        <div>
-                          <img src={downArrow} alt="" />
-                          {seedingDropdown && (
-                            <span
-                              style={{
-                                marginTop: 7,
-                                right: -10,
-                                maxHeight: 280,
-                                overflowY: 'auto',
-                              }}
-                              className="dropdown_animation"
-                            >
-                              <ul>
-                                {eventDropdownData !== null &&
-                                  eventDropdownData.seeding_method.map((data) => (
-                                    <li
-                                      onClick={() => {
-                                        setSeedingMethodChoice(data.name);
-                                        setSeeding_method_id(data.id);
-                                      }}
-                                      key={data.id}
-                                    >
-                                      {data.name}
-                                    </li>
-                                  ))}
-                              </ul>
-                            </span>
-                          )}
-                        </div>
-                      </a>
-                    </ShadowContainer>
-                </div>   
-                
-                {/* Surface Type */}
-                <div style={{all:"none"}}  onClick={() => setSurfaceDropdown(!surfaceDropdown)}>
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {seedingDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              {eventDropdownData !== null &&
+                                eventDropdownData.seeding_method.map((data) => (
+                                  <li
+                                    onClick={() => {
+                                      setSeedingMethodChoice(data.name);
+                                      setSeeding_method_id(data.id);
+                                    }}
+                                    key={data.id}
+                                  >
+                                    {data.name}
+                                  </li>
+                                ))}
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                  </ShadowContainer>
+                </div>
 
+                {/* Surface Type */}
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setSurfaceDropdown(!surfaceDropdown)}
+                >
                   <ShadowContainer
                     srcImg={surfaceIcon}
                     text="Surface Type"
@@ -3336,8 +3400,8 @@ const NewEventProfile = (props) => {
                       onClick={() => setSurfaceDropdown(!surfaceDropdown)}
                       className={
                         surfaceDropdown
-                          ? 'tri_top_event_visible'
-                          : 'tri_top_event_hidden'
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
                       }
                     >
                       <div>
@@ -3348,14 +3412,14 @@ const NewEventProfile = (props) => {
                               marginTop: 7,
                               right: -10,
                               maxHeight: 280,
-                              overflowY: 'auto',
+                              overflowY: "auto",
                             }}
                             className="dropdown_animation"
                           >
                             <ul>
                               <li
                                 onClick={() => {
-                                  setSurfaceTypeChoice('Sand');
+                                  setSurfaceTypeChoice("Sand");
                                   setSurfaceId(1);
                                 }}
                               >
@@ -3363,7 +3427,7 @@ const NewEventProfile = (props) => {
                               </li>
                               <li
                                 onClick={() => {
-                                  setSurfaceTypeChoice('Grass');
+                                  setSurfaceTypeChoice("Grass");
                                   setSurfaceId(2);
                                 }}
                               >
@@ -3371,7 +3435,7 @@ const NewEventProfile = (props) => {
                               </li>
                               <li
                                 onClick={() => {
-                                  setSurfaceTypeChoice('Other');
+                                  setSurfaceTypeChoice("Other");
                                   setSurfaceId(3);
                                 }}
                               >
@@ -3383,8 +3447,8 @@ const NewEventProfile = (props) => {
                       </div>
                     </a>
                   </ShadowContainer>
-                </div> 
-                
+                </div>
+
                 {/* Host Clinic */}
                 <ShadowContainer
                   srcImg={lightBulbIcon}
@@ -3393,8 +3457,8 @@ const NewEventProfile = (props) => {
                   mainClasses="row shadow-box"
                 >
                   <SelectOptions
-                    yesChoice={() => setHostClinicChoice('yes')}
-                    noChoice={() => setHostClinicChoice('no')}
+                    yesChoice={() => setHostClinicChoice("yes")}
+                    noChoice={() => setHostClinicChoice("no")}
                   />
                 </ShadowContainer>
 
@@ -3406,72 +3470,76 @@ const NewEventProfile = (props) => {
                   mainClasses="row shadow-box"
                 >
                   <SelectOptions
-                    yesChoice={() => setShowEntriesChoice('yes')}
-                    noChoice={() => setShowEntriesChoice('no')}
+                    yesChoice={() => setShowEntriesChoice("yes")}
+                    noChoice={() => setShowEntriesChoice("no")}
                   />
                 </ShadowContainer>
 
                 {/* Allow Membership */}
-                <div style={{all:"none"}}  onClick={() => setTeamListingDropdown(!teamListingDropdown)}>
-
-                    <ShadowContainer
-                      srcImg={surfaceIcon}
-                      text="Team Listing"
-                      stateData={
-                        teamListingChoice === 1
-                          ? 'By Ranking Points'
-                          : 'By Registration Date'
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setTeamListingDropdown(!teamListingDropdown)}
+                >
+                  <ShadowContainer
+                    srcImg={surfaceIcon}
+                    text="Team Listing"
+                    stateData={
+                      teamListingChoice === 1
+                        ? "By Ranking Points"
+                        : "By Registration Date"
+                    }
+                    mainClasses="row shadow-box"
+                  >
+                    <a
+                      id="score-hamburger"
+                      ref={refTeamListing}
+                      onClick={() =>
+                        setTeamListingDropdown(!teamListingDropdown)
                       }
-                      mainClasses="row shadow-box"
+                      className={
+                        teamListingDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
                     >
-                      <a
-                        id="score-hamburger"
-                        ref={refTeamListing}
-                        onClick={() => setTeamListingDropdown(!teamListingDropdown)}
-                        className={
-                          teamListingDropdown
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
-                        }
-                      >
-                        <div>
-                          <img src={downArrow} alt="" />
-                          {teamListingDropdown && (
-                            <span
-                              style={{
-                                marginTop: 7,
-                                right: -10,
-                                maxHeight: 280,
-                                overflowY: 'auto',
-                              }}
-                              className="dropdown_animation"
-                            >
-                              <ul>
-                                <li
-                                  onClick={() => {
-                                    // setSurfaceTypeChoice('Sand');
-                                    // setSurfaceId(1);
-                                    setTeamListingChoice(1);
-                                  }}
-                                >
-                                  By Ranking Points
-                                </li>
-                                <li
-                                  onClick={() => {
-                                    // setSurfaceTypeChoice('Grass');
-                                    // setSurfaceId(2);
-                                    setTeamListingChoice(2);
-                                  }}
-                                >
-                                  By Registration Date
-                                </li>
-                              </ul>
-                            </span>
-                          )}
-                        </div>
-                      </a>
-                    </ShadowContainer>
-                  </div>
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {teamListingDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              <li
+                                onClick={() => {
+                                  // setSurfaceTypeChoice('Sand');
+                                  // setSurfaceId(1);
+                                  setTeamListingChoice(1);
+                                }}
+                              >
+                                By Ranking Points
+                              </li>
+                              <li
+                                onClick={() => {
+                                  // setSurfaceTypeChoice('Grass');
+                                  // setSurfaceId(2);
+                                  setTeamListingChoice(2);
+                                }}
+                              >
+                                By Registration Date
+                              </li>
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                  </ShadowContainer>
+                </div>
               </div>
 
               {/* Contact */}
@@ -3488,11 +3556,13 @@ const NewEventProfile = (props) => {
                   </div>
                 )}
                 {/*Director*/}
-                <div className="container"  
-                          onClick={() => {
-                                        setDirectorDropdown(!directorDropdown);
-                                        contactFilterClear();
-                                      }}>
+                <div
+                  className="container"
+                  onClick={() => {
+                    setDirectorDropdown(!directorDropdown);
+                    contactFilterClear();
+                  }}
+                >
                   <div className="row shadow-box">
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
                       <img src={megaPhoneIcon} alt="" className="img-fluid" />
@@ -3508,8 +3578,8 @@ const NewEventProfile = (props) => {
                         id="score-hamburger"
                         className={
                           hamburgerOpen1
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
+                            ? "tri_top_event_visible"
+                            : "tri_top_event_hidden"
                         }
                       >
                         <div ref={refDirector}>
@@ -3527,18 +3597,18 @@ const NewEventProfile = (props) => {
                               style={{
                                 width: 432,
                                 height: 280,
-                                overflowY: 'auto',
+                                overflowY: "auto",
                                 top: 25,
                               }}
                             >
                               <div
                                 className=" container row p-0 m-auto"
                                 style={{
-                                  border: '1px solid #d8d8d8',
+                                  border: "1px solid #d8d8d8",
                                   borderRadius: 20,
                                   height: 32,
                                   width: 416,
-                                  backgroundColor: '#ffffff',
+                                  backgroundColor: "#ffffff",
                                 }}
                               >
                                 <div className="col-1 p-0 m-auto">
@@ -3557,7 +3627,7 @@ const NewEventProfile = (props) => {
                                     className=" form-control p-0 dropdown-searchbar"
                                     onChange={(e) => {
                                       if (
-                                        directorInputValue.current.value !== ''
+                                        directorInputValue.current.value !== ""
                                       ) {
                                         contactFilter(e.target.value);
                                       } else {
@@ -3570,7 +3640,7 @@ const NewEventProfile = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#d8d8d8',
+                                  backgroundColor: "#d8d8d8",
                                   marginTop: 7,
                                 }}
                               />
@@ -3592,11 +3662,13 @@ const NewEventProfile = (props) => {
                   </div>
                 </div>
                 {/* Main Contact */}
-                <div className="container"  
-                        onClick={() => {
-                                      setMainContactDropdown(!mainContactDropdown);
-                                      contactFilterClear();
-                                    }}>
+                <div
+                  className="container"
+                  onClick={() => {
+                    setMainContactDropdown(!mainContactDropdown);
+                    contactFilterClear();
+                  }}
+                >
                   <div className="row shadow-box">
                     <div className="col-1 p-0 text-left pl-2 m-auto pb-1">
                       <img src={talkIcon} alt="" className="img-fluid" />
@@ -3612,8 +3684,8 @@ const NewEventProfile = (props) => {
                         id="score-hamburger"
                         className={
                           hamburgerOpen1
-                            ? 'tri_top_event_visible'
-                            : 'tri_top_event_hidden'
+                            ? "tri_top_event_visible"
+                            : "tri_top_event_hidden"
                         }
                       >
                         <div ref={refMainContact}>
@@ -3631,18 +3703,18 @@ const NewEventProfile = (props) => {
                               style={{
                                 width: 432,
                                 height: 280,
-                                overflowY: 'auto',
+                                overflowY: "auto",
                                 top: 25,
                               }}
                             >
                               <div
                                 className=" container row p-0 m-auto"
                                 style={{
-                                  border: '1px solid #d8d8d8',
+                                  border: "1px solid #d8d8d8",
                                   borderRadius: 20,
                                   height: 32,
                                   width: 416,
-                                  backgroundColor: '#ffffff',
+                                  backgroundColor: "#ffffff",
                                 }}
                               >
                                 <div className="col-1 p-0 m-auto">
@@ -3661,7 +3733,7 @@ const NewEventProfile = (props) => {
                                     className=" form-control p-0 dropdown-searchbar"
                                     onChange={(e) => {
                                       if (
-                                        contactInputValue.current.value !== ''
+                                        contactInputValue.current.value !== ""
                                       ) {
                                         contactFilter(e.target.value);
                                       } else {
@@ -3674,7 +3746,7 @@ const NewEventProfile = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#d8d8d8',
+                                  backgroundColor: "#d8d8d8",
                                   marginTop: 7,
                                 }}
                               />
@@ -3718,8 +3790,8 @@ const NewEventProfile = (props) => {
                   mainClasses="row shadow-box mt-0"
                 >
                   <SelectOptions
-                    yesChoice={() => setOnlinePayChoice('yes')}
-                    noChoice={() => setOnlinePayChoice('no')}
+                    yesChoice={() => setOnlinePayChoice("yes")}
+                    noChoice={() => setOnlinePayChoice("no")}
                   />
                 </ShadowContainerDropdown>
                 {/* Purse Amount */}
@@ -3733,35 +3805,37 @@ const NewEventProfile = (props) => {
                     </div>
                     <div className="col-6 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 pr-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        prefix={"$"}
+                        maxLength="15"
                         decimalScale={2}
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           // num=parseInt(num,10);
                           setPurseAmountChoice(num);
                           setPurseAmountNumber(Number(num));
                           console.log(
-                            'Purse amount:',
+                            "Purse amount:",
                             e.target.value,
                             Number(num),
-                            num
+                            num,
+                            num.length
                           );
                         }}
                         value={purseAmountChoice}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 14,
-                          fontFamily: 'FuturaMedium',
-                          textAlign: 'right',
+                          fontFamily: "FuturaMedium",
+                          textAlign: "right",
                         }}
                       />
                     </div>
@@ -3775,7 +3849,6 @@ const NewEventProfile = (props) => {
                     </div>
                     <div className="col-5 p-0 text-left box-shadow-text mt-auto mb-auto pl-2">
                       Purse Amount Percent
-
                     </div>
                     <div className="col-6 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 pr-2">
                       <NumberFormat
@@ -3783,7 +3856,7 @@ const NewEventProfile = (props) => {
                         displayType="input"
                         // thousandSeparator={true}
                         placeholder="%"
-                        suffix={'%'}
+                        suffix={"%"}
                         maxLength="4"
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
@@ -3793,13 +3866,13 @@ const NewEventProfile = (props) => {
                         // }
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('%', '');
+                            .replace(/\,/g, "")
+                            .replace("%", "");
                           // num=parseInt(num,10);
                           setPurseAmountPercentChoice(num);
                           setPurseAmountPercentNumber(Number(num));
                           console.log(
-                            'Purse amount percent:',
+                            "Purse amount percent:",
                             e.target.value,
                             Number(num),
                             num
@@ -3807,11 +3880,11 @@ const NewEventProfile = (props) => {
                         }}
                         value={purseAmountPercentChoice}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 14,
-                          fontFamily: 'FuturaMedium',
-                          textAlign: 'right',
+                          fontFamily: "FuturaMedium",
+                          textAlign: "right",
                         }}
                       />
                     </div>
@@ -3836,17 +3909,17 @@ const NewEventProfile = (props) => {
                         onChange={(e) => setDonationText(e.target.value)}
                         placeholder="Enter Donation Text here."
                         className="w-100 text-right donation-text"
-                        style={{ border: 0, outline: 'none' }}
+                        style={{ border: 0, outline: "none" }}
                       />
                     </div>
-                    <div className="col-1 p-0 text-right m-auto pr-1" >
-                        <img
-                          src={clearIcon}
-                          onClick={() => setDonationText('')}
-                          alt=""
-                          className="img-fluid mb-1 mr-1"
-                        />
-                      </div>
+                    <div className="col-1 p-0 text-right m-auto pr-1">
+                      <img
+                        src={clearIcon}
+                        onClick={() => setDonationText("")}
+                        alt=""
+                        className="img-fluid mb-1 mr-1"
+                      />
+                    </div>
                   </div>
                 </div>
                 {/* Donation Amount 1 */}
@@ -3863,22 +3936,23 @@ const NewEventProfile = (props) => {
                     </div>
                     <div className="col-6 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 pr-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        maxLength="15"
+                        prefix={"$"}
                         decimalScale={2}
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           // num=parseInt(num,10);
                           setDonation1(Number(num));
                           console.log(
-                            'Donation 1:',
+                            "Donation 1:",
                             e.target.value,
                             Number(num),
                             num
@@ -3886,11 +3960,11 @@ const NewEventProfile = (props) => {
                         }}
                         value={donation1}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 14,
-                          fontFamily: 'FuturaMedium',
-                          textAlign: 'right',
+                          fontFamily: "FuturaMedium",
+                          textAlign: "right",
                         }}
                       />
                     </div>
@@ -3908,28 +3982,29 @@ const NewEventProfile = (props) => {
                     </div>
                     <div className="col-6 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 pr-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        maxLength="15"
+                        prefix={"$"}
                         decimalScale={2}
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           // num=parseInt(num,10);
                           setDonation2(Number(num));
                         }}
                         value={donation2}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 14,
-                          fontFamily: 'FuturaMedium',
-                          textAlign: 'right',
+                          fontFamily: "FuturaMedium",
+                          textAlign: "right",
                         }}
                       />
                     </div>
@@ -3946,18 +4021,19 @@ const NewEventProfile = (props) => {
                     </div>
                     <div className="col-6 p-0 text-left box-shadow-text mt-auto mb-auto pl-2 pr-2">
                       <NumberFormat
-                        pattern={'[0-9]*'}
+                        pattern={"[0-9]*"}
                         displayType="input"
                         thousandSeparator={true}
                         placeholder="$"
-                        prefix={'$'}
+                        maxLength="15"
+                        prefix={"$"}
                         decimalScale={2}
                         className={`form-control p-0 event-number-input`}
                         name="leagueCost"
                         onChange={(e) => {
                           const num = e.target.value
-                            .replace(/\,/g, '')
-                            .replace('$', '');
+                            .replace(/\,/g, "")
+                            .replace("$", "");
                           // num=parseInt(num,10);
                           setDonation3(Number(num));
                           // console.log(
@@ -3969,83 +4045,84 @@ const NewEventProfile = (props) => {
                         }}
                         value={donation3}
                         style={{
-                          height: 'inherit',
+                          height: "inherit",
                           // direction: 'rtl',
                           fontSize: 14,
-                          fontFamily: 'FuturaMedium',
-                          textAlign: 'right',
+                          fontFamily: "FuturaMedium",
+                          textAlign: "right",
                         }}
                       />
                     </div>
                   </div>
                 </div>
                 {/* Minimum Membership Requirement */}
-                <div style={{all:"none"}}    onClick={() => setMembershipDropdown(!membershipDropdown)}>
-
-                <ShadowContainer
-                  srcImg={surfaceIcon}
-                  text="Minimum Membership Requirement"
-                  stateData={membershipChoice}
-                  mainClasses="row shadow-box"
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setMembershipDropdown(!membershipDropdown)}
                 >
-                  <a
-                    id="score-hamburger"
-                    ref={refMembership}
-                    onClick={() => setMembershipDropdown(!membershipDropdown)}
-                    className={
-                      membershipDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
-                    }
+                  <ShadowContainer
+                    srcImg={surfaceIcon}
+                    text="Minimum Membership Requirement"
+                    stateData={membershipChoice}
+                    mainClasses="row shadow-box"
                   >
-                    <div>
-                      <img src={downArrow} alt="" />
-                      {membershipDropdown && (
-                        <span
-                          style={{
-                            marginTop: 7,
-                            right: -10,
-                            maxHeight: 280,
-                            overflowY: 'auto',
-                          }}
-                          className="dropdown_animation"
-                        >
-                          <ul>
-                            <li
-                              onClick={() => {
-                                // setSurfaceTypeChoice('Sand');
-                                // setSurfaceId(1);
-                                setMembershipChoice('gold');
-                              }}
-                            >
-                              gold
-                            </li>
-                            <li
-                              onClick={() => {
-                                // setSurfaceTypeChoice('Grass');
-                                // setSurfaceId(2);
-                                setMembershipChoice('silver');
-                              }}
-                            >
-                              silver
-                            </li>
-                            <li
-                              onClick={() => {
-                                // setSurfaceTypeChoice('Other');
-                                // setSurfaceId(3);
-                                setMembershipChoice('bronze');
-                              }}
-                            >
-                              bronze
-                            </li>
-                          </ul>
-                        </span>
-                      )}
-                    </div>
-                  </a>
-                </ShadowContainer>
+                    <a
+                      id="score-hamburger"
+                      ref={refMembership}
+                      onClick={() => setMembershipDropdown(!membershipDropdown)}
+                      className={
+                        membershipDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
+                    >
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {membershipDropdown && (
+                          <span
+                            style={{
+                              marginTop: 7,
+                              right: -10,
+                              maxHeight: 280,
+                              overflowY: "auto",
+                            }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              <li
+                                onClick={() => {
+                                  // setSurfaceTypeChoice('Sand');
+                                  // setSurfaceId(1);
+                                  setMembershipChoice("gold");
+                                }}
+                              >
+                                gold
+                              </li>
+                              <li
+                                onClick={() => {
+                                  // setSurfaceTypeChoice('Grass');
+                                  // setSurfaceId(2);
+                                  setMembershipChoice("silver");
+                                }}
+                              >
+                                silver
+                              </li>
+                              <li
+                                onClick={() => {
+                                  // setSurfaceTypeChoice('Other');
+                                  // setSurfaceId(3);
+                                  setMembershipChoice("bronze");
+                                }}
+                              >
+                                bronze
+                              </li>
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                  </ShadowContainer>
                 </div>
-              
               </div>
 
               {/* Documents*/}
@@ -4069,58 +4146,59 @@ const NewEventProfile = (props) => {
                   mainClasses="row shadow-box mt-0"
                 >
                   <SelectOptions
-                    yesChoice={() => setSignatureAgreementChoice('yes')}
-                    noChoice={() => setSignatureAgreementChoice('no')}
+                    yesChoice={() => setSignatureAgreementChoice("yes")}
+                    noChoice={() => setSignatureAgreementChoice("no")}
                   />
                 </ShadowContainer>
                 {/* Score Sheet */}
-                <div style={{all:"none"}}     onClick={() => setScoreSheetDropdown(!scoreSheetDropdown)}>
-
-                    <ShadowContainer
-                  srcImg={positionIcon}
-                  text="Score Sheet"
-                  stateData={scoreSheetChoice}
-                  mainClasses="row shadow-box"
+                <div
+                  style={{ all: "none" }}
+                  onClick={() => setScoreSheetDropdown(!scoreSheetDropdown)}
                 >
-                  <a
-                    id="score-hamburger"
-                    ref={refScoreSheet}
-                    onClick={() => setScoreSheetDropdown(!scoreSheetDropdown)}
-                    className={
-                      scoreSheetDropdown
-                        ? 'tri_top_event_visible'
-                        : 'tri_top_event_hidden'
-                    }
+                  <ShadowContainer
+                    srcImg={positionIcon}
+                    text="Score Sheet"
+                    stateData={scoreSheetChoice}
+                    mainClasses="row shadow-box"
                   >
-                    <div>
-                      <img src={downArrow} alt="" />
-                      {scoreSheetDropdown && (
-                        <span
-                          style={{ marginTop: 7, right: -10 }}
-                          className="dropdown_animation"
-                        >
-                          <ul>
-                            {eventDropdownData !== null &&
-                              eventDropdownData.scoresheets.map((data) => (
-                                <li
-                                  onClick={() => {
-                                    setScoreSheetChoice(data.name);
-                                    setScoresheet_id(data.id);
-                                  }}
-                                  key={data.id}
-                                >
-                                  {data.name}
-                                </li>
-                              ))}
-                          </ul>
-                        </span>
-                      )}
-                    </div>
-                  </a>
-                </ShadowContainer>
-                
+                    <a
+                      id="score-hamburger"
+                      ref={refScoreSheet}
+                      onClick={() => setScoreSheetDropdown(!scoreSheetDropdown)}
+                      className={
+                        scoreSheetDropdown
+                          ? "tri_top_event_visible"
+                          : "tri_top_event_hidden"
+                      }
+                    >
+                      <div>
+                        <img src={downArrow} alt="" />
+                        {scoreSheetDropdown && (
+                          <span
+                            style={{ marginTop: 7, right: -10 }}
+                            className="dropdown_animation"
+                          >
+                            <ul>
+                              {eventDropdownData !== null &&
+                                eventDropdownData.scoresheets.map((data) => (
+                                  <li
+                                    onClick={() => {
+                                      setScoreSheetChoice(data.name);
+                                      setScoresheet_id(data.id);
+                                    }}
+                                    key={data.id}
+                                  >
+                                    {data.name}
+                                  </li>
+                                ))}
+                            </ul>
+                          </span>
+                        )}
+                      </div>
+                    </a>
+                  </ShadowContainer>
                 </div>
-                
+
                 {/* PDF Instructions */}
                 <div className="container">
                   <div className="row shadow-box">
@@ -4163,126 +4241,159 @@ const NewEventProfile = (props) => {
                   Description
                 </div>
 
-
                 <div className="toolbar">
-              <ul className="tool-list">
-                <li className="tool" >
-                  <button 
-                   style={{color: ids['justifyLeft']?"grey":"black"}}
-                    type="button" 
-                    data-command='justifyLeft'
-                    onClick ={e=>editorFunction(e)}
-                    className="tool--btn">
-                    <i  data-command='justifyLeft' className=' fas fa-align-left'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    type="button"
-                    style={{color: ids['justifyCenter']?"grey":"black"}}
-                    onClick ={e=>editorFunction(e)}
-                    data-command='justifyCenter' 
-                    className="tool--btn">
-                    <i data-command='justifyCenter'  className=' fas fa-align-center'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    style={{color: ids['bold']?"grey":"black"}}
-                    type="button"
-                    onClick ={e=>editorFunction(e)} 
-                    data-command="bold" 
-                    className="tool--btn">
-                    <i   data-command="bold"  className=' fas fa-bold'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    type="button" 
-                    style={{color: ids['italic']?"grey":"black"}}
-                    onClick ={e=>editorFunction(e)}
-                    data-command="italic"
-                    className="tool--btn">
-                    <i  data-command="italic" className=' fas fa-italic'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['underline']?"grey":"black"}}
-                    data-command="underline"
-                    className="tool--btn">
-                    <i   data-command="underline" className=' fas fa-underline'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                    onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['insertOrderedList']?"grey":"black"}}
-                    data-command="insertOrderedList"
-                    className="tool--btn">
-                    <i data-command="insertOrderedList" className=' fas fa-list-ol'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                
-                   onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['insertUnorderedList']?"grey":"black"}}
-                    data-command="insertUnorderedList"
-                    className="tool--btn">
-                    <i  data-command="insertUnorderedList"  className=' fas fa-list-ul'></i>
-                  </button>
-                </li>
-                <li className="tool">
-                  <button 
-                 
-                    onClick ={e=>editorFunction(e)}
-                    type="button" 
-                    style={{color: ids['createlink']?"grey":"black"}}
-                    data-command="createlink" 
-                    className="tool--btn">
-                    <i  data-command="createlink"  className=' fas fa-link'></i>
-                  </button>
-                </li>
-              </ul>
-              </div>
+                  <ul className="tool-list">
+                    <li className="tool">
+                      <button
+                        style={{ color: ids["justifyLeft"] ? "grey" : "black" }}
+                        type="button"
+                        data-command="justifyLeft"
+                        onClick={(e) => editorFunction(e)}
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="justifyLeft"
+                          className=" fas fa-align-left"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        type="button"
+                        style={{
+                          color: ids["justifyCenter"] ? "grey" : "black",
+                        }}
+                        onClick={(e) => editorFunction(e)}
+                        data-command="justifyCenter"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="justifyCenter"
+                          className=" fas fa-align-center"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        style={{ color: ids["bold"] ? "grey" : "black" }}
+                        type="button"
+                        onClick={(e) => editorFunction(e)}
+                        data-command="bold"
+                        className="tool--btn"
+                      >
+                        <i data-command="bold" className=" fas fa-bold"></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        type="button"
+                        style={{ color: ids["italic"] ? "grey" : "black" }}
+                        onClick={(e) => editorFunction(e)}
+                        data-command="italic"
+                        className="tool--btn"
+                      >
+                        <i data-command="italic" className=" fas fa-italic"></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{ color: ids["underline"] ? "grey" : "black" }}
+                        data-command="underline"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="underline"
+                          className=" fas fa-underline"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{
+                          color: ids["insertOrderedList"] ? "grey" : "black",
+                        }}
+                        data-command="insertOrderedList"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="insertOrderedList"
+                          className=" fas fa-list-ol"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{
+                          color: ids["insertUnorderedList"] ? "grey" : "black",
+                        }}
+                        data-command="insertUnorderedList"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="insertUnorderedList"
+                          className=" fas fa-list-ul"
+                        ></i>
+                      </button>
+                    </li>
+                    <li className="tool">
+                      <button
+                        onClick={(e) => editorFunction(e)}
+                        type="button"
+                        style={{ color: ids["createlink"] ? "grey" : "black" }}
+                        data-command="createlink"
+                        className="tool--btn"
+                      >
+                        <i
+                          data-command="createlink"
+                          className=" fas fa-link"
+                        ></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
 
                 {descriptionError !== null && (
                   <div className="text-left error-message-profile">
                     {descriptionError}
                   </div>
                 )}
-                <div className="container text-left" style={{padding:"0px"}}>
-                  <div className="row shadow-box mt-0" style={{ height: 300 ,padding:"0px",margin:"0px"}}>
+                <div className="container text-left" style={{ padding: "0px" }}>
+                  <div
+                    className="row shadow-box mt-0"
+                    style={{ height: 300, padding: "0px", margin: "0px" }}
+                  >
                     <div
                       className="col-12 "
                       // style={{padding:"0px"}}
-                      style={{ height: 300,overflow:"scroll",  }}
+                      style={{ height: 300, overflow: "scroll" }}
                     >
-                        <div className="col-12" id="output"  style={{ maxHeight: 300,outline:"none"}}
-                              onInput={(e)=> {
-                                    let s= document.getElementById("output").innerHTML;
-                                            console.log(s)
-                                            console.log(e.target.innerHTML)
-                                            setDescription(s) 
-                                          }} 
-                          contenteditable="true">
-                        </div>
-                  
-                    {/* <TextEditor 
+                      <div
+                        className="col-12"
+                        id="output"
+                        style={{ maxHeight: 300, outline: "none" }}
+                        onInput={(e) => {
+                          let s = document.getElementById("output").innerHTML;
+                          console.log(s);
+                          console.log(e.target.innerHTML);
+                          setDescription(s);
+                        }}
+                        contenteditable="true"
+                      ></div>
+
+                      {/* <TextEditor 
                         // values={description}
                         values = "Enter Description..."
                         textValue={(e) => {
                           setDescription(e);
                         }}
                       /> */}
-                 
                     </div>
-                                        
                   </div>
                 </div>
               </div>
@@ -4448,7 +4559,7 @@ const NewEventProfile = (props) => {
               <span className="lower-back-button-text">CANCEL</span>
             </div>
           </div>
-          <div className="m-0 col-auto mt-3" style={{ position: 'relative' }}>
+          <div className="m-0 col-auto mt-3" style={{ position: "relative" }}>
             {saveLoading ? (
               createTournamentError === null ||
               createTournamentError === undefined ? (
@@ -4467,13 +4578,13 @@ const NewEventProfile = (props) => {
             <button
               className={
                 saveDisabled
-                  ? 'lower-back-button-disabled'
-                  : 'lower-back-button'
+                  ? "lower-back-button-disabled"
+                  : "lower-back-button"
               }
               id="yellow-button-hover"
               onClick={onSave}
               ref={saveBtnRef}
-              style={{ outline: 'none' }}
+              style={{ outline: "none" }}
             >
               <span className="lower-back-button-text">SAVE</span>
             </button>
@@ -4481,7 +4592,6 @@ const NewEventProfile = (props) => {
         </Footer>
         {/* modal */}
         <Modal
-        
           open={open}
           onClose={onCloseModal}
           closeIcon={closeIcon}
@@ -4489,7 +4599,7 @@ const NewEventProfile = (props) => {
           styles={{
             modal: {
               borderRadius: 12,
-              boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+              boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
               margin: 0,
               padding: 0,
             },
@@ -4499,13 +4609,13 @@ const NewEventProfile = (props) => {
             className="text-center"
             style={{
               marginTop: 62,
-              fontFamily: 'Futura',
+              fontFamily: "Futura",
               fontSize: 14,
-              fontWeight: 'bold',
-              fontStretch: 'normal',
-              fontStyle: 'normal',
-              letterSpacing: 'normal',
-              color: '#4a4a4a',
+              fontWeight: "bold",
+              fontStretch: "normal",
+              fontStyle: "normal",
+              letterSpacing: "normal",
+              color: "#4a4a4a",
             }}
           >
             Are your sure you want to cancel?
@@ -4516,76 +4626,71 @@ const NewEventProfile = (props) => {
               width: 398,
               marginTop: 8,
               fontSize: 10,
-              fontFamily: 'Futura',
-              fontWeight: 'bold',
-              fontStretch: 'normal',
-              fontStyle: 'normal',
-              letterSpacing: 'normal',
-              color: '#9b9b9b',
+              fontFamily: "Futura",
+              fontWeight: "bold",
+              fontStretch: "normal",
+              fontStyle: "normal",
+              letterSpacing: "normal",
+              color: "#9b9b9b",
             }}
           >
             All changes will not be saved and progress will be lost.
           </p>
           <div
-            onKeyDown ={ e =>{
+            onKeyDown={(e) => {
+              console.log(e.keyCode);
 
-                console.log(e.keyCode)
-
-                if(e.keyCode ===13 && flag){
-                  console.log("dash")
-                  props.history.push('/DashboardEvents')
-                  return;
-                }
-                if(e.keyCode===13 && !flag){
-                  console.log("Close model")
-                
-                  return  onCloseModal();
-                }
-                if(e.keyCode===9){
-                  flag? setFlag(false): setFlag(true)
-                  return;
-                }
+              if (e.keyCode === 13 && flag) {
+                console.log("dash");
+                props.history.push("/DashboardEvents");
+                return;
               }
-            }
+              if (e.keyCode === 13 && !flag) {
+                console.log("Close model");
+
+                return onCloseModal();
+              }
+              if (e.keyCode === 9) {
+                flag ? setFlag(false) : setFlag(true);
+                return;
+              }
+            }}
             className="row container"
             style={{ marginTop: 79, marginBottom: 24 }}
           >
             <div className="col-12 text-center m-auto">
               <button
-       
-              
                 type="button"
                 className="btn-sm ml-5"
                 id="white-button-hover"
                 onClick={onCloseModal}
                 style={{
-                  border: '1px solid yellow',
+                  border: "1px solid yellow",
                   borderRadius: 15,
                   width: 112,
                   height: 24,
                   fontSize: 10,
-                  backgroundColor: !flag?'#ffd420':'#ffffff',
+                  backgroundColor: !flag ? "#ffd420" : "#ffffff",
                   outline: 0,
-                  color: '#4a4a4a',
+                  color: "#4a4a4a",
                 }}
               >
                 NO, CONTINUE
               </button>
               <button
-            
                 className="btn-sm pb-1 ml-3"
                 id="yellow-button-hover"
                 // onClick={() => props.history.goBack()}
-                onClick={() => props.history.push('/DashboardEvents')}
+                onClick={() => props.history.push("/DashboardEvents")}
                 style={{
-                  border: '1px solid yellow',
+                  border: "1px solid yellow",
                   borderRadius: 15,
                   width: 112,
                   height: 24,
                   fontSize: 10,
-                  backgroundColor: flag?'#ffd420':'#ffffff',
+                  backgroundColor: flag ? "#ffd420" : "#ffffff",
                   outline: 0,
-                  color: '#4a4a4a',
+                  color: "#4a4a4a",
                 }}
               >
                 YES, CANCEL

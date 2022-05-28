@@ -112,6 +112,8 @@ import StripeKeyPage from "./screens/stripe/StripeKeyPage";
 import NewEventProfileDuplicate from "./screens/new_event/NewEventProfileDuplicate";
 import TemplatePoolsSame from "./screens/template_pools/TemplatePoolsSame";
 import TemplatePoolsDifferent from "./screens/template_pools/TemplatePoolsDifferent";
+import { TermsAndConditions } from "./screens/TermsAndConditions/TermsAndConditions";
+import { PrivacyPolicy } from "./screens/PrivacyPolicy/PrivacyPolicy";
 
 const App2 = () => {
   const authContext = useContext(AuthContext);
@@ -136,6 +138,8 @@ const App2 = () => {
     <Fragment>
       <Route exact path="/" component={SignIn} />
       <Route exact path="/forgotPassword" component={ForgetPassword} />
+      <Route exact path="/terms-and-condition" component={TermsAndConditions} />
+      <Route exact path="/privacy-policy" component={PrivacyPolicy} />
       <div className="App">
         {/* <Header /> */}
         <Sidebar />

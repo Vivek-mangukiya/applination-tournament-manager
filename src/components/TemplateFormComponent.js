@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 // import ReactDOM from 'react-dom';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 // import {Modal, ModalBody, Button, ModalHeader} from 'reactstrap'
-import TemplateStep1 from './TemplateStep1';
-import IndividualPoolForm from './IndividualPoolForm';
-import IndividualPointsForm from './IndividualPointsForm';
-import IndividualDivisionForm from './IndividualDivisionForm';
-import SavedTemplate from './SavedTemplate';
-import PlayerProfileCancel from './PlayerProfileCancel';
-import iconorangepencil from '../assets/images/icon-orange-pencil.svg';
-import '../assets/styles/TemplateFormComponent.css';
-import DashboardTemplate from './DashboardTemplate';
-import TemplateListComponent from './TemplatesListForm';
+import TemplateStep1 from "./TemplateStep1";
+import IndividualPoolForm from "./IndividualPoolForm";
+import IndividualPointsForm from "./IndividualPointsForm";
+import IndividualDivisionForm from "./IndividualDivisionForm";
+import SavedTemplate from "./SavedTemplate";
+import PlayerProfileCancel from "./PlayerProfileCancel";
+import iconorangepencil from "../assets/images/icon-orange-pencil.svg";
+import "../assets/styles/TemplateFormComponent.css";
+import DashboardTemplate from "./DashboardTemplate";
+import TemplateListComponent from "./TemplatesListForm";
 
 const TemplateForm = (props) => {
   const [propsData, setPropsData] = useState(null);
@@ -22,7 +22,7 @@ const TemplateForm = (props) => {
 
   const [commonState, setCommonState] = useState({
     currentStepT: 0, // Default is Step 1
-    templateType: '',
+    templateType: "",
     templateList: [7],
     open: false,
   });
@@ -47,20 +47,21 @@ const TemplateForm = (props) => {
     </svg>
   );
 
-  const [templateError, setTemplateError] = useState(false)
+  const [templateError, setTemplateError] = useState(false);
   const [nextDisabled, setNextDisabled] = useState(true);
 
   useEffect(() => {
-    if(commonState.templateType === 'Points' 
-    || commonState.templateType === 'Pools' 
-    || commonState.templateType === 'Division'
-    ){
+    if (
+      commonState.templateType === "Points" ||
+      commonState.templateType === "Pools" ||
+      commonState.templateType === "Division"
+    ) {
       setTemplateError(false);
       if (commonState.currentStepT === 0) {
         setNextDisabled(false);
       }
     }
-  }, [commonState.templateType])
+  }, [commonState.templateType]);
 
   const onOpenModal = () => {
     // setOpen(true);
@@ -71,23 +72,23 @@ const TemplateForm = (props) => {
   };
 
   const onCloseModalOutside = () => {
-    console.log("The step to revert back to",commonState.currentStep)
-    if(commonState.currentStepT>0){
+    console.log("The step to revert back to", commonState.currentStep);
+    if (commonState.currentStepT > 0) {
       setPreviousStep(commonState.currentStepT);
     }
     setCommonState((prevState) => ({
       ...prevState,
-      currentStepT:-1
-    }))
+      currentStepT: -1,
+    }));
     // setNextDisabled(true);
-  }
+  };
 
   const onCloseModal = () => {
     // setOpen(false);
     setCommonState((prevState) => ({
       ...prevState,
       open: false,
-      currentStepT:0,
+      currentStepT: 0,
     }));
   };
 
@@ -144,28 +145,27 @@ const TemplateForm = (props) => {
     //   }));
     // }
     if (current === 0) {
-      if (commonState.templateType === 'Points') {
+      if (commonState.templateType === "Points") {
         setCommonState((prevState) => ({
           ...prevState,
           currentStepT: 1,
         }));
         setTemplateError(false);
       }
-      if (commonState.templateType === 'Pools') {
+      if (commonState.templateType === "Pools") {
         setCommonState((prevState) => ({
           ...prevState,
           currentStepT: 2,
         }));
         setTemplateError(false);
       }
-      if (commonState.templateType === 'Division') {
+      if (commonState.templateType === "Division") {
         setCommonState((prevState) => ({
           ...prevState,
           currentStepT: 3,
         }));
         setTemplateError(false);
-      }
-      else{
+      } else {
         setTemplateError(true);
       }
     }
@@ -210,14 +210,13 @@ const TemplateForm = (props) => {
   //   console.log("templateError",templateError)
   // }, [templateError])
 
-
   const nextButton = () => {
     let current = commonState.currentStepT;
     if (current === 0) {
       return (
         <button
           // className="WFNextButton"
-          className={nextDisabled ? 'WFNextButtonDisabled' : 'WFNextButton'}
+          className={nextDisabled ? "WFNextButtonDisabled" : "WFNextButton"}
           id="yellow-button-hover"
           type="button"
           onClick={_next}
@@ -232,7 +231,7 @@ const TemplateForm = (props) => {
 
   return (
     <>
-      {props.type === 'table' ? (
+      {props.type === "table" ? (
         <div
           className="NEW_TEMPLATE"
           id="yellow-button-hover"
@@ -240,7 +239,7 @@ const TemplateForm = (props) => {
         >
           <div className="NewTemplateButtonText">NEW TEMPLATE</div>
         </div>
-      ) : props.type === 'dash'?(
+      ) : props.type === "dash" ? (
         <div className="container row">
           <div
             tabIndex="1"
@@ -250,48 +249,53 @@ const TemplateForm = (props) => {
             <div
               className="img-quick-start-container d-flex justify-content-center align-items-center upper-box m-auto"
               onClick={onOpenModal}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               <img
                 src={iconorangepencil}
                 alt=""
                 className="img-quick-start"
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
               />
             </div>
             <div
               className="upper-box-tile"
               onClick={onOpenModal}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               + New Template
             </div>
           </div>
         </div>
-      ):
-      (<span className="none-screen-highlight" onClick={onOpenModal}>New Template</span>)}
+      ) : (
+        <span className="none-screen-highlight" onClick={onOpenModal}>
+          New Template
+        </span>
+      )}
 
       <Modal
         open={commonState.open}
         // onClose={onCloseModal}
-        onClose={onCloseModalOutside}
+        onClose={
+          commonState.currentStepT === -1 ? onCloseModal : onCloseModalOutside
+        }
         center
         closeIcon={closeIcon}
         styles={{
           modal: {
             borderRadius: 12,
-            boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+            boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
             padding: 0,
             margin: 0,
-            overflow: 'visible',
+            overflow: "visible",
           },
         }}
       >
         <div
           className={
             commonState.currentStepT === -1
-              ? 'PlayerProfileCancelContainer'
-              : 'WizardForm'
+              ? "PlayerProfileCancelContainer"
+              : "WizardForm"
           }
         >
           <PlayerProfileCancel

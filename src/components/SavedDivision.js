@@ -1,16 +1,16 @@
-import React, { useContext, useState, useEffect } from 'react';
-import '../assets/styles/SavedTemplate.css';
-import iconpencil from '../assets/images/pencil.svg';
-import EventContext from '../context/event/eventContext';
-import DropdownTemplate from './TemplateDropdown';
+import React, { useContext, useState, useEffect } from "react";
+import "../assets/styles/SavedTemplate.css";
+import iconpencil from "../assets/images/pencil.svg";
+import EventContext from "../context/event/eventContext";
+import DropdownTemplate from "./TemplateDropdown";
 
 const SavedDivision = (props) => {
-  const [modal1, setModal1] = useState('');
-  const [modalId, setModalId] = useState('');
+  const [modal1, setModal1] = useState("");
+  const [modalId, setModalId] = useState("");
 
   useEffect(() => {
     props.handleChange({ modalId, modal1 });
-    console.log('Template id selected:', modalId);
+    console.log("Template id selected:", modalId);
   }, [modal1]);
 
   const eventContext = useContext(EventContext);
@@ -55,7 +55,6 @@ const SavedDivision = (props) => {
                 {address.name}
               </li>
             ))}
-          ;
         </DropdownTemplate>
       </div>
     </div>

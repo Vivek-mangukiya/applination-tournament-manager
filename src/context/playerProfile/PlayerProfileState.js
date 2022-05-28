@@ -110,7 +110,7 @@ const PlayerProfileState = (props) => {
     actualData.append("data", JSON.stringify(data));
     API2.post(`/addPlayerByPromoter`, actualData).then((response) => {
       if (response) {
-        console.log(response);
+        // console.log(response);
         dispatch({
           type: SAVED_PLAYER_DATA,
           payload: data,

@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Modal } from 'react-responsive-modal';
-import RegContext from '../context/registration/RegContext';
-import '../assets/styles/RegEventComponent.css';
+import React, { useContext, useEffect, useState } from "react";
+import { Modal } from "react-responsive-modal";
+import RegContext from "../context/registration/RegContext";
+import "../assets/styles/RegEventComponent.css";
 
 const RegEventComponentModal = (props) => {
   const regContext = useContext(RegContext);
@@ -37,12 +37,12 @@ const RegEventComponentModal = (props) => {
       styles={{
         modal: {
           borderRadius: 12,
-          boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+          boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
           margin: 0,
           padding: 0,
-          height: '80vh',
-          width: '80vw',
-          overflow: 'hidden',
+          height: "80vh",
+          width: "80vw",
+          overflow: "hidden",
         },
       }}
     >
@@ -50,26 +50,26 @@ const RegEventComponentModal = (props) => {
         className="text-center"
         style={{
           marginTop: 42,
-          fontFamily: 'Futura',
+          fontFamily: "Futura",
           fontSize: 20,
-          fontWeight: 'bold',
-          fontStretch: 'normal',
-          fontStyle: 'normal',
-          letterSpacing: 'normal',
-          color: '#4a4a4a',
+          fontWeight: "bold",
+          fontStretch: "normal",
+          fontStyle: "normal",
+          letterSpacing: "normal",
+          color: "#4a4a4a",
         }}
       >
         {props.modalData.team_name}
       </div>
       <div
         className="text-center mt-2 mb-4"
-        style={{ fontFamily: 'Futura', fontSize: 12, color: '#9b9b9b' }}
+        style={{ fontFamily: "Futura", fontSize: 12, color: "#9b9b9b" }}
       >
-        {' '}
+        {" "}
         Select the division you want to move the team to..
       </div>
       {changeDivisionResponse !== null && (
-        <div className="text-center mt-5" style={{ color: '#ff2072' }}>
+        <div className="text-center mt-5" style={{ color: "#ff2072" }}>
           {changeDivisionResponse}
         </div>
       )}
@@ -81,8 +81,8 @@ const RegEventComponentModal = (props) => {
         </div>
       )}
       {registeredDivisionsData !== null &&
-        typeof registeredDivisionsData === 'string' && (
-          <div className="text-center mt-5" style={{ color: '#ff2072' }}>
+        typeof registeredDivisionsData === "string" && (
+          <div className="text-center mt-5" style={{ color: "#ff2072" }}>
             {registeredDivisionsData}
           </div>
         )}
@@ -92,11 +92,11 @@ const RegEventComponentModal = (props) => {
           <ul
             className="list-group mt-2"
             style={{
-              overflow: 'scroll',
-              height: 'inherit',
-              paddingBottom: '100px',
+              overflowY: "scroll",
+              height: "calc(100vh - 330px)",
+              marginRight: "20px",
 
-              pointerEvents: changeDivisionResponseLoading ? 'none' : 'auto',
+              pointerEvents: changeDivisionResponseLoading ? "none" : "auto",
               opacity: changeDivisionResponseLoading ? 0.5 : 1,
             }}
           >

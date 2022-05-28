@@ -14,6 +14,8 @@ import PlayerProfileContext from "../../context/playerProfile/playerProfileConte
 import { Modal } from "react-responsive-modal";
 import NumberFormat from "react-number-format";
 import PhoneInput from "react-phone-number-input";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewProfile = (props) => {
   //context
@@ -69,7 +71,12 @@ const NewProfile = (props) => {
     if (zip === "" || contact === "" || email_id === "") {
       setContactError(true);
     }
-    if (zip.length !== 0 && contact.length !== 0 && email_id.length !== 0) {
+    if (
+      zip !== "" &&
+      zip.length !== 0 &&
+      contact.length !== 0 &&
+      email_id.length !== 0
+    ) {
       setContactError(false);
     }
   }, [zip, contact, email_id]);
@@ -98,19 +105,27 @@ const NewProfile = (props) => {
       levelState,
       placement,
     });
+    // console.log({ saveData, first_name, last_name, zip, contact, email_id });
+    // console.log({ saveDataNIK: saveData.data });
     if (
-      saveData !== null &&
       first_name !== "" &&
       last_name !== "" &&
       zip !== "" &&
       contact !== "" &&
-      email_id !== "" &&
-      points1 !== "" &&
-      levelState !== "" &&
-      points2 !== "" &&
-      placement !== ""
+      email_id !== ""
     ) {
-      props.history.push("/profile");
+      // console.log({ saveData, first_name, last_name, zip, contact, email_id });
+      setFirstName("");
+      setLastName("");
+      setLoc("");
+      setContact("");
+      setEmail("");
+      setPoints1("");
+      setLevelState("");
+      setPoints2("");
+      setPlacement("");
+      toast("Add Player succcesfully");
+      // props.history.push("/profile");
     }
   };
 
@@ -130,6 +145,17 @@ const NewProfile = (props) => {
           </li>
         </ul>
       </Header>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div>
         <div id="active-profile" className="m-auto pb-5">
           {/* image and input area */}
@@ -194,7 +220,7 @@ const NewProfile = (props) => {
                 <div className="first-div">Mobile</div>
                 <div className="last-div ml-auto mr-3">
                   <NumberFormat
-                    format="#### ### ###"
+                    format="###############"
                     displayType="input"
                     // customInput={contact}
                     placeholder="5555 555 555"

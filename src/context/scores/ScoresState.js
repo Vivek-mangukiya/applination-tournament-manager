@@ -10,7 +10,7 @@ import {
 import ScoresContext from "../scores/ScoresContext";
 import scoresReducer from "../scores/scoresReducer";
 import React, { useReducer } from "react";
-import { API } from "../../Utils/API";
+import { API, API2 } from "../../Utils/API";
 
 const ScoresState = (props) => {
   const initialState = {
@@ -73,6 +73,13 @@ const ScoresState = (props) => {
         payload: err,
       });
     });
+    // const res = await API2.post(`/UpdateLivescore`, actualData).catch((err) => {
+    //   console.log("Score edit error:", err, err.response);
+    //   dispatch({
+    //     type: SCORE_EDIT_ERROR,
+    //     payload: err,
+    //   });
+    // });
     console.log("editScore response:", res);
   };
 

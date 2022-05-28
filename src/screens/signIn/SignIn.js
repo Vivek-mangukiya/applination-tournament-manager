@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import './SignIn.css';
-import logo from '../../assets/images/logo_login.svg';
-import mailIcon from '../../assets/images/mail.svg';
-import lockIcon from '../../assets/images/lock.svg';
-import loginIcon from '../../assets/images/cta.svg';
-import AuthContext from '../../context/auth/authContext';
-import ManagerProfileContext from '../../context/newManagerProfile/newManagerProfileContext';
-import md5 from 'js-md5';
+import React, { useContext, useEffect, useState } from "react";
+import "./SignIn.css";
+import logo from "../../assets/images/logo_login.svg";
+import mailIcon from "../../assets/images/mail.svg";
+import lockIcon from "../../assets/images/lock.svg";
+import loginIcon from "../../assets/images/cta.svg";
+import AuthContext from "../../context/auth/authContext";
+import ManagerProfileContext from "../../context/newManagerProfile/newManagerProfileContext";
+import md5 from "js-md5";
+import { Link } from "react-router-dom";
 
 const SignIn = (props) => {
   const authContext = useContext(AuthContext);
@@ -24,15 +25,12 @@ const SignIn = (props) => {
     role_id,
   } = authContext;
   const activeHistoryContext = useContext(ManagerProfileContext);
-  const {
-    managerListData,
-    getManagerById,
-    getManagerByIdList,
-  } = activeHistoryContext;
-  var managerMatched = '';
+  const { managerListData, getManagerById, getManagerByIdList } =
+    activeHistoryContext;
+  var managerMatched = "";
   const [user, setUser] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const { email, password } = user;
 
@@ -62,7 +60,7 @@ const SignIn = (props) => {
     const MD5_encrypted_password = md5(password);
     if (emailTest.test(email) === false) {
       setEmailError(true);
-    } else if (password === '') {
+    } else if (password === "") {
       setPasswordError(true);
     } else if (emailError === false && passwordError === false) {
       setLoginText(true);
@@ -93,36 +91,36 @@ const SignIn = (props) => {
     // if (localStorage.getItem('token')) {
     //   props.history.push('/dashboard');
     // }
-    console.log('profileStatus:', profileStatus);
+    console.log("profileStatus:", profileStatus);
     if (isAuthenticated && profileStatus === 1) {
-      localStorage.setItem('dashboard', JSON.stringify(true));
-      localStorage.setItem('managers', JSON.stringify(false));
-      localStorage.setItem('members', JSON.stringify(false));
-      localStorage.setItem('players', JSON.stringify(false));
-      localStorage.setItem('events', JSON.stringify(false));
-      localStorage.setItem('registration', JSON.stringify(false));
-      localStorage.setItem('scores', JSON.stringify(false));
-      localStorage.setItem('templates', JSON.stringify(false));
-      localStorage.setItem('payments', JSON.stringify(false));
-      localStorage.setItem('settings', JSON.stringify(false));
-      props.history.push('/dashboard');
+      localStorage.setItem("dashboard", JSON.stringify(true));
+      localStorage.setItem("managers", JSON.stringify(false));
+      localStorage.setItem("members", JSON.stringify(false));
+      localStorage.setItem("players", JSON.stringify(false));
+      localStorage.setItem("events", JSON.stringify(false));
+      localStorage.setItem("registration", JSON.stringify(false));
+      localStorage.setItem("scores", JSON.stringify(false));
+      localStorage.setItem("templates", JSON.stringify(false));
+      localStorage.setItem("payments", JSON.stringify(false));
+      localStorage.setItem("settings", JSON.stringify(false));
+      props.history.push("/dashboard");
     }
     if (isAuthenticated && profileStatus === 2) {
       // console.log("Matched manager id: ",managerMatched)
       await getManagerByIdList(newManager);
-      console.log('manageID WANTED:', newManager);
+      console.log("manageID WANTED:", newManager);
       await getManagerById(newManager);
-      localStorage.setItem('dashboard', JSON.stringify(false));
-      localStorage.setItem('managers', JSON.stringify(false));
-      localStorage.setItem('members', JSON.stringify(false));
-      localStorage.setItem('players', JSON.stringify(false));
-      localStorage.setItem('events', JSON.stringify(false));
-      localStorage.setItem('registration', JSON.stringify(false));
-      localStorage.setItem('scores', JSON.stringify(false));
-      localStorage.setItem('templates', JSON.stringify(false));
-      localStorage.setItem('payments', JSON.stringify(false));
-      localStorage.setItem('settings', JSON.stringify(false));
-      props.history.push('/completeProfile');
+      localStorage.setItem("dashboard", JSON.stringify(false));
+      localStorage.setItem("managers", JSON.stringify(false));
+      localStorage.setItem("members", JSON.stringify(false));
+      localStorage.setItem("players", JSON.stringify(false));
+      localStorage.setItem("events", JSON.stringify(false));
+      localStorage.setItem("registration", JSON.stringify(false));
+      localStorage.setItem("scores", JSON.stringify(false));
+      localStorage.setItem("templates", JSON.stringify(false));
+      localStorage.setItem("payments", JSON.stringify(false));
+      localStorage.setItem("settings", JSON.stringify(false));
+      props.history.push("/completeProfile");
     }
   }, [props.history, profileStatus, isAuthenticated]);
 
@@ -148,7 +146,7 @@ const SignIn = (props) => {
 
   const something = (event) => {
     if (event.keyCode === 13) {
-      console.log('enter');
+      console.log("enter");
       onSubmit();
     }
   };
@@ -168,26 +166,26 @@ const SignIn = (props) => {
       <div
         id="sign-in"
         className="container-fluid"
-        style={{ position: 'relative', zIndex: 1000 }}
+        style={{ position: "relative", zIndex: 1000 }}
       >
         <div className="sign-in-form">
           <img src={logo} alt="" />
           {loginFailMessage !== null || emailError || passwordError ? (
             <div
               className="heading"
-              style={{ fontFamily: 'FuturaPTBold', color: 'black' }}
+              style={{ fontFamily: "FuturaPTBold", color: "black" }}
             >
               OOPS!
             </div>
           ) : (
-            <div className="heading" style={{ fontFamily: 'FuturaPTBold' }}>
+            <div className="heading" style={{ fontFamily: "FuturaPTBold" }}>
               HELLO!
             </div>
           )}
           {loginFailMessage !== null && !emailError && !passwordError && (
             <div
               className="text-center error-message"
-              style={{ fontFamily: 'FuturaPTBold', color: '#ff2072' }}
+              style={{ fontFamily: "FuturaPTBold", color: "#ff2072" }}
             >
               {loginFailMessage}
             </div>
@@ -195,7 +193,7 @@ const SignIn = (props) => {
           {emailError && (
             <div
               className="text-center error-message"
-              style={{ fontFamily: 'FuturaPTBold', color: '#ff2072' }}
+              style={{ fontFamily: "FuturaPTBold", color: "#ff2072" }}
             >
               Please enter a valid email.
             </div>
@@ -203,7 +201,7 @@ const SignIn = (props) => {
           {passwordError && !emailError && (
             <div
               className="text-center error-message"
-              style={{ fontFamily: 'FuturaPTBold', color: '#ff2072' }}
+              style={{ fontFamily: "FuturaPTBold", color: "#ff2072" }}
             >
               Please enter a password.
             </div>
@@ -211,7 +209,7 @@ const SignIn = (props) => {
           {forgotPassMsg !== null && (
             <div
               className="text-center error-message"
-              style={{ fontFamily: 'FuturaPTBold', color: '#ff2072' }}
+              style={{ fontFamily: "FuturaPTBold", color: "#ff2072" }}
             >
               {forgotPassMsg}
             </div>
@@ -253,18 +251,18 @@ const SignIn = (props) => {
             <div
               className="LoginButton"
               onClick={onSubmit}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               <div className="LoginButtonText">
                 {/* {loginTextContext ? 'LOADING...':'LOGIN'} */}
-                {loginText ? 'LOADING...' : 'LOGIN'}
+                {loginText ? "LOADING..." : "LOGIN"}
               </div>
             </div>
           </div>
           <div
             id="forget-password"
-            style={{ cursor: 'pointer', fontFamily: 'FuturaPTBold' }}
-            onClick={() => props.history.push('/forgotPassword')}
+            style={{ cursor: "pointer", fontFamily: "FuturaPTBold" }}
+            onClick={() => props.history.push("/forgotPassword")}
           >
             Forgot Password?
           </div>
@@ -272,12 +270,13 @@ const SignIn = (props) => {
         <div
           className="terms-signin"
           style={{
-            cursor: 'pointer',
-            fontFamily: 'FuturaPTMedium',
+            cursor: "pointer",
+            fontFamily: "FuturaPTMedium",
             marginTop: 0,
           }}
         >
-          Terms and conditions / Privacy policy
+          <Link to={"/terms-and-condition"}>Terms and conditions</Link>
+          {""} / <Link to={"/privacy-policy"}> Privacy policy </Link>
         </div>
       </div>
     </>

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import '../assets/styles/PoolFormComponent.css';
-import PoolStep1 from './PoolStep1';
-import PoolStep2 from './PoolStep2';
-import PoolStep3 from './PoolStep3';
-import PoolStep4 from './PoolStep4';
-import TemplateDivisionContext from '../context/templateDivision/templateDivisionContext';
-import TemplatePoolsContext from '../context/template_pool/templatePoolsContext';
+import React, { useContext, useEffect, useState } from "react";
+import "../assets/styles/PoolFormComponent.css";
+import PoolStep1 from "./PoolStep1";
+import PoolStep2 from "./PoolStep2";
+import PoolStep3 from "./PoolStep3";
+import PoolStep4 from "./PoolStep4";
+import TemplateDivisionContext from "../context/templateDivision/templateDivisionContext";
+import TemplatePoolsContext from "../context/template_pool/templatePoolsContext";
 
 const IndividualPoolForm = (props) => {
   const templateDivisionContext = useContext(TemplateDivisionContext);
@@ -21,10 +21,10 @@ const IndividualPoolForm = (props) => {
 
   const [commonState, setCommonState] = useState({
     currentStepO: 1, // Default is Step 1
-    poolTeams: '',
-    pools: '',
-    courts: '',
-    templateName: '',
+    poolTeams: "",
+    pools: "",
+    courts: "",
+    templateName: "",
   });
 
   const handleChange = (event) => {
@@ -59,15 +59,21 @@ const IndividualPoolForm = (props) => {
       courts: dropdownValue,
     }));
   };
+  const [poolTeamsError, setPoolTeamsError] = useState(false);
+  const [poolsError, setPoolsError] = useState(false);
+  const [courtsError, setCourtsError] = useState(false);
+  const [templateNameError, setTemplateNameError] = useState(false);
+  const [nextDisabled, setNextDisabled] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (commonState.currentStepO === 4) {
+    if (commonState.templateName !== "" && commonState.currentStepO === 4) {
       // const {spots,PointstemplateName} = this.state
       console.log(`Number of teams:${commonState.poolTeams}`);
       console.log(`Number of Pools:${commonState.pools}`);
       console.log(`Number of Courts:${commonState.courts}`);
       console.log(`Pools Template Name:${commonState.templateName}`);
+      setTemplateNameError(false);
       saveTemplatePoolsData({
         teams: Number(commonState.poolTeams),
         pools: Number(commonState.pools),
@@ -75,7 +81,7 @@ const IndividualPoolForm = (props) => {
         name: commonState.templateName,
       });
       checkPoolsName(
-        { type: 'pools', name: commonState.templateName },
+        { type: "pools", name: commonState.templateName },
         commonState.poolTeams,
         commonState.pools,
         commonState.courts,
@@ -84,37 +90,33 @@ const IndividualPoolForm = (props) => {
       // props.propsData.push(
       //   `/templatePools/${commonState.poolTeams}/${commonState.pools}/${commonState.courts}/${commonState.templateName}`
       // );
+    } else {
+      setTemplateNameError(true);
     }
   };
 
-  const [poolTeamsError, setPoolTeamsError] = useState(false);
-  const [poolsError, setPoolsError] = useState(false);
-  const [courtsError, setCourtsError] = useState(false);
-
-  const [nextDisabled, setNextDisabled] = useState(true);
-
   useEffect(() => {
-    if (commonState.poolTeams !== '') {
+    if (commonState.poolTeams !== "") {
       setPoolTeamsError(false);
-      if(commonState.currentStepO===1){
+      if (commonState.currentStepO === 1) {
         setNextDisabled(false);
       }
     }
   }, [commonState.poolTeams]);
 
   useEffect(() => {
-    if (commonState.pools !== '') {
+    if (commonState.pools !== "") {
       setPoolsError(false);
-      if(commonState.currentStepO===2){
+      if (commonState.currentStepO === 2) {
         setNextDisabled(false);
       }
     }
   }, [commonState.pools]);
 
   useEffect(() => {
-    if (commonState.courts !== '') {
+    if (commonState.courts !== "") {
       setCourtsError(false);
-      if(commonState.currentStepO===3){
+      if (commonState.currentStepO === 3) {
         setNextDisabled(false);
       }
     }
@@ -123,7 +125,7 @@ const IndividualPoolForm = (props) => {
   const _next = () => {
     let current = commonState.currentStepO;
     if (current === 1) {
-      if (commonState.poolTeams !== '') {
+      if (commonState.poolTeams !== "") {
         setCommonState((prevState) => ({
           ...prevState,
           currentStepO: 2,
@@ -134,7 +136,7 @@ const IndividualPoolForm = (props) => {
       }
     }
     if (current === 2) {
-      if (commonState.pools !== '') {
+      if (commonState.pools !== "") {
         setCommonState((prevState) => ({
           ...prevState,
           currentStepO: 3,
@@ -145,7 +147,7 @@ const IndividualPoolForm = (props) => {
       }
     }
     if (current === 3) {
-      if (commonState.courts !== '') {
+      if (commonState.courts !== "") {
         setCommonState((prevState) => ({
           ...prevState,
           currentStepO: 4,
@@ -155,6 +157,7 @@ const IndividualPoolForm = (props) => {
         setCourtsError(true);
       }
     }
+
     // if (current === 1 || current === 2 || current === 3) {
     //   setCommonState((prevState) => ({
     //     ...prevState,
@@ -162,10 +165,15 @@ const IndividualPoolForm = (props) => {
     //   }));
     // }
     if (current === 4) {
-      setCommonState((prevState) => ({
-        ...prevState,
-        currentStepO: 4,
-      }));
+      if (commonState.templateName !== "") {
+        setCommonState((prevState) => ({
+          ...prevState,
+          currentStepO: 4,
+        }));
+        setTemplateNameError(false);
+      } else {
+        setTemplateNameError(true);
+      }
     }
     setNextDisabled(true);
   };
@@ -209,7 +217,7 @@ const IndividualPoolForm = (props) => {
     if (current !== 4) {
       return (
         <button
-          className={nextDisabled?"WFNextButtonDisabled":"WFNextButton"}
+          className={nextDisabled ? "WFNextButtonDisabled" : "WFNextButton"}
           id="yellow-button-hover"
           type="button"
           onClick={_next}
@@ -262,6 +270,7 @@ const IndividualPoolForm = (props) => {
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               templateName={commonState.templateName}
+              courtsError={templateNameError}
             />
 
             <div className="buttons">

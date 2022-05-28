@@ -4,19 +4,19 @@ import React, {
   useContext,
   useRef,
   createRef,
-} from 'react';
-import './Scores.css';
-import divisionImage from '../../assets/images/division.svg';
-import hamburgerIcon from '../../assets/images/icon-menu-hamburger.svg';
-import downArrow from '../../assets/images/icon-menu-chevron-down.svg';
-import pointsIcon from '../../assets/images/icon-orange-points.svg';
-import Footer from '../../components/footer/Footer';
-import backIcon from '../../assets/images/icon-menu-back.svg';
-import cardIcon from '../../assets/images/icon-menu-cards-disable.svg';
-import listIcon from '../../assets/images/icon-menu-list.svg';
-import Header from '../../components/header/Header';
-import RegEventDropDown from '../../components/RegEventDropDown';
-import * as Scroll from 'react-scroll';
+} from "react";
+import "./Scores.css";
+import divisionImage from "../../assets/images/division.svg";
+import hamburgerIcon from "../../assets/images/icon-menu-hamburger.svg";
+import downArrow from "../../assets/images/icon-menu-chevron-down.svg";
+import pointsIcon from "../../assets/images/icon-orange-points.svg";
+import Footer from "../../components/footer/Footer";
+import backIcon from "../../assets/images/icon-menu-back.svg";
+import cardIcon from "../../assets/images/icon-menu-cards-disable.svg";
+import listIcon from "../../assets/images/icon-menu-list.svg";
+import Header from "../../components/header/Header";
+import RegEventDropDown from "../../components/RegEventDropDown";
+import * as Scroll from "react-scroll";
 import {
   Link,
   Element,
@@ -24,14 +24,14 @@ import {
   animateScroll as scroll,
   scrollSpy,
   scroller,
-} from 'react-scroll';
-import menuchevrondownicon from '../../assets/images/icon-menu-chevron-down.svg';
-import { Collapse } from 'antd';
-import ScoresContext from '../../context/scores/ScoresContext';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import defaultIcon3 from '../../assets/images/defaultIcon3.png';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
+} from "react-scroll";
+import menuchevrondownicon from "../../assets/images/icon-menu-chevron-down.svg";
+import { Collapse } from "antd";
+import ScoresContext from "../../context/scores/ScoresContext";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import defaultIcon3 from "../../assets/images/defaultIcon3.png";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 
 const closeIcon = (
   <svg
@@ -70,13 +70,13 @@ const ScoresEdit = (props) => {
   const [adandum3, setAdandum3] = useState(false);
 
   useEffect(() => {
-    console.log('Scores id by url:', parseInt(props.match.params.id));
+    console.log("Scores id by url:", parseInt(props.match.params.id));
     getScoresById(parseInt(props.match.params.id));
   }, []);
 
   useEffect(() => {
     if (tournamentScores !== null)
-      console.log('tournamentScores', tournamentScores);
+      console.log("tournamentScores", tournamentScores);
   }, [tournamentScores]);
 
   let divisions = [];
@@ -141,9 +141,9 @@ const ScoresEdit = (props) => {
       let temporaryarray = array.slice();
       temporaryarray[index].errVal = newvalue;
       setOneNullErr(temporaryarray);
-      console.log('temporaryArray:', temporaryarray);
+      console.log("temporaryArray:", temporaryarray);
     } else {
-      console.log('no match');
+      console.log("no match");
     }
   };
 
@@ -151,16 +151,16 @@ const ScoresEdit = (props) => {
   const eRef = useRef(
     gamesIndividual.map((game) => game.map(() => createRef()))
   );
-  console.log('oneNuke:', errorsIndividual);
+  console.log("oneNuke:", errorsIndividual);
 
-  console.log('eRef:', eRef);
+  console.log("eRef:", eRef);
   // const [scoreData, setScoreData] = useState(gamesIndividual?gamesIndividual:"gamesIndividual is null!");
   const [scoreData, setScoreData] = useState([]);
   const [updatedScore2, setUpdatedScore2] = useState([]);
-  console.log('scoreData', scoreData);
-  console.log('gamesIndividual', gamesIndividual);
-  console.log('games', games);
-  console.log('scoresArray', scoresArray);
+  console.log("scoreData", scoreData);
+  console.log("gamesIndividual", gamesIndividual);
+  console.log("games", games);
+  console.log("scoresArray", scoresArray);
 
   const [team1Score, setTeam1Score] = useState(null);
   const [team2Score, setTeam2Score] = useState(null);
@@ -171,7 +171,7 @@ const ScoresEdit = (props) => {
 
   const handleScoreChange = (e) => {
     const updatedScores = [...scoreData];
-    console.log('e.target.dataset.index', e.target.dataset.index);
+    console.log("e.target.dataset.index", e.target.dataset.index);
     updatedScores[e.target.dataset.index][e.target.dataset.idx].map((obj) => {
       if (parseInt(obj.set) === parseInt(e.target.dataset.set)) {
         obj[e.target.dataset.input] = isNaN(parseInt(e.target.value))
@@ -186,16 +186,16 @@ const ScoresEdit = (props) => {
           obj.team1_score !== null ? obj.team1_score.toString() : null;
         selectedInput.team2_score =
           obj.team2_score !== null ? obj.team2_score.toString() : null;
-        if (e.target.dataset.input === 'team1_score') {
+        if (e.target.dataset.input === "team1_score") {
           selectedInput.team1_score = e.target.value.toString();
-        } else if (e.target.dataset.input === 'team2_score') {
+        } else if (e.target.dataset.input === "team2_score") {
           selectedInput.team2_score = e.target.value.toString();
         }
         const updatedScore3 = [...updatedScore2];
         updatedScore3.push(selectedInput);
         setUpdatedScore2(updatedScore3);
-        console.log('selectedInput:', selectedInput);
-        console.log('updatedScore2:', updatedScore2);
+        console.log("selectedInput:", selectedInput);
+        console.log("updatedScore2:", updatedScore2);
       }
     });
     setScoreData(updatedScores);
@@ -204,7 +204,7 @@ const ScoresEdit = (props) => {
   const [saveLoading, setSaveLoading] = useState(false);
 
   const onSave = async () => {
-    console.log('Save clicked');
+    console.log("Save clicked");
 
     //Filtering objects with same match_id, score_id and set, which ensures that only the latest version of object is passed.
     const cat = updatedScore2
@@ -222,34 +222,34 @@ const ScoresEdit = (props) => {
       .reverse();
     // const updatedScoresWithOneNull= cat.filter(score=>score.team1_score===null || score.team2_score===null)
     // const updatedScoresWithOneNull= cat.filter(score=>(score.team1_score===null && score.team2_score!=='')|| (score.team2_score===null && score.team1_score!==''))
+
     const updatedScoresWithOneNull = cat.filter(
       (score) =>
-        (score.team1_score === null && score.team2_score !== '') ||
-        (score.team2_score === null && score.team1_score !== '') ||
-        (score.team1_score === '' && isNaN(score.team2_score)) ||
-        (score.team2_score === '' && isNaN(score.team1_score))
+        (score.team1_score === null && score.team2_score !== "") ||
+        (score.team2_score === null && score.team1_score !== "") ||
+        (score.team1_score === "" && isNaN(score.team2_score)) ||
+        (score.team2_score === "" && isNaN(score.team1_score))
     );
 
     const updatedScoresWithNoNull = cat.filter(
       (score) => score.team1_score !== null && score.team2_score !== null
     );
-
     if (updatedScoresWithOneNull.length > 0) {
-      console.log('updatedScoresWithOneNull:', updatedScoresWithOneNull);
+      console.log("updatedScoresWithOneNull:", updatedScoresWithOneNull);
 
       scroller.scrollTo(`card_${updatedScoresWithOneNull[0].match_id}`, {
         duration: 800,
         delay: 0,
-        smooth: 'easeInOutQuart',
+        smooth: "easeInOutQuart",
       });
 
       oneNullErr.map((err) => {
         if (err.id === parseInt(updatedScoresWithOneNull[0].match_id)) {
-          console.log('INNNNNNNN');
+          console.log("INNNNNNNN");
           updateItem(
             updatedScoresWithOneNull[0].match_id,
-            'errVal',
-            'Please enter both score teams',
+            "errVal",
+            "Please enter both score teams",
             oneNullErr
           );
         }
@@ -258,8 +258,8 @@ const ScoresEdit = (props) => {
       setSaveLoading(true);
       await clearScoreEditError();
       const data = { ...updatedScoresWithNoNull };
-      console.log('Data sent to backend:', data);
-      console.log('updatedScoresWithOneNull:', updatedScoresWithOneNull);
+      console.log("Data sent to backend:", data);
+      console.log("updatedScoresWithOneNull:", updatedScoresWithOneNull);
       await editScore({ data: JSON.stringify(data) });
       await props.history.push(`/scores/${parseInt(props.match.params.id)}`);
     }
@@ -272,7 +272,7 @@ const ScoresEdit = (props) => {
   const onCloseModal = () => setOpen(false);
 
   return (
-    <div style={{ minHeight: '100vh' }}>
+    <div style={{ minHeight: "100vh" }}>
       <Header>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item" onClick={() => props.history.goBack()}>
@@ -297,7 +297,7 @@ const ScoresEdit = (props) => {
           </li>
           <li
             className="nav-item"
-            onClick={() => props.history.push('/ScoresTable')}
+            onClick={() => props.history.push("/ScoresTable")}
           >
             <a
               className="nav-link disabled"
@@ -343,7 +343,7 @@ const ScoresEdit = (props) => {
                       </div>
                       <div className="col-9 m-auto p-0">
                         <div
-                          style={{ display: 'flex', flexDirection: 'column' }}
+                          style={{ display: "flex", flexDirection: "column" }}
                         >
                           <div
                             className="event-input border-bottom text-left"
@@ -369,7 +369,7 @@ const ScoresEdit = (props) => {
                       expandIcon={({ isActive }) => (
                         <span
                           className={
-                            isActive ? 'reg-rotate mt-2' : 'reg-no-rotate mt-2'
+                            isActive ? "reg-rotate mt-2" : "reg-no-rotate mt-2"
                           }
                         >
                           <img src={menuchevrondownicon} alt="" />
@@ -388,7 +388,7 @@ const ScoresEdit = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#333333',
+                                  backgroundColor: "#333333",
                                   border: 0,
                                 }}
                               />
@@ -448,8 +448,8 @@ const ScoresEdit = (props) => {
                                         </div>
                                         <div>
                                           {card.Team1_name !== null
-                                            ? card.Team1_name.replace(',', ' /')
-                                            : ''}
+                                            ? card.Team1_name.replace(",", " /")
+                                            : ""}
                                         </div>
                                       </div>
                                       <div className="col-5 p-0 text-right box-shadow-text pr-2 mt-auto mb-0">
@@ -514,7 +514,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team1_score;
                                                             else return;
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -553,7 +553,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team1_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -592,7 +592,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team1_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -638,7 +638,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team1_score;
                                                             else return;
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -677,7 +677,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team1_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -723,7 +723,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team1_score;
                                                             else return;
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -754,8 +754,8 @@ const ScoresEdit = (props) => {
                                         </div>
                                         <div>
                                           {card.Team2_name !== null
-                                            ? card.Team2_name.replace(',', ' /')
-                                            : ''}
+                                            ? card.Team2_name.replace(",", " /")
+                                            : ""}
                                         </div>
                                       </div>
                                       <div className="col-5 p-0 text-right box-shadow-text pr-2 mt-auto mb-0">
@@ -817,7 +817,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team2_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -857,7 +857,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team2_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -897,7 +897,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team2_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -945,7 +945,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team2_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -985,7 +985,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team2_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -1033,7 +1033,7 @@ const ScoresEdit = (props) => {
                                                               return obj.team2_score;
                                                             }
                                                           })
-                                                          .join('')
+                                                          .join("")
                                                       }
                                                       onChange={
                                                         handleScoreChange
@@ -1074,7 +1074,7 @@ const ScoresEdit = (props) => {
                 <span className="lower-back-button-text">CANCEL</span>
               </div>
             </div>
-            <div className="m-0 col-auto mt-3" style={{ position: 'relative' }}>
+            <div className="m-0 col-auto mt-3" style={{ position: "relative" }}>
               {saveLoading ? (
                 scoreEditError === null ? (
                   <div className="on_save_message d-flex justify-content-center align-items-center">
@@ -1103,7 +1103,7 @@ const ScoresEdit = (props) => {
             styles={{
               modal: {
                 borderRadius: 12,
-                boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+                boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
                 margin: 0,
                 padding: 0,
               },
@@ -1113,13 +1113,13 @@ const ScoresEdit = (props) => {
               className="text-center"
               style={{
                 marginTop: 62,
-                fontFamily: 'Futura',
+                fontFamily: "Futura",
                 fontSize: 14,
-                fontWeight: 'bold',
-                fontStretch: 'normal',
-                fontStyle: 'normal',
-                letterSpacing: 'normal',
-                color: '#4a4a4a',
+                fontWeight: "bold",
+                fontStretch: "normal",
+                fontStyle: "normal",
+                letterSpacing: "normal",
+                color: "#4a4a4a",
               }}
             >
               Are your sure you want to cancel?
@@ -1130,12 +1130,12 @@ const ScoresEdit = (props) => {
                 width: 398,
                 marginTop: 8,
                 fontSize: 10,
-                fontFamily: 'Futura',
-                fontWeight: 'bold',
-                fontStretch: 'normal',
-                fontStyle: 'normal',
-                letterSpacing: 'normal',
-                color: '#9b9b9b',
+                fontFamily: "Futura",
+                fontWeight: "bold",
+                fontStretch: "normal",
+                fontStyle: "normal",
+                letterSpacing: "normal",
+                color: "#9b9b9b",
               }}
             >
               All changes will not be saved and progress will be lost.
@@ -1151,14 +1151,14 @@ const ScoresEdit = (props) => {
                   id="white-button-hover"
                   onClick={onCloseModal}
                   style={{
-                    border: '1px solid yellow',
+                    border: "1px solid yellow",
                     borderRadius: 15,
                     width: 112,
                     height: 24,
                     fontSize: 10,
-                    backgroundColor: '#ffffff',
+                    backgroundColor: "#ffffff",
                     outline: 0,
-                    color: '#4a4a4a',
+                    color: "#4a4a4a",
                   }}
                 >
                   NO, CONTINUE
@@ -1168,14 +1168,14 @@ const ScoresEdit = (props) => {
                   id="yellow-button-hover"
                   onClick={() => props.history.goBack()}
                   style={{
-                    border: '1px solid yellow',
+                    border: "1px solid yellow",
                     borderRadius: 15,
                     width: 112,
                     height: 24,
                     fontSize: 10,
-                    backgroundColor: '#ffd420',
+                    backgroundColor: "#ffd420",
                     outline: 0,
-                    color: '#4a4a4a',
+                    color: "#4a4a4a",
                   }}
                 >
                   YES, CANCEL
