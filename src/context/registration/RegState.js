@@ -30,14 +30,14 @@ import {
   REMIND_PAYMENT_FOR_TEAM_LOADING,
   REG_LOADING_TYPE,
   REG_TEAM__STATUS_LOADING,
-  GET_TEAM_PAID_AMOUNT
+  GET_TEAM_PAID_AMOUNT,
   // GET_PLAYERS_DATA_TO_NULL,
-} from '../Types';
+} from "../Types";
 
-import RegContext from './RegContext';
-import regReducer from './regReducer';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
+import RegContext from "./RegContext";
+import regReducer from "./regReducer";
+import React, { useReducer } from "react";
+import { API } from "../../Utils/API";
 
 const RegState = (props) => {
   const initialState = {
@@ -63,16 +63,15 @@ const RegState = (props) => {
     invoiceMessage: null,
     teamPlayerStatusLoading: false,
     remindPaymentForTeamLoading: false,
-    teamAttendanceStatusLoading:false,
-    teamPaymentDataAmount:null,
+    teamAttendanceStatusLoading: false,
+    teamPaymentDataAmount: null,
   };
   const [state, dispatch] = useReducer(regReducer, initialState);
 
   //get all reg list
   const getAllRegistration = async () => {
-
     setRegLoading();
-    await API.get('/getEventsForRegistration')
+    await API.get("/getEventsForRegistration")
       .then((response) => {
         //console.log(response.data.eventsForRegistration);
         dispatch({
@@ -90,12 +89,11 @@ const RegState = (props) => {
   };
 
   const setRegLoading = () => {
-
-     dispatch({
-        type:REG_LOADING_TYPE,
-        payload: true,
-    })
-  }
+    dispatch({
+      type: REG_LOADING_TYPE,
+      payload: true,
+    });
+  };
 
   // get reg
   const getRegById = async (id) => {
@@ -107,7 +105,7 @@ const RegState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.response.data);
+        console.log("Error", error.response.data);
         dispatch({
           type: GET_REG_BY_ID_ERR,
           payload:
@@ -133,7 +131,7 @@ const RegState = (props) => {
         console.log(error.response);
         if (
           error.response.data.errorMessage.id[0] ===
-          'The selected id is invalid.'
+          "The selected id is invalid."
         ) {
           propsData.history.push(`/RegTable`);
         } else {
@@ -151,7 +149,7 @@ const RegState = (props) => {
 
   const playersList = async (value) => {
     await setPlayersLoading();
-    console.log('divisionId', value);
+    console.log("divisionId", value);
     // await API.get(`/getPlayersListForTeam/11849?f_name`).then((res) => {
 
     await API.get(`/getPlayersListForTeam/${value}?f_name`)
@@ -163,7 +161,7 @@ const RegState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('error', error);
+        console.log("error", error);
         dispatch({
           type: GET_PLAYERS_DATA_ERROR,
           payload: error.response.data.message,
@@ -181,11 +179,11 @@ const RegState = (props) => {
     setRemovePlayerLoading();
     // console.log(data);
     let actualData = new FormData();
-    actualData.append('data', JSON.stringify(data));
+    actualData.append("data", JSON.stringify(data));
     // for (var key of actualData.entries()) {
     //   console.log(key[0] + ', ' + key[1]);
     // }
-    await API.post('/removeTeamPlayer', actualData).then((res) => {
+    await API.post("/removeTeamPlayer", actualData).then((res) => {
       console.log(res.data);
       dispatch({
         type: REMOVE_PLAYER_FROM_TEAM,
@@ -206,11 +204,11 @@ const RegState = (props) => {
     setAddPlayerLoading();
     // console.log(JSON.stringify(data));
     let actualData = new FormData();
-    actualData.append('data', JSON.stringify(data));
+    actualData.append("data", JSON.stringify(data));
     // for (var key of actualData.entries()) {
     //   console.log(key[0] + ', ' + key[1]);
     // }
-    await API.post('/addPlayersToTeam', actualData).then((res) => {
+    await API.post("/addPlayersToTeam", actualData).then((res) => {
       // console.log(res.data);
       dispatch({
         type: ADD_PLAYER_TO_TEAM,
@@ -236,30 +234,30 @@ const RegState = (props) => {
   //setTeam Attendance reg present/absent
   // teamAttendanceStatusLoading:false,
 
-  const setTeamAttendanceStatus = async(data)=>{
+  const setTeamAttendanceStatus = async (data) => {
     dispatch({
       type: REG_TEAM__STATUS_LOADING,
       payload: true,
     });
     let actualData = new FormData();
-    actualData.append('data', JSON.stringify(data));
+    actualData.append("data", JSON.stringify(data));
     await API.post(`/setTeamAttendance`, actualData)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error.response);
-    });
-  }
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
 
   //setTeamStatus reg
   const setTeamStatusReg = async (id, data) => {
     setRegStatusToLoading();
     console.log(id);
     let actualData = new FormData();
-    actualData.append('data', JSON.stringify(data));
+    actualData.append("data", JSON.stringify(data));
     for (var key of actualData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
+      console.log(key[0] + ", " + key[1]);
     }
     await API.post(`/setTeamstatus/${id}`, actualData).then((res) => {
       console.log(res.data);
@@ -278,11 +276,11 @@ const RegState = (props) => {
 
   const addTeamToReg = async (data) => {
     let actualData = new FormData();
-    actualData.append('data', JSON.stringify({ divisionId: data }));
+    actualData.append("data", JSON.stringify({ divisionId: data }));
     for (var key of actualData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
+      console.log(key[0] + ", " + key[1]);
     }
-    await API.post('/addNewTeam', actualData).then((res) => {
+    await API.post("/addNewTeam", actualData).then((res) => {
       // console.log(res.data);
       // dispatch({
       //   type: ADD_PLAYER_TO_TEAM,
@@ -292,7 +290,7 @@ const RegState = (props) => {
 
   const excelDownload = async (id) => {
     await API.get(`/admin/downloadDivisionTeam?id=${id}`).catch((error) => {
-      console.log('Error', error.response.data.errorMessage[0]);
+      console.log("Error", error.response.data.errorMessage[0]);
       dispatch({
         type: EXCEL_ERROR,
         payload: Array.isArray(error.response.data.errorMessage)
@@ -333,7 +331,7 @@ const RegState = (props) => {
 
   const changeDivisionForTeam = async (formData) => {
     let actualData = new FormData();
-    actualData.append('data', JSON.stringify(formData));
+    actualData.append("data", JSON.stringify(formData));
     dispatch({
       type: CHANGE_DIVISION_FOR_TEAM_RESPONSE_LOADING,
     });
@@ -342,7 +340,7 @@ const RegState = (props) => {
         console.log(response);
         dispatch({
           type: CHANGE_DIVISION_FOR_TEAM_RESPONSE,
-          payload: 'Team Added Sucessfully',
+          payload: "Team Added Sucessfully",
         });
         setTimeout(() => {
           dispatch({
@@ -379,7 +377,7 @@ const RegState = (props) => {
         }, [2000]);
       })
       .catch((error) => {
-        console.log('Error', error.response);
+        console.log("Error", error.response);
         dispatch({
           type: GENERATE_INVOICE_MESSAGE,
           payload: error.response.data.errorMessage,
@@ -393,14 +391,13 @@ const RegState = (props) => {
       });
   };
 
-
   const setTeamPlayerStatus = async (formData) => {
     dispatch({
       type: REG_TEAM_PLAYER_STATUS_LOADING,
       payload: true,
     });
     let actualData = new FormData();
-    actualData.append('data', JSON.stringify(formData));
+    actualData.append("data", JSON.stringify(formData));
     await API.post(`/setTeamPlayerStatus`, actualData)
       .then((response) => {
         console.log(response);
@@ -429,7 +426,7 @@ const RegState = (props) => {
         // }, [2000]);
       })
       .catch((error) => {
-        console.log('Error', error.response);
+        console.log("Error", error.response);
         // dispatch({
         //   type: GENERATE_INVOICE_MESSAGE,
         //   payload: error.response.data.errorMessage,
@@ -445,24 +442,21 @@ const RegState = (props) => {
 
   // http://fanwins.in/api/getRefundDetail
   const getTeamPaymentDetails = async (id) => {
-    let paidAmount =0;
-    
+    let paidAmount = 0;
+
     await API.get(`/getRefundDetail?id=${id}`)
       .then((res) => {
-
         console.log(res.data.data.paid_amount);
         // paidAmount=
         dispatch({
           type: GET_TEAM_PAID_AMOUNT,
           payload: res.data.data.paid_amount,
         });
-
       })
       .catch((error) => {
-        console.log('Error', error.response);
+        console.log("Error", error.response);
       });
   };
-
 
   return (
     <RegContext.Provider
@@ -499,9 +493,9 @@ const RegState = (props) => {
         // remind Payment For Team Loading
         remindPaymentForTeamLoading: state.remindPaymentForTeamLoading,
         // Attendance For Team Loading
-        teamAttendanceStatusLoading:state.teamAttendanceStatusLoading,
+        teamAttendanceStatusLoading: state.teamAttendanceStatusLoading,
         //Team Payment Data Amount by id
-        teamPaymentDataAmount:state.teamPaymentDataAmount,
+        teamPaymentDataAmount: state.teamPaymentDataAmount,
 
         getAllRegistration,
         getRegById,
@@ -529,7 +523,7 @@ const RegState = (props) => {
         //Attendance
         setTeamAttendanceStatus,
         //Get team Payment details
-        getTeamPaymentDetails
+        getTeamPaymentDetails,
       }}
     >
       {props.children}

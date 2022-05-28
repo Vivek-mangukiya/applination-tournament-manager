@@ -10,11 +10,11 @@ import {
   POOLS_TAKEN_TEMPLATE,
   UPDATE_POINTS_TEMPLATE,
   UPDATE_POINTS_TEMPLATE_ERROR,
-} from '../Types';
-import TemplatePointsContext from './templatePointsContext';
-import templatePointsReducer from './templatePointsReducer';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
+} from "../Types";
+import TemplatePointsContext from "./templatePointsContext";
+import templatePointsReducer from "./templatePointsReducer";
+import React, { useReducer } from "react";
+import { API } from "../../Utils/API";
 
 const TemplatePointsState = (props) => {
   const initialState = {
@@ -34,11 +34,11 @@ const TemplatePointsState = (props) => {
   const createPointsTemplate = async (data, propsData) => {
     createTemplatePointsLoading();
     const actualData = new FormData();
-    actualData.append('data', data);
+    actualData.append("data", data);
     for (var key of actualData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
+      console.log(key[0] + ", " + key[1]);
     }
-    await API.post('/createTemplate', actualData)
+    await API.post("/createTemplate", actualData)
       .then((res) => {
         console.log(res.data);
         dispatch({
@@ -72,7 +72,7 @@ const TemplatePointsState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('error', error.response);
+        console.log("error", error.response);
         dispatch({
           type: GET_POINTS_TEMPLATE_BY_ID_ERROR,
           payload: error.response.data.errorMessage,
@@ -84,11 +84,11 @@ const TemplatePointsState = (props) => {
   const updatePointsTemplate = async (data, propsData) => {
     createTemplatePointsLoading();
     const actualData = new FormData();
-    actualData.append('data', JSON.stringify(data));
+    actualData.append("data", JSON.stringify(data));
     for (var key of actualData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
+      console.log(key[0] + ", " + key[1]);
     }
-    await API.post('/updatePointTemplate', actualData)
+    await API.post("/updatePointTemplate", actualData)
       .then((res) => {
         console.log(res.data);
         dispatch({
@@ -97,7 +97,7 @@ const TemplatePointsState = (props) => {
         propsData.push(`/templatePointsSaved/${data.id}`);
       })
       .catch((error) => {
-        console.log('Error', error.response);
+        console.log("Error", error.response);
         dispatch({
           type: UPDATE_POINTS_TEMPLATE_ERROR,
           payload: error.response.data.message,
@@ -117,17 +117,17 @@ const TemplatePointsState = (props) => {
   //check points name
   const checkPointsName = async (data, spots, propsData) => {
     const actualData = new FormData();
-    actualData.append('data', JSON.stringify(data));
+    actualData.append("data", JSON.stringify(data));
     for (var key of actualData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
+      console.log(key[0] + ", " + key[1]);
     }
-    await API.post('/checkPoolPointTemplate', actualData).then((res) => {
+    await API.post("/checkPoolPointTemplate", actualData).then((res) => {
       console.log(res.data);
-      if (res.data.message === 'Sorry,the name is already taken') {
+      if (res.data.message === "Sorry,the name is already taken") {
         dispatch({
           type: POINTS_TAKEN_TEMPLATE,
         });
-      } else if (res.data.message === 'Template name can be used') {
+      } else if (res.data.message === "Template name can be used") {
         dispatch({
           type: POINTS_NOT_TAKEN_TEMPLATE,
         });

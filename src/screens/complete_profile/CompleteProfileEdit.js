@@ -1,30 +1,30 @@
-import React, { useState, useEffect, useContext } from 'react';
-import '../../assets/styles/CompleteProfile.css';
-import clearIcon from '../../assets/images/icons-x-input.svg';
-import location from '../../assets/images/icon-orange-map.svg';
-import phone from '../../assets/images/icon-orange-phone.svg';
-import mail from '../../assets/images/icon-orange-mail.svg';
+import React, { useState, useEffect, useContext } from "react";
+import "../../assets/styles/CompleteProfile.css";
+import clearIcon from "../../assets/images/icons-x-input.svg";
+import location from "../../assets/images/icon-orange-map.svg";
+import phone from "../../assets/images/icon-orange-phone.svg";
+import mail from "../../assets/images/icon-orange-mail.svg";
 // import Footer from '../components/footer/Footer';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import Header from '../../components/header/Header';
-import backIcon from '../../assets/images/icon-menu-back.svg';
-import cardIcon from '../../assets/images/icon-menu-cards-disable.svg';
-import listIcon from '../../assets/images/icon-menu-list.svg';
-import NewManagerProfileContext from '../../context/newManagerProfile/newManagerProfileContext';
-import NumberFormat from 'react-number-format';
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import Header from "../../components/header/Header";
+import backIcon from "../../assets/images/icon-menu-back.svg";
+import cardIcon from "../../assets/images/icon-menu-cards-disable.svg";
+import listIcon from "../../assets/images/icon-menu-list.svg";
+import NewManagerProfileContext from "../../context/newManagerProfile/newManagerProfileContext";
+import NumberFormat from "react-number-format";
 // import photoAddIcon from '../assets/images/group.svg';
 // import { sha256 } from 'js-sha256';
-import iconLock from '../../assets/images/lock.svg';
-import md5 from 'js-md5';
+import iconLock from "../../assets/images/lock.svg";
+import md5 from "js-md5";
 // import DefaultImage from '../assets/images/DefaultImage.jpg';
-import defaultIcon2 from '../../assets/images/defaultIcon2.png';
-import AuthContext from '../../context/auth/authContext';
+import defaultIcon2 from "../../assets/images/defaultIcon2.png";
+import AuthContext from "../../context/auth/authContext";
 
-const algorithm = 'aes-256-cbc';
-const key = 'LM@098765_AVPAppLM@098765_AVPApp';
-const iv = 'e95a3d73fe601926';
-const crypto = require('crypto');
+const algorithm = "aes-256-cbc";
+const key = "LM@098765_AVPAppLM@098765_AVPApp";
+const iv = "e95a3d73fe601926";
+const crypto = require("crypto");
 
 const CompleteProfile = (props) => {
   // context
@@ -55,52 +55,52 @@ const CompleteProfile = (props) => {
 
   useEffect(() => {
     if (getManagerData !== null) {
-      console.log('edit screen', getManagerData);
+      console.log("edit screen", getManagerData);
     }
   }, [getManagerData]);
 
   const [firstName, setFirstName] = useState(
-    getManagerData !== null ? getManagerData[0].first_name : ''
+    getManagerData !== null ? getManagerData[0].first_name : ""
   );
   const [lastName, setLastName] = useState(
-    getManagerData !== null ? getManagerData[0].last_name : ''
+    getManagerData !== null ? getManagerData[0].last_name : ""
   );
   const [loc, setLoc] = useState(
     // getManagerData !== null ? getManagerData[0].zip : ''
     getManagerData !== null
-      ? getManagerData[0].city + ',' + getManagerData[0].state_code
-      : ''
+      ? getManagerData[0].city + "," + getManagerData[0].state_code
+      : ""
   );
   const [contact, setContact] = useState(
-    getManagerData !== null ? decrypt(getManagerData[0].contact_no) : ''
+    getManagerData !== null ? decrypt(getManagerData[0].contact_no) : ""
   );
   const [email, setEmail] = useState(
-    getManagerData !== null ? getManagerData[0].email_id : ''
+    getManagerData !== null ? getManagerData[0].email_id : ""
   );
-  const [newPassword, setnewPassword] = useState('');
-  const [confirmedPassword, setconfirmedPassword] = useState('');
+  const [newPassword, setnewPassword] = useState("");
+  const [confirmedPassword, setconfirmedPassword] = useState("");
   // image upload
-  const [file, setFile] = useState({ preview: '', raw: '' });
+  const [file, setFile] = useState({ preview: "", raw: "" });
 
   //first duplicate state
-  const [firstDuplicateState, setFirstDuplicateState] = useState('');
+  const [firstDuplicateState, setFirstDuplicateState] = useState("");
 
   //last duplicate state
-  const [lastDuplicateState, setLastDuplicateState] = useState('');
+  const [lastDuplicateState, setLastDuplicateState] = useState("");
 
   //loc duplicate state
-  const [locDuplicateState, setLocDuplicateState] = useState('');
+  const [locDuplicateState, setLocDuplicateState] = useState("");
 
   //phone duplicate state
-  const [phoneDuplicateState, setPhoneDuplicateState] = useState('');
+  const [phoneDuplicateState, setPhoneDuplicateState] = useState("");
 
   //email duplicate state
-  const [emailDuplicateState, setEmailDuplicateState] = useState('');
+  const [emailDuplicateState, setEmailDuplicateState] = useState("");
 
-  const [newPasswordDuplicate, setNewPasswordDuplicate] = useState('');
+  const [newPasswordDuplicate, setNewPasswordDuplicate] = useState("");
 
   const [confirmedPasswordDuplicate, setConfirmedPasswordDuplicate] =
-    useState('');
+    useState("");
 
   // error states
   const [contactError, setContactError] = useState(false);
@@ -125,14 +125,14 @@ const CompleteProfile = (props) => {
   useEffect(() => {
     // if (managerId !== null) {
     // console.log('Manager Id in saved screen:', managerId);
-    console.log('Manager id by url:', parseInt(localStorage.getItem('id')));
-    getManagerById(parseInt(localStorage.getItem('id')));
+    console.log("Manager id by url:", parseInt(localStorage.getItem("id")));
+    getManagerById(parseInt(localStorage.getItem("id")));
     // }
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    if (getManagerData !== null) console.log('getManagerdata', getManagerData);
+    if (getManagerData !== null) console.log("getManagerdata", getManagerData);
   }, [getManagerData]);
 
   //imageUpload function
@@ -164,7 +164,7 @@ const CompleteProfile = (props) => {
   }, [loc]);
 
   useEffect(() => {
-    var contactWithoutSpaces = contact.replace(/\s/g, '');
+    var contactWithoutSpaces = contact.replace(/\s/g, "");
     if (contactWithoutSpaces.length === 10) {
       setContactError(false);
     }
@@ -180,7 +180,7 @@ const CompleteProfile = (props) => {
   useEffect(() => {
     getAllManagers();
     var found = managerListData.find((manager) => manager.email_id === email);
-    console.log('Found email:', found);
+    console.log("Found email:", found);
     if (found === null || found === undefined) {
       setEmailTakenError(false);
     }
@@ -205,7 +205,7 @@ const CompleteProfile = (props) => {
 
   useEffect(() => {
     var passwordReg = new RegExp(
-      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]{2})(?=.*[!@#$%^&*])(?=.{8,})'
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]{2})(?=.*[!@#$%^&*])(?=.{8,})"
     );
     if (passwordReg.test(newPassword.toString())) {
       setPasswordStrong(false);
@@ -215,24 +215,24 @@ const CompleteProfile = (props) => {
   const onSave = async () => {
     var can = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$/);
     var us = new RegExp(/(^\d{1}\d{1}\d{1}\d{1}\d{1}$)/);
-    var contactWithoutSpaces = contact.replace(/\s/g, '');
+    var contactWithoutSpaces = contact.replace(/\s/g, "");
     var emailTest = new RegExp(/\S+@\S+\.\S+/);
     var found = managerListData.find((manager) => manager.email_id === email);
     // var ltr = newPassword.match(/[a-zA-Z]/).pop();
     var ltr = newPassword.match(/[a-zA-Z]/);
     var passwordReg = new RegExp(
-      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9].*?[0-9])(?=.*[!@#$%^&*])(?=.{8,})'
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9].*?[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
     );
-    console.log('Found manager email:', found);
+    console.log("Found manager email:", found);
 
-    if (firstName === '') {
+    if (firstName === "") {
       setFirstNameError(true);
-    } else if (lastName === '') {
+    } else if (lastName === "") {
       setLastNameError(true);
     } else if (!us.test(loc) && !can.test(loc) && locClicked === true) {
       setZipcodeError(true);
     } else if (
-      contactWithoutSpaces === '' ||
+      contactWithoutSpaces === "" ||
       contactWithoutSpaces.length !== 10
     ) {
       setContactError(true);
@@ -263,7 +263,7 @@ const CompleteProfile = (props) => {
         .pop()
         .match(/[A-Z]/)
     ) {
-      console.log('ltr: ', newPassword.match(/[a-zA-Z]/).pop());
+      console.log("ltr: ", newPassword.match(/[a-zA-Z]/).pop());
       setFirstLetterError(true);
     } else if (
       newPassword.match(/[a-zA-Z]/) &&
@@ -271,7 +271,7 @@ const CompleteProfile = (props) => {
     ) {
       setPasswordStrong(true);
     } else {
-      console.log('In else!');
+      console.log("In else!");
       var MD5_encryptedPassword = md5(newPassword);
       console.log({
         firstName,
@@ -284,39 +284,39 @@ const CompleteProfile = (props) => {
       });
 
       const data1 = {};
-      if (firstDuplicateState !== '') {
+      if (firstDuplicateState !== "") {
         data1.first_name = firstDuplicateState;
       }
-      if (lastDuplicateState !== '') {
+      if (lastDuplicateState !== "") {
         data1.last_name = lastDuplicateState;
       }
-      if (locDuplicateState !== '') {
+      if (locDuplicateState !== "") {
         data1.zip = locDuplicateState;
       }
-      if (phoneDuplicateState !== '') {
+      if (phoneDuplicateState !== "") {
         var phoneDuplicateStateWithoutSpaces = phoneDuplicateState.replace(
           /\s/g,
-          ''
+          ""
         );
         data1.contact = encrypt(phoneDuplicateStateWithoutSpaces);
       }
-      if (emailDuplicateState !== '') {
+      if (emailDuplicateState !== "") {
         data1.email_id = emailDuplicateState;
       }
-      if (newPassword !== '') {
+      if (newPassword !== "") {
         data1.password = MD5_encryptedPassword;
       }
       const data = JSON.stringify(data1);
-      console.log('Optional data sent to backend', data);
+      console.log("Optional data sent to backend", data);
       console.log(
-        'Manager Id sent to backend',
-        parseInt(localStorage.getItem('id'))
+        "Manager Id sent to backend",
+        parseInt(localStorage.getItem("id"))
       );
       await createNewManager(
         {
           data: data,
           profile_pic: file.raw,
-          managerId: parseInt(localStorage.getItem('id')),
+          managerId: parseInt(localStorage.getItem("id")),
         },
         props
       );
@@ -327,14 +327,14 @@ const CompleteProfile = (props) => {
 
   function encrypt(text) {
     let _cipher = crypto.createCipheriv(algorithm, key, iv);
-    let _encrypted = _cipher.update(text, 'utf8', 'base64');
-    _encrypted += _cipher.final('base64');
-    return _encrypted.toString('base64');
+    let _encrypted = _cipher.update(text, "utf8", "base64");
+    _encrypted += _cipher.final("base64");
+    return _encrypted.toString("base64");
   }
 
   function decrypt(text) {
     var _encrypted;
-    if (text) _encrypted = Buffer.from(text, 'base64');
+    if (text) _encrypted = Buffer.from(text, "base64");
     const decipher = crypto.createDecipheriv(
       algorithm,
       Buffer.from(key),
@@ -342,30 +342,29 @@ const CompleteProfile = (props) => {
     );
 
     decipher.setAutoPadding(true);
-    let decrypt = decipher.update(_encrypted, 'base64');
+    let decrypt = decipher.update(_encrypted, "base64");
     decrypt += decipher.final();
     return decrypt;
   }
 
-  // console.log("Profile pic",getManagerData[0].profile_pic)
+  // console.log("Profile pic", getManagerData[0].profile_pic);
 
   useEffect(() => {
     setSideBarDisabled(true);
   }, []);
 
   useEffect(() => {
-    window.onbeforeunload = function() {
-        // props.history.goBack()
-        console.log("load")
-        return false;
+    window.onbeforeunload = function () {
+      // props.history.goBack()
+      console.log("load");
+      return false;
     };
 
     return () => {
-      console.log("unload")
-      window.onbeforeunload =  null;
+      console.log("unload");
+      window.onbeforeunload = null;
     };
-}, []);
-
+  }, []);
 
   return (
     <>
@@ -393,7 +392,7 @@ const CompleteProfile = (props) => {
           </li>
           <li
             className="nav-item"
-            onClick={() => props.history.push('/managers')}
+            onClick={() => props.history.push("/managers")}
           >
             <a
               className="nav-link disabled"
@@ -408,12 +407,12 @@ const CompleteProfile = (props) => {
       </Header>
       <div
         className="new-manager-profile container p-0"
-        style={{ height: '100vh' }}
+        style={{ height: "100vh" }}
       >
         <div className="row" style={{ marginTop: 85 }}>
           <div className="col-6 m-auto text-center p-0">
             {newManagerError !== null && (
-              <h4 className="text-left" style={{ color: '#ff2072' }}>
+              <h4 className="text-left" style={{ color: "#ff2072" }}>
                 {newManagerError}
               </h4>
             )}
@@ -422,10 +421,10 @@ const CompleteProfile = (props) => {
                 <div
                   className="contact-title d-flex justify-content-end mr-auto ml-5 mb-3"
                   style={{
-                    color: '#ff2072',
+                    color: "#ff2072",
                     fontSize: 12,
-                    boxShadow: 'none',
-                    backgroundColor: '#f9fafc',
+                    boxShadow: "none",
+                    backgroundColor: "#f9fafc",
                   }}
                 >
                   {disabledMessage}
@@ -440,24 +439,24 @@ const CompleteProfile = (props) => {
                         // border: '2px solid black',
                         height: 100,
                         width: 100,
-                        borderRadius: '50%',
-                        backgroundColor: '#d8d8d8',
-                        overflow: 'visible',
-                        display: 'inline-block',
+                        borderRadius: "50%",
+                        backgroundColor: "#d8d8d8",
+                        overflow: "visible",
+                        display: "inline-block",
                         marginLeft: 0,
                       }}
                       // className="d-inline"
                     >
-                      {file.preview !== '' ? (
+                      {file.preview !== "" ? (
                         <img
                           src={file.preview}
                           alt=""
                           className="m-auto d-block"
                           style={{
-                            objectFit: 'cover',
+                            objectFit: "cover",
                             width: 100,
                             height: 100,
-                            borderRadius: '50%',
+                            borderRadius: "50%",
                           }}
                         />
                       ) : (
@@ -469,7 +468,8 @@ const CompleteProfile = (props) => {
                             //   ? {DefaultImage}
                             //   : `http://fanwins.in/${getManagerData[0].profile_pic}`
                             //   // :{DefaultImage}
-                            getManagerData!==null && getManagerData[0].profile_pic !== null
+                            getManagerData !== null &&
+                            getManagerData[0].profile_pic !== ""
                               ? `${process.env.REACT_APP_PLAYER_COURT_URL}/${getManagerData[0].profile_pic}`
                               : // : `${photoAddIcon}`
                                 `${defaultIcon2}`
@@ -477,7 +477,7 @@ const CompleteProfile = (props) => {
                           alt=""
                           className="m-auto d-block"
                           style={{
-                            objectFit: 'cover',
+                            objectFit: "cover",
                             height: 100,
                           }}
                         />
@@ -506,15 +506,15 @@ const CompleteProfile = (props) => {
                         <img
                           src={clearIcon}
                           alt=""
-                          style={{ cursor: 'pointer' }}
-                          onClick={() => setFirstName('')}
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setFirstName("")}
                         />
                       </div>
                       {firstNameError && (
                         <div
                           className="contact-title"
                           style={{
-                            color: '#ff2072',
+                            color: "#ff2072",
                             fontSize: 12,
                             marginLeft: 155,
                             border: 0,
@@ -528,8 +528,8 @@ const CompleteProfile = (props) => {
                           type="text"
                           // onFocus={(e) => e.target.value = ""}
                           onFocus={() => {
-                            setLastName('');
-                            setLastDuplicateState('');
+                            setLastName("");
+                            setLastDuplicateState("");
                           }}
                           value={lastName}
                           // onChange={(e) => setLastName(e.target.value)}
@@ -543,15 +543,15 @@ const CompleteProfile = (props) => {
                         <img
                           src={clearIcon}
                           alt=""
-                          style={{ cursor: 'pointer' }}
-                          onClick={() => setLastName('')}
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setLastName("")}
                         />
                       </div>
                       {lastNameError && (
                         <div
                           className="contact-title"
                           style={{
-                            color: '#ff2072',
+                            color: "#ff2072",
                             fontSize: 12,
                             marginLeft: 155,
                             border: 0,
@@ -591,7 +591,7 @@ const CompleteProfile = (props) => {
                       <div
                         className="contact-title"
                         style={{
-                          color: '#ff2072',
+                          color: "#ff2072",
                           fontSize: 12,
                           marginLeft: 290,
                         }}
@@ -602,7 +602,7 @@ const CompleteProfile = (props) => {
                     <div className="box">
                       <div
                         style={{
-                          borderColor: 'black',
+                          borderColor: "black",
                           borderWidth: 1,
                           height: 32,
                         }}
@@ -614,8 +614,8 @@ const CompleteProfile = (props) => {
                             type="text"
                             // onFocus={(e) => e.target.value = ""}
                             onFocus={() => {
-                              setLoc('');
-                              setLocDuplicateState('');
+                              setLoc("");
+                              setLocDuplicateState("");
                             }}
                             value={loc}
                             // onChange={(e) => {
@@ -636,10 +636,10 @@ const CompleteProfile = (props) => {
                             }}
                             className="form-control profile-form p-0 manager-profile-created-number-input ml-2"
                             style={{
-                              direction: 'ltr',
-                              borderBottom: '1px solid black',
+                              direction: "ltr",
+                              borderBottom: "1px solid black",
                               borderRadius: 0,
-                              textAlign: 'right',
+                              textAlign: "right",
                             }}
                             // placeholder="Enter Zip"
                           />
@@ -649,11 +649,11 @@ const CompleteProfile = (props) => {
                         <div
                           className="contact-title d-flex justify-content-end"
                           style={{
-                            color: '#ff2072',
+                            color: "#ff2072",
                             fontSize: 12,
                             marginLeft: 260,
-                            boxShadow: 'none',
-                            backgroundColor: '#f9fafc',
+                            boxShadow: "none",
+                            backgroundColor: "#f9fafc",
                           }}
                         >
                           Please enter a valid phone number
@@ -661,7 +661,7 @@ const CompleteProfile = (props) => {
                       )}
                       <div
                         style={{
-                          borderColor: 'black',
+                          borderColor: "black",
                           borderWidth: 1,
                           height: 32,
                         }}
@@ -688,17 +688,17 @@ const CompleteProfile = (props) => {
                               setContact(e.target.value);
                               setPhoneDuplicateState(e.target.value);
                             }}
-                            onFocus={(e) => setContact('')}
+                            onFocus={(e) => setContact("")}
                             value={contact}
                             style={{
-                              height: 'inherit',
+                              height: "inherit",
                               // direction: 'rtl',
-                              textAlign: 'right',
+                              textAlign: "right",
                               fontSize: 14,
-                              outline: 'none',
+                              outline: "none",
                               border: 0,
-                              boxShadow: '0px 0px 0px 0px',
-                              fontFamily: 'FuturaMedium',
+                              boxShadow: "0px 0px 0px 0px",
+                              fontFamily: "FuturaMedium",
                               fontWeight: 500,
                             }}
                           />
@@ -709,11 +709,11 @@ const CompleteProfile = (props) => {
                         <div
                           className="contact-title d-flex justify-content-end"
                           style={{
-                            color: '#ff2072',
+                            color: "#ff2072",
                             fontSize: 12,
                             marginLeft: 260,
-                            boxShadow: 'none',
-                            backgroundColor: '#f9fafc',
+                            boxShadow: "none",
+                            backgroundColor: "#f9fafc",
                           }}
                         >
                           This email id is already taken
@@ -723,11 +723,11 @@ const CompleteProfile = (props) => {
                         <div
                           className="contact-title d-flex justify-content-end"
                           style={{
-                            color: '#ff2072',
+                            color: "#ff2072",
                             fontSize: 12,
                             marginLeft: 260,
-                            boxShadow: 'none',
-                            backgroundColor: '#f9fafc',
+                            boxShadow: "none",
+                            backgroundColor: "#f9fafc",
                           }}
                         >
                           Please enter valid email
@@ -735,7 +735,7 @@ const CompleteProfile = (props) => {
                       )}
                       <div
                         style={{
-                          borderColor: 'black',
+                          borderColor: "black",
                           borderWidth: 1,
                           height: 32,
                         }}
@@ -771,7 +771,7 @@ const CompleteProfile = (props) => {
                     {passwordError && (
                       <div
                         className="contact-title"
-                        style={{ color: '#ff2072', fontSize: 12, width: 400 }}
+                        style={{ color: "#ff2072", fontSize: 12, width: 400 }}
                       >
                         Please enter matching passwords
                       </div>
@@ -779,7 +779,7 @@ const CompleteProfile = (props) => {
                     {passwordStrong && (
                       <div
                         className="contact-title"
-                        style={{ color: '#ff2072', fontSize: 12, width: 420 }}
+                        style={{ color: "#ff2072", fontSize: 12, width: 420 }}
                       >
                         Please enter minimum 1 capital letters, 1 special
                         character, 2 digits.
@@ -788,7 +788,7 @@ const CompleteProfile = (props) => {
                     {firstLetterError && (
                       <div
                         className="contact-title"
-                        style={{ color: '#ff2072', fontSize: 12, width: 420 }}
+                        style={{ color: "#ff2072", fontSize: 12, width: 420 }}
                       >
                         First letter cannot be capital.
                       </div>
@@ -796,7 +796,7 @@ const CompleteProfile = (props) => {
                     <div className="box">
                       <div
                         style={{
-                          borderColor: 'black',
+                          borderColor: "black",
                           borderWidth: 1,
                           height: 32,
                         }}
@@ -820,7 +820,7 @@ const CompleteProfile = (props) => {
                       </div>
                       <div
                         style={{
-                          borderColor: 'black',
+                          borderColor: "black",
                           borderWidth: 1,
                           height: 32,
                         }}
@@ -850,14 +850,14 @@ const CompleteProfile = (props) => {
                         className="btn-sm pb-1 "
                         id="yellow-button-hover"
                         style={{
-                          border: '1px solid yellow',
+                          border: "1px solid yellow",
                           borderRadius: 15,
                           width: 112,
                           height: 24,
                           fontSize: 10,
-                          backgroundColor: '#ffd420',
+                          backgroundColor: "#ffd420",
                           outline: 0,
-                          color: '#4a4a4a',
+                          color: "#4a4a4a",
                           marginTop: 30,
                         }}
                         onClick={onSave}

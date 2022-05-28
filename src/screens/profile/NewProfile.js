@@ -1,41 +1,43 @@
-import React, { useEffect, useState, useContext } from 'react';
-import './Profile.css';
-import clearIcon from '../../assets/images/icons-x-input.svg';
-import location from '../../assets/images/icon-orange-map.svg';
-import phone from '../../assets/images/icon-orange-phone.svg';
-import star from '../../assets/images/icon-orange-star.svg';
-import mail from '../../assets/images/icon-orange-mail.svg';
-import level from '../../assets/images/icon-orange-level.svg';
-import points from '../../assets/images/icon-orange-points.svg';
-import Footer from '../../components/footer/Footer';
-import Header from '../../components/header/Header';
-import backIcon from '../../assets/images/icon-menu-back.svg';
-import PlayerProfileContext from '../../context/playerProfile/playerProfileContext';
-import { Modal } from 'react-responsive-modal';
-import NumberFormat from 'react-number-format';
-import PhoneInput from 'react-phone-number-input';
+import React, { useEffect, useState, useContext } from "react";
+import "./Profile.css";
+import clearIcon from "../../assets/images/icons-x-input.svg";
+import location from "../../assets/images/icon-orange-map.svg";
+import phone from "../../assets/images/icon-orange-phone.svg";
+import star from "../../assets/images/icon-orange-star.svg";
+import mail from "../../assets/images/icon-orange-mail.svg";
+import level from "../../assets/images/icon-orange-level.svg";
+import points from "../../assets/images/icon-orange-points.svg";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import backIcon from "../../assets/images/icon-menu-back.svg";
+import PlayerProfileContext from "../../context/playerProfile/playerProfileContext";
+import { Modal } from "react-responsive-modal";
+import NumberFormat from "react-number-format";
+import PhoneInput from "react-phone-number-input";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewProfile = (props) => {
   //context
   const playerProfileContext = useContext(PlayerProfileContext);
   const { saveData, playerInfo } = playerProfileContext;
 
-  const [firstName, setFirstName] = useState(
-    playerInfo ? playerInfo.firstName : ''
+  const [first_name, setFirstName] = useState(
+    playerInfo ? playerInfo.firstName : ""
   );
-  const [lastName, setLastName] = useState(
-    playerInfo ? playerInfo.lastName : ''
+  const [last_name, setLastName] = useState(
+    playerInfo ? playerInfo.lastName : ""
   );
-  const [loc, setLoc] = useState(playerInfo ? playerInfo.loc : '');
-  const [contact, setContact] = useState(playerInfo ? playerInfo.contact : '');
-  const [email, setEmail] = useState(playerInfo ? playerInfo.email : '');
-  const [points1, setPoints1] = useState(playerInfo ? playerInfo.points1 : '');
+  const [zip, setLoc] = useState(playerInfo ? playerInfo.loc : "");
+  const [contact, setContact] = useState(playerInfo ? playerInfo.contact : "");
+  const [email_id, setEmail] = useState(playerInfo ? playerInfo.email : "");
+  const [points1, setPoints1] = useState(playerInfo ? playerInfo.points1 : "");
   const [levelState, setLevelState] = useState(
-    playerInfo ? playerInfo.levelState : ''
+    playerInfo ? playerInfo.levelState : ""
   );
-  const [points2, setPoints2] = useState(playerInfo ? playerInfo.points2 : '');
+  const [points2, setPoints2] = useState(playerInfo ? playerInfo.points2 : "");
   const [placement, setPlacement] = useState(
-    playerInfo ? playerInfo.placement : ''
+    playerInfo ? playerInfo.placement : ""
   );
   const [contactError, setContactError] = useState(false);
 
@@ -66,50 +68,64 @@ const NewProfile = (props) => {
   const onCloseModal = () => setOpen(false);
 
   useEffect(() => {
-    if (loc === '' || contact === '' || email === '') {
+    if (zip === "" || contact === "" || email_id === "") {
       setContactError(true);
     }
-    if (loc.length !== 0 && contact.length !== 0 && email.length !== 0) {
+    if (
+      zip !== "" &&
+      zip.length !== 0 &&
+      contact.length !== 0 &&
+      email_id.length !== 0
+    ) {
       setContactError(false);
     }
-  }, [loc, contact, email]);
+  }, [zip, contact, email_id]);
 
   const onSave = () => {
     console.log({
-      firstName,
-      lastName,
-      loc,
+      first_name,
+      last_name,
+      zip,
       contact,
-      email,
+      email_id,
       points1,
       points2,
       levelState,
       placement,
     });
+
     saveData({
-      firstName,
-      lastName,
-      loc,
+      first_name,
+      last_name,
+      zip,
       contact,
-      email,
+      email_id,
       points1,
       points2,
       levelState,
       placement,
     });
+    // console.log({ saveData, first_name, last_name, zip, contact, email_id });
+    // console.log({ saveDataNIK: saveData.data });
     if (
-      saveData !== null &&
-      firstName !== '' &&
-      lastName !== '' &&
-      loc !== '' &&
-      contact !== '' &&
-      email !== '' &&
-      points1 !== '' &&
-      levelState !== '' &&
-      points2 !== '' &&
-      placement !== ''
+      first_name !== "" &&
+      last_name !== "" &&
+      zip !== "" &&
+      contact !== "" &&
+      email_id !== ""
     ) {
-      props.history.push('/profile');
+      // console.log({ saveData, first_name, last_name, zip, contact, email_id });
+      setFirstName("");
+      setLastName("");
+      setLoc("");
+      setContact("");
+      setEmail("");
+      setPoints1("");
+      setLevelState("");
+      setPoints2("");
+      setPlacement("");
+      toast("Add Player succcesfully");
+      // props.history.push("/profile");
     }
   };
 
@@ -129,6 +145,17 @@ const NewProfile = (props) => {
           </li>
         </ul>
       </Header>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div>
         <div id="active-profile" className="m-auto pb-5">
           {/* image and input area */}
@@ -141,22 +168,22 @@ const NewProfile = (props) => {
               <div>
                 <input
                   type="text"
-                  value={firstName}
+                  value={first_name}
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="FIRST NAME"
                   className="player-profile-input"
                 />
-                <img src={clearIcon} alt="" onClick={() => setFirstName('')} />
+                <img src={clearIcon} alt="" onClick={() => setFirstName("")} />
               </div>
               <div>
                 <input
                   type="text"
-                  value={lastName}
+                  value={last_name}
                   onChange={(e) => setLastName(e.target.value)}
                   placeholder="LAST NAME"
                   className="player-profile-input"
                 />
-                <img src={clearIcon} alt="" onClick={() => setLastName('')} />
+                <img src={clearIcon} alt="" onClick={() => setLastName("")} />
               </div>
             </div>
           </div>
@@ -170,7 +197,7 @@ const NewProfile = (props) => {
           <div id="contact">
             <div className="contact-title">Contact</div>
             {contactError && (
-              <div className="contact-title" style={{ color: '#ff2072' }}>
+              <div className="contact-title" style={{ color: "#ff2072" }}>
                 Please enter all details
               </div>
             )}
@@ -181,7 +208,7 @@ const NewProfile = (props) => {
                 <div className="last-div ml-auto mr-3">
                   <input
                     type="text"
-                    value={loc}
+                    value={zip}
                     onChange={(e) => setLoc(e.target.value)}
                     className="form-control profile-form p-0"
                     placeholder="zip code"
@@ -193,7 +220,7 @@ const NewProfile = (props) => {
                 <div className="first-div">Mobile</div>
                 <div className="last-div ml-auto mr-3">
                   <NumberFormat
-                    format="#### ### ###"
+                    format="###############"
                     displayType="input"
                     // customInput={contact}
                     placeholder="5555 555 555"
@@ -204,14 +231,14 @@ const NewProfile = (props) => {
                     // onKeyUp="rtl(this);"
                     // onKeyDown="rtl(this)"
                     style={{
-                      height: 'inherit',
+                      height: "inherit",
                       // direction: 'rtl',
-                      textAlign: 'right',
+                      textAlign: "right",
                       fontSize: 14,
-                      outline: 'none',
+                      outline: "none",
                       border: 0,
-                      boxShadow: '0px 0px 0px 0px',
-                      fontFamily: 'FuturaMedium',
+                      boxShadow: "0px 0px 0px 0px",
+                      fontFamily: "FuturaMedium",
                       fontWeight: 500,
                       marginRight: 0,
                       paddingRight: 0,
@@ -266,7 +293,7 @@ const NewProfile = (props) => {
                 <div className="last-div ml-auto mr-3">
                   <input
                     type="text"
-                    value={email}
+                    value={email_id}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control profile-form p-0"
                     placeholder="name@email.com"
@@ -279,7 +306,7 @@ const NewProfile = (props) => {
                 <div className="last-div ml-auto mr-3">
                   <input
                     type="text"
-                    value={email}
+                    value={email_id}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control profile-form p-0"
                     placeholder="name@email.com"
@@ -378,7 +405,7 @@ const NewProfile = (props) => {
         styles={{
           modal: {
             borderRadius: 12,
-            boxShadow: '0 1 2 0 rgba(0,0,0,0.2',
+            boxShadow: "0 1 2 0 rgba(0,0,0,0.2",
             margin: 0,
             padding: 0,
           },
@@ -391,13 +418,13 @@ const NewProfile = (props) => {
           className="text-center"
           style={{
             marginTop: 62,
-            fontFamily: 'Futura',
+            fontFamily: "Futura",
             fontSize: 14,
-            fontWeight: 'bold',
-            fontStretch: 'normal',
-            fontStyle: 'normal',
-            letterSpacing: 'normal',
-            color: '#4a4a4a',
+            fontWeight: "bold",
+            fontStretch: "normal",
+            fontStyle: "normal",
+            letterSpacing: "normal",
+            color: "#4a4a4a",
           }}
         >
           Are your sure you want to cancel?
@@ -408,12 +435,12 @@ const NewProfile = (props) => {
             width: 398,
             fontSize: 10,
             marginTop: 8,
-            fontFamily: 'Futura',
-            fontWeight: 'bold',
-            fontStretch: 'normal',
-            fontStyle: 'normal',
-            letterSpacing: 'normal',
-            color: '#9b9b9b',
+            fontFamily: "Futura",
+            fontWeight: "bold",
+            fontStretch: "normal",
+            fontStyle: "normal",
+            letterSpacing: "normal",
+            color: "#9b9b9b",
           }}
         >
           All changes will not be saved and progress will be lost.
@@ -429,12 +456,12 @@ const NewProfile = (props) => {
               id="white-button-hover"
               onClick={onCloseModal}
               style={{
-                border: '1px solid yellow',
+                border: "1px solid yellow",
                 borderRadius: 15,
                 width: 112,
                 height: 24,
                 fontSize: 10,
-                backgroundColor: '#ffffff',
+                backgroundColor: "#ffffff",
                 outline: 0,
               }}
             >
@@ -445,12 +472,12 @@ const NewProfile = (props) => {
               id="yellow-button-hover"
               onClick={() => props.history.goBack()}
               style={{
-                border: '1px solid yellow',
+                border: "1px solid yellow",
                 borderRadius: 15,
                 width: 112,
                 height: 24,
                 fontSize: 10,
-                backgroundColor: '#ffd420',
+                backgroundColor: "#ffd420",
                 outline: 0,
               }}
             >

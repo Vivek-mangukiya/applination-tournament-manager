@@ -1,18 +1,22 @@
-import React, { useState, useContext } from 'react';
-import { useEffect } from 'react';
-import profilePic from '../../assets/images/profilepic.jpg';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import PoolsDropdown from './PoolsDropdown';
-import { DatePicker } from 'antd';
-import calenderIconRight from '../../assets/images/icon-menu-calendar.svg';
-import moment from 'moment';
-import PoolContext from '../../context/pools/poolsContext';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import Header from '../../components/header/Header';
-import backIcon from '../../assets/images/icon-menu-back.svg';
-import listIcon from '../../assets/images/icon-menu-list.svg';
-import { TimePicker } from 'antd';
-import PoolsScheduleDropdown from './PoolsScheduleDropdown';
+import React, { useState, useContext } from "react";
+import { useEffect } from "react";
+import profilePic from "../../assets/images/profilepic.jpg";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import PoolsDropdown from "./PoolsDropdown";
+import { DatePicker } from "antd";
+import calenderIconRight from "../../assets/images/icon-menu-calendar.svg";
+import moment from "moment";
+import PoolContext from "../../context/pools/poolsContext";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import Header from "../../components/header/Header";
+import backIcon from "../../assets/images/icon-menu-back.svg";
+import listIcon from "../../assets/images/icon-menu-list.svg";
+import upIcon from "../../assets/images/up-arrow.png";
+import downIcon from "../../assets/images/down-arrow.png";
+import { TimePicker } from "antd";
+import PoolsScheduleDropdown from "./PoolsScheduleDropdown";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 
 // fake data generator
 const getItems = (count, offset = 0) =>
@@ -49,19 +53,19 @@ const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
-  userSelect: 'none',
+  userSelect: "none",
   // padding: grid * 2,
   // margin: `0 0 ${grid}px 0`,
   margin: 2,
 
   // change background colour if dragging
-  background: isDragging ? 'grey' : '#f9fafc',
+  background: isDragging ? "grey" : "#f9fafc",
 
   // styles we need to apply on draggables
   ...draggableStyle,
 });
 const getListStyle = (isDraggingOver) => ({
-  background: isDraggingOver ? '#ffd420' : '#f9fafc',
+  background: isDraggingOver ? "#ffd420" : "#f9fafc",
   // padding: grid,
   width: 220,
 });
@@ -96,28 +100,28 @@ const PoolsScreen = (props) => {
         color: colors[0],
         match_time: eventPoolScheduleData.schedule[0].match_time,
         start_time: moment(eventPoolScheduleData.schedule[0].start_time, [
-          'YYYY-MM-DD HH:mm:ss',
-        ]).format('hh:mm a'),
+          "YYYY-MM-DD HH:mm:ss",
+        ]).format("hh:mm a"),
       });
     }
   }, []);
 
-  const [dropdown1, setDropdown1] = useState('');
-  const [dropdown2, setDropdown2] = useState('');
+  const [dropdown1, setDropdown1] = useState("");
+  const [dropdown2, setDropdown2] = useState("");
   const [editedData, setEditedData] = useState(null);
   const [editedArray, setEditedArray] = useState(null);
 
   const [dummyData, setDummyData] = useState({
-    statusCode: '200',
-    status: 'success',
-    tournament_name: 'Fort Express',
+    statusCode: "200",
+    status: "success",
+    tournament_name: "Fort Express",
     schedule: [
       {
         id: 15860,
-        name: 'Mens Pro',
-        gender: 'Mens',
+        name: "Mens Pro",
+        gender: "Mens",
         match_time: 60,
-        start_time: '2021-04-02 10:00:00',
+        start_time: "2021-04-02 10:00:00",
         courtsInfo: [
           {
             court: 1,
@@ -125,77 +129,77 @@ const PoolsScreen = (props) => {
               {
                 match_id: 4399,
                 content: {
-                  game: 'A 1',
-                  start_play_time: '2021-04-02 01:00:00',
-                  end_play_time: '2021-04-02 02:10:00',
+                  game: "A 1",
+                  start_play_time: "2021-04-02 01:00:00",
+                  end_play_time: "2021-04-02 02:10:00",
                   diff: 70,
                   team1_rank: 1,
-                  team1_name: 'Gould, Parish',
+                  team1_name: "Gould, Parish",
                   team1_winning_count: 0,
                   team2_rank: 4,
-                  team2_name: 'Cox, Foo',
+                  team2_name: "Cox, Foo",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Zoeckler, Miller',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Zoeckler, Miller",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
               {
                 match_id: 4400,
                 content: {
-                  game: 'B 1',
-                  start_play_time: '2021-04-02 02:10:00',
-                  end_play_time: '2021-04-02 03:10:00',
+                  game: "B 1",
+                  start_play_time: "2021-04-02 02:10:00",
+                  end_play_time: "2021-04-02 03:10:00",
                   diff: 60,
                   team1_rank: 2,
-                  team1_name: 'Fritz, Wang',
+                  team1_name: "Fritz, Wang",
                   team1_winning_count: 0,
                   team2_rank: 5,
-                  team2_name: 'Forthaus, Reyes',
+                  team2_name: "Forthaus, Reyes",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Taormina, ',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Taormina, ",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
               {
                 match_id: 4403,
                 content: {
-                  game: 'A 6',
-                  start_play_time: '2021-04-02 03:10:00',
-                  end_play_time: '2021-04-02 04:10:00',
+                  game: "A 6",
+                  start_play_time: "2021-04-02 03:10:00",
+                  end_play_time: "2021-04-02 04:10:00",
                   diff: 60,
                   team1_rank: 7,
-                  team1_name: 'Taormina, ',
+                  team1_name: "Taormina, ",
                   team1_winning_count: 0,
                   team2_rank: 1,
-                  team2_name: 'Gould, Parish',
+                  team2_name: "Gould, Parish",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Forthaus, Reyes',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Forthaus, Reyes",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
               {
                 match_id: 4404,
                 content: {
-                  game: 'B 6',
-                  start_play_time: '2021-04-02 04:10:00',
-                  end_play_time: '2021-04-02 05:10:00',
+                  game: "B 6",
+                  start_play_time: "2021-04-02 04:10:00",
+                  end_play_time: "2021-04-02 05:10:00",
                   diff: 60,
                   team1_rank: 8,
-                  team1_name: 'Zoeckler, Miller',
+                  team1_name: "Zoeckler, Miller",
                   team1_winning_count: 0,
                   team2_rank: 2,
-                  team2_name: 'Fritz, Wang',
+                  team2_name: "Fritz, Wang",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Cox, Foo',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Cox, Foo",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
             ],
@@ -206,20 +210,20 @@ const PoolsScreen = (props) => {
               {
                 match_id: 4402,
                 content: {
-                  game: 'B 2',
-                  start_play_time: '2021-04-02 01:00:00',
-                  end_play_time: '2021-04-02 02:20:00',
+                  game: "B 2",
+                  start_play_time: "2021-04-02 01:00:00",
+                  end_play_time: "2021-04-02 02:20:00",
                   diff: 80,
                   team1_rank: 5,
-                  team1_name: 'Forthaus, Reyes',
+                  team1_name: "Forthaus, Reyes",
                   team1_winning_count: 0,
                   team2_rank: 8,
-                  team2_name: 'Zoeckler, Miller',
+                  team2_name: "Zoeckler, Miller",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Ledig, Dentler',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Ledig, Dentler",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
             ],
@@ -228,10 +232,10 @@ const PoolsScreen = (props) => {
       },
       {
         id: 15861,
-        name: 'Womens Pro',
-        gender: 'Womens',
+        name: "Womens Pro",
+        gender: "Womens",
         match_time: 60,
-        start_time: '2021-04-02 01:00:00',
+        start_time: "2021-04-02 01:00:00",
         courtsInfo: [
           {
             court: 1,
@@ -239,42 +243,42 @@ const PoolsScreen = (props) => {
               {
                 match_id: 4405,
                 content: {
-                  game: 'A 1',
-                  start_play_time: '2021-04-02 01:00:00',
-                  end_play_time: '2021-04-02 02:00:00',
+                  game: "A 1",
+                  start_play_time: "2021-04-02 01:00:00",
+                  end_play_time: "2021-04-02 02:00:00",
                   diff: 60,
                   team1_rank: 1,
-                  team1_name: 'Bispham, Ekstrom',
+                  team1_name: "Bispham, Ekstrom",
                   team1_winning_count: 0,
                   team2_rank: 4,
-                  team2_name: 'Greene, Krause',
+                  team2_name: "Greene, Krause",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Wetton, Nowak',
-                  profile_pics1: ['/images/avp/image9.jpg'],
-                  profile_pics2: ['/images/avp/image9.jpg'],
+                  reffing_team: "Wetton, Nowak",
+                  profile_pics1: ["/images/avp/image9.jpg"],
+                  profile_pics2: ["/images/avp/image9.jpg"],
                 },
               },
               {
                 match_id: 4409,
                 content: {
-                  game: 'A 6',
-                  start_play_time: '2021-04-02 06:00:00',
-                  end_play_time: '2021-04-02 07:00:00',
+                  game: "A 6",
+                  start_play_time: "2021-04-02 06:00:00",
+                  end_play_time: "2021-04-02 07:00:00",
                   diff: 60,
                   team1_rank: 7,
-                  team1_name: 'Gauna, Miller',
+                  team1_name: "Gauna, Miller",
                   team1_winning_count: 0,
                   team2_rank: 1,
-                  team2_name: 'Bispham, Ekstrom',
+                  team2_name: "Bispham, Ekstrom",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Rodriguez, Fachin',
+                  reffing_team: "Rodriguez, Fachin",
                   profile_pics1: [
-                    '/images/avp/image8.jpg',
-                    '/images/avp/image9.jpg',
+                    "/images/avp/image8.jpg",
+                    "/images/avp/image9.jpg",
                   ],
-                  profile_pics2: ['/images/avp/image9.jpg'],
+                  profile_pics2: ["/images/avp/image9.jpg"],
                 },
               },
             ],
@@ -285,58 +289,58 @@ const PoolsScreen = (props) => {
               {
                 match_id: 4406,
                 content: {
-                  game: 'B 1',
-                  start_play_time: '2021-04-02 01:00:00',
-                  end_play_time: '2021-04-02 02:00:00',
+                  game: "B 1",
+                  start_play_time: "2021-04-02 01:00:00",
+                  end_play_time: "2021-04-02 02:00:00",
                   diff: 60,
                   team1_rank: 2,
-                  team1_name: 'Rowell, Nichols',
+                  team1_name: "Rowell, Nichols",
                   team1_winning_count: 0,
                   team2_rank: 5,
-                  team2_name: 'Rodriguez, Fachin',
+                  team2_name: "Rodriguez, Fachin",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Gauna, Miller',
-                  profile_pics1: ['/images/avp/image9.jpg'],
-                  profile_pics2: ['/images/avp/image9.jpg'],
+                  reffing_team: "Gauna, Miller",
+                  profile_pics1: ["/images/avp/image9.jpg"],
+                  profile_pics2: ["/images/avp/image9.jpg"],
                 },
               },
               {
                 match_id: 4408,
                 content: {
-                  game: 'B 2',
-                  start_play_time: '2021-04-02 02:00:00',
-                  end_play_time: '2021-04-02 03:00:00',
+                  game: "B 2",
+                  start_play_time: "2021-04-02 02:00:00",
+                  end_play_time: "2021-04-02 03:00:00",
                   diff: 60,
                   team1_rank: 5,
-                  team1_name: 'Rodriguez, Fachin',
+                  team1_name: "Rodriguez, Fachin",
                   team1_winning_count: 0,
                   team2_rank: 8,
-                  team2_name: 'Wetton, Nowak',
+                  team2_name: "Wetton, Nowak",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'radell, Butters',
-                  profile_pics1: ['/images/avp/image9.jpg'],
-                  profile_pics2: ['/images/avp/image9.jpg'],
+                  reffing_team: "radell, Butters",
+                  profile_pics1: ["/images/avp/image9.jpg"],
+                  profile_pics2: ["/images/avp/image9.jpg"],
                 },
               },
               {
                 match_id: 4410,
                 content: {
-                  game: 'B 6',
-                  start_play_time: '2021-04-02 06:00:00',
-                  end_play_time: '2021-04-02 07:00:00',
+                  game: "B 6",
+                  start_play_time: "2021-04-02 06:00:00",
+                  end_play_time: "2021-04-02 07:00:00",
                   diff: 60,
                   team1_rank: 8,
-                  team1_name: 'Wetton, Nowak',
+                  team1_name: "Wetton, Nowak",
                   team1_winning_count: 0,
                   team2_rank: 2,
-                  team2_name: 'Rowell, Nichols',
+                  team2_name: "Rowell, Nichols",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Greene, Krause',
-                  profile_pics1: ['/images/avp/image9.jpg'],
-                  profile_pics2: ['/images/avp/image9.jpg'],
+                  reffing_team: "Greene, Krause",
+                  profile_pics1: ["/images/avp/image9.jpg"],
+                  profile_pics2: ["/images/avp/image9.jpg"],
                 },
               },
             ],
@@ -345,10 +349,10 @@ const PoolsScreen = (props) => {
       },
       {
         id: 15860,
-        name: 'Mens Pro example 2',
-        gender: 'Mens',
+        name: "Mens Pro example 2",
+        gender: "Mens",
         match_time: 60,
-        start_time: '2021-04-02 16:00:00',
+        start_time: "2021-04-02 16:00:00",
         courtsInfo: [
           {
             court: 1,
@@ -356,77 +360,77 @@ const PoolsScreen = (props) => {
               {
                 match_id: 11,
                 content: {
-                  game: 'A 1',
-                  start_play_time: '2021-04-02 01:00:00',
-                  end_play_time: '2021-04-02 02:10:00',
+                  game: "A 1",
+                  start_play_time: "2021-04-02 01:00:00",
+                  end_play_time: "2021-04-02 02:10:00",
                   diff: 70,
                   team1_rank: 1,
-                  team1_name: 'Gould, Parish',
+                  team1_name: "Gould, Parish",
                   team1_winning_count: 0,
                   team2_rank: 4,
-                  team2_name: 'Cox, Foo',
+                  team2_name: "Cox, Foo",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Zoeckler, Miller',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Zoeckler, Miller",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
               {
                 match_id: 22,
                 content: {
-                  game: 'B 1',
-                  start_play_time: '2021-04-02 02:10:00',
-                  end_play_time: '2021-04-02 03:10:00',
+                  game: "B 1",
+                  start_play_time: "2021-04-02 02:10:00",
+                  end_play_time: "2021-04-02 03:10:00",
                   diff: 60,
                   team1_rank: 2,
-                  team1_name: 'Fritz, Wang',
+                  team1_name: "Fritz, Wang",
                   team1_winning_count: 0,
                   team2_rank: 5,
-                  team2_name: 'Forthaus, Reyes',
+                  team2_name: "Forthaus, Reyes",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Taormina, ',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Taormina, ",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
               {
                 match_id: 33,
                 content: {
-                  game: 'A 6',
-                  start_play_time: '2021-04-02 03:10:00',
-                  end_play_time: '2021-04-02 04:10:00',
+                  game: "A 6",
+                  start_play_time: "2021-04-02 03:10:00",
+                  end_play_time: "2021-04-02 04:10:00",
                   diff: 60,
                   team1_rank: 7,
-                  team1_name: 'Taormina, ',
+                  team1_name: "Taormina, ",
                   team1_winning_count: 0,
                   team2_rank: 1,
-                  team2_name: 'Gould, Parish',
+                  team2_name: "Gould, Parish",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Forthaus, Reyes',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Forthaus, Reyes",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
               {
                 match_id: 44,
                 content: {
-                  game: 'B 6',
-                  start_play_time: '2021-04-02 04:10:00',
-                  end_play_time: '2021-04-02 05:10:00',
+                  game: "B 6",
+                  start_play_time: "2021-04-02 04:10:00",
+                  end_play_time: "2021-04-02 05:10:00",
                   diff: 60,
                   team1_rank: 8,
-                  team1_name: 'Zoeckler, Miller',
+                  team1_name: "Zoeckler, Miller",
                   team1_winning_count: 0,
                   team2_rank: 2,
-                  team2_name: 'Fritz, Wang',
+                  team2_name: "Fritz, Wang",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Cox, Foo',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Cox, Foo",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
             ],
@@ -437,20 +441,20 @@ const PoolsScreen = (props) => {
               {
                 match_id: 55,
                 content: {
-                  game: 'B 2',
-                  start_play_time: '2021-04-02 01:00:00',
-                  end_play_time: '2021-04-02 02:20:00',
+                  game: "B 2",
+                  start_play_time: "2021-04-02 01:00:00",
+                  end_play_time: "2021-04-02 02:20:00",
                   diff: 80,
                   team1_rank: 5,
-                  team1_name: 'Forthaus, Reyes',
+                  team1_name: "Forthaus, Reyes",
                   team1_winning_count: 0,
                   team2_rank: 8,
-                  team2_name: 'Zoeckler, Miller',
+                  team2_name: "Zoeckler, Miller",
                   team2_winning_count: 0,
                   reffing_team_rank: null,
-                  reffing_team: 'Ledig, Dentler',
-                  profile_pics1: ['/images/avp/image8.jpg'],
-                  profile_pics2: ['/images/avp/image8.jpg'],
+                  reffing_team: "Ledig, Dentler",
+                  profile_pics1: ["/images/avp/image8.jpg"],
+                  profile_pics2: ["/images/avp/image8.jpg"],
                 },
               },
             ],
@@ -610,8 +614,8 @@ const PoolsScreen = (props) => {
           color: colors[0],
           match_time: eventPoolScheduleData.schedule[0].match_time,
           start_time: moment(eventPoolScheduleData.schedule[0].start_time, [
-            'YYYY-MM-DD HH:mm:ss',
-          ]).format('hh:mm a'),
+            "YYYY-MM-DD HH:mm:ss",
+          ]).format("hh:mm a"),
         });
       }
     }
@@ -624,10 +628,10 @@ const PoolsScreen = (props) => {
   }, [state]);
 
   const timeDots = (before, after) => {
-    var format = 'hh:mm a';
+    var format = "hh:mm a";
 
-    const bef = moment(before).format('hh:mm a');
-    const aft = moment(after).format('hh:mm a');
+    const bef = moment(before).format("hh:mm a");
+    const aft = moment(after).format("hh:mm a");
 
     // var time = moment() gives you current time. no format required.
     var time = moment(),
@@ -656,15 +660,15 @@ const PoolsScreen = (props) => {
             setState((prevState) => {
               prevState[i].information[j].content.start_play_time = moment(
                 dropdown1.start_time,
-                ['h:mm a']
-              ).format('YYYY-MM-DD HH:mm:ss');
+                ["h:mm a"]
+              ).format("YYYY-MM-DD HH:mm:ss");
               prevState[i].information[j].content.end_play_time = moment(
                 moment(
                   prevState[i].information[j].content.start_play_time
-                ).format('YYYY-MM-DD HH:mm:ss')
+                ).format("YYYY-MM-DD HH:mm:ss")
               )
-                .add(prevState[i].information[j].content.diff, 'minutes')
-                .format('YYYY-MM-DD HH:mm:ss');
+                .add(prevState[i].information[j].content.diff, "minutes")
+                .format("YYYY-MM-DD HH:mm:ss");
               if (sInd !== null && dInd === null) {
                 // console.log(prevState[sInd]);
                 setFinalArray(prevState[sInd]);
@@ -684,10 +688,10 @@ const PoolsScreen = (props) => {
               prevState[i].information[j].content.end_play_time = moment(
                 moment(
                   prevState[i].information[j].content.start_play_time
-                ).format('YYYY-MM-DD HH:mm:ss')
+                ).format("YYYY-MM-DD HH:mm:ss")
               )
-                .add(prevState[i].information[j].content.diff, 'minutes')
-                .format('YYYY-MM-DD HH:mm:ss');
+                .add(prevState[i].information[j].content.diff, "minutes")
+                .format("YYYY-MM-DD HH:mm:ss");
 
               // prevState[i].information[j].content.end_play_time =
               //   prevState[i].information[j - 1].content.end_play_time;
@@ -741,10 +745,10 @@ const PoolsScreen = (props) => {
             // );
             prevState.information[i].content.start_play_time = moment(
               prevState.information[i].content.start_play_time
-            ).format('YYYY-MM-DD HH:mm:ss');
+            ).format("YYYY-MM-DD HH:mm:ss");
             prevState.information[i].content.end_play_time = moment(
               prevState.information[i].content.end_play_time
-            ).format('YYYY-MM-DD HH:mm:ss');
+            ).format("YYYY-MM-DD HH:mm:ss");
             //delete prevState.information[i]['content'];
           }
 
@@ -784,16 +788,16 @@ const PoolsScreen = (props) => {
   // }, [state]);
 
   const [colors, setColors] = useState([
-    '#ff20f4',
-    '#9f20ff',
-    '#2092ff',
-    '#20f6ff',
-    '#20ffb7',
-    '#91ff20',
-    '#ff20f4',
-    '#9f20ff',
-    '#2092ff',
-    '#20f6ff',
+    "#ff20f4",
+    "#9f20ff",
+    "#2092ff",
+    "#20f6ff",
+    "#20ffb7",
+    "#91ff20",
+    "#ff20f4",
+    "#9f20ff",
+    "#2092ff",
+    "#20f6ff",
   ]);
 
   // useEffect(() => {
@@ -816,6 +820,8 @@ const PoolsScreen = (props) => {
   //     console.log('is after');
   //   }
   // }, []);
+  const [openFirst, setOpenFirst] = React.useState(false);
+  const [openSecond, setOpenSecond] = React.useState(false);
 
   return (
     <div className="pools min-vh-100">
@@ -834,7 +840,7 @@ const PoolsScreen = (props) => {
 
           <li
             className="nav-item"
-            onClick={() => props.history.push('/ScoresTable')}
+            onClick={() => props.history.push("/ScoresTable")}
           >
             <a
               className="nav-link disabled"
@@ -863,7 +869,7 @@ const PoolsScreen = (props) => {
                 className="pr-0 text-uppercase p-0 input-styling date_picker"
                 allowClear={false}
                 placeholder=""
-                defaultValue={moment(new Date(), 'DD/MM/YYYY')}
+                defaultValue={moment(new Date(), "DD/MM/YYYY")}
                 // popupStyle={{height:467 , width:343}}
               />
             </div>
@@ -879,7 +885,7 @@ const PoolsScreen = (props) => {
                   <div
                     className="dot mr-2"
                     style={{ backgroundColor: dropdown1.color }}
-                  ></div>{' '}
+                  ></div>{" "}
                   {dropdown1.name}
                 </div>
                 <div className="col-1 m-0 p-0">
@@ -900,7 +906,7 @@ const PoolsScreen = (props) => {
                                   match_time: individualSchedule.match_time,
                                   start_time: moment(
                                     individualSchedule.start_time
-                                  ).format('hh:mm a'),
+                                  ).format("hh:mm a"),
                                 })
                               }
                             >
@@ -925,14 +931,14 @@ const PoolsScreen = (props) => {
             </div>
           </div>
           {eventPoolScheduleData.schedule.length === 0 ? (
-            <h3 className="text-center mt-4" style={{ color: '#ff2072' }}>
+            <h3 className="text-center mt-4" style={{ color: "#ff2072" }}>
               No Data to be Displayed
             </h3>
           ) : (
             <div className="table-responsive">
               <div
                 className="p-0 header-2"
-                style={{ display: 'flex', flexDirection: 'row' }}
+                style={{ display: "flex", flexDirection: "row" }}
               >
                 {state !== null &&
                   state.map((el, ind) => (
@@ -948,7 +954,7 @@ const PoolsScreen = (props) => {
               </div>
               <div
                 className=" p-0 m-0"
-                style={{ display: 'flex', flexDirection: 'row' }}
+                style={{ display: "flex", flexDirection: "row" }}
               >
                 <DragDropContext onDragEnd={onDragEnd}>
                   {state !== null &&
@@ -991,24 +997,24 @@ const PoolsScreen = (props) => {
                                             <div
                                               className="card-header header-bg pl-1 p-0"
                                               style={{
-                                                display: 'flex',
-                                                flexDirection: 'row',
-                                                justifyContent: 'space-between',
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                justifyContent: "space-between",
                                               }}
                                             >
                                               <div
                                                 className="my-auto"
                                                 style={{
-                                                  display: 'flex',
-                                                  flexDirection: 'row',
-                                                  justifyContent: 'flex-start',
-                                                  alignItems: 'center',
+                                                  display: "flex",
+                                                  flexDirection: "row",
+                                                  justifyContent: "flex-start",
+                                                  alignItems: "center",
                                                 }}
                                               >
                                                 <div>
                                                   {moment(
                                                     item.content.start_play_time
-                                                  ).format('hh:mm a')}
+                                                  ).format("hh:mm a")}
                                                   {/* {item.content.start_play_time} */}
                                                 </div>
                                                 <div className="mt-1">
@@ -1131,7 +1137,7 @@ const PoolsScreen = (props) => {
                                               <div></div>
                                               <div
                                                 className="mr-1"
-                                                style={{ alignSelf: 'center' }}
+                                                style={{ alignSelf: "center" }}
                                               >
                                                 {timeDots(
                                                   item.content.start_play_time,
@@ -1145,30 +1151,28 @@ const PoolsScreen = (props) => {
                                                 style={{ minHeight: 130 }}
                                               >
                                                 <div
-                                                  className={`col-2 p-0 
-                                                
-                                                body-left text-center`}
+                                                  className={`col-2 p-0 body-left text-center`}
                                                   style={{
                                                     backgroundColor:
                                                       dropdown1.gender ===
-                                                        'Mens' ||
+                                                        "Mens" ||
                                                       dropdown1.gender ===
-                                                        'Boys'
-                                                        ? '#ffd420'
+                                                        "Boys"
+                                                        ? "#ffd420"
                                                         : dropdown1.gender ===
-                                                            'Womens' ||
+                                                            "Womens" ||
                                                           dropdown1.gender ===
-                                                            'Girls'
-                                                        ? '#4a4a4a'
-                                                        : '#f7981f',
+                                                            "Girls"
+                                                        ? "#4a4a4a"
+                                                        : "#f7981f",
                                                   }}
                                                 >
                                                   <div
                                                     className="h-100"
                                                     style={{
-                                                      display: 'flex',
-                                                      flexDirection: 'column',
-                                                      justifyContent: 'center',
+                                                      display: "flex",
+                                                      flexDirection: "column",
+                                                      justifyContent: "center",
                                                     }}
                                                   >
                                                     {item.content.game}
@@ -1178,10 +1182,10 @@ const PoolsScreen = (props) => {
                                                   <div
                                                     className="h-100"
                                                     style={{
-                                                      display: 'flex',
-                                                      flexDirection: 'column',
+                                                      display: "flex",
+                                                      flexDirection: "column",
                                                       justifyContent:
-                                                        'space-around',
+                                                        "space-around",
                                                     }}
                                                   >
                                                     <div className="body-right-text pt-2 px-1">
@@ -1343,16 +1347,16 @@ const PoolsScreen = (props) => {
                                                   style={{
                                                     backgroundColor:
                                                       dropdown1.gender ===
-                                                        'Mens' ||
+                                                        "Mens" ||
                                                       dropdown1.gender ===
-                                                        'Boys'
-                                                        ? '#ffd420'
+                                                        "Boys"
+                                                        ? "#ffd420"
                                                         : dropdown1.gender ===
-                                                            'Womens' ||
+                                                            "Womens" ||
                                                           dropdown1.gender ===
-                                                            'Girls'
-                                                        ? '#4a4a4a'
-                                                        : '#f7981f',
+                                                            "Girls"
+                                                        ? "#4a4a4a"
+                                                        : "#f7981f",
                                                   }}
                                                 ></div>
                                                 <div className="col-10 bg-danger"></div>
@@ -1366,12 +1370,235 @@ const PoolsScreen = (props) => {
                                                 <div className="col-2 p-0 footer-left pt-2">
                                                   REF
                                                 </div>
-                                                <div className="col-10 p-0 footer-right px-1 pt-2">
+                                                <div className="col-10 p-0 footer-right px-1 pt-1">
                                                   {
                                                     item.content
                                                       .reffing_team_rank
-                                                  }{' '}
+                                                  }{" "}
                                                   {item.content.reffing_team}
+                                                  <button
+                                                    className="live-btn float-right"
+                                                    onClick={() =>
+                                                      setOpenFirst(true)
+                                                    }
+                                                  >
+                                                    Live score
+                                                  </button>
+                                                  <Modal
+                                                    open={openFirst}
+                                                    onClose={() =>
+                                                      setOpenFirst(false)
+                                                    }
+                                                    center
+                                                    styles={{
+                                                      modal: {
+                                                        borderRadius: 12,
+                                                        background: "#EEE",
+                                                      },
+                                                    }}
+                                                  >
+                                                    <h3>Match #4</h3>
+                                                    <div
+                                                      className="text-center"
+                                                      style={{
+                                                        marginTop: 0,
+                                                        fontFamily: "Futura",
+                                                        fontSize: 14,
+                                                        fontWeight: "bold",
+                                                        fontStretch: "normal",
+                                                        fontStyle: "normal",
+                                                        letterSpacing: "normal",
+                                                        color: "#4a4a4a",
+                                                      }}
+                                                    >
+                                                      Copy this URL into your
+                                                      streaming software (like
+                                                      OBS to add a live-updating
+                                                      scorebaord to the stream)
+                                                    </div>
+                                                    <p
+                                                      className="text-center"
+                                                      style={{
+                                                        marginTop: 8,
+                                                        fontFamily: "Futura",
+                                                        fontWeight: "bold",
+                                                        fontStretch: "normal",
+                                                        fontStyle: "normal",
+                                                        letterSpacing: "normal",
+                                                        color: "#9b9b9b",
+                                                      }}
+                                                    >
+                                                      <input
+                                                        type="text"
+                                                        style={{
+                                                          border:
+                                                            "1px solid #000",
+                                                          color: "#9b9b9b",
+                                                        }}
+                                                        defaultValue="https://live.bracketpal.com/streaming/match_YFtut"
+                                                        className="form-control"
+                                                      />
+                                                    </p>
+                                                    <div
+                                                      className="row container"
+                                                      style={{ marginTop: 79 }}
+                                                    >
+                                                      <div className="col-12 text-center m-auto">
+                                                        <button
+                                                          type="button"
+                                                          className="btn-sm ml-5"
+                                                          onClick={() =>
+                                                            setOpenSecond(true)
+                                                          }
+                                                          style={{
+                                                            border:
+                                                              "1px solid yellow",
+                                                            borderRadius: 15,
+                                                            width: 112,
+                                                            height: 30,
+                                                            backgroundColor:
+                                                              "#ffd420",
+                                                            outline: 0,
+                                                          }}
+                                                        >
+                                                          OK
+                                                        </button>
+                                                      </div>
+                                                    </div>
+                                                  </Modal>
+                                                  <Modal
+                                                    open={openSecond}
+                                                    onClose={() =>
+                                                      setOpenSecond(false)
+                                                    }
+                                                    center
+                                                    styles={{
+                                                      modal: {
+                                                        borderRadius: 12,
+                                                        background: "#EEE",
+                                                      },
+                                                    }}
+                                                  >
+                                                    <h4>Game ScoreSheet</h4>
+                                                    <div
+                                                      className="text-center"
+                                                      style={{
+                                                        marginTop: 0,
+                                                        fontFamily: "Futura",
+                                                        fontSize: 14,
+                                                        fontWeight: "bold",
+                                                        fontStretch: "normal",
+                                                        fontStyle: "normal",
+                                                        letterSpacing: "normal",
+                                                        color: "#4a4a4a",
+                                                      }}
+                                                    >
+                                                      <div className="row mt-4 mb-2">
+                                                        <div className="col">
+                                                          <h5>Brammer/Conno</h5>
+                                                        </div>
+                                                        <div className="col">
+                                                          <h5>Ripley/Conno</h5>
+                                                        </div>
+                                                      </div>
+                                                      <div className="row">
+                                                        <div className="col">
+                                                          <button
+                                                            type="button"
+                                                            className="btn up-btn"
+                                                          >
+                                                            <img
+                                                              alt="upicon"
+                                                              src={upIcon}
+                                                            />
+                                                          </button>
+                                                        </div>
+                                                        <div className="col">
+                                                          <button
+                                                            type="button"
+                                                            className="btn up-btn"
+                                                          >
+                                                            <img
+                                                              alt="upicon"
+                                                              src={upIcon}
+                                                            />
+                                                          </button>
+                                                        </div>
+                                                      </div>
+
+                                                      <div className="row mt-3">
+                                                        <div className="col">
+                                                          <h3>0</h3>
+                                                        </div>
+                                                        <div className="col">
+                                                          <h3>0</h3>
+                                                        </div>
+                                                      </div>
+
+                                                      <div className="row ">
+                                                        <div className="col">
+                                                          <button
+                                                            type="button"
+                                                            className="btn down-btn"
+                                                          >
+                                                            <img
+                                                              alt="downicon"
+                                                              src={downIcon}
+                                                            />
+                                                          </button>
+                                                        </div>
+                                                        <div className="col">
+                                                          <button
+                                                            type="button"
+                                                            className="btn down-btn"
+                                                          >
+                                                            <img
+                                                              alt="downicon"
+                                                              src={downIcon}
+                                                            />
+                                                          </button>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <p
+                                                      className="text-center"
+                                                      style={{
+                                                        marginTop: 8,
+                                                        fontFamily: "Futura",
+                                                        fontWeight: "bold",
+                                                        fontStretch: "normal",
+                                                        fontStyle: "normal",
+                                                        letterSpacing: "normal",
+                                                        color: "#9b9b9b",
+                                                      }}
+                                                    ></p>
+                                                    <div
+                                                      className="row container"
+                                                      style={{ marginTop: 50 }}
+                                                    >
+                                                      <div className="col-12 text-center m-auto">
+                                                        <button
+                                                          type="button"
+                                                          className="btn-md ml-3"
+                                                          onClick={() =>
+                                                            setOpenSecond(true)
+                                                          }
+                                                          style={{
+                                                            border:
+                                                              "1px solid yellow",
+                                                            borderRadius: 15,
+                                                            width: 112,
+                                                            height: 30,
+                                                            backgroundColor:
+                                                              "#ffd420",
+                                                            outline: 0,
+                                                          }}
+                                                        >
+                                                          UPDATE
+                                                        </button>
+                                                      </div>
+                                                    </div>
+                                                  </Modal>
                                                 </div>
                                               </div>
                                             </div>

@@ -1,34 +1,34 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import '../assets/styles/RegEventTeamViewComponent.css';
-import mapicon from '../assets/images/icon-orange-map.svg';
-import phoneicon from '../assets/images/icon-orange-phone.svg';
-import mailicon from '../assets/images/icon-orange-mail.svg';
-import pointsicon from '../assets/images/icon-orange-points.svg';
-import levelicon from '../assets/images/icon-orange-level.svg';
-import staricon from '../assets/images/icon-orange-star.svg';
-import menuchevrondownicon from '../assets/images/icon-menu-chevron-down.svg';
-import Header from './header/Header';
-import backIcon from '../assets/images/icon-menu-back.svg';
-import RegContext from '../context/registration/RegContext';
-import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
-import photoAddIcon from '../assets/images/group.svg';
-import playerIcon from '../assets/images/icon-orange-player.svg';
-import { Collapse } from 'antd';
-import ballIcon from '../assets/images/group-3.svg';
-import profilePic from '../assets/images/profilepic.jpg';
-import searchIcon from '../assets/images/icon-sidemenu-search.svg';
-import RegEventDropDown from './RegEventDropDown';
-import RegEventSearchDropDown from './RegEventSearchDropDown';
-import NumberFormat from 'react-number-format';
-import axios from 'axios';
-import API from '../Utils/API';
-import { loadStripe } from '@stripe/stripe-js';
+import React, { useContext, useEffect, useState, useRef } from "react";
+import "../assets/styles/RegEventTeamViewComponent.css";
+import mapicon from "../assets/images/icon-orange-map.svg";
+import phoneicon from "../assets/images/icon-orange-phone.svg";
+import mailicon from "../assets/images/icon-orange-mail.svg";
+import pointsicon from "../assets/images/icon-orange-points.svg";
+import levelicon from "../assets/images/icon-orange-level.svg";
+import staricon from "../assets/images/icon-orange-star.svg";
+import menuchevrondownicon from "../assets/images/icon-menu-chevron-down.svg";
+import Header from "./header/Header";
+import backIcon from "../assets/images/icon-menu-back.svg";
+import RegContext from "../context/registration/RegContext";
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
+import photoAddIcon from "../assets/images/group.svg";
+import playerIcon from "../assets/images/icon-orange-player.svg";
+import { Collapse } from "antd";
+import ballIcon from "../assets/images/group-3.svg";
+import profilePic from "../assets/images/profilepic.jpg";
+import searchIcon from "../assets/images/icon-sidemenu-search.svg";
+import RegEventDropDown from "./RegEventDropDown";
+import RegEventSearchDropDown from "./RegEventSearchDropDown";
+import NumberFormat from "react-number-format";
+import axios from "axios";
+import { API } from "../Utils/API";
+import { loadStripe } from "@stripe/stripe-js";
 
 const { Panel } = Collapse;
-const algorithm = 'aes-256-cbc';
-const key = 'LM@098765_AVPAppLM@098765_AVPApp';
-const iv = 'e95a3d73fe601926';
-const crypto = require('crypto');
+const algorithm = "aes-256-cbc";
+const key = "LM@098765_AVPAppLM@098765_AVPApp";
+const iv = "e95a3d73fe601926";
+const crypto = require("crypto");
 
 const RegEventTeamViewComponent = (props) => {
   //context
@@ -57,7 +57,7 @@ const RegEventTeamViewComponent = (props) => {
 
   const decrypt = (text) => {
     var _encrypted;
-    if (text) _encrypted = Buffer.from(text, 'base64');
+    if (text) _encrypted = Buffer.from(text, "base64");
     const decipher = crypto.createDecipheriv(
       algorithm,
       Buffer.from(key),
@@ -65,7 +65,7 @@ const RegEventTeamViewComponent = (props) => {
     );
 
     decipher.setAutoPadding(true);
-    let decrypt = decipher.update(_encrypted, 'base64');
+    let decrypt = decipher.update(_encrypted, "base64");
     decrypt += decipher.final();
     return decrypt;
   };
@@ -102,7 +102,7 @@ const RegEventTeamViewComponent = (props) => {
 
       //Check if there are any previous pending requests
       if (typeof cancelToken != typeof undefined) {
-        cancelToken.cancel('Operation canceled due to new request.');
+        cancelToken.cancel("Operation canceled due to new request.");
       }
 
       //Save the cancel token for the current request
@@ -113,9 +113,9 @@ const RegEventTeamViewComponent = (props) => {
           `/getPlayersListForTeam/${id}?team_id=${team_id}&f_name=${searchTerm}`,
           { cancelToken: cancelToken.token } //Pass the cancel token to the current request
         );
-        console.log('Results for ' + searchTerm + ': ', results.data.player);
+        console.log("Results for " + searchTerm + ": ", results.data.player);
         setloading(false);
-        if (results.data.player !== 'Player not found') {
+        if (results.data.player !== "Player not found") {
           setSearchData(results.data.player);
         } else {
           setSearchData(results.data.player);
@@ -128,7 +128,7 @@ const RegEventTeamViewComponent = (props) => {
   };
 
   useEffect(() => {
-    handleSearchChange(' ');
+    handleSearchChange(" ");
   }, []);
 
   // useEffect(() => {
@@ -164,7 +164,7 @@ const RegEventTeamViewComponent = (props) => {
     } catch (error) {
       console.log(error);
       setStripeError(error.response.data.errorMessage);
-      event_name_error.current.scrollIntoView({ behavior: 'smooth' });
+      event_name_error.current.scrollIntoView({ behavior: "smooth" });
       setTimeout(() => {
         setStripeError(null);
       }, 5000);
@@ -192,7 +192,7 @@ const RegEventTeamViewComponent = (props) => {
         {teamDataLoading ||
         teamDataById === null ||
         teamDataById === undefined ||
-        teamDataById === 'null' ||
+        teamDataById === "null" ||
         removePlayerLoading ||
         addPlayerLoading ? (
           <div className="mx-auto">
@@ -205,7 +205,7 @@ const RegEventTeamViewComponent = (props) => {
             ghost
             expandIcon={({ isActive }) => (
               <span
-                className={isActive ? 'reg-rotate mt-2' : 'reg-no-rotate mt-2'}
+                className={isActive ? "reg-rotate mt-2" : "reg-no-rotate mt-2"}
               >
                 <img src={menuchevrondownicon} alt="" />
               </span>
@@ -214,13 +214,13 @@ const RegEventTeamViewComponent = (props) => {
           >
             <div
               className="col-12 text-center mt-4 mb-5"
-              style={{ color: '#ff2072' }}
+              style={{ color: "#ff2072" }}
               ref={event_name_error}
             >
               {stripeError !== null && stripeError}
             </div>
-            {!teamDataById.includes('null') &&
-              teamDataById[0].status === 'unpaid' && (
+            {!teamDataById.includes("null") &&
+              teamDataById[0].status === "unpaid" && (
                 <div className="text-right px-3">
                   <RegEventDropDown>
                     <li
@@ -228,7 +228,7 @@ const RegEventTeamViewComponent = (props) => {
                         handleCheckout(
                           parseInt(teamDataById[0].amount * 100),
                           props.match.params.event_id,
-                          localStorage.getItem('id'),
+                          localStorage.getItem("id"),
                           props.match.params.id
                         )
                       }
@@ -240,7 +240,7 @@ const RegEventTeamViewComponent = (props) => {
               )}
 
             {teamDataById.map((data, index) => {
-              if (data === 'null')
+              if (data === "null")
                 return (
                   <Panel
                     key={index}
@@ -255,7 +255,7 @@ const RegEventTeamViewComponent = (props) => {
                           <hr
                             style={{
                               height: 1,
-                              backgroundColor: '#333333',
+                              backgroundColor: "#333333",
                               border: 0,
                             }}
                           />
@@ -286,7 +286,7 @@ const RegEventTeamViewComponent = (props) => {
                                 setSearchData(null);
                                 await setloading(true);
                                 await handleSearchChange(
-                                  ' ',
+                                  " ",
                                   Number(props.match.params.division_id),
                                   Number(props.match.params.id)
                                 );
@@ -319,7 +319,7 @@ const RegEventTeamViewComponent = (props) => {
                               <hr
                                 style={{
                                   height: 1,
-                                  backgroundColor: '#d8d8d8',
+                                  backgroundColor: "#d8d8d8",
                                   marginTop: 7,
                                 }}
                               />
@@ -338,7 +338,7 @@ const RegEventTeamViewComponent = (props) => {
                                       );
                                       await setloading(false);
                                       // addPlayerToTeamFunction(index, player);
-                                      handleSearchChange(' ');
+                                      handleSearchChange(" ");
                                     }}
                                   >
                                     <div
@@ -355,10 +355,10 @@ const RegEventTeamViewComponent = (props) => {
                                         }
                                         src={`${process.env.REACT_APP_PLAYER_COURT_URL}/${player.pic}`}
                                         style={{
-                                          borderRadius: '50%',
+                                          borderRadius: "50%",
                                           width: 25,
                                           height: 25,
-                                          backgroundColor: 'black',
+                                          backgroundColor: "black",
                                         }}
                                       />
                                     </div>
@@ -468,7 +468,7 @@ const RegEventTeamViewComponent = (props) => {
                           <hr
                             style={{
                               height: 1,
-                              backgroundColor: '#333333',
+                              backgroundColor: "#333333",
                               border: 0,
                             }}
                           />
@@ -482,7 +482,7 @@ const RegEventTeamViewComponent = (props) => {
                         <RegEventDropDown margin="mr-3">
                           {/* <li>Edit</li> */}
                           <li
-                            style={{ color: '#ff2072' }}
+                            style={{ color: "#ff2072" }}
                             onClick={() =>
                               removePlayerFromTeamFunction(
                                 data.avp_id,
@@ -539,8 +539,8 @@ const RegEventTeamViewComponent = (props) => {
                         Phone
                       </div>
                       <div className="col-7 mx-0 px-0 reg-team-info-value pr-2 d-flex justify-content-end align-items-center">
-                        {data.contact_no === 'NULL' || data.contact_no === ''
-                          ? ''
+                        {data.contact_no === "NULL" || data.contact_no === ""
+                          ? ""
                           : decrypt(data.contact_no)}
                         {/* <NumberFormat
                           format="### ### ####"

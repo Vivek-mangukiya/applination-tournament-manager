@@ -8,12 +8,12 @@ import {
   SET_DIVISION_DATA,
   CLOSE_BRACKET,
   CLOSE_BRACKET_ERROR,
-} from '../Types';
+} from "../Types";
 
-import BracketContext from '../bracket/BracketContext';
-import bracketReducer from '../bracket/bracketReducer';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
+import BracketContext from "../bracket/BracketContext";
+import bracketReducer from "../bracket/bracketReducer";
+import React, { useReducer } from "react";
+import { API } from "../../Utils/API";
 
 const BracketState = (props) => {
   const initialState = {
@@ -34,14 +34,14 @@ const BracketState = (props) => {
       `${process.env.REACT_APP_BASE_URL}/api/generateBracket?tournamentId=${id}`
     )
       .then((response) => {
-        console.log('generateBracket response: ', response);
+        console.log("generateBracket response: ", response);
         dispatch({
           type: GENERATE_BRACKET,
           payload: response,
         });
       })
       .catch((error) => {
-        console.log('Error', error.response);
+        console.log("Error", error.response);
         dispatch({
           type: GENERATE_BRACKET_ERROR,
           payload: error,
@@ -54,14 +54,14 @@ const BracketState = (props) => {
       `${process.env.REACT_APP_BASE_URL}/api/getBracket?tournamentId=${id}`
     )
       .then((response) => {
-        console.log('getBracket response: ', response);
+        console.log("getBracket response: ", response);
         dispatch({
           type: GET_BRACKET,
           payload: response,
         });
       })
       .catch((error) => {
-        console.log('getBracket error', error.response);
+        console.log("getBracket error", error.response);
         dispatch({
           type: GET_BRACKET,
           payload: error,
@@ -77,27 +77,27 @@ const BracketState = (props) => {
 
   const editBracket = async (formData) => {
     const actualData = new FormData();
-    actualData.append('data', formData.data);
+    actualData.append("data", formData.data);
     const res = await API.post(`/editBracket`, actualData)
       .then((response) => {
-        console.log('editBracket response: ', response);
+        console.log("editBracket response: ", response);
         dispatch({
           type: EDIT_BRACKET,
           payload: response,
         });
       })
       .catch((err) => {
-        console.log('editBracket error:', err, err.response);
+        console.log("editBracket error:", err, err.response);
         dispatch({
           type: EDIT_BRACKET_ERROR,
           payload: err,
         });
       });
-    console.log('editBracket response:', res);
+    console.log("editBracket response:", res);
   };
 
   const setDivisionData = (data) => {
-    console.log('divData in reducer:', data);
+    console.log("divData in reducer:", data);
     dispatch({
       type: SET_DIVISION_DATA,
       payload: data,
@@ -106,23 +106,23 @@ const BracketState = (props) => {
 
   const completeBracket = async (formData) => {
     const actualData = new FormData();
-    actualData.append('data', formData.data);
+    actualData.append("data", formData.data);
     const res = await API.post(`/closeBracket`, actualData)
       .then((response) => {
-        console.log('closeBracket response: ', response);
+        console.log("closeBracket response: ", response);
         dispatch({
           type: CLOSE_BRACKET,
           payload: response,
         });
       })
       .catch((err) => {
-        console.log('closeBracket error:', err, err.response);
+        console.log("closeBracket error:", err, err.response);
         dispatch({
           type: CLOSE_BRACKET_ERROR,
           payload: err,
         });
       });
-    console.log('closeBracket response:', res);
+    console.log("closeBracket response:", res);
   };
 
   return (

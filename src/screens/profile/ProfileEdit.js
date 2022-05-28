@@ -50,7 +50,7 @@ const ProfileEdit = (props) => {
   );
   const [loc, setLoc] = useState(playerInfo ? playerInfo.loc : '');
   const [contact, setContact] = useState(playerInfo ? playerInfo.contact : '');
-  const [email, setEmail] = useState(playerInfo ? playerInfo.email : '');
+  const [email_id, setEmail] = useState(playerInfo ? playerInfo.email : '');
   const [points1, setPoints1] = useState(playerInfo ? playerInfo.points1 : '');
   const [levelState, setLevelState] = useState(
     playerInfo ? playerInfo.levelState : ''
@@ -74,13 +74,13 @@ const ProfileEdit = (props) => {
 
   useEffect(() => {
    
-    if (loc === '' || contact === '' || email === '') {
+    if (loc === '' || contact === '' || email_id === '') {
       setContactError(true);
     }
-    if (loc.length !== 0 && contact.length !== 0 && email.length !== 0) {
+    if (loc.length !== 0 && contact.length !== 0 && email_id.length !== 0) {
       setContactError(false);
     }
-  }, [loc, contact, email]);
+  }, [loc, contact, email_id]);
 
   const [open, setOpen] = useState(false);
 
@@ -93,7 +93,7 @@ const ProfileEdit = (props) => {
       lastName,
       loc,
       contact,
-      email,
+      email_id,
       points1,
       points2,
       levelState,
@@ -104,7 +104,7 @@ const ProfileEdit = (props) => {
       lastName,
       loc,
       contact,
-      email,
+      email_id,
       points1,
       points2,
       levelState,
@@ -116,7 +116,7 @@ const ProfileEdit = (props) => {
       lastName !== '' &&
       loc !== '' &&
       contact !== '' &&
-      email !== '' &&
+      email_id !== '' &&
       points1 !== '' &&
       levelState !== '' &&
       points2 !== '' &&
@@ -227,7 +227,7 @@ const ProfileEdit = (props) => {
                 <div className="last-div ml-auto mr-3">
                   <input
                     type="text"
-                    value={email}
+                    value={email_id}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control profile-form p-0"
                     placeholder="timbreezy@gmail.com"

@@ -10,11 +10,11 @@ import {
   SORT_TEMPLATE_LIST_DATA_DATE,
   GET_TEMP_ALL,
   TEMPLATE_LOADING_TYPE,
-} from '../Types';
-import TemplateListContext from './templateListContext';
-import templateListReducer from './templateReducer';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
+} from "../Types";
+import TemplateListContext from "./templateListContext";
+import templateListReducer from "./templateReducer";
+import React, { useReducer } from "react";
+import { API } from "../../Utils/API";
 
 const TemplateListState = (props) => {
   const initialState = {
@@ -22,62 +22,62 @@ const TemplateListState = (props) => {
       {
         id: 1,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Sample 1 - 6 pools of 4 on 4 courts',
-        date: 'Pools',
-        division: '3 pools of 4 on Two Courts',
-        finish: '9/03/2020',
-        points: 'In Use',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Sample 1 - 6 pools of 4 on 4 courts",
+        date: "Pools",
+        division: "3 pools of 4 on Two Courts",
+        finish: "9/03/2020",
+        points: "In Use",
       },
       {
         id: 2,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Pro Points',
-        date: 'Points',
-        division: 'Mens and Womans 2v2, 4v4 and 6v6',
-        finish: '9/03/2020',
-        points: 'Not Used',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Pro Points",
+        date: "Points",
+        division: "Mens and Womans 2v2, 4v4 and 6v6",
+        finish: "9/03/2020",
+        points: "Not Used",
       },
       {
         id: 3,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Best of the Best',
-        date: 'Division',
-        division: 'Adult, Mens, Womens, 36 Teams, Round Robin',
-        finish: '9/03/2020',
-        points: 'In Use',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Best of the Best",
+        date: "Division",
+        division: "Adult, Mens, Womens, 36 Teams, Round Robin",
+        finish: "9/03/2020",
+        points: "In Use",
       },
       {
         id: 4,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Sample 1 - 6 pools of 4 on 4 courts',
-        date: 'Pools',
-        division: '3 pools of 4 on Two Courts',
-        finish: '9/03/2020',
-        points: 'In Use',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Sample 1 - 6 pools of 4 on 4 courts",
+        date: "Pools",
+        division: "3 pools of 4 on Two Courts",
+        finish: "9/03/2020",
+        points: "In Use",
       },
       {
         id: 5,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Pro Points',
-        date: 'Points',
-        division: 'Mens and Womans 2v2, 4v4 and 6v6',
-        finish: '9/03/2020',
-        points: 'Not Used',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Pro Points",
+        date: "Points",
+        division: "Mens and Womans 2v2, 4v4 and 6v6",
+        finish: "9/03/2020",
+        points: "Not Used",
       },
       {
         id: 6,
         image:
-          'https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg',
-        title: 'Best of the Best',
-        date: 'Division',
-        division: 'Adult, Mens, Womens, 36 Teams, Round Robin',
-        finish: '9/03/2020',
-        points: 'In Use',
+          "https://res.cloudinary.com/demo/image/upload/w_400,h_400,c_crop,g_face,r_max/w_200/lady.jpg",
+        title: "Best of the Best",
+        date: "Division",
+        division: "Adult, Mens, Womens, 36 Teams, Round Robin",
+        finish: "9/03/2020",
+        points: "In Use",
       },
     ],
     filteredHistoryData: null,
@@ -145,7 +145,7 @@ const TemplateListState = (props) => {
   //get all reg list
   const getAllTemplates = async () => {
     setTemplateLoading();
-    await API.get('/getAllTemplate')
+    await API.get("/getAllTemplate")
       .then((response) => {
         console.log(response.data.templates);
         dispatch({
@@ -154,16 +154,16 @@ const TemplateListState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
       });
   };
 
   const setTemplateLoading = () => {
     dispatch({
-      type:TEMPLATE_LOADING_TYPE,
-      payload:true,
-    })
-  }
+      type: TEMPLATE_LOADING_TYPE,
+      payload: true,
+    });
+  };
   return (
     <TemplateListContext.Provider
       value={{

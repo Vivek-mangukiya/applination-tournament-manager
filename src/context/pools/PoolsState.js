@@ -2,11 +2,11 @@ import {
   GET_EVENT_POOL_SCHEDULE,
   GET_EVENT_POOL_SCHEDULE_LOADING,
   GET_POOLS_ALL,
-} from '../Types';
-import PoolsContext from './poolsContext';
-import poolsReducer from './poolsReducer';
-import React, { useReducer } from 'react';
-import API from '../../Utils/API';
+} from "../Types";
+import PoolsContext from "./poolsContext";
+import poolsReducer from "./poolsReducer";
+import React, { useReducer } from "react";
+import { API } from "../../Utils/API";
 
 const PoolsState = (props) => {
   const initialState = {
@@ -31,7 +31,7 @@ const PoolsState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
       });
   };
 
@@ -45,7 +45,7 @@ const PoolsState = (props) => {
         });
       })
       .catch((error) => {
-        console.log('Error', error.message);
+        console.log("Error", error.message);
       });
   };
 
@@ -61,8 +61,8 @@ const PoolsState = (props) => {
     console.log(data);
     // setTimeout(async () => {
     //console.log(JSON.stringify(data));
-    actualData.append('data', data);
-    await API.post('/editEventPoolSchedule', actualData).then((res) => {
+    actualData.append("data", data);
+    await API.post("/editEventPoolSchedule", actualData).then((res) => {
       console.log(res);
       getEventPoolSchedule(id);
       console.clear();

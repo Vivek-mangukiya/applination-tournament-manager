@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import '../assets/styles/PoolFormComponent.css';
-import TemplatePoolsContext from '../context/template_pool/templatePoolsContext';
+import React, { useContext } from "react";
+import "../assets/styles/PoolFormComponent.css";
+import TemplatePoolsContext from "../context/template_pool/templatePoolsContext";
 
 const PoolStep4 = (props) => {
   //context
@@ -15,12 +15,15 @@ const PoolStep4 = (props) => {
   return (
     <div className="PS">
       <div>
-        {templatePoolsNameError && (
+        {props.courtsError === true && (
+          <h2 className="TemplateNameTaken1">Please enter template name</h2>
+        )}
+        {props.courtsError !== true && templatePoolsNameError && (
           <h1 className="TemplateNameTaken1">
             Sorry, that name is already taken
           </h1>
         )}
-        <h1 className={templatePoolsNameError ? 'AS1Heading' : 'Heading'}>
+        <h1 className={templatePoolsNameError ? "AS1Heading" : "Heading"}>
           Great! What is the name for this Template?
         </h1>
         <h4 className="Subheading">

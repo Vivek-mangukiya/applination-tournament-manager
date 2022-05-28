@@ -4,102 +4,101 @@ import React, {
   useContext,
   forwardRef,
   useRef,
-} from 'react';
-import DropdownModals from '../../components/DropdownModals';
+} from "react";
+import DropdownModals from "../../components/DropdownModals";
 // import './TemplateDivision.css';
-import '../../assets/styles/TemplateDivisionSaved.css';
-import clearIcon from '../../assets/images/icons-x-input.svg';
-import divisionImage from '../../assets/images/division.svg';
-import downArrow from '../../assets/images/icon-menu-chevron-down.svg';
-import calenderIcon from '../../assets/images/icon-orange-calender.svg';
-import documentIcon from '../../assets/images/icon-orange-document.svg';
-import calenderIconRight from '../../assets/images/icon-menu-calendar.svg';
-import addNewIcon from '../../assets/images/icon-orange-players-plus.svg';
-import walletIcon from '../../assets/images/wallet.svg';
-import playersIcon from '../../assets/images/icon-orange-players.svg';
-import birdIcon from '../../assets/images/bird.svg';
-import pointsIcon from '../../assets/images/icon-orange-points.svg';
-import emailIcon from '../../assets/images/icon-orange-email.svg';
-import purseIcon from '../../assets/images/icon-orange-purse.svg';
-import Footer from '../../components/footer/Footer';
-import Header from '../../components/header/Header';
-import EventContext from '../../context/event/eventContext';
-import templateDivisionContext from '../../context/templateDivision/templateDivisionContext';
-import hamburgerIcon from '../../assets/images/icon-menu-hamburger.svg';
-import poolsIcon from '../../assets/images/icon-orange-pools.svg';
-import backIcon from '../../assets/images/icon-menu-back.svg';
-import playTypeIcon from '../../assets/images/icon-orange-playtype.svg';
-import durationIcon from '../../assets/images/icon-orange-duration.svg';
-import { DatePicker } from 'antd';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import RegEventDropDown from '../../components/RegEventDropDown';
-import API from '../../Utils/API';
+import "../../assets/styles/TemplateDivisionSaved.css";
+import clearIcon from "../../assets/images/icons-x-input.svg";
+import divisionImage from "../../assets/images/division.svg";
+import downArrow from "../../assets/images/icon-menu-chevron-down.svg";
+import calenderIcon from "../../assets/images/icon-orange-calender.svg";
+import documentIcon from "../../assets/images/icon-orange-document.svg";
+import calenderIconRight from "../../assets/images/icon-menu-calendar.svg";
+import addNewIcon from "../../assets/images/icon-orange-players-plus.svg";
+import walletIcon from "../../assets/images/wallet.svg";
+import playersIcon from "../../assets/images/icon-orange-players.svg";
+import birdIcon from "../../assets/images/bird.svg";
+import pointsIcon from "../../assets/images/icon-orange-points.svg";
+import emailIcon from "../../assets/images/icon-orange-email.svg";
+import purseIcon from "../../assets/images/icon-orange-purse.svg";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import EventContext from "../../context/event/eventContext";
+import templateDivisionContext from "../../context/templateDivision/templateDivisionContext";
+import hamburgerIcon from "../../assets/images/icon-menu-hamburger.svg";
+import poolsIcon from "../../assets/images/icon-orange-pools.svg";
+import backIcon from "../../assets/images/icon-menu-back.svg";
+import playTypeIcon from "../../assets/images/icon-orange-playtype.svg";
+import durationIcon from "../../assets/images/icon-orange-duration.svg";
+import { DatePicker } from "antd";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import RegEventDropDown from "../../components/RegEventDropDown";
+import { API } from "../../Utils/API";
 
 const Division = forwardRef((props, ref) => {
   const { div } = props.division;
-  const [key,setKey] = useState(props.key);
-
+  const [key, setKey] = useState(props.key);
 
   const [placementPools, setPlacementPools] = useState(
-    props.division.pool_name !== null ? props.division.pool_name : ''
+    props.division.pool_name !== null ? props.division.pool_name : ""
   );
   const [placementPoints, setPlacementPoints] = useState(
     props.division.point_temp_name !== null
       ? props.division.point_temp_name
-      : ''
+      : ""
   );
   const [registrationCap1, setregistrationCap1] = useState(
     props.division.registration_cap !== null
       ? props.division.registration_cap
-      : ''
+      : ""
   );
   const [teamSize1, setTeamSize1] = useState(
-    props.division.team_size !== null ? props.division.team_size : ''
+    props.division.team_size !== null ? props.division.team_size : ""
   );
   const [onlinePay1, setOnlinePay1] = useState(
-    props.division.online_pay !== null ? props.division.online_pay : ''
+    props.division.online_pay !== null ? props.division.online_pay : ""
   );
   const [purseAmount1, setPurseAmount1] = useState(
-    props.division.purse_amount !== null ? props.division.purse_amount : ''
+    props.division.purse_amount !== null ? props.division.purse_amount : ""
   );
   const [earlyBird1, setEarlyBird1] = useState(
-    props.division.early_bird !== null ? props.division.early_bird : ''
+    props.division.early_bird !== null ? props.division.early_bird : ""
   );
   const [earlyBirdDate1, setEarlyBirdDate1] = useState(
     props.division.early_bird_date !== null
       ? props.division.early_bird_date
-      : ''
+      : ""
   );
   const [earlyBirdAmount1, setEarlyBirdAmount1] = useState(
     props.division.early_bird_amount !== null
       ? props.division.early_bird_amount
-      : ''
+      : ""
   );
   const [registrationAmount1, setRegistrationAmount1] = useState(
     props.division.registration_amount !== null
       ? props.division.registration_amount
-      : ''
+      : ""
   );
   const [lateAmount1, setLateAmount1] = useState(
-    props.division.late_amount !== null ? props.division.late_amount : ''
+    props.division.late_amount !== null ? props.division.late_amount : ""
   );
 
-  const [firstModal, setFirstModal] = useState('');
+  const [firstModal, setFirstModal] = useState("");
 
   //Duplicate States
-  const [placementPointsDuplicate, setPlacementPointsDuplicate] = useState('');
+  const [placementPointsDuplicate, setPlacementPointsDuplicate] = useState("");
   const [registrationCap1Duplicate, setregistrationCap1Duplicate] =
-    useState('');
-  const [teamSize1Duplicate, setTeamSize1Duplicate] = useState('');
-  const [onlinePay1Duplicate, setOnlinePay1Duplicate] = useState('');
-  const [purseAmount1Duplicate, setPurseAmount1Duplicate] = useState('');
-  const [earlyBird1Duplicate, setEarlyBird1Duplicate] = useState('');
-  const [earlyBirdDate1Duplicate, setEarlyBirdDate1Duplicate] = useState('');
+    useState("");
+  const [teamSize1Duplicate, setTeamSize1Duplicate] = useState("");
+  const [onlinePay1Duplicate, setOnlinePay1Duplicate] = useState("");
+  const [purseAmount1Duplicate, setPurseAmount1Duplicate] = useState("");
+  const [earlyBird1Duplicate, setEarlyBird1Duplicate] = useState("");
+  const [earlyBirdDate1Duplicate, setEarlyBirdDate1Duplicate] = useState("");
   const [earlyBirdAmount1Duplicate, setEarlyBirdAmount1Duplicate] =
-    useState('');
+    useState("");
   const [registrationAmount1Duplicate, setRegistrationAmount1Duplicate] =
-    useState('');
-  const [lateAmount1Duplicate, setLateAmount1Duplicate] = useState('');
+    useState("");
+  const [lateAmount1Duplicate, setLateAmount1Duplicate] = useState("");
 
   useEffect(() => {
     // console.log(`PlacementPoints ${props.division.id}`,placementPoints);
@@ -116,34 +115,34 @@ const Division = forwardRef((props, ref) => {
     const data = {
       [division_id]: {},
     };
-    if (placementPointsDuplicate !== '') {
+    if (placementPointsDuplicate !== "") {
       data[division_id].point_temp_name = placementPointsDuplicate;
     }
-    if (registrationCap1Duplicate !== '') {
+    if (registrationCap1Duplicate !== "") {
       data[division_id].registration_cap = registrationCap1Duplicate;
     }
-    if (teamSize1Duplicate !== '') {
+    if (teamSize1Duplicate !== "") {
       data[division_id].team_size = teamSize1Duplicate;
     }
-    if (onlinePay1Duplicate !== '') {
+    if (onlinePay1Duplicate !== "") {
       data[division_id].online_pay = onlinePay1Duplicate;
     }
-    if (purseAmount1Duplicate !== '') {
+    if (purseAmount1Duplicate !== "") {
       data[division_id].purse_amount = purseAmount1Duplicate;
     }
-    if (earlyBird1Duplicate !== '') {
+    if (earlyBird1Duplicate !== "") {
       data[division_id].early_bird = earlyBird1Duplicate;
     }
-    if (earlyBirdDate1Duplicate !== '') {
+    if (earlyBirdDate1Duplicate !== "") {
       data[division_id].early_bird_date = earlyBirdDate1Duplicate;
     }
-    if (earlyBirdAmount1Duplicate !== '') {
+    if (earlyBirdAmount1Duplicate !== "") {
       data[division_id].early_bird_amount = earlyBirdAmount1Duplicate;
     }
-    if (registrationAmount1Duplicate !== '') {
+    if (registrationAmount1Duplicate !== "") {
       data[division_id].registration_amount = registrationAmount1Duplicate;
     }
-    if (lateAmount1Duplicate !== '') {
+    if (lateAmount1Duplicate !== "") {
       data[division_id].late_amount = lateAmount1Duplicate;
     }
 
@@ -171,13 +170,13 @@ const Division = forwardRef((props, ref) => {
   };
   return (
     <div className="col-12 p-0" style={{ marginTop: 24 }}>
-      <div className="text-center pb-2" style={{ color: '#ff2072' }}>
+      <div className="text-center pb-2" style={{ color: "#ff2072" }}>
         {props.generateScheduleError &&
           props.generateScheduleError.response &&
           props.generateScheduleError.response.data.error[props.division.id]
             .message}
       </div>
-      <div className="text-center pb-2" style={{ color: '#ff2072' }}>
+      <div className="text-center pb-2" style={{ color: "#ff2072" }}>
         {props.generateScheduleDivError &&
           props.generateScheduleDivError.config.url ===
             `/generateSchedule?divisionId=${props.division.id}` &&
@@ -187,7 +186,7 @@ const Division = forwardRef((props, ref) => {
       {/* <div className="text-center pb-2" style={{color:'#ff2072'}}>{props.generateScheduleError && props.generateScheduleError.response && props.generateScheduleError.response.data.successfull[props.division.id].message}</div> */}
       <div
         className="container p-0"
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
         onClick={() => setFirstModal(!firstModal)}
       >
         <div className="row p-0">
@@ -205,15 +204,13 @@ const Division = forwardRef((props, ref) => {
       {firstModal && (
         <div>
           <RegEventDropDown>
-          <li
-              onClick={() => { 
-                console.log(key)
+            <li
+              onClick={() => {
+                console.log(key);
                 props.history.push({
-                           pathname: `/templateDivisionEdit/${parseInt(
-                                props.params
-                              )}`,
-                              state:props.division.id,
-                            }) 
+                  pathname: `/templateDivisionEdit/${parseInt(props.params)}`,
+                  state: props.division.id,
+                });
               }}
             >
               Edit
@@ -227,16 +224,15 @@ const Division = forwardRef((props, ref) => {
                 if (props.generateScheduleError === null) {
                   props.setGenerateScheduleCounter(true);
                   await props.history.push({
-                    pathname:`/pools/${parseInt(props.division.id)}`,
-                  }
-                  );
+                    pathname: `/pools/${parseInt(props.division.id)}`,
+                  });
                 }
               }}
             >
               Generate Schedule
             </li>
             <li
-              style={{ color: '#ff2072' }}
+              style={{ color: "#ff2072" }}
               onClick={() => deleteDivision(34, props)}
             >
               Delete
@@ -285,7 +281,7 @@ const Division = forwardRef((props, ref) => {
                     <div className="col-7 p-0 text-right box-shadow-text mt-auto mb-auto">
                       <div
                         className="form-control p-0"
-                        style={{ height: 'inherit', direction: 'rtl' }}
+                        style={{ height: "inherit", direction: "rtl" }}
                       />
                       {props.division && props.division.point_temp_name}
                     </div>
@@ -319,7 +315,7 @@ const Division = forwardRef((props, ref) => {
                       />
                     </div>
                     <div className="col-6 p-0 text-left box-shadow-text mt-auto mb-auto pl-4">
-                    Maximum Number of Teams Allowed
+                      Maximum Number of Teams Allowed
                     </div>
                     <div className="col-5 p-0 text-right box-shadow-text mt-auto mb-auto">
                       {props.division && props.division.team_size}
@@ -410,7 +406,7 @@ const Division = forwardRef((props, ref) => {
                     <div className="col-5 p-0 text-right box-shadow-text mt-auto mb-auto">
                       {props.division &&
                       props.division.discount_applied === null
-                        ? 'Not Selected'
+                        ? "Not Selected"
                         : props.division.discount_applied}
                     </div>
                   </div>
@@ -426,7 +422,7 @@ const Division = forwardRef((props, ref) => {
                     </div>
                     <div className="col-5 p-0 text-right box-shadow-text mt-auto mb-auto">
                       {props.division && props.division.discount_amount === null
-                        ? ''
+                        ? ""
                         : props.division.discount_amount}
                     </div>
                   </div>
@@ -435,7 +431,7 @@ const Division = forwardRef((props, ref) => {
                 <div className="container">
                   <div
                     className="row template-division-shadow-box"
-                    style={{ overflow: 'hidden' }}
+                    style={{ overflow: "hidden" }}
                   >
                     <div className="col-1 p-0 text-left pl-2">
                       <img
@@ -450,10 +446,10 @@ const Division = forwardRef((props, ref) => {
                     <div className="col-5 p-0 text-right box-shadow-text mt-auto mb-auto">
                       {props.division &&
                       props.division.discount_voucher === null
-                        ? 'Not Selected'
+                        ? "Not Selected"
                         : props.division.discount_voucher === 1
-                        ? 'Discount'
-                        : 'Voucher'}
+                        ? "Discount"
+                        : "Voucher"}
                     </div>
                   </div>
                 </div>
@@ -461,7 +457,7 @@ const Division = forwardRef((props, ref) => {
                 <div className="container">
                   <div
                     className="row template-division-shadow-box"
-                    style={{ overflow: 'hidden' }}
+                    style={{ overflow: "hidden" }}
                   >
                     <div className="col-1 p-0 text-left pl-2">
                       <img
@@ -475,7 +471,7 @@ const Division = forwardRef((props, ref) => {
                     </div>
                     <div className="col-5 p-0 text-right box-shadow-text mt-auto mb-auto">
                       {props.division && props.division.discount_text === null
-                        ? 'Not Selected'
+                        ? "Not Selected"
                         : props.division.discount_text}
                     </div>
                   </div>
@@ -598,8 +594,8 @@ const Division = forwardRef((props, ref) => {
                   </div>
                 </div>
 
-                  {/* Purse percent Amount */}
-                  <div className="container">
+                {/* Purse percent Amount */}
+                <div className="container">
                   <div className="row template-division-shadow-box">
                     <div className="col-1 p-0 text-left pl-2">
                       <img src={purseIcon} alt="" className="img-fluid mb-1" />
@@ -614,11 +610,12 @@ const Division = forwardRef((props, ref) => {
                 className="form-control p-0"
                 style={{height:'inherit', direction:'rtl'}}
                 value={purseAmount1}/> */}
-                      {props.division && props.division.purse_percent!==null? props.division.purse_percent+"%":"%"}
+                      {props.division && props.division.purse_percent !== null
+                        ? props.division.purse_percent + "%"
+                        : "%"}
                     </div>
                   </div>
                 </div>
-
 
                 {/* Early Bird */}
                 <div className="container">
@@ -635,8 +632,8 @@ const Division = forwardRef((props, ref) => {
                   </div>
                 </div>
 
-                {((props.division && props.division.early_bird === 'Yes') ||
-                  (props.division && props.division.early_bird === 'yes')) && (
+                {((props.division && props.division.early_bird === "Yes") ||
+                  (props.division && props.division.early_bird === "yes")) && (
                   <>
                     {/* Early Bird Date*/}
                     <div className="container">
@@ -738,11 +735,11 @@ const Division = forwardRef((props, ref) => {
 
 const Template = (props) => {
   const [templateName, setTemplateName] = useState(
-    props.template.template_name === 'null'
-      ? 'Template not added'
+    props.template.template_name === "null"
+      ? "Template not added"
       : props.template.template_name
   );
-  console.log('props.save in Template:', props.save);
+  console.log("props.save in Template:", props.save);
   return (
     <>
       <div className="row mb-5">
@@ -790,22 +787,30 @@ const Template = (props) => {
                 </div>
               </div> */}
             </div>
-            {props.template.division.map((division, i) => (
-              console.log(division.id),
-              <Division
-                params = {props.params}
-                division={division}
-                key={division.id}
-                save={props.save}
-                generateScheduleError={props.generateScheduleError}
-                generateScheduleForDivision={props.generateScheduleForDivision}
-                generateScheduleDivError={props.generateScheduleDivError}
-                generateScheduleDivResponse={props.generateScheduleDivResponse}
-                clearDivScheduleMessage={props.clearDivScheduleMessage}
-                history={props.history}
-                setGenerateScheduleCounter={props.generateScheduleCounter}
-              />
-            ))}
+            {props.template.division.map(
+              (division, i) => (
+                console.log(division.id),
+                (
+                  <Division
+                    params={props.params}
+                    division={division}
+                    key={division.id}
+                    save={props.save}
+                    generateScheduleError={props.generateScheduleError}
+                    generateScheduleForDivision={
+                      props.generateScheduleForDivision
+                    }
+                    generateScheduleDivError={props.generateScheduleDivError}
+                    generateScheduleDivResponse={
+                      props.generateScheduleDivResponse
+                    }
+                    clearDivScheduleMessage={props.clearDivScheduleMessage}
+                    history={props.history}
+                    setGenerateScheduleCounter={props.generateScheduleCounter}
+                  />
+                )
+              )
+            )}
           </div>
         </div>
       </div>
@@ -839,15 +844,14 @@ const TemplateDivisionSavedMain = (props) => {
 
   const templateContext = useContext(templateDivisionContext);
   const { getTemplate, templateData, updateTemplateId } = templateContext;
-  const [loading, setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log('Event id by url:', parseInt(props.match.params.id));
+    console.log("Event id by url:", parseInt(props.match.params.id));
     getDivisions(parseInt(props.match.params.id));
     getTournamentById(parseInt(props.match.params.id));
     clearScheduleMessage();
-   clearDivScheduleMessage();
-   
+    clearDivScheduleMessage();
   }, []);
 
   const deleteDivision = (id) => {
@@ -855,14 +859,12 @@ const TemplateDivisionSavedMain = (props) => {
   };
 
   useEffect(() => {
-        setLoading(true);
+    setLoading(true);
 
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000);    
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, [divisionData]);
-
-  
 
   // const [save, setSave] = useState(false);
   const [openHamburger, setOpenHamburger] = useState(false);
@@ -879,24 +881,24 @@ const TemplateDivisionSavedMain = (props) => {
         handler(event);
       };
 
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
 
       return () => {
-        document.removeEventListener('mousedown', listener);
-        document.removeEventListener('touchstart', listener);
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
       };
     }, [ref, handler]);
   }
 
-  console.log('Tournament data:', getTournamentData);
+  console.log("Tournament data:", getTournamentData);
 
   let divisions = [];
   let templates = [];
 
-  console.log('divisionData.template:', divisionData);
+  console.log("divisionData.template:", divisionData);
 
-  if (divisionData !== '' && divisionData.template !== null) {
+  if (divisionData !== "" && divisionData.template !== null) {
     for (let i = 0; i < divisionData.template.length; i++) {
       templates.push(divisionData.template[i]);
 
@@ -909,12 +911,12 @@ const TemplateDivisionSavedMain = (props) => {
     // console.log("DA",divisions)
   }
 
-  console.log('generateScheduleError', generateScheduleError);
+  console.log("generateScheduleError", generateScheduleError);
   console.log(
-    'generateScheduleError.response',
+    "generateScheduleError.response",
     generateScheduleError && generateScheduleError.response
   );
-  console.log('generateScheduleResponse', generateScheduleResponse);
+  console.log("generateScheduleResponse", generateScheduleResponse);
 
   useEffect(() => {
     if (
@@ -942,16 +944,15 @@ const TemplateDivisionSavedMain = (props) => {
 
   const [generateScheduleCounter, setGenerateScheduleCounter] = useState(false);
 
- const noOfDivisions = ()=>{
- let count=0;
-    if(templates.length!==0){
-      templates.map((division,id)=>{
-        count+=division.length;
-    })
-   }
-   return count;
- }
-    
+  const noOfDivisions = () => {
+    let count = 0;
+    if (templates.length !== 0) {
+      templates.map((division, id) => {
+        count += division.length;
+      });
+    }
+    return count;
+  };
 
   return (
     <>
@@ -975,19 +976,19 @@ const TemplateDivisionSavedMain = (props) => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="new-event-profile container min_height p-0"  >
+        <div className="new-event-profile container min_height p-0">
           <div className="row" style={{ marginTop: 142 }}>
             <div className="col-5 m-auto text-right p-0">
-              <div className="text-center pb-2" style={{ color: '#ff2072' }}>
+              <div className="text-center pb-2" style={{ color: "#ff2072" }}>
                 {/* {generateScheduleResponse && generateScheduleResponse.error} */}
                 {scheduleStateError !== null && scheduleStateError}
               </div>
-              <div className="text-center pb-2" style={{ color: '#ff2072' }}>
+              <div className="text-center pb-2" style={{ color: "#ff2072" }}>
                 {generateScheduleResponse &&
                   generateScheduleResponse.successfull}
               </div>
               {/* <div className="text-center pb-2" style={{color:'#ff2072'}}>{generateScheduleError && generateScheduleError.data && generateScheduleError.data.error}</div> */}
-              <div className="text-center pb-2" style={{ color: '#ff2072' }}>
+              <div className="text-center pb-2" style={{ color: "#ff2072" }}>
                 {generateScheduleResponse &&
                   generateScheduleResponse.successful &&
                   generateScheduleResponse.successful[0].message}
@@ -996,7 +997,7 @@ const TemplateDivisionSavedMain = (props) => {
               {/* <div className="text-center pb-2">{generateScheduleError && generateScheduleResponse.successfull}</div> */}
               {/* Hamburger */}
               <a
-                className={openHamburger ? 'tri_top_visible' : 'tri_top_hidden'}
+                className={openHamburger ? "tri_top_visible" : "tri_top_hidden"}
                 id="score-hamburger"
                 ref={ref}
                 onClick={() => setOpenHamburger(!openHamburger)}
@@ -1010,38 +1011,35 @@ const TemplateDivisionSavedMain = (props) => {
                     >
                       <ul>
                         <li
-                          style={{color: noOfDivisions()===0?"gray":""}}
+                          style={{ color: noOfDivisions() === 0 ? "gray" : "" }}
                           onClick={() =>
-                            noOfDivisions()!==0?
-                            props.history.push({
-                           pathname: `/templateDivisionEdit/${parseInt(
-                                props.match.params.id
-                              )}`,
-                              state:null,
-                            }                             
-                            )
-                            :console.log("Edit disabled")
+                            noOfDivisions() !== 0
+                              ? props.history.push({
+                                  pathname: `/templateDivisionEdit/${parseInt(
+                                    props.match.params.id
+                                  )}`,
+                                  state: null,
+                                })
+                              : console.log("Edit disabled")
                           }
-                        
                         >
                           Edit
                         </li>
                         {/* <li>Duplicate</li> */}
                         <li
-                        style={{color: noOfDivisions()===0?"gray":""}}
+                          style={{ color: noOfDivisions() === 0 ? "gray" : "" }}
                           onClick={async () => {
-                           noOfDivisions()!==0?
-                            await generateSchedule(
-                              parseInt(props.match.params.id)
-                            ):console.log("disabled");
+                            noOfDivisions() !== 0
+                              ? await generateSchedule(
+                                  parseInt(props.match.params.id)
+                                )
+                              : console.log("disabled");
                             // props.history.push(`/templateDivisionEdit/${parseInt(props.match.params.id)}`)
                             // if (generateScheduleError === null) {
                             //   await props.history.push(
                             //     `/pools/${parseInt(props.match.params.id)}`
                             //   );
                             // }
-                           
-                          
                           }}
                         >
                           Generate Schedule
@@ -1059,26 +1057,31 @@ const TemplateDivisionSavedMain = (props) => {
               </a>
             </div>
           </div>
-          <div style={{paddingBottom:50, marginBottom:30}}>
-          {noOfDivisions()!==0? templates.map((template, i) => (
-            <>
-              <Template
-                divisions={divisions}
-                divisionData={divisionData}
-                template={template}
-                // key={i}
-                params={props.match.params.id}
-                generateScheduleError={generateScheduleError}
-                generateScheduleForDivision={generateScheduleForDivision}
-                generateScheduleDivError={generateScheduleDivError}
-                generateScheduleDivResponse={generateScheduleDivResponse}
-                clearDivScheduleMessage={clearDivScheduleMessage}
-                history={props.history}
-                setGenerateScheduleCounter={setGenerateScheduleCounter}
-              />
-            </>
-          )):<h4 style ={{color:"red", textAlign:"center"}}>No divisions set for the tournament.</h4>
-          }
+          <div style={{ paddingBottom: 50, marginBottom: 30 }}>
+            {noOfDivisions() !== 0 ? (
+              templates.map((template, i) => (
+                <>
+                  <Template
+                    divisions={divisions}
+                    divisionData={divisionData}
+                    template={template}
+                    // key={i}
+                    params={props.match.params.id}
+                    generateScheduleError={generateScheduleError}
+                    generateScheduleForDivision={generateScheduleForDivision}
+                    generateScheduleDivError={generateScheduleDivError}
+                    generateScheduleDivResponse={generateScheduleDivResponse}
+                    clearDivScheduleMessage={clearDivScheduleMessage}
+                    history={props.history}
+                    setGenerateScheduleCounter={setGenerateScheduleCounter}
+                  />
+                </>
+              ))
+            ) : (
+              <h4 style={{ color: "red", textAlign: "center" }}>
+                No divisions set for the tournament.
+              </h4>
+            )}
           </div>
         </div>
       )}
