@@ -2,17 +2,19 @@ import {
   GET_EVENT_POOL_SCHEDULE,
   GET_EVENT_POOL_SCHEDULE_LOADING,
   GET_POOLS_ALL,
+  GET_LIVE_SCORE_DATA,
 } from "../Types";
 import PoolsContext from "./poolsContext";
 import poolsReducer from "./poolsReducer";
 import React, { useReducer } from "react";
-import { API } from "../../Utils/API";
+import { API, API2 } from "../../Utils/API";
 
 const PoolsState = (props) => {
   const initialState = {
     eventPoolScheduleData: null,
     eventPollScheduleLoading: false,
     poolListData: null,
+    getLivesScoreData: null,
     loading: true,
   };
 
@@ -75,51 +77,49 @@ const PoolsState = (props) => {
     //   console.log(key[0] + ', ' + key[1]);
     // }
   };
-
-  const getLivescore = async (match_id, set) => {
-    return API.get(`/getLivescore?match_id=${match_id}&set=${set}`)
+  const getLiveScoreDetail = async (id, set) => {
+    // getEventPoolScheduleLoading();
+    API2.get(`/getLivescore?match_id=${id}&set=${set}`)
       .then((res) => {
-        return res;
+        console.log(res);
+        dispatch({
+          type: GET_LIVE_SCORE_DATA,
+          payload: res.data,
+        });
       })
-      .catch((err) => {
-        return err;
+      .catch((error) => {
+        console.log("Error", error.message);
       });
   };
 
-  const updateLivescore = (match_id, set, data) => {
-    const form = new FormData();
-    form.append("match_id", match_id);
-    form.append("set", set);
-    data?.team1_score_incqty &&
-      form.append("team1_score_incqty", data?.team1_score_incqty);
-    data?.team1_score_decqty &&
-      form.append("team1_score_decqty", data?.team1_score_decqty);
-    data?.team2_score_incqty &&
-      form.append("team2_score_incqty", data?.team2_score_incqty);
-    data?.team2_score_decqty &&
-      form.append("team2_score_decqty", data?.team2_score_decqty);
-    return API.post(`/UpdateLivescore`, form)
-      .then((res) => {
-        return res;
-      })
-      .catch((err) => {
-        return err;
-      });
+  // getLiveScoreUpdate
+  const getLiveScoreUpdate = async (data) => {
+    // const actualData = new FormData();
+    // actualData.append("data", JSON.stringify(data));
+    API2.post(`/UpdateLivescore`, data).then((response) => {
+      if (response) {
+        console.log(response);
+        // dispatch({
+        //   type: SAVED_PLAYER_DATA,
+        //   payload: data,
+        // });
+      }
+    });
   };
-
   return (
     <PoolsContext.Provider
       value={{
         eventPoolScheduleData: state.eventPoolScheduleData,
         eventPollScheduleLoading: state.eventPollScheduleLoading,
         poolListData: state.poolListData,
+        getLivesScoreData: state.getLivesScoreData,
         loading: state.loading,
         getEventPoolSchedule,
         getAllPools,
         editEventPoolSchedule,
         getEventPoolScheduleLoading,
-        getLivescore,
-        updateLivescore,
+        getLiveScoreDetail,
+        getLiveScoreUpdate,
       }}
     >
       {props.children}
