@@ -114,6 +114,7 @@ import TemplatePoolsSame from "./screens/template_pools/TemplatePoolsSame";
 import TemplatePoolsDifferent from "./screens/template_pools/TemplatePoolsDifferent";
 import { TermsAndConditions } from "./screens/TermsAndConditions/TermsAndConditions";
 import { PrivacyPolicy } from "./screens/PrivacyPolicy/PrivacyPolicy";
+import Tournaments from "./screens/tournaments/Tournaments";
 
 const App2 = () => {
   const authContext = useContext(AuthContext);
@@ -407,6 +408,11 @@ const App2 = () => {
               exact
               path="/DashboardScores"
               component={DashboardScores}
+            />
+            <PrivateRoute
+              exact
+              path="/DashboardTournaments"
+              component={Tournaments}
             />
             <PrivateRoute
               exact

@@ -1,0 +1,181 @@
+#scores_event_name{
+  /* width: 246px; */
+  height: 32px;
+  /* margin: 42px 64px 0 3px; */
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  border-bottom: 1px #979797;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.new-event-profile .event-input-bottom-text {
+  /* width: 250px; */
+  height: 19px;
+  /* margin-top: 12px; */
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.new-event-profile .box-shadow-header-text,
+.new-event-profile .mens-game-header {
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+/* .new-event-profile .box-shadow-text-bottom {
+  margin-top: 16px;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: #4a4a4a;
+} */
+
+.scores_ref{
+  height: 15px;
+  font-family: FuturaMedium;
+  margin-top: 6px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: #4a4a4a
+}
+
+.score_row{
+  height: 40px;
+}
+
+.score_row_1{
+  height: 30px;
+}
+
+.score_points_saved{
+  font-size: 14px;
+  font-family: FuturaMedium;
+  text-align: center;
+}
+
+.score_sets{
+  color: #979797;
+  display: flex;
+  justify-content: center;
+}
+
+.team1_score{
+  font-size: 14px;
+  font-family: FuturaMedium;
+  direction: rtl;
+  height: 17.6px;
+  font-size: 14px;
+
+  /* border-bottom: 2px solid black; */
+
+  /* padding: 0px; */
+
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  overflow: hidden;
+
+  text-align: center;
+}
+
+.score_points{
+  border-bottom: 2px solid #4a4a4a;
+  font-size: 14px;
+  text-align: center;
+}
+
+.score_points_total{
+  font-size: 15px;
+  text-align: center;
+}
+
+.one_null_error{
+  color: #ff2072;
+  padding-bottom: 5px;
+}
+
+.on_save_error{
+  color: #ff2072;
+  position: absolute;
+  bottom:80px;
+  left: -20px;
+  /* right: 20px; */
+}
+
+.on_save_message{
+  color: #4a4a4a;
+  position: absolute;
+  bottom:80px;
+  left: -20px;
+}
+
+.on_save_manager_error{
+  color: #ff2072;
+  position: absolute;
+  bottom:80px;
+  right: 10px;
+  /* right: 20px; */
+}
+
+.on_save_manager_message{
+  color: #4a4a4a;
+  position: absolute;
+  bottom:80px;
+  right: 10px;
+}
+
+.on_bracket_save{
+  color: #4a4a4a;
+  position: absolute;
+  bottom:90px;
+  right: 30px;
+}
+
+.on_save_message_brackets{
+  color: #4a4a4a;
+}
+
+.on_save_error_brackets{
+  color: #ff2072;
+}
+
+.dd_circle{
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+  background-color: #ff2072;
+}
