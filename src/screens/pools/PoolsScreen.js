@@ -1428,6 +1428,7 @@ const PoolsScreen = (props) => {
                                                 <div className="col-10 bg-danger"></div>
                                               </div>
                                             </div>
+                                            {console.log({ jhhajsd: el })}
                                             {/* <div className="row p-0 m-0">
                                             <div className="col-12">Hey</div>
                                           </div> */}
@@ -1446,8 +1447,8 @@ const PoolsScreen = (props) => {
                                                     className="live-btn float-right"
                                                     onClick={() =>
                                                       getLivesScoreEditDetail(
-                                                        item.match_id,
-                                                        el.court
+                                                        item?.match_id,
+                                                        el?.court
                                                       )
                                                     }
                                                   >
@@ -1516,9 +1517,10 @@ const PoolsScreen = (props) => {
                                                         <button
                                                           type="button"
                                                           className="btn-sm ml-5"
-                                                          onClick={() =>
-                                                            setOpenSecond(true)
-                                                          }
+                                                          onClick={() => {
+                                                            setOpenSecond(true);
+                                                            setOpenFirst(false);
+                                                          }}
                                                           style={{
                                                             border:
                                                               "1px solid yellow",
@@ -1668,7 +1670,7 @@ const PoolsScreen = (props) => {
                                                           type="button"
                                                           className="btn-md ml-3"
                                                           onClick={() =>
-                                                            setOpenSecond(true)
+                                                            setOpenSecond(false)
                                                           }
                                                           style={{
                                                             border:
