@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import iconcourt from '../assets/images/court.svg';
-import DropdownModals from './DropdownModals';
+import React, { useState, useEffect } from "react";
+import iconcourt from "../assets/images/court.svg";
+import DropdownModals from "./DropdownModals";
 const PoolStep3 = (props) => {
-  const [modal1, setModal1] = useState('');
+  const [modal1, setModal1] = useState("");
 
   let info = [];
 
-  for (let i = 0; i <= 30; i++) {
+  for (let i = 0; i <= 9997; i++) {
     info.push(i + 2);
   }
 
@@ -23,10 +23,16 @@ const PoolStep3 = (props) => {
   return (
     <div className="MainStep">
       <div>
-      {props.courtsError===true && (
+        {props.courtsError === true && (
           <h2 className="TemplateNameTaken">Please enter a value</h2>
-          )}
-        <h2 className={props.courtsError === true? "HeadingWithError" : "Heading"}>How many courts for the pools?</h2>
+        )}
+        <h2
+          className={
+            props.courtsError === true ? "HeadingWithError" : "Heading"
+          }
+        >
+          How many courts for the pools?
+        </h2>
         <h4 className="Subheading">
           Make a selection based on the desired size
         </h4>
