@@ -17,6 +17,7 @@ import { TimePicker } from "antd";
 import PoolsScheduleDropdown from "./PoolsScheduleDropdown";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import { update } from "js-md5";
 
 // fake data generator
 const getItems = (count, offset = 0) =>
@@ -79,6 +80,9 @@ const PoolsScreen = (props) => {
     editEventPoolSchedule,
     eventPollScheduleLoading,
     getEventPoolScheduleLoading,
+    getLivesScoreData,
+    getLiveScoreDetail,
+    getLiveScoreUpdate,
   } = poolContext;
 
   useEffect(() => {
@@ -110,6 +114,7 @@ const PoolsScreen = (props) => {
   const [dropdown2, setDropdown2] = useState("");
   const [editedData, setEditedData] = useState(null);
   const [editedArray, setEditedArray] = useState(null);
+  const [liveScore, setLiveScore] = useState({});
 
   const [dummyData, setDummyData] = useState({
     statusCode: "200",
@@ -469,6 +474,15 @@ const PoolsScreen = (props) => {
   // useEffect(() => {
   //   console.log(dropdown1);
   // }, [dropdown1]);
+  useEffect(() => {
+    if (
+      getLivesScoreData &&
+      getLivesScoreData !== null &&
+      getLivesScoreData.liveScore
+    ) {
+      setLiveScore(getLivesScoreData?.liveScore);
+    }
+  }, [getLivesScoreData]);
 
   const [state, setState] = useState(null);
 
@@ -823,6 +837,58 @@ const PoolsScreen = (props) => {
   const [openFirst, setOpenFirst] = React.useState(false);
   const [openSecond, setOpenSecond] = React.useState(false);
 
+  const getLivesScoreEditDetail = (match_id, set) => {
+    getLiveScoreDetail(match_id, set);
+    setOpenFirst(true);
+  };
+  const scoreUP = (team) => {
+    let { team1_score, team2_score } = liveScore;
+    if (team === 1) {
+      let data = {
+        match_id: liveScore?.match_id,
+        set: liveScore?.set,
+        team1_score_incqty: 1,
+      };
+      getLiveScoreUpdate(data);
+      setLiveScore({ ...liveScore, team1_score: team1_score + 1 });
+    } else {
+      let data = {
+        match_id: liveScore?.match_id,
+        set: liveScore?.set,
+        team2_score_incqty: 1,
+      };
+      getLiveScoreUpdate(data);
+      setLiveScore({ ...liveScore, team2_score: team2_score + 1 });
+    }
+  };
+  const scoreDown = (team) => {
+    let { team1_score, team2_score } = liveScore;
+    if (team === 1) {
+      if (team1_score > 0) {
+        let data = {
+          match_id: liveScore?.match_id,
+          set: liveScore?.set,
+          team1_score_decqty: 1,
+        };
+        getLiveScoreUpdate(data);
+        setLiveScore({ ...liveScore, team1_score: team1_score - 1 });
+      }
+    } else {
+      if (team2_score > 0) {
+        let data = {
+          match_id: liveScore?.match_id,
+          set: liveScore?.set,
+          team2_score_decqty: 1,
+        };
+        getLiveScoreUpdate(data);
+        setLiveScore({ ...liveScore, team2_score: team2_score - 1 });
+      }
+    }
+  };
+
+  const updateLiveScoreData = () => {
+    setOpenSecond(true);
+  };
   return (
     <div className="pools min-vh-100">
       <Header>
@@ -1379,7 +1445,10 @@ const PoolsScreen = (props) => {
                                                   <button
                                                     className="live-btn float-right"
                                                     onClick={() =>
-                                                      setOpenFirst(true)
+                                                      getLivesScoreEditDetail(
+                                                        item.match_id,
+                                                        el.court
+                                                      )
                                                     }
                                                   >
                                                     Live score
@@ -1506,6 +1575,9 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn up-btn"
+                                                            onClick={() =>
+                                                              scoreUP(1)
+                                                            }
                                                           >
                                                             <img
                                                               alt="upicon"
@@ -1517,6 +1589,9 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn up-btn"
+                                                            onClick={() =>
+                                                              scoreUP(2)
+                                                            }
                                                           >
                                                             <img
                                                               alt="upicon"
@@ -1528,10 +1603,16 @@ const PoolsScreen = (props) => {
 
                                                       <div className="row mt-3">
                                                         <div className="col">
-                                                          <h3>0</h3>
+                                                          <h3>
+                                                            {liveScore &&
+                                                              liveScore?.team1_score}
+                                                          </h3>
                                                         </div>
                                                         <div className="col">
-                                                          <h3>0</h3>
+                                                          <h3>
+                                                            {liveScore &&
+                                                              liveScore.team2_score}
+                                                          </h3>
                                                         </div>
                                                       </div>
 
@@ -1540,6 +1621,9 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn down-btn"
+                                                            onClick={() =>
+                                                              scoreDown(1)
+                                                            }
                                                           >
                                                             <img
                                                               alt="downicon"
@@ -1551,6 +1635,9 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn down-btn"
+                                                            onClick={() =>
+                                                              scoreDown(2)
+                                                            }
                                                           >
                                                             <img
                                                               alt="downicon"

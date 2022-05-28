@@ -2,7 +2,8 @@ import {
   GET_EVENT_POOL_SCHEDULE,
   GET_EVENT_POOL_SCHEDULE_LOADING,
   GET_POOLS_ALL,
-} from '../Types';
+  GET_LIVE_SCORE_DATA,
+} from "../Types";
 
 //eslint-disable-next-line
 export default (state, action) => {
@@ -22,6 +23,12 @@ export default (state, action) => {
       return {
         ...state,
         poolListData: action.payload,
+        loading: false,
+      };
+    case GET_LIVE_SCORE_DATA:
+      return {
+        ...state,
+        getLivesScoreData: action.payload,
         loading: false,
       };
     default:
