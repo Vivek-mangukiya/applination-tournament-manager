@@ -76,6 +76,37 @@ const PoolsState = (props) => {
     // }
   };
 
+  const getLivescore = async (match_id, set) => {
+    return API.get(`/getLivescore?match_id=${match_id}&set=${set}`)
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
+  const updateLivescore = (match_id, set, data) => {
+    const form = new FormData();
+    form.append("match_id", match_id);
+    form.append("set", set);
+    data?.team1_score_incqty &&
+      form.append("team1_score_incqty", data?.team1_score_incqty);
+    data?.team1_score_decqty &&
+      form.append("team1_score_decqty", data?.team1_score_decqty);
+    data?.team2_score_incqty &&
+      form.append("team2_score_incqty", data?.team2_score_incqty);
+    data?.team2_score_decqty &&
+      form.append("team2_score_decqty", data?.team2_score_decqty);
+    return API.post(`/UpdateLivescore`, form)
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
   return (
     <PoolsContext.Provider
       value={{
@@ -87,6 +118,8 @@ const PoolsState = (props) => {
         getAllPools,
         editEventPoolSchedule,
         getEventPoolScheduleLoading,
+        getLivescore,
+        updateLivescore,
       }}
     >
       {props.children}

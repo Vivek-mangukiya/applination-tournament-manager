@@ -79,6 +79,8 @@ const PoolsScreen = (props) => {
     editEventPoolSchedule,
     eventPollScheduleLoading,
     getEventPoolScheduleLoading,
+    getLivescore,
+    updateLivescore,
   } = poolContext;
 
   useEffect(() => {
@@ -499,13 +501,14 @@ const PoolsScreen = (props) => {
         prevState = {};
         prevState[newState[dInd].information[destination.index].match_id] = {
           court_id: newState[dInd].court,
-          time: newState[dInd].information[destination.index].content
-            .start_play_time,
+          time:
+            newState[dInd].information[destination.index].content
+              .start_play_time,
         };
         prevState[newState[sInd].information[source.index].match_id] = {
           court_id: newState[sInd].court,
-          time: newState[sInd].information[source.index].content
-            .start_play_time,
+          time:
+            newState[sInd].information[source.index].content.start_play_time,
         };
         return prevState;
       });
@@ -658,10 +661,11 @@ const PoolsScreen = (props) => {
             // console.log(state[i].information[j]);
 
             setState((prevState) => {
-              prevState[i].information[j].content.start_play_time = moment(
-                dropdown1.start_time,
-                ["h:mm a"]
-              ).format("YYYY-MM-DD HH:mm:ss");
+              prevState[i].information[
+                j
+              ].content.start_play_time = moment(dropdown1.start_time, [
+                "h:mm a",
+              ]).format("YYYY-MM-DD HH:mm:ss");
               prevState[i].information[j].content.end_play_time = moment(
                 moment(
                   prevState[i].information[j].content.start_play_time
@@ -822,6 +826,54 @@ const PoolsScreen = (props) => {
   // }, []);
   const [openFirst, setOpenFirst] = React.useState(false);
   const [openSecond, setOpenSecond] = React.useState(false);
+  const [liveScore, setLiveScore] = React.useState({});
+  const [teameScores, setTeamScores] = React.useState({
+    team1: 0,
+    team2: 0,
+  });
+
+  const handleGetLiveScore = async (match_id, set) => {
+    const response = await getLivescore(match_id, set);
+    if (response?.status === 200) {
+      console.log({
+        hhabsjdb: response?.data?.liveScore?.team1_score,
+      });
+      setLiveScore(response?.data);
+      setTeamScores({
+        team2: response?.data?.liveScore?.team2_score,
+        team1: response?.data?.liveScore?.team1_score,
+      });
+
+      setOpenFirst(true);
+    }
+  };
+  const handleClickupdateTeamScore = (
+    teamNo,
+    type,
+    data = {
+      team1_score_incqty: 0,
+      team1_score_decqty: 0,
+      team2_score_incqty: 0,
+      team2_score_decqty: 0,
+    }
+  ) => {
+    let value = teameScores[teamNo];
+    switch (type) {
+      case "plus":
+        value++;
+        break;
+      case "minus":
+        value--;
+        break;
+    }
+    setTeamScores({ ...teameScores, [teamNo]: value });
+    console.log({ data });
+    updateLivescore(
+      liveScore?.liveScore?.match_id,
+      liveScore?.liveScore?.set,
+      data
+    );
+  };
 
   return (
     <div className="pools min-vh-100">
@@ -1205,8 +1257,7 @@ const PoolsScreen = (props) => {
                                                                   onError={(
                                                                     e
                                                                   ) =>
-                                                                    (e.target.src =
-                                                                      profilePic)
+                                                                    (e.target.src = profilePic)
                                                                   }
                                                                   className="card-img mr-1"
                                                                   alt=""
@@ -1262,8 +1313,7 @@ const PoolsScreen = (props) => {
                                                                   onError={(
                                                                     e
                                                                   ) =>
-                                                                    (e.target.src =
-                                                                      profilePic)
+                                                                    (e.target.src = profilePic)
                                                                   }
                                                                   className="card-img mr-1"
                                                                   alt=""
@@ -1362,6 +1412,7 @@ const PoolsScreen = (props) => {
                                                 <div className="col-10 bg-danger"></div>
                                               </div>
                                             </div>
+                                            {console.log({ jhhajsd: el })}
                                             {/* <div className="row p-0 m-0">
                                             <div className="col-12">Hey</div>
                                           </div> */}
@@ -1379,7 +1430,10 @@ const PoolsScreen = (props) => {
                                                   <button
                                                     className="live-btn float-right"
                                                     onClick={() =>
-                                                      setOpenFirst(true)
+                                                      handleGetLiveScore(
+                                                        item?.match_id,
+                                                        el?.court
+                                                      )
                                                     }
                                                   >
                                                     Live score
@@ -1447,9 +1501,10 @@ const PoolsScreen = (props) => {
                                                         <button
                                                           type="button"
                                                           className="btn-sm ml-5"
-                                                          onClick={() =>
-                                                            setOpenSecond(true)
-                                                          }
+                                                          onClick={() => {
+                                                            setOpenSecond(true);
+                                                            setOpenFirst(false);
+                                                          }}
                                                           style={{
                                                             border:
                                                               "1px solid yellow",
@@ -1506,6 +1561,15 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn up-btn"
+                                                            onClick={() => {
+                                                              handleClickupdateTeamScore(
+                                                                "team1",
+                                                                "plus",
+                                                                {
+                                                                  team1_score_incqty: 1,
+                                                                }
+                                                              );
+                                                            }}
                                                           >
                                                             <img
                                                               alt="upicon"
@@ -1517,6 +1581,15 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn up-btn"
+                                                            onClick={() => {
+                                                              handleClickupdateTeamScore(
+                                                                "team2",
+                                                                "plus",
+                                                                {
+                                                                  team2_score_incqty: 1,
+                                                                }
+                                                              );
+                                                            }}
                                                           >
                                                             <img
                                                               alt="upicon"
@@ -1528,10 +1601,14 @@ const PoolsScreen = (props) => {
 
                                                       <div className="row mt-3">
                                                         <div className="col">
-                                                          <h3>0</h3>
+                                                          <h3>
+                                                            {teameScores.team1}
+                                                          </h3>
                                                         </div>
                                                         <div className="col">
-                                                          <h3>0</h3>
+                                                          <h3>
+                                                            {teameScores.team2}
+                                                          </h3>
                                                         </div>
                                                       </div>
 
@@ -1540,6 +1617,15 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn down-btn"
+                                                            onClick={() => {
+                                                              handleClickupdateTeamScore(
+                                                                "team1",
+                                                                "minus",
+                                                                {
+                                                                  team1_score_decqty: 1,
+                                                                }
+                                                              );
+                                                            }}
                                                           >
                                                             <img
                                                               alt="downicon"
@@ -1551,6 +1637,15 @@ const PoolsScreen = (props) => {
                                                           <button
                                                             type="button"
                                                             className="btn down-btn"
+                                                            onClick={() => {
+                                                              handleClickupdateTeamScore(
+                                                                "team2",
+                                                                "minus",
+                                                                {
+                                                                  team2_score_decqty: 1,
+                                                                }
+                                                              );
+                                                            }}
                                                           >
                                                             <img
                                                               alt="downicon"
@@ -1581,7 +1676,7 @@ const PoolsScreen = (props) => {
                                                           type="button"
                                                           className="btn-md ml-3"
                                                           onClick={() =>
-                                                            setOpenSecond(true)
+                                                            setOpenSecond(false)
                                                           }
                                                           style={{
                                                             border:
