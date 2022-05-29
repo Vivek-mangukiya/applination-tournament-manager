@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <linearGradient id="8mvx1kcc9a" x1="76.07%" x2="19.318%" y1="74.684%" y2="21.768%">
+            <stop offset="0%" stop-color="#FFD522"/>
+            <stop offset="100%" stop-color="#FFEB42"/>
+        </linearGradient>
+        <linearGradient id="8nv2v7nm0b" x1="73.96%" x2="27.502%" y1="23.415%" y2="74.684%">
+            <stop offset="0%" stop-color="#F7991F"/>
+            <stop offset="100%" stop-color="#FFD41D"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <path fill="url(#8mvx1kcc9a)" d="M17.188 5.156L15.167 6.218 15.553 3.969 13.918 2.375 16.177 2.047 17.188 0 18.198 2.047 20.457 2.375 18.822 3.969 19.208 6.218z" transform="translate(-577 -736) translate(570 726) translate(7 8) translate(0 2) translate(.375 1.25)"/>
+                            <path fill="url(#8nv2v7nm0b)" d="M8.125 13.438l-2.982 1.567c-.49.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.57-3.32-2.413-2.352c-.396-.386-.404-1.02-.018-1.415.153-.157.354-.26.572-.291l3.334-.485 1.491-3.021c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454l1.49 3.021 3.335.485c.547.08.925.587.846 1.133-.032.218-.134.42-.292.573L11.99 10.63l.57 3.321c.093.545-.273 1.061-.817 1.155-.217.037-.44.002-.635-.1l-2.982-1.569z" transform="translate(-577 -736) translate(570 726) translate(7 8) translate(0 2) translate(.375 1.25)"/>
+                            <path fill="#D8D8D8" stroke="#D8D8D8" stroke-linecap="round" d="M17.188 7.813L17.188 10.88M18.438 7.188L18.438 9.005M15.938 7.188L15.938 7.813" transform="translate(-577 -736) translate(570 726) translate(7 8) translate(0 2) translate(.375 1.25)"/>
+                            <path fill="#FFF" d="M10 6.875H11.25V8.125H10z" transform="translate(-577 -736) translate(570 726) translate(7 8) translate(0 2) translate(.375 1.25)"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

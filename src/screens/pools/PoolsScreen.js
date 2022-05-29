@@ -18,6 +18,8 @@ import PoolsScheduleDropdown from "./PoolsScheduleDropdown";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { update } from "js-md5";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // fake data generator
 const getItems = (count, offset = 0) =>
@@ -887,10 +889,22 @@ const PoolsScreen = (props) => {
   };
 
   const updateButtonClickHandle = () => {
+    toast.dark("Score Updated Successfully!!");
     setOpenSecond(false);
   };
   return (
     <div className="pools min-vh-100">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Header>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item" onClick={() => props.history.goBack()}>

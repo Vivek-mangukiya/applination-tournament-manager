@@ -1,3 +1,203 @@
+.pools .header-2 {
+  height: 56px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.pools .table-header {
+  height: 56px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d8d8d8;
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #333333;
+}
+
+.pools .card-header {
+  background-color: #ffffff;
+  font-family: Futura;
+  font-size: 8px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #4a4a4a;
+}
+
+.pools .body-left {
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.pools .body-right-text {
+  font-family: FuturaMedium;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pools .footer-left {
+  height: 26px;
+  font-family: FuturaMedium;
+  font-size: 8px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #4a4a4a;
+  border-right: 1px solid #ededed;
+}
+
+.pools .footer-right {
+  height: 26px;
+  font-family: FuturaMedium;
+  font-size: 8px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+
+.pools .card-img {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}
+
+.pools .header-2 .header-heading {
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #333333;
+}
+
+.pools .header-2 .side-heading {
+  font-family: FuturaMedium;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #4a4a4a;
+}
+
+.dot-first {
+  height: 8px;
+  width: 8px;
+  background-color: #ff20f4;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.pools .header-2 .side-heading .dot-second {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  background-image: linear-gradient(to bottom, #edcd7d, #d6a746);
+}
+
+.pools .header-2 .court-heading {
+  font-family: FuturaMedium;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.44px;
+  text-align: center;
+  color: #333333;
+}
+
+/* 2 images */
+
+.pool_summary_match_player_1_img,
+.pool_summary_match_player_2_img {
+  width: 26px;
+  height: 26px;
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+  /* overflow: ; */
+}
+
+/* .pool_summary_match_player_1_img{
+  position: relative;
+}
+
+.pool_summary_match_player_2_img{
+  position: absolute;
+  right:2px;
+} */
+
+.pool_summary_match_player_2_img {
+  position: relative;
+  left: 20px;
+}
+
+.pool_summary_match_player_1_img {
+  position: absolute;
+}
+.live-btn {
+  text-transform: uppercase;
+  cursor: pointer !important;
+  background: #ffd420;
+  padding: 1px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+}
+.react-responsive-modal-overlay {
+  background: rgb(0 0 0 / 8%) !important;
+}
+.react-responsive-modal-modal{box-shadow: none !important;}
+.up-btn{
+  padding: 0;
+  margin: 0;
+  background-color: #1f9542 !important;
+  z-index: 99999;
+  padding: 8px;
+  cursor: pointer !important;
+}
+
+.down-btn{
+  padding: 0;
+  margin: 0;
+  background-color: #ed4642 !important;
+  z-index: 99999;
+  padding: 8px;
+  cursor: pointer !important;
+}
+
 #scores_event_name{
   /* width: 246px; */
   height: 32px;

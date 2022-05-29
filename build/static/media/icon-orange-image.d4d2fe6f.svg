@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <linearGradient id="y41ygwliyb" x1="30.359%" x2="100%" y1="8.179%" y2="100%">
+            <stop offset="0%" stop-color="#FFEB42"/>
+            <stop offset="100%" stop-color="#FFD31D"/>
+        </linearGradient>
+        <linearGradient id="6g8rxqr00c" x1="30.359%" x2="61.222%" y1="32.121%" y2="61.453%">
+            <stop offset="0%" stop-color="#FFEB42"/>
+            <stop offset="100%" stop-color="#FFD31D"/>
+        </linearGradient>
+        <linearGradient id="f1sp4b3sde" x1="100%" x2="0%" y1="71.376%" y2="28.624%">
+            <stop offset="0%" stop-color="#FBB12E"/>
+            <stop offset="100%" stop-color="#FFD31D"/>
+        </linearGradient>
+        <rect id="sewymns3ea" width="16.25" height="16.25" x="0" y="0" rx="2"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g transform="translate(-577 -2224) translate(569 2214) translate(8 10)">
+                    <g transform="translate(1.875 1.875)">
+                        <mask id="jj6a3wunsd" fill="#fff">
+                            <use xlink:href="#sewymns3ea"/>
+                        </mask>
+                        <rect width="14.25" height="14.25" x="1" y="1" stroke="url(#y41ygwliyb)" stroke-width="2" rx="2"/>
+                        <path fill="url(#6g8rxqr00c)" d="M6.875 12.5l2.938-2.938c1.148-1.148 3.001-1.175 4.182-.06l9.13 8.623H6.875V12.5z" mask="url(#jj6a3wunsd)"/>
+                        <path fill="url(#f1sp4b3sde)" d="M0 10.625l2.938-2.938c1.148-1.148 3.001-1.175 4.182-.06l9.13 8.623H0v-5.625z" mask="url(#jj6a3wunsd)"/>
+                    </g>
+                    <rect width="8.125" height="1" x="2.5" y="1.875" fill="#D8D8D8" rx=".5"/>
+                    <rect width="4.375" height="1" x="1.25" y="3.75" fill="#D8D8D8" rx=".5"/>
+                    <path fill="#4A4A4A" fill-rule="nonzero" d="M14.688 4.375c.862 0 1.562.7 1.562 1.563 0 .862-.7 1.562-1.563 1.562-.862 0-1.562-.7-1.562-1.563 0-.862.7-1.562 1.563-1.562z"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
