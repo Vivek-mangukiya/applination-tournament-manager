@@ -886,8 +886,8 @@ const PoolsScreen = (props) => {
     }
   };
 
-  const updateLiveScoreData = () => {
-    setOpenSecond(true);
+  const updateButtonClickHandle = () => {
+    setOpenSecond(false);
   };
   return (
     <div className="pools min-vh-100">
@@ -1670,7 +1670,7 @@ const PoolsScreen = (props) => {
                                                           type="button"
                                                           className="btn-md ml-3"
                                                           onClick={() =>
-                                                            setOpenSecond(false)
+                                                            updateButtonClickHandle()
                                                           }
                                                           style={{
                                                             border:
