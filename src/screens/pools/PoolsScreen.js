@@ -1584,10 +1584,16 @@ const PoolsScreen = (props) => {
                                                     >
                                                       <div className="row mt-4 mb-2">
                                                         <div className="col">
-                                                          <h5>Brammer/Conno</h5>
+                                                          <h5>
+                                                            {liveScore &&
+                                                              liveScore?.team1_name}
+                                                          </h5>
                                                         </div>
                                                         <div className="col">
-                                                          <h5>Ripley/Conno</h5>
+                                                          <h5>
+                                                            {liveScore &&
+                                                              liveScore?.team2_name}
+                                                          </h5>
                                                         </div>
                                                       </div>
                                                       <div className="row">
