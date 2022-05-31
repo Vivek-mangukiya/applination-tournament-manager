@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import poolsContext from "../../context/pools/poolsContext";
 import axios from "axios";
+import "./liveSccore.css";
+
 const LiveScore = ({
   match: {
     params: { match_id, set },
@@ -33,24 +35,25 @@ const LiveScore = ({
   return (
     <Container
       fluid
-      className="container-fluid"
+      className="container-fluid p-5"
       style={{ position: "relative", zIndex: 1000 }}
     >
+      <h4>Game ScoreSheet</h4>
       <Row>
         <Col xs={6}>
-          <div className="col">
+          <div className="scoresheet-col">
             <h5>{matchDetails?.team1_name}</h5>
-          </div>
-          <div className="col">
-            <h3>{matchDetails && matchDetails?.team1_score}</h3>
+            <h2 className="mb-0 text-center">
+              {matchDetails && matchDetails?.team1_score}
+            </h2>
           </div>
         </Col>
         <Col xs={6}>
-          <div className="col">
+          <div className="scoresheet-col">
             <h5>{matchDetails?.team2_name}</h5>
-          </div>
-          <div className="col">
-            <h3>{matchDetails && matchDetails.team2_score}</h3>
+            <h2 className="mb-0 text-center">
+              {matchDetails && matchDetails.team2_score}
+            </h2>
           </div>
         </Col>
       </Row>
