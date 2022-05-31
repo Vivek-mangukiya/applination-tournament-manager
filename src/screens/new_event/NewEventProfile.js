@@ -466,7 +466,7 @@ const NewEventProfile = (props) => {
         onClick={() => {
           setDirectorName(address.promoter_name);
           setDirector_id(address.id);
-          setDirectorDropdown(false);
+          setDirectorDropdown(!directorDropdown);
           // contactFilterClear();
         }}
       >
@@ -3559,7 +3559,7 @@ const NewEventProfile = (props) => {
                 <div
                   className="container"
                   onClick={() => {
-                    setDirectorDropdown(!directorDropdown);
+                    setDirectorDropdown(true);
                     contactFilterClear();
                   }}
                 >
@@ -3587,7 +3587,7 @@ const NewEventProfile = (props) => {
                             src={downArrow}
                             alt=""
                             onClick={() => {
-                              setDirectorDropdown(!directorDropdown);
+                              setDirectorDropdown(true);
                               contactFilterClear();
                             }}
                           />
@@ -3665,7 +3665,7 @@ const NewEventProfile = (props) => {
                 <div
                   className="container"
                   onClick={() => {
-                    setMainContactDropdown(!mainContactDropdown);
+                    setMainContactDropdown(true);
                     contactFilterClear();
                   }}
                 >
@@ -3693,7 +3693,7 @@ const NewEventProfile = (props) => {
                             src={downArrow}
                             alt=""
                             onClick={() => {
-                              setMainContactDropdown(!mainContactDropdown);
+                              setMainContactDropdown(true);
                               contactFilterClear();
                             }}
                           />
