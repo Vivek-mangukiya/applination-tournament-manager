@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 // import Header from './components/header/Header';
 import Sidebar from "./components/sidebar/Sidebar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Profile from "./screens/profile/Profile";
 import ActiveHistoryState from "./context/profileActiveHistory/ActiveHistoryState";
 import NewEventProfile from "./screens/new_event/NewEventProfile";
@@ -115,11 +120,12 @@ import TemplatePoolsDifferent from "./screens/template_pools/TemplatePoolsDiffer
 import { TermsAndConditions } from "./screens/TermsAndConditions/TermsAndConditions";
 import { PrivacyPolicy } from "./screens/PrivacyPolicy/PrivacyPolicy";
 import Tournaments from "./screens/tournaments/Tournaments";
+import LiveScore from "./screens/liveSccore/liveSccore";
 
 const App2 = () => {
   const authContext = useContext(AuthContext);
   const { sidebarMax, logout } = authContext;
-
+  const isAuthenticated = localStorage.getItem("authenticated");
   // if (localStorage.token) {
   //   jwt.verify(
   //     localStorage.getItem('token'),
@@ -140,289 +146,315 @@ const App2 = () => {
       <Route exact path="/" component={SignIn} />
       <Route exact path="/forgotPassword" component={ForgetPassword} />
       <Route exact path="/terms-and-condition" component={TermsAndConditions} />
+      <Route exact path="/streaming/:match_id/:set" component={LiveScore} />
       <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-      <div className="App">
-        {/* <Header /> */}
-        <Sidebar />
-        <div id="app-content" style={sidebarMax ? {} : { marginLeft: 89 }}>
-          <Switch>
-            <PrivateRoute exact path="/dashboard" component={DashBoard} />
-            {/* new manager profile */}
-            <PrivateRoute
-              exact
-              path="/newManagerProfileSaved/:id"
-              component={NewManagerProfile}
-            />
-            <PrivateRoute
-              exact
-              path="/newManagerProfileEdit/:id"
-              component={NewManagerProfileEdit}
-            />
-            <PrivateRoute exact path="/managers" component={ManagerList} />
-            <PrivateRoute exact path="/members" component={Members} />
-            <PrivateRoute exact path="/profile/:id" component={Profile} />
-            <PrivateRoute
-              exact
-              path="/newEventProfile"
-              component={NewEventProfile}
-            />
-            <PrivateRoute
-              exact
-              path="/registration"
-              component={RegEventComponent}
-            />
-            <PrivateRoute
-              exact
-              path="/templateDivision"
-              component={TemplateDivision}
-            />
-            <PrivateRoute exact path="/scores/:id" component={Scores} />
-            <PrivateRoute
-              exact
-              path="/templatePoints/:spots/:templateName"
-              component={TemplatePoints}
-            />
-            <PrivateRoute
-              exact
-              path="/templatePointsUpdate/:points_id"
-              component={TemplatePointsUpdate}
-            />
-            <PrivateRoute
-              exact
-              path="/templatePools/:teams/:pools/:courts/:templateName/:status"
-              component={TemplatePoolsDifferent}
-            />
-            <PrivateRoute
-              exact
-              path="/templatePools/:teams/:pools/:courts/:templateName"
-              component={TemplatePoolsSame}
-            />
-            <PrivateRoute
-              exact
-              path="/templatePoolsUpdate/:teams/:pools/:courts/:pool_id"
-              component={TemplatePoolsUpdate}
-            />
-            {/* Payments route */}
-            <PrivateRoute exact path="/payments" component={Payments} />
-            {/* Settings Route*/}
-            <PrivateRoute exact path="/settings" component={Settings} />
+      {!window.location.href.includes('streaming') && (
+        <div className="App">
+          {/* <Header /> */}
+          <Sidebar />
+          <div id="app-content" style={sidebarMax ? {} : { marginLeft: 89 }}>
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={DashBoard} />
+              {/* new manager profile */}
+              <PrivateRoute
+                exact
+                path="/newManagerProfileSaved/:id"
+                component={NewManagerProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/newManagerProfileEdit/:id"
+                component={NewManagerProfileEdit}
+              />
+              <PrivateRoute exact path="/managers" component={ManagerList} />
+              <PrivateRoute exact path="/members" component={Members} />
+              <PrivateRoute exact path="/profile/:id" component={Profile} />
+              <PrivateRoute
+                exact
+                path="/newEventProfile"
+                component={NewEventProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/registration"
+                component={RegEventComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/templateDivision"
+                component={TemplateDivision}
+              />
+              <PrivateRoute exact path="/scores/:id" component={Scores} />
+              <PrivateRoute
+                exact
+                path="/templatePoints/:spots/:templateName"
+                component={TemplatePoints}
+              />
+              <PrivateRoute
+                exact
+                path="/templatePointsUpdate/:points_id"
+                component={TemplatePointsUpdate}
+              />
+              <PrivateRoute
+                exact
+                path="/templatePools/:teams/:pools/:courts/:templateName/:status"
+                component={TemplatePoolsDifferent}
+              />
+              <PrivateRoute
+                exact
+                path="/templatePools/:teams/:pools/:courts/:templateName"
+                component={TemplatePoolsSame}
+              />
+              <PrivateRoute
+                exact
+                path="/templatePoolsUpdate/:teams/:pools/:courts/:pool_id"
+                component={TemplatePoolsUpdate}
+              />
+              {/* Payments route */}
+              <PrivateRoute exact path="/payments" component={Payments} />
+              {/* Settings Route*/}
+              <PrivateRoute exact path="/settings" component={Settings} />
 
-            {/* jai */}
-            {/* <Route exact path="/ManagerTable" component={ManagerList} /> */}
-            {/* <Route exact path="/Dashboard" component={DashBoard} /> */}
-            <PrivateRoute exact path="/DivisionForm" component={MasterForm} />
-            <PrivateRoute exact path="/Footer" component={FooterComponent} />
-            <PrivateRoute
-              exact
-              path="/RegEvent/:id"
-              component={RegEventComponent}
-            />
-            <PrivateRoute
-              exact
-              path="/RegEventEdit/:id/:some?"
-              component={RegEventEditComponent}
-            />
-            <PrivateRoute
-              exact
-              path="/RegEventTeam/:id/:division_id/:waiting/:event_id"
-              component={RegEventTeamView}
-            />
-            <PrivateRoute
-              exact
-              path="/NewEventProfile"
-              component={NewEventProfile}
-            />
-            <PrivateRoute
-              exact
-              path="/PlayerTable"
-              component={PlayerListComponent}
-            />
-            <PrivateRoute
-              exact
-              path="/EventsTable"
-              component={EventsListComponent}
-            />
-            <PrivateRoute exact path="/RegTable" component={RegListComponent} />
-            <PrivateRoute exact path="/PoolForm" component={PoolForm} />
-            <PrivateRoute exact path="/PointsForm" component={PointsForm} />
-            <PrivateRoute
-              exact
-              path="/TemplateTable"
-              component={TemplateListComponent}
-            />
-            <PrivateRoute
-              exact
-              path="/TemplateForm"
-              component={TemplateFormComponent}
-            />
-            <PrivateRoute
-              exact
-              path="/DivisionFormCancel"
-              component={PlayerProfileCancel}
-            />
-            <PrivateRoute
-              exact
-              path="/ScoresTable"
-              component={ScoresListComponent}
-            />
-            <PrivateRoute
-              exact
-              path="/EventFormatSaved"
-              component={EventFormatSaved}
-            />
-            <PrivateRoute
-              exact
-              path="/TemplateDivisionSaved"
-              component={TemplateDivisionSaved}
-            />
-            <PrivateRoute
-              exact
-              path="/TemplateDivisionEdit/:id"
-              component={TemplateDivisionEdit}
-            />
-            <PrivateRoute
-              exact
-              path="/DashboardManager"
-              component={DashBoardManager}
-            />
-            <PrivateRoute
-              exact
-              path="/DashboardPlayers"
-              component={DashBoardPlayers}
-            />
-            <PrivateRoute
-              exact
-              path="/DashboardEvents"
-              component={DashBoardEvents}
-            />
-            <PrivateRoute exact path="/DashboardReg" component={DashBoardReg} />
-            <PrivateRoute
-              exact
-              path="/DashboardTemplate"
-              component={DashBoardTemplate}
-            />
-            <PrivateRoute exact path="/Hook" component={HookTemplate} />
-            <PrivateRoute exact path="/profileEdit" component={ProfileEdit} />
-            <PrivateRoute exact path="/newProfile" component={NewProfile} />
-            <PrivateRoute
-              exact
-              path="/eventProfileSaved/:id"
-              component={EventProfileSaved}
-            />
-            <PrivateRoute
-              exact
-              path="/EventFormatEdit"
-              component={EventFormatEdit}
-            />
-            <PrivateRoute
-              exact
-              path="/templateDivisionSavedMain/:id"
-              component={TemplateDivisionSavedMain}
-            />
-            <PrivateRoute
-              exact
-              path="/templatePoolsSaved/:pool_id"
-              component={TemplatePoolsSaved}
-            />
-            <PrivateRoute
-              exact
-              path="/templatePointsSaved/:points_id"
-              component={TemplatePointsSaved}
-            />
-            <PrivateRoute exact path="/ManagerNone" component={ManagerNone} />
-            <PrivateRoute exact path="/PlayerNone" component={PlayerNone} />
-            <PrivateRoute exact path="/EventNone" component={EventNone} />
-            <PrivateRoute exact path="/ScoreNone" component={ScoreNone} />
-            <PrivateRoute exact path="/TemplateNone" component={TemplateNone} />
-            <PrivateRoute
-              exact
-              path="/MembershipNone"
-              component={MembershipNone}
-            />
-            <PrivateRoute exact path="/RegNone" component={RegNone} />
-            <PrivateRoute exact path="/PaymentNone" component={PaymentNone} />
-            <PrivateRoute
-              exact
-              path="/newManagerProfileCreated"
-              component={NewManagerProfileCreated}
-            />
-            <PrivateRoute
-              exact
-              path="/eventProfileEdit/:id"
-              component={NewEventProfileEdit}
-            />
-            <PrivateRoute
-              exact
-              path="/eventProfileDuplicate/:id"
-              component={NewEventProfileDuplicate}
-            />
-            <PrivateRoute
-              exact
-              path="/completeProfile"
-              component={CompleteProfile}
-            />
+              {/* jai */}
+              {/* <Route exact path="/ManagerTable" component={ManagerList} /> */}
+              {/* <Route exact path="/Dashboard" component={DashBoard} /> */}
+              <PrivateRoute exact path="/DivisionForm" component={MasterForm} />
+              <PrivateRoute exact path="/Footer" component={FooterComponent} />
+              <PrivateRoute
+                exact
+                path="/RegEvent/:id"
+                component={RegEventComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/RegEventEdit/:id/:some?"
+                component={RegEventEditComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/RegEventTeam/:id/:division_id/:waiting/:event_id"
+                component={RegEventTeamView}
+              />
+              <PrivateRoute
+                exact
+                path="/NewEventProfile"
+                component={NewEventProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/PlayerTable"
+                component={PlayerListComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/EventsTable"
+                component={EventsListComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/RegTable"
+                component={RegListComponent}
+              />
+              <PrivateRoute exact path="/PoolForm" component={PoolForm} />
+              <PrivateRoute exact path="/PointsForm" component={PointsForm} />
+              <PrivateRoute
+                exact
+                path="/TemplateTable"
+                component={TemplateListComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/TemplateForm"
+                component={TemplateFormComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/DivisionFormCancel"
+                component={PlayerProfileCancel}
+              />
+              <PrivateRoute
+                exact
+                path="/ScoresTable"
+                component={ScoresListComponent}
+              />
+              <PrivateRoute
+                exact
+                path="/EventFormatSaved"
+                component={EventFormatSaved}
+              />
+              <PrivateRoute
+                exact
+                path="/TemplateDivisionSaved"
+                component={TemplateDivisionSaved}
+              />
+              <PrivateRoute
+                exact
+                path="/TemplateDivisionEdit/:id"
+                component={TemplateDivisionEdit}
+              />
+              <PrivateRoute
+                exact
+                path="/DashboardManager"
+                component={DashBoardManager}
+              />
+              <PrivateRoute
+                exact
+                path="/DashboardPlayers"
+                component={DashBoardPlayers}
+              />
+              <PrivateRoute
+                exact
+                path="/DashboardEvents"
+                component={DashBoardEvents}
+              />
+              <PrivateRoute
+                exact
+                path="/DashboardReg"
+                component={DashBoardReg}
+              />
+              <PrivateRoute
+                exact
+                path="/DashboardTemplate"
+                component={DashBoardTemplate}
+              />
+              <PrivateRoute exact path="/Hook" component={HookTemplate} />
+              <PrivateRoute exact path="/profileEdit" component={ProfileEdit} />
+              <PrivateRoute exact path="/newProfile" component={NewProfile} />
+              <PrivateRoute
+                exact
+                path="/eventProfileSaved/:id"
+                component={EventProfileSaved}
+              />
+              <PrivateRoute
+                exact
+                path="/EventFormatEdit"
+                component={EventFormatEdit}
+              />
+              <PrivateRoute
+                exact
+                path="/templateDivisionSavedMain/:id"
+                component={TemplateDivisionSavedMain}
+              />
+              <PrivateRoute
+                exact
+                path="/templatePoolsSaved/:pool_id"
+                component={TemplatePoolsSaved}
+              />
+              <PrivateRoute
+                exact
+                path="/templatePointsSaved/:points_id"
+                component={TemplatePointsSaved}
+              />
+              <PrivateRoute exact path="/ManagerNone" component={ManagerNone} />
+              <PrivateRoute exact path="/PlayerNone" component={PlayerNone} />
+              <PrivateRoute exact path="/EventNone" component={EventNone} />
+              <PrivateRoute exact path="/ScoreNone" component={ScoreNone} />
+              <PrivateRoute
+                exact
+                path="/TemplateNone"
+                component={TemplateNone}
+              />
+              <PrivateRoute
+                exact
+                path="/MembershipNone"
+                component={MembershipNone}
+              />
+              <PrivateRoute exact path="/RegNone" component={RegNone} />
+              <PrivateRoute exact path="/PaymentNone" component={PaymentNone} />
+              <PrivateRoute
+                exact
+                path="/newManagerProfileCreated"
+                component={NewManagerProfileCreated}
+              />
+              <PrivateRoute
+                exact
+                path="/eventProfileEdit/:id"
+                component={NewEventProfileEdit}
+              />
+              <PrivateRoute
+                exact
+                path="/eventProfileDuplicate/:id"
+                component={NewEventProfileDuplicate}
+              />
+              <PrivateRoute
+                exact
+                path="/completeProfile"
+                component={CompleteProfile}
+              />
 
-            <PrivateRoute
-              exact
-              path="/header"
-              component={(propData) => <Header {...propData} />}
-            />
+              <PrivateRoute
+                exact
+                path="/header"
+                component={(propData) => <Header {...propData} />}
+              />
 
-            <PrivateRoute
-              exact
-              path="/completeProfileInfo"
-              component={CompleteProfileInfo}
-            />
-            <PrivateRoute
-              exact
-              path="/completeProfileEdit"
-              component={CompleteProfileEdit}
-            />
-            <PrivateRoute exact path="/pools/:id" component={PoolsScreen} />
-            <PrivateRoute exact path="/poolsSummary" component={PoolsSummary} />
-            <PrivateRoute exact path="/example" component={Example} />
-            <PrivateRoute
-              exact
-              path="/templateSaved/:id"
-              component={TemplateSaved}
-            />
-            <PrivateRoute
-              exact
-              path="/templateDivisionDuplicate/:id"
-              component={TemplateDuplicate}
-            />
-            <PrivateRoute
-              exact
-              path="/templateEdit/:id"
-              component={TemplateEdit}
-            />
-            <PrivateRoute exact path="/roadmap" component={Roadmap} />
-            <PrivateRoute exact path="/scoresEdit/:id" component={ScoresEdit} />
-            <PrivateRoute exact path="/bracket/:id" component={Bracket} />
-            <PrivateRoute
-              exact
-              path="/scorepoolhomepage"
-              component={ScorePoolMainPage}
-            />
-            <PrivateRoute
-              exact
-              path="/DashboardScores"
-              component={DashboardScores}
-            />
-            <PrivateRoute
-              exact
-              path="/DashboardTournaments"
-              component={Tournaments}
-            />
-            <PrivateRoute
-              exact
-              path="/bracketDivisionEdit/:id"
-              component={BracketDivisionEdit}
-            />
-            <PrivateRoute exact path="/stripe" component={StripeKeyPage} />
-          </Switch>
+              <PrivateRoute
+                exact
+                path="/completeProfileInfo"
+                component={CompleteProfileInfo}
+              />
+              <PrivateRoute
+                exact
+                path="/completeProfileEdit"
+                component={CompleteProfileEdit}
+              />
+              <PrivateRoute exact path="/pools/:id" component={PoolsScreen} />
+              <PrivateRoute
+                exact
+                path="/poolsSummary"
+                component={PoolsSummary}
+              />
+              <PrivateRoute exact path="/example" component={Example} />
+              <PrivateRoute
+                exact
+                path="/templateSaved/:id"
+                component={TemplateSaved}
+              />
+              <PrivateRoute
+                exact
+                path="/templateDivisionDuplicate/:id"
+                component={TemplateDuplicate}
+              />
+              <PrivateRoute
+                exact
+                path="/templateEdit/:id"
+                component={TemplateEdit}
+              />
+              <PrivateRoute exact path="/roadmap" component={Roadmap} />
+              <PrivateRoute
+                exact
+                path="/scoresEdit/:id"
+                component={ScoresEdit}
+              />
+              <PrivateRoute exact path="/bracket/:id" component={Bracket} />
+              <PrivateRoute
+                exact
+                path="/scorepoolhomepage"
+                component={ScorePoolMainPage}
+              />
+              <PrivateRoute
+                exact
+                path="/DashboardScores"
+                component={DashboardScores}
+              />
+              <PrivateRoute
+                exact
+                path="/DashboardTournaments"
+                component={Tournaments}
+              />
+              <PrivateRoute
+                exact
+                path="/bracketDivisionEdit/:id"
+                component={BracketDivisionEdit}
+              />
+              <PrivateRoute exact path="/stripe" component={StripeKeyPage} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      )}
+      {/* : (
+        <Redirect to={"/"} />
+      ) */}
     </Fragment>
   );
 };

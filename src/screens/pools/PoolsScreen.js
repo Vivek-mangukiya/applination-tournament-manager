@@ -515,13 +515,14 @@ const PoolsScreen = (props) => {
         prevState = {};
         prevState[newState[dInd].information[destination.index].match_id] = {
           court_id: newState[dInd].court,
-          time: newState[dInd].information[destination.index].content
-            .start_play_time,
+          time:
+            newState[dInd].information[destination.index].content
+              .start_play_time,
         };
         prevState[newState[sInd].information[source.index].match_id] = {
           court_id: newState[sInd].court,
-          time: newState[sInd].information[source.index].content
-            .start_play_time,
+          time:
+            newState[sInd].information[source.index].content.start_play_time,
         };
         return prevState;
       });
@@ -674,10 +675,11 @@ const PoolsScreen = (props) => {
             // console.log(state[i].information[j]);
 
             setState((prevState) => {
-              prevState[i].information[j].content.start_play_time = moment(
-                dropdown1.start_time,
-                ["h:mm a"]
-              ).format("YYYY-MM-DD HH:mm:ss");
+              prevState[i].information[
+                j
+              ].content.start_play_time = moment(dropdown1.start_time, [
+                "h:mm a",
+              ]).format("YYYY-MM-DD HH:mm:ss");
               prevState[i].information[j].content.end_play_time = moment(
                 moment(
                   prevState[i].information[j].content.start_play_time
@@ -838,9 +840,13 @@ const PoolsScreen = (props) => {
   // }, []);
   const [openFirst, setOpenFirst] = React.useState(false);
   const [openSecond, setOpenSecond] = React.useState(false);
-
+  const [currentMatch, setCurrentMatch] = React.useState({
+    match_id: 0,
+    set: 0,
+  });
   const getLivesScoreEditDetail = (match_id, set) => {
     getLiveScoreDetail(match_id, set);
+    setCurrentMatch({ match_id, set });
     setOpenFirst(true);
   };
   const scoreUP = (team) => {
@@ -1285,8 +1291,7 @@ const PoolsScreen = (props) => {
                                                                   onError={(
                                                                     e
                                                                   ) =>
-                                                                    (e.target.src =
-                                                                      profilePic)
+                                                                    (e.target.src = profilePic)
                                                                   }
                                                                   className="card-img mr-1"
                                                                   alt=""
@@ -1342,8 +1347,7 @@ const PoolsScreen = (props) => {
                                                                   onError={(
                                                                     e
                                                                   ) =>
-                                                                    (e.target.src =
-                                                                      profilePic)
+                                                                    (e.target.src = profilePic)
                                                                   }
                                                                   className="card-img mr-1"
                                                                   alt=""
@@ -1519,7 +1523,7 @@ const PoolsScreen = (props) => {
                                                             "1px solid #000",
                                                           color: "#9b9b9b",
                                                         }}
-                                                        defaultValue="https://live.bracketpal.com/streaming/match_YFtut"
+                                                        defaultValue={`${window?.location.host}/streaming/${currentMatch.match_id}/${currentMatch.set}`}
                                                         className="form-control"
                                                       />
                                                     </p>
