@@ -379,3 +379,36 @@
   border-radius: 100%;
   background-color: #ff2072;
 }
+.tournament-tbl-col{
+  width: 12.5%;
+}
+/* width */
+.tournament-tbl{
+  height: auto;
+  max-height: calc(100vh - 160px);
+}
+.tournament-tbl,.tournament-headerTable{
+  overflow-y: auto;
+  width: calc(100% - 10px);
+}
+.tournament-tbl::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.tournament-tbl::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.tournament-tbl::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.tournament-tbl::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+#app-content > div{
+  overflow-x: hidden;
+}

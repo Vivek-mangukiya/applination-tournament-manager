@@ -14,6 +14,7 @@ import menuchevrondownicon from "../../assets/images/icon-menu-chevron-down.svg"
 import { useContext, useEffect, useState } from "react";
 import tournamentsContext from "../../context/tournaments/tournamentsContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import "./Tournaments.css";
 
 const imagesPath = {
   orange: orangedownarrow,
@@ -24,12 +25,8 @@ const imagesPath = {
 
 const Tournaments = () => {
   const TournamentContext = useContext(tournamentsContext);
-  const {
-    tournamentList,
-    tournamentLoading,
-    tournamentError,
-    getTournaments,
-  } = TournamentContext;
+  const { tournamentList, tournamentLoading, tournamentError, getTournaments } =
+    TournamentContext;
 
   const ListItems = ({ list }) => {
     console.log({ list });
@@ -45,7 +42,7 @@ const Tournaments = () => {
             height: 40,
           }}
         >
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             <img
               src={
                 process.env.REACT_APP_PLAYER_COURT_URL + items.tournament_pic
@@ -55,28 +52,26 @@ const Tournaments = () => {
               }}
             />
           </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.name}
           </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.team_size}
           </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.start_date}
           </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center break_word">
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center break_word">
             {items.end_date}
           </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center break_word">
-            {items.name}
-          </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.address}
           </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.NoOfTeams}
           </div>
-          <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.status_lable}
           </div>
         </li>
@@ -162,8 +157,8 @@ const Tournaments = () => {
               </div>
 
               <div className="col-12 m-0 p-0">
-                <div className="row m-0 p-0 headerTable">
-                  <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                <div className="row m-0 p-0 headerTable tournament-headerTable">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-6"
                       //   src={imagesPath[getMatchWinPercentImageName(index)]}
@@ -180,7 +175,7 @@ const Tournaments = () => {
                     ></img>
                     IMAGE
                   </div>
-                  <div className="col-2 m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-2"
                       //   src={imagesPath[getFNImageName(index)]}
@@ -194,7 +189,7 @@ const Tournaments = () => {
                     />
                     NAME
                   </div>
-                  <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-3"
                       //   src={imagesPath[getRankImageName(index)]}
@@ -208,7 +203,7 @@ const Tournaments = () => {
                     />
                     TEAM SIZE
                   </div>
-                  <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-3"
                       //   src={imagesPath[getLNImageName(index)]}
@@ -222,7 +217,7 @@ const Tournaments = () => {
                     />
                     START DATE
                   </div>
-                  <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-4"
                       //   src={imagesPath[getIDImageName(index)]}
@@ -236,7 +231,7 @@ const Tournaments = () => {
                     ></img>
                     END DATE
                   </div>
-                  <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-5"
                       //   src={imagesPath[getPointsImageName(index)]}
@@ -250,7 +245,7 @@ const Tournaments = () => {
                     ></img>
                     ADDRESS
                   </div>
-                  <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-6"
                       //   src={imagesPath[getLocImageName(index)]}
@@ -264,7 +259,7 @@ const Tournaments = () => {
                     ></img>
                     NO OF TEAMS
                   </div>
-                  <div className="col-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-6"
                       //   src={imagesPath[getStatusImageName(index)]}
@@ -281,7 +276,7 @@ const Tournaments = () => {
                 </div>
               </div>
 
-              <div className="col-12 m-0 p-0 table" style={{ maxHeight: 160 }}>
+              <div className="col-12 m-0 p-0 tournament-tbl">
                 {/* {tournamentLoading ||
                 tournamentList === null ||
                 tournamentList === undefined ||
