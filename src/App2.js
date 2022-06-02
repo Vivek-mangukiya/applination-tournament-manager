@@ -121,6 +121,7 @@ import { TermsAndConditions } from "./screens/TermsAndConditions/TermsAndConditi
 import { PrivacyPolicy } from "./screens/PrivacyPolicy/PrivacyPolicy";
 import Tournaments from "./screens/tournaments/Tournaments";
 import LiveScore from "./screens/liveSccore/liveSccore";
+import UploadedFiles from "./screens/uploadedFiles/uploadedFiles";
 
 const App2 = () => {
   const authContext = useContext(AuthContext);
@@ -441,6 +442,11 @@ const App2 = () => {
                 exact
                 path="/DashboardTournaments"
                 component={Tournaments}
+              />
+              <PrivateRoute
+                exact
+                path="/UploadedFiles"
+                component={UploadedFiles}
               />
               <PrivateRoute
                 exact

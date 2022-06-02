@@ -4,17 +4,11 @@ import greyuparrow from "../../assets/images/orange-up-arrow-grey.png";
 import greydownarrow from "../../assets/images/grey-down-arrow.png";
 import Header from "../../components/header/Header";
 
-import pointsIcon from "../../assets/images/icon-orange-points.svg";
-import Footer from "../../components/footer/Footer";
-import backIcon from "../../assets/images/icon-menu-back.svg";
 import cardIcon from "../../assets/images/icon-menu-cards-disable.svg";
 import listIcon from "../../assets/images/icon-menu-list.svg";
-import RegEventDropDown from "../../components/RegEventDropDown";
-import menuchevrondownicon from "../../assets/images/icon-menu-chevron-down.svg";
 import { useContext, useEffect, useState } from "react";
-import tournamentsContext from "../../context/tournaments/tournamentsContext";
-import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-import "./Tournaments.css";
+import "./uploadedFiles.css";
+import UplodedFilesContext from "../../context/uplodedFiles/uplodedFilesContext";
 
 const imagesPath = {
   orange: orangedownarrow,
@@ -23,37 +17,25 @@ const imagesPath = {
   greydown: greydownarrow,
 };
 
-const Tournaments = () => {
-  const TournamentContext = useContext(tournamentsContext);
-  const {
-    tournamentList,
-    tournamentLoading,
-    tournamentError,
-    getTournaments,
-  } = TournamentContext;
+const UploadedFiles = () => {
+  const uplodedFilesContext = useContext(UplodedFilesContext);
+  const { errors, fileList, isLoading, getFileList } = uplodedFilesContext;
 
-  const [filteredList, setFilteredList] = useState(tournamentList);
+  const [filteredList, setFilteredList] = useState(fileList);
 
   useEffect(() => {
-    setFilteredList(tournamentList);
-  }, [tournamentList]);
+    setFilteredList(fileList);
+  }, [fileList]);
 
   const filter = (event) => {
     const { value } = event.target;
-    const list = tournamentList.filter((items) => {
-      return (
-        items.name.includes(value) ||
-        items.address.includes(value) ||
-        items.NoOfTeams.includes(value) ||
-        items.start_date.includes(value) ||
-        items.end_date.includes(value)
-      );
+    const list = fileList.filter((items) => {
+      return items.title.includes(value);
     });
     setFilteredList(list);
   };
 
   const ListItems = ({ list }) => {
-    console.log({ list });
     const listItems = list.map((items, index) => {
       return (
         <li
@@ -67,36 +49,18 @@ const Tournaments = () => {
           }}
         >
           <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
+            {items.file_id}
+          </div>
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
+            {items.title}
+          </div>
+          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             <img
-              src={
-                process.env.REACT_APP_PLAYER_COURT_URL + items.tournament_pic
-              }
+              src={process.env.REACT_APP_PLAYER_COURT_URL + items.file_name}
               style={{
-                width: "5px",
+                width: "50px",
               }}
             />
-          </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-            {items.name}
-          </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-            {items.team_size}
-          </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-            {items.start_date}
-          </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center break_word">
-            {items.end_date}
-          </div>
-
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-            {items.address}
-          </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-            {items.NoOfTeams}
-          </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-            {items.status_lable}
           </div>
         </li>
       );
@@ -105,7 +69,7 @@ const Tournaments = () => {
   };
 
   useEffect(() => {
-    getTournaments();
+    getFileList();
   }, []);
   return (
     <div>
@@ -154,7 +118,7 @@ const Tournaments = () => {
           <div className="col-11 text-center m-auto px-0">
             <div className="row m-0 p-0 table-width">
               <div className="col-6 m-0 pt-2 d-flex justify-content-start">
-                <h6>Tournaments</h6>
+                <h6>Uploaded Files</h6>
               </div>
 
               <div className="col-6 m-0 p-2 d-flex justify-content-start">
@@ -188,7 +152,7 @@ const Tournaments = () => {
                       }
                       alt=""
                     ></img>
-                    IMAGE
+                    ID
                   </div>
                   <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
@@ -202,7 +166,7 @@ const Tournaments = () => {
                       }
                       alt=""
                     />
-                    NAME
+                    TITLE
                   </div>
                   <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
@@ -216,77 +180,7 @@ const Tournaments = () => {
                       }
                       alt=""
                     />
-                    TEAM SIZE
-                  </div>
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-                    <img
-                      className="table-arrow-3"
-                      //   src={imagesPath[getLNImageName(index)]}
-                      onClick={
-                        () => {
-                          return;
-                        }
-                        //   onLNSort(commonState.LNsortType[index], index)
-                      }
-                      alt=""
-                    />
-                    START DATE
-                  </div>
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-                    <img
-                      className="table-arrow-4"
-                      //   src={imagesPath[getIDImageName(index)]}
-                      onClick={
-                        () => {
-                          return;
-                        }
-                        //   onIDSort(commonState.IDsortType[index], index)
-                      }
-                      alt=""
-                    ></img>
-                    END DATE
-                  </div>
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-                    <img
-                      className="table-arrow-5"
-                      //   src={imagesPath[getPointsImageName(index)]}
-                      onClick={
-                        () => {
-                          return;
-                        }
-                        //   onPointsSort(commonState.PointssortType[index], index)
-                      }
-                      alt=""
-                    ></img>
-                    ADDRESS
-                  </div>
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-                    <img
-                      className="table-arrow-6"
-                      //   src={imagesPath[getLocImageName(index)]}
-                      onClick={
-                        () => {
-                          return;
-                        }
-                        //   onLocSort(commonState.LocsortType[index], index)
-                      }
-                      alt=""
-                    ></img>
-                    NO OF TEAMS
-                  </div>
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-                    <img
-                      className="table-arrow-6"
-                      //   src={imagesPath[getStatusImageName(index)]}
-                      onClick={
-                        () => {
-                          return;
-                        }
-                        //   onStatusSort(commonState.StatussortType[index], index)
-                      }
-                      alt=""
-                    ></img>
-                    STATUS
+                    FILE
                   </div>
                 </div>
               </div>
@@ -309,4 +203,4 @@ const Tournaments = () => {
   );
 };
 
-export default Tournaments;
+export default UploadedFiles;

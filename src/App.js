@@ -105,6 +105,7 @@ import React, { useContext, useEffect } from "react";
 import App2 from "./App2";
 import StripeState from "./context/stripe/StripeState";
 import TournamentState from "./context/tournaments/tournamentsState";
+import FilesState from "./context/uplodedFiles/uplodedFilesState";
 
 function App() {
   // const authContext = useContext(AuthContext);
@@ -134,13 +135,15 @@ function App() {
                           <DashboardState>
                             <ScoresState>
                               <TournamentState>
-                                <BracketState>
-                                  <StripeState>
-                                    <Router>
-                                      <App2 />
-                                    </Router>
-                                  </StripeState>
-                                </BracketState>
+                                <FilesState>
+                                  <BracketState>
+                                    <StripeState>
+                                      <Router>
+                                        <App2 />
+                                      </Router>
+                                    </StripeState>
+                                  </BracketState>
+                                </FilesState>
                               </TournamentState>
                             </ScoresState>
                           </DashboardState>
