@@ -14,7 +14,7 @@ const LiveScore = ({
   const getLiveScoreDetail = (match_id, set) => {
     axios
       .get(
-        `http://13.234.239.139/avp-laravel/public/index.php/api/getTeamLiveScore?match_id=${match_id}&set=${set}`
+        `${process.env.REACT_APP_BASE_URL2}/getTeamLiveScore?match_id=${match_id}&set=${set}`
       )
       .then((response) => {
         if (response.status === 200) {
