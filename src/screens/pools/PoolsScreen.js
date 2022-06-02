@@ -1324,7 +1324,7 @@ const PoolsScreen = (props) => {
                                                           <div>
                                                             {
                                                               item.content
-                                                                .team1_winning_count
+                                                                .team1_score
                                                             }
                                                           </div>
                                                         </div>
@@ -1375,7 +1375,7 @@ const PoolsScreen = (props) => {
                                                         <div className="col-1 m-0 p-0">
                                                           {
                                                             item.content
-                                                              .team2_winning_count
+                                                              .team2_score
                                                           }
                                                         </div>
                                                       </div>
