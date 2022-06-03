@@ -386,6 +386,7 @@
 .tournament-tbl{
   height: auto;
   max-height: calc(100vh - 160px);
+  height: 100vh;
 }
 .tournament-tbl,.tournament-headerTable{
   overflow-y: auto;
@@ -411,4 +412,7 @@
 }
 #app-content > div{
   overflow-x: hidden;
+}
+.uploaded-file-col{
+  width: 33.33%;
 }

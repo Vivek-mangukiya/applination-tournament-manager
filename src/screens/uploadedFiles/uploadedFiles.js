@@ -3,7 +3,7 @@ import orangeuparrow from "../../assets/images/orange-up-arrow.png";
 import greyuparrow from "../../assets/images/orange-up-arrow-grey.png";
 import greydownarrow from "../../assets/images/grey-down-arrow.png";
 import Header from "../../components/header/Header";
-
+import fileIcon from "../../assets/images/icons8-folder.svg"
 import cardIcon from "../../assets/images/icon-menu-cards-disable.svg";
 import listIcon from "../../assets/images/icon-menu-list.svg";
 import { useContext, useEffect, useState } from "react";
@@ -35,11 +35,51 @@ const UploadedFiles = () => {
     setFilteredList(list);
   };
 
+  const getFilePreView = (url) => {
+    const ext = url.substring(
+      url.lastIndexOf(".") + 1,
+      url.length
+    );
+    switch (ext) {
+      case "jpg":
+        return <img src={url} style={{
+          width: "50px",
+          height: "50px",
+        }} />
+      case "jpeg":
+        return <img src={url} style={{
+          width: "50px",
+          height: "50px",
+        }} />
+      case "png":
+        return <img src={url} style={{
+          width: "50px",
+          height: "50px",
+        }} />
+      case "gif":
+        return <img src={url} style={{
+          width: "50px",
+          height: "50px",
+        }} />
+      // case "pdf":
+      //   return <iframe src={url} style={{
+      //     width: "50px",
+      //     height: "50px",
+      //   }} />
+      default:
+        return <img src={fileIcon} style={{
+          width: "50px",
+          height: "50px",
+        }} />
+
+    }
+  }
+
   const ListItems = ({ list }) => {
     const listItems = list.map((items, index) => {
       return (
         <li
-          className="row mx-0 px-0 rectangleTable"
+          className="row mx-0 px-0 rectangleTable py-4"
           key={index}
           style={{
             cursor: "context-menu",
@@ -48,19 +88,14 @@ const UploadedFiles = () => {
             height: 40,
           }}
         >
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.file_id}
           </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
+          <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
             {items.title}
           </div>
-          <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
-            <img
-              src={process.env.REACT_APP_PLAYER_COURT_URL + items.file_name}
-              style={{
-                width: "50px",
-              }}
-            />
+          <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
+            {getFilePreView(process.env.REACT_APP_PLAYER_COURT_URL + items.file_name)}
           </div>
         </li>
       );
@@ -77,7 +112,7 @@ const UploadedFiles = () => {
         <ul className="navbar-nav mr-auto">
           <li
             className="nav-item"
-            // onClick={() => props.history.goBack()}
+          // onClick={() => props.history.goBack()}
           >
             <a
               className="nav-link disabled"
@@ -113,7 +148,7 @@ const UploadedFiles = () => {
           </li>
         </ul>
       </Header>
-      <div className="container-fluid text-center px-0 pb-2 m-2">
+      <div className="container-fluid text-center px-0 pb-2 m-2 uploaded-files-container">
         <div className="row mx-0 px-0">
           <div className="col-11 text-center m-auto px-0">
             <div className="row m-0 p-0 table-width">
@@ -131,13 +166,13 @@ const UploadedFiles = () => {
                     margin: "0px",
                     paddingLeft: 50,
                   }}
-                  // style={{ paddingLeft: 50 }}
+                // style={{ paddingLeft: 50 }}
                 />
               </div>
 
               <div className="col-12 m-0 p-0">
                 <div className="row m-0 p-0 headerTable tournament-headerTable">
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-6"
                       //   src={imagesPath[getMatchWinPercentImageName(index)]}
@@ -154,7 +189,7 @@ const UploadedFiles = () => {
                     ></img>
                     ID
                   </div>
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-2"
                       //   src={imagesPath[getFNImageName(index)]}
@@ -168,7 +203,7 @@ const UploadedFiles = () => {
                     />
                     TITLE
                   </div>
-                  <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
+                  <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
                       className="table-arrow-3"
                       //   src={imagesPath[getRankImageName(index)]}
