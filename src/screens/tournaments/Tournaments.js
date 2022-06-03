@@ -3,6 +3,7 @@ import orangeuparrow from "../../assets/images/orange-up-arrow.png";
 import greyuparrow from "../../assets/images/orange-up-arrow-grey.png";
 import greydownarrow from "../../assets/images/grey-down-arrow.png";
 import Header from "../../components/header/Header";
+import defaultImage from "../../assets/images/default.jpeg";
 
 import pointsIcon from "../../assets/images/icon-orange-points.svg";
 import Footer from "../../components/footer/Footer";
@@ -69,10 +70,13 @@ const Tournaments = () => {
           <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
             <img
               src={
-                process.env.REACT_APP_PLAYER_COURT_URL + items.tournament_pic
+                items.tournament_pic
+                  ? process.env.REACT_APP_PLAYER_COURT_URL +
+                    items.tournament_pic
+                  : defaultImage
               }
               style={{
-                width: "5px",
+                width: "35px",
               }}
             />
           </div>
@@ -154,7 +158,7 @@ const Tournaments = () => {
           <div className="col-11 text-center m-auto px-0">
             <div className="row m-0 p-0 table-width">
               <div className="col-6 m-0 pt-2 d-flex justify-content-start">
-                <h6>Tournaments</h6>
+                <h6>Reports</h6>
               </div>
 
               <div className="col-6 m-0 p-2 d-flex justify-content-start">

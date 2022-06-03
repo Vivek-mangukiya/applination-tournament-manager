@@ -440,12 +440,12 @@ const App2 = () => {
               />
               <PrivateRoute
                 exact
-                path="/DashboardTournaments"
+                path="/DashboardReports"
                 component={Tournaments}
               />
               <PrivateRoute
                 exact
-                path="/UploadedFiles"
+                path="/Guidelines"
                 component={UploadedFiles}
               />
               <PrivateRoute

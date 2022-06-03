@@ -1532,7 +1532,7 @@ const Sidebar = (props) => {
                   scoresClicked();
                   tournamentClicked();
                   // props.history.push('/ScoresTable');
-                  props.history.push("/DashboardTournaments");
+                  props.history.push("/DashboardReports");
                   setDisabledMessage("");
                 }
           }
@@ -1540,7 +1540,7 @@ const Sidebar = (props) => {
           // disabled
         >
           <img src={eventsIcon} alt="" />{" "}
-          <span id="tournament-span">{sidebarMax && "Tournaments"}</span>
+          <span id="tournament-span">{sidebarMax && "Reports"}</span>
         </button>
         <button
           id="UploadedFiles-button"
@@ -1556,7 +1556,7 @@ const Sidebar = (props) => {
                   scoresClicked();
                   uploadedFilesClicked();
                   // props.history.push('/ScoresTable');
-                  props.history.push("/UploadedFiles");
+                  props.history.push("/Guidelines");
                   setDisabledMessage("");
                 }
           }
@@ -1564,7 +1564,7 @@ const Sidebar = (props) => {
           // disabled
         >
           <img src={managerSuitcase} alt="" />{" "}
-          <span id="UploadedFiles-span">{sidebarMax && "UploadedFiles"}</span>
+          <span id="UploadedFiles-span">{sidebarMax && "Guidelines"}</span>
         </button>
         <button
           id="templates-button"

@@ -3,7 +3,8 @@ import orangeuparrow from "../../assets/images/orange-up-arrow.png";
 import greyuparrow from "../../assets/images/orange-up-arrow-grey.png";
 import greydownarrow from "../../assets/images/grey-down-arrow.png";
 import Header from "../../components/header/Header";
-import fileIcon from "../../assets/images/icons8-folder.svg"
+import fileIcon from "../../assets/images/icons8-folder.svg";
+import downloadIcon from "../../assets/images/download-solid.svg";
 import cardIcon from "../../assets/images/icon-menu-cards-disable.svg";
 import listIcon from "../../assets/images/icon-menu-list.svg";
 import { useContext, useEffect, useState } from "react";
@@ -36,44 +37,65 @@ const UploadedFiles = () => {
   };
 
   const getFilePreView = (url) => {
-    const ext = url.substring(
-      url.lastIndexOf(".") + 1,
-      url.length
-    );
+    const ext = url.substring(url.lastIndexOf(".") + 1, url.length);
     switch (ext) {
       case "jpg":
-        return <img src={url} style={{
-          width: "50px",
-          height: "50px",
-        }} />
+        return (
+          <img
+            src={url}
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          />
+        );
       case "jpeg":
-        return <img src={url} style={{
-          width: "50px",
-          height: "50px",
-        }} />
+        return (
+          <img
+            src={url}
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          />
+        );
       case "png":
-        return <img src={url} style={{
-          width: "50px",
-          height: "50px",
-        }} />
+        return (
+          <img
+            src={url}
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          />
+        );
       case "gif":
-        return <img src={url} style={{
-          width: "50px",
-          height: "50px",
-        }} />
+        return (
+          <img
+            src={url}
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          />
+        );
       // case "pdf":
       //   return <iframe src={url} style={{
       //     width: "50px",
       //     height: "50px",
       //   }} />
       default:
-        return <img src={fileIcon} style={{
-          width: "50px",
-          height: "50px",
-        }} />
-
+        return (
+          <img
+            src={fileIcon}
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          />
+        );
     }
-  }
+  };
 
   const ListItems = ({ list }) => {
     const listItems = list.map((items, index) => {
@@ -95,7 +117,26 @@ const UploadedFiles = () => {
             {items.title}
           </div>
           <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
-            {getFilePreView(process.env.REACT_APP_PLAYER_COURT_URL + items.file_name)}
+            <a
+              href={process.env.REACT_APP_PLAYER_COURT_URL + items.file_name}
+              download={items.file_name.substring(
+                items.file_name.lastIndexOf("/") + 1,
+                items.file_name.length
+              )}
+              target="_blank"
+              style={{
+                height: "100%",
+                width: "100%",
+              }}
+            >
+              <img
+                src={downloadIcon}
+                style={{
+                  width: "15px",
+                  height: "15px",
+                }}
+              />
+            </a>
           </div>
         </li>
       );
@@ -112,7 +153,7 @@ const UploadedFiles = () => {
         <ul className="navbar-nav mr-auto">
           <li
             className="nav-item"
-          // onClick={() => props.history.goBack()}
+            // onClick={() => props.history.goBack()}
           >
             <a
               className="nav-link disabled"
@@ -153,7 +194,7 @@ const UploadedFiles = () => {
           <div className="col-11 text-center m-auto px-0">
             <div className="row m-0 p-0 table-width">
               <div className="col-6 m-0 pt-2 d-flex justify-content-start">
-                <h6>Uploaded Files</h6>
+                <h6>Guidelines</h6>
               </div>
 
               <div className="col-6 m-0 p-2 d-flex justify-content-start">
@@ -166,7 +207,7 @@ const UploadedFiles = () => {
                     margin: "0px",
                     paddingLeft: 50,
                   }}
-                // style={{ paddingLeft: 50 }}
+                  // style={{ paddingLeft: 50 }}
                 />
               </div>
 
