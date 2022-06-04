@@ -168,32 +168,14 @@
 .pool_summary_match_player_1_img {
   position: absolute;
 }
-.live-btn {
+
+.btn-pool {
   text-transform: uppercase;
   cursor: pointer !important;
   background: #ffd420;
   padding: 1px 8px;
   border-radius: 4px;
   font-size: 10px;
-}
-.react-responsive-modal-overlay {
-  background: rgb(0 0 0 / 8%) !important;
-}
-.react-responsive-modal-modal{box-shadow: none !important;}
-.up-btn{
-  padding: 0;
-  margin: 0;
-  background-color: #1f9542 !important;
-  z-index: 99999;
-  padding: 8px;
-  cursor: pointer !important;
-}
-
-.down-btn{
-  padding: 0;
-  margin: 0;
-  background-color: #ed4642 !important;
-  z-index: 99999;
-  padding: 8px;
-  cursor: pointer !important;
+  height: 22px;
+  margin-left: 9px;
 }

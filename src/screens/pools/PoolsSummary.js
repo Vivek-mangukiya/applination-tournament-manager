@@ -1400,7 +1400,7 @@ const PoolsSummary = (props) => {
       </div> */}
 
       {/* example heading area */}
-
+      {console.log({ poolListData })}
       <div className="row header-2 p-0 m-0">
         <div className="col"></div>
         <div className="col my-auto header-heading">
@@ -1487,15 +1487,6 @@ const PoolsSummary = (props) => {
         commonState.poolListData.length > 0 &&
         commonState.poolListData.map((individualSummary, index) => {
           if (individualSummary !== null && dropdown1 !== null) {
-            let count = 0;
-            {
-              /* return individualSummary.map((key,index)=>{ */
-            }
-
-            {
-              /* if(key!=='div_name' && key!=='id'){ */
-            }
-
             return (
               <div className="container-fluid text-center px-0 pb-2 m-2">
                 <div className="row mx-0 px-0">
@@ -1506,9 +1497,13 @@ const PoolsSummary = (props) => {
                           {" "}
                           Pool {index + 1}: {commonState.poolNames[index]}
                         </h6>
+                        <button className="btn-pool float-right">
+                          Print Score Sheet
+                        </button>
                       </div>
 
-                      <div className="col-6 m-0 p-2 d-flex justify-content-start">
+                      <div className="col-3 m-0 p-2 d-flex justify-content-start"></div>
+                      <div className="col-3 m-0 p-2 d-flex justify-content-end">
                         <input
                           className="Box-Search"
                           placeholder="Search"

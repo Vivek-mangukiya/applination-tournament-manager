@@ -106,6 +106,17 @@ const PoolsState = (props) => {
       }
     });
   };
+
+  //Generate Score sheet PDF
+  const generateScoreSheet = async (tournamentId, poolName, numPlaces) => {
+    // const actualData = new FormData();
+    // actualData.append("data", JSON.stringify(data));
+    API2.get(
+      `/generateScoreSheet?tournamentId=${tournamentId}&poolName=${poolName}&numPlaces=${numPlaces}`
+    ).then((response) => {
+      
+    });
+  };
   return (
     <PoolsContext.Provider
       value={{
