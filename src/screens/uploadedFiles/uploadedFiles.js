@@ -4,6 +4,7 @@ import greyuparrow from "../../assets/images/orange-up-arrow-grey.png";
 import greydownarrow from "../../assets/images/grey-down-arrow.png";
 import Header from "../../components/header/Header";
 import fileIcon from "../../assets/images/icons8-folder.svg";
+import DataTable from "react-data-table-component";
 import downloadIcon from "../../assets/images/download-solid.svg";
 import cardIcon from "../../assets/images/icon-menu-cards-disable.svg";
 import listIcon from "../../assets/images/icon-menu-list.svg";
@@ -144,6 +145,48 @@ const UploadedFiles = () => {
     return listItems;
   };
 
+  const columns = [
+    {
+      id: 1,
+      name: "ID",
+      selector: (row) => row.file_id,
+      sortable: true,
+    },
+    {
+      id: 2,
+      name: "TITLE",
+      selector: (row) => row.title,
+      sortable: true,
+    },
+    {
+      id: 3,
+      name: "FILE",
+      selector: (row) => {
+        return (
+          <a
+            href={process.env.REACT_APP_PLAYER_COURT_URL + row.file_name}
+            download={row.file_name.substring(
+              row.file_name.lastIndexOf("/") + 1,
+              row.file_name.length
+            )}
+            target="_blank"
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <img
+              src={downloadIcon}
+              style={{
+                width: "15px",
+                height: "15px",
+              }}
+            />
+          </a>
+        );
+      },
+    },
+  ];
   useEffect(() => {
     getFileList();
   }, []);
@@ -197,21 +240,29 @@ const UploadedFiles = () => {
                 <h6>Guidelines</h6>
               </div>
 
-              <div className="col-6 m-0 p-2 d-flex justify-content-start">
-                <input
-                  className="Box-Search"
-                  placeholder="Search"
-                  onChange={(event) => filter(event)}
-                  style={{
-                    padding: "0px",
-                    margin: "0px",
-                    paddingLeft: 50,
-                  }}
-                  // style={{ paddingLeft: 50 }}
-                />
-              </div>
+              <DataTable
+                columns={columns}
+                data={filteredList}
+                defaultSortFieldId={1}
+                // sortIcon={<SortIcon />}
+                pagination
+                subHeaderComponent={
+                  <input
+                    className="Box-Search"
+                    placeholder="Search"
+                    onChange={(event) => filter(event)}
+                    style={{
+                      padding: "0px",
+                      margin: "0px",
+                      paddingLeft: 50,
+                    }}
+                    // style={{ paddingLeft: 50 }}
+                  />
+                }
+                subHeader
+              />
 
-              <div className="col-12 m-0 p-0">
+              {/* <div className="col-12 m-0 p-0">
                 <div className="row m-0 p-0 headerTable tournament-headerTable">
                   <div className="uploaded-file-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
@@ -259,18 +310,18 @@ const UploadedFiles = () => {
                     FILE
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="col-12 m-0 p-0 tournament-tbl">
+              {/* <div className="col-12 m-0 p-0 tournament-tbl">
                 {/* {tournamentLoading ||
                 tournamentList === null ||
                 tournamentList === undefined ||
                 tournamentList?.length === 0 ? (
                   <LoadingSpinner />
                 ) : (
-                    )} */}
+                    )} 
                 <ListItems list={filteredList} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

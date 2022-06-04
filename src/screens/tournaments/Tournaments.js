@@ -4,6 +4,7 @@ import greyuparrow from "../../assets/images/orange-up-arrow-grey.png";
 import greydownarrow from "../../assets/images/grey-down-arrow.png";
 import Header from "../../components/header/Header";
 import defaultImage from "../../assets/images/default.jpeg";
+import DataTable from "react-data-table-component";
 
 import pointsIcon from "../../assets/images/icon-orange-points.svg";
 import Footer from "../../components/footer/Footer";
@@ -108,6 +109,69 @@ const Tournaments = () => {
     return listItems;
   };
 
+  const columns = [
+    {
+      id: 1,
+      name: "IMAGE",
+      selector: (row) => {
+        return (
+          <img
+            src={
+              row.tournament_pic
+                ? process.env.REACT_APP_PLAYER_COURT_URL + row.tournament_pic
+                : defaultImage
+            }
+            style={{
+              width: "35px",
+            }}
+          />
+        );
+      },
+      sortable: false,
+    },
+    {
+      id: 2,
+      name: "NAME",
+      selector: (row) => row.name,
+      sortable: true,
+    },
+    {
+      id: 3,
+      name: "TEAM SIZE",
+      selector: (row) => row.team_size,
+      sortable: true,
+    },
+    {
+      id: 4,
+      name: "START DATE",
+      selector: (row) => row.start_date,
+      sortable: true,
+    },
+    {
+      id: 5,
+      name: "END DATE",
+      selector: (row) => row.end_date,
+      sortable: true,
+    },
+    {
+      id: 6,
+      name: "ADDRESS",
+      selector: (row) => row.address,
+      sortable: true,
+    },
+    {
+      id: 7,
+      name: "NO OF TEAMS",
+      selector: (row) => row.NoOfTeams,
+      sortable: true,
+    },
+    {
+      id: 8,
+      name: "STATUS",
+      selector: (row) => row.status_lable,
+      sortable: true,
+    },
+  ];
   useEffect(() => {
     getTournaments();
   }, []);
@@ -161,21 +225,29 @@ const Tournaments = () => {
                 <h6>Reports</h6>
               </div>
 
-              <div className="col-6 m-0 p-2 d-flex justify-content-start">
-                <input
-                  className="Box-Search"
-                  placeholder="Search"
-                  onChange={(event) => filter(event)}
-                  style={{
-                    padding: "0px",
-                    margin: "0px",
-                    paddingLeft: 50,
-                  }}
-                  // style={{ paddingLeft: 50 }}
-                />
-              </div>
+              <DataTable
+                columns={columns}
+                data={filteredList}
+                defaultSortFieldId={1}
+                // sortIcon={<SortIcon />}
+                pagination
+                subHeaderComponent={
+                  <input
+                    className="Box-Search"
+                    placeholder="Search"
+                    onChange={(event) => filter(event)}
+                    style={{
+                      padding: "0px",
+                      margin: "0px",
+                      paddingLeft: 50,
+                    }}
+                    // style={{ paddingLeft: 50 }}
+                  />
+                }
+                subHeader
+              />
 
-              <div className="col-12 m-0 p-0">
+              {/* <div className="col-12 m-0 p-0">
                 <div className="row m-0 p-0 headerTable tournament-headerTable">
                   <div className="tournament-tbl-col m-0 p-0 d-flex justify-content-center align-items-center">
                     <img
@@ -302,9 +374,9 @@ const Tournaments = () => {
                 tournamentList?.length === 0 ? (
                   <LoadingSpinner />
                 ) : (
-                    )} */}
+                    )}
                 <ListItems list={filteredList} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
