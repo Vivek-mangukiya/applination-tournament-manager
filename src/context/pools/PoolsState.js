@@ -108,14 +108,24 @@ const PoolsState = (props) => {
   };
 
   //Generate Score sheet PDF
-  const generateScoreSheet = async (tournamentId, poolName, numPlaces) => {
-    // const actualData = new FormData();
-    // actualData.append("data", JSON.stringify(data));
-    API2.get(
-      `/generateScoreSheet?tournamentId=${tournamentId}&poolName=${poolName}&numPlaces=${numPlaces}`
-    ).then((response) => {
-      
-    });
+  const generateScoreSheet = async (tournamentId) => {
+    API2.get(`/generateScoreSheet?tournamentId=${tournamentId}`, {
+      // responseType: "blob",
+      headers: {
+        Accept: "application/pdf",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((response) => {
+        console.log({ response });
+        const file = new Blob([response.data], { type: "application/pdf" });
+        const fileURL = URL.createObjectURL(file);
+        window.open(fileURL);
+      })
+      .catch((err) => {
+        console.log({ err });
+        return err;
+      });
   };
   return (
     <PoolsContext.Provider
@@ -131,6 +141,7 @@ const PoolsState = (props) => {
         getEventPoolScheduleLoading,
         getLiveScoreDetail,
         getLiveScoreUpdate,
+        generateScoreSheet,
       }}
     >
       {props.children}

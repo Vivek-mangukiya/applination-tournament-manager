@@ -27,7 +27,7 @@ const PoolsSummary = (props) => {
   const [dummyData, setDummyData] = useState(null);
 
   const poolsContext = useContext(PoolsContext);
-  const { getAllPools, poolListData } = poolsContext;
+  const { getAllPools, poolListData, generateScoreSheet } = poolsContext;
 
   useEffect(() => {
     //call at starting
@@ -1327,6 +1327,11 @@ const PoolsSummary = (props) => {
     });
     return listItems;
   };
+
+  const getScorePdf = async () => {
+    const res = await generateScoreSheet(props.location);
+    console.log({ res });
+  };
   return (
     <div className="pools pt-4" style={{ paddingBottom: "100px" }}>
       {/* <Header>
@@ -1497,7 +1502,10 @@ const PoolsSummary = (props) => {
                           {" "}
                           Pool {index + 1}: {commonState.poolNames[index]}
                         </h6>
-                        <button className="btn-pool float-right">
+                        <button
+                          className="btn-pool float-right"
+                          onClick={() => getScorePdf()}
+                        >
                           Print Score Sheet
                         </button>
                       </div>
