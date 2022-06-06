@@ -412,3 +412,12 @@
 #app-content > div{
   overflow-x: hidden;
 }
+.bMgaAx div:first-child{
+  font-family: monospace;
+}
+.sc-dmRaPn + div {
+  width: 100%;
+}
+.sc-iIPllB {
+  justify-content: flex-start !important;
+}
