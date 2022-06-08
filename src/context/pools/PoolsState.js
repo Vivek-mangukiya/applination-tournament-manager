@@ -109,21 +109,20 @@ const PoolsState = (props) => {
 
   //Generate Score sheet PDF
   const generateScoreSheet = async (tournamentId) => {
-    API2.get(`/generateScoreSheet?tournamentId=${tournamentId}`, {
-      // responseType: "blob",
-      headers: {
-        Accept: "application/pdf",
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
+    return API2.get(
+      `/getScoreSheet?tournamentId=${tournamentId}&poolName=pool_A&numPlaces=10`,
+      {
+        // responseType: "blob",
+        headers: {
+          Accept: "application/pdf",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
       .then((response) => {
-        console.log({ response });
-        const file = new Blob([response.data], { type: "application/pdf" });
-        const fileURL = URL.createObjectURL(file);
-        window.open(fileURL);
+        return response;
       })
       .catch((err) => {
-        console.log({ err });
         return err;
       });
   };

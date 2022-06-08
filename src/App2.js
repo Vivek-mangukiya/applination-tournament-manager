@@ -122,6 +122,7 @@ import { PrivacyPolicy } from "./screens/PrivacyPolicy/PrivacyPolicy";
 import Tournaments from "./screens/tournaments/Tournaments";
 import LiveScore from "./screens/liveSccore/liveSccore";
 import UploadedFiles from "./screens/uploadedFiles/uploadedFiles";
+import { ToastContainer } from "react-toastify";
 
 const App2 = () => {
   const authContext = useContext(AuthContext);
@@ -144,12 +145,23 @@ const App2 = () => {
 
   return (
     <Fragment>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Route exact path="/" component={SignIn} />
       <Route exact path="/forgotPassword" component={ForgetPassword} />
       <Route exact path="/terms-and-condition" component={TermsAndConditions} />
       <Route exact path="/streaming/:match_id/:set" component={LiveScore} />
       <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-      {!window.location.href.includes('streaming') && (
+      {!window.location.href.includes("streaming") && (
         <div className="App">
           {/* <Header /> */}
           <Sidebar />

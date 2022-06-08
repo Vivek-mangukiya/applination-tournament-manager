@@ -12,6 +12,7 @@ import PoolsContext from "../../context/pools/poolsContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import PoolsDropdown from "./PoolsDropdown";
 import PoolsScheduleDropdown from "./PoolsScheduleDropdown";
+import { toast } from "react-toastify";
 
 const imagesPath = {
   orange: orangedownarrow,
@@ -1330,7 +1331,15 @@ const PoolsSummary = (props) => {
 
   const getScorePdf = async () => {
     const res = await generateScoreSheet(props.location);
-    console.log({ res });
+    if (res && res?.status === 200) {
+      if (res?.data?.error) {
+        console.log({ res });
+        const err = res?.data?.error;
+        toast.error(err);
+      } else {
+        window.open(res?.data?.base_url + res?.data?.pdf_string);
+      }
+    }
   };
   return (
     <div className="pools pt-4" style={{ paddingBottom: "100px" }}>
