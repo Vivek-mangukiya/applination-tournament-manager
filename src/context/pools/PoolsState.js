@@ -108,9 +108,9 @@ const PoolsState = (props) => {
   };
 
   //Generate Score sheet PDF
-  const generateScoreSheet = async (tournamentId) => {
+  const generateScoreSheet = async (tournamentId, poolName) => {
     return API2.get(
-      `/getScoreSheet?tournamentId=${tournamentId}&poolName=pool_A&numPlaces=10`,
+      `/getScoreSheet?tournamentId=${tournamentId}&poolName=${poolName}&numPlaces=10`,
       {
         // responseType: "blob",
         headers: {

@@ -109,9 +109,9 @@ const PoolsSummary = (props) => {
     let searchValues = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -177,9 +177,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -243,9 +243,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -298,9 +298,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -352,9 +352,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -408,9 +408,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -464,9 +464,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -519,9 +519,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -575,9 +575,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -630,9 +630,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -685,9 +685,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -739,9 +739,9 @@ const PoolsSummary = (props) => {
     let FalseArray = [];
     let len =
       poolListData !== undefined &&
-      poolListData !== null &&
-      poolListData.summary !== null &&
-      poolListData.summary !== undefined
+        poolListData !== null &&
+        poolListData.summary !== null &&
+        poolListData.summary !== undefined
         ? poolListData.summary.length
         : 0;
 
@@ -1248,10 +1248,10 @@ const PoolsSummary = (props) => {
                 margin: "0px",
                 height: 40,
               }}
-              // onClick={() => {
-              //   openProfile(item.tournament_id);
-              //   console.log(item.tournament_id);
-              // }}
+            // onClick={() => {
+            //   openProfile(item.tournament_id);
+            //   console.log(item.tournament_id);
+            // }}
             >
               {/* <div className="col-1 mx-0 px-0 d-flex justify-content-center align-items-center">
           <img
@@ -1329,15 +1329,19 @@ const PoolsSummary = (props) => {
     return listItems;
   };
 
-  const getScorePdf = async () => {
-    const res = await generateScoreSheet(props.location);
+  const getScorePdf = async (poolName) => {
+    const res = await generateScoreSheet(props.location, poolName);
     if (res && res?.status === 200) {
       if (res?.data?.error) {
         console.log({ res });
         const err = res?.data?.error;
         toast.error(err);
       } else {
-        window.open(res?.data?.base_url + res?.data?.pdf_string);
+        if (res?.data?.pdf_string) {
+          window.open(res?.data?.base_url + res?.data?.pdf_string);
+        } else {
+          toast.error("Something went wrong!")
+        }
       }
     }
   };
@@ -1473,7 +1477,7 @@ const PoolsSummary = (props) => {
                 <div className="col-11 p-0 m-0">
                   <div
                     className="dot mr-2 bg-success"
-                    //style={{ backgroundColor: dropdown1.color }}
+                  //style={{ backgroundColor: dropdown1.color }}
                   ></div>{" "}
                   {dropdown2}
                 </div>
@@ -1513,7 +1517,7 @@ const PoolsSummary = (props) => {
                         </h6>
                         <button
                           className="btn-pool float-right"
-                          onClick={() => getScorePdf()}
+                          onClick={() => getScorePdf(commonState.poolNames[index])}
                         >
                           Print Score Sheet
                         </button>
@@ -1538,7 +1542,7 @@ const PoolsSummary = (props) => {
                             margin: "0px",
                             paddingLeft: 50,
                           }}
-                          // style={{ paddingLeft: 50 }}
+                        // style={{ paddingLeft: 50 }}
                         ></input>
                       </div>
 
