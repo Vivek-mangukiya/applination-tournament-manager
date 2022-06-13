@@ -123,6 +123,8 @@ import Tournaments from "./screens/tournaments/Tournaments";
 import LiveScore from "./screens/liveSccore/liveSccore";
 import UploadedFiles from "./screens/uploadedFiles/uploadedFiles";
 import { ToastContainer } from "react-toastify";
+import SelectCheckinDivision from "./screens/pools/SelectCheckinDivision";
+import SelfCheckinDivision from "./screens/pools/SelfCheckinDivision";
 
 const App2 = () => {
   const authContext = useContext(AuthContext);
@@ -466,6 +468,16 @@ const App2 = () => {
                 component={BracketDivisionEdit}
               />
               <PrivateRoute exact path="/stripe" component={StripeKeyPage} />
+              <PrivateRoute
+                exact
+                path="/selectsection"
+                component={SelectCheckinDivision}
+              />
+              <PrivateRoute
+                exact
+                path="/selectsection/selfcheckin"
+                component={SelfCheckinDivision}
+              />
             </Switch>
           </div>
         </div>
