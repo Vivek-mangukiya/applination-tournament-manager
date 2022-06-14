@@ -40,7 +40,16 @@ const PoolStep3 = (props) => {
           <img className="" src={iconcourt} alt=""></img>
           <div className="PLACEHOLDER">Number of Courts</div>
           <div className="DivValue">{modal1}</div>
-          <DropdownModals>
+          <input
+            type={"range"}
+            id={"courts"}
+            min={1}
+            max={9999}
+            onChange={(event) => {
+              setModal1(event?.target?.value);
+            }}
+          />
+          {/* <DropdownModals>
             {info.map((data, i) => (
               <li key={i} onClick={() => setModal1(data)}>
                 {data}
@@ -55,8 +64,8 @@ const PoolStep3 = (props) => {
             <li onClick={() => setModal1('28')}>28</li>
             <li onClick={() => setModal1('32')}>32</li>
             <li onClick={() => setModal1('36')}>36</li>
-            <li onClick={() => setModal1('40')}>40</li> */}
-          </DropdownModals>
+            <li onClick={() => setModal1('40')}>40</li> 
+          </DropdownModals> */}
         </div>
       </div>
     </div>

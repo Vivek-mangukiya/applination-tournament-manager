@@ -853,26 +853,32 @@ const PoolsScreen = (props) => {
     let { team1_score, team2_score } = liveScore;
     if (team === 1) {
       let data = {
-        match_id: liveScore?.match_id,
-        set: liveScore?.set,
+        match_id: currentMatch.match_id,
+        set: currentMatch.set,
         team1_score_incqty: 1,
       };
       getLiveScoreUpdate(data);
-      setLiveScore({ ...liveScore, team1_score: team1_score + 1 });
+      setLiveScore({
+        ...liveScore,
+        team1_score: team1_score ? team1_score + 1 : 1,
+      });
     } else {
       let data = {
-        match_id: liveScore?.match_id,
-        set: liveScore?.set,
+        match_id: currentMatch?.match_id,
+        set: currentMatch?.set,
         team2_score_incqty: 1,
       };
       getLiveScoreUpdate(data);
-      setLiveScore({ ...liveScore, team2_score: team2_score + 1 });
+      setLiveScore({
+        ...liveScore,
+        team2_score: team2_score ? team2_score + 1 : 1,
+      });
     }
   };
   const scoreDown = (team) => {
     let { team1_score, team2_score } = liveScore;
     if (team === 1) {
-      if (team1_score > 0) {
+      if (team1_score && team1_score > 0) {
         let data = {
           match_id: liveScore?.match_id,
           set: liveScore?.set,
@@ -882,7 +888,7 @@ const PoolsScreen = (props) => {
         setLiveScore({ ...liveScore, team1_score: team1_score - 1 });
       }
     } else {
-      if (team2_score > 0) {
+      if (team2_score && team2_score > 0) {
         let data = {
           match_id: liveScore?.match_id,
           set: liveScore?.set,
@@ -1322,10 +1328,11 @@ const PoolsScreen = (props) => {
                                                         </div>
                                                         <div className="col-1 m-0 p-0">
                                                           <div>
-                                                            {
-                                                              item.content
-                                                                .team1_score
-                                                            }
+                                                            {item.content
+                                                              .team1_score
+                                                              ? item.content
+                                                                  .team1_score
+                                                              : 0}
                                                           </div>
                                                         </div>
                                                       </div>
@@ -1373,10 +1380,11 @@ const PoolsScreen = (props) => {
                                                           {/* {item.content.team2_name} */}
                                                         </div>
                                                         <div className="col-1 m-0 p-0">
-                                                          {
-                                                            item.content
-                                                              .team2_score
-                                                          }
+                                                          {item.content
+                                                            .team2_score
+                                                            ? item.content
+                                                                .team2_score
+                                                            : 0}
                                                         </div>
                                                       </div>
                                                     </div>
@@ -1631,13 +1639,17 @@ const PoolsScreen = (props) => {
                                                         <div className="col">
                                                           <h3>
                                                             {liveScore &&
-                                                              liveScore?.team1_score}
+                                                            liveScore?.team1_score
+                                                              ? liveScore?.team1_score
+                                                              : 0}
                                                           </h3>
                                                         </div>
                                                         <div className="col">
                                                           <h3>
                                                             {liveScore &&
-                                                              liveScore.team2_score}
+                                                            liveScore?.team2_score
+                                                              ? liveScore?.team2_score
+                                                              : 0}
                                                           </h3>
                                                         </div>
                                                       </div>
